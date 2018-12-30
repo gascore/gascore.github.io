@@ -1,26 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5bfe27c6-1c3d-4c00-ad02-c4b4e5f57aea" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/gascore.github.io.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_docs/overview/index.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_docs/contact-syncing/facebook.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_docs/contact-syncing/phone.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_docs/devices/android.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_docs/devices/ios.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_docs/media/documents.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_docs/media/images.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_docs/media/video.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/2016-01-12-media-support.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/2016-02-05-general-fixes-and-improvements.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/index.md" afterDir="false" />
-    </list>
+    <list default="true" id="5bfe27c6-1c3d-4c00-ad02-c4b4e5f57aea" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -46,8 +27,8 @@
         <entry file="file://$PROJECT_DIR$/_docs/overview/index.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="276">
-                <caret line="12" column="113" lean-forward="true" selection-start-line="12" selection-start-column="113" selection-end-line="12" selection-end-column="113" />
+              <first_editor>
+                <caret lean-forward="true" />
               </first_editor>
               <second_editor />
             </state>
@@ -126,23 +107,22 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1546163150105</updated>
-      <workItem from="1546163151461" duration="1873000" />
+      <workItem from="1546163151461" duration="2275000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1873000" />
+    <option name="totallyTimeSpent" value="2275000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="35" width="1920" height="1017" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14451477" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14451477" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" visible="true" weight="0.32914287" />
-      <window_info anchor="bottom" id="Terminal" weight="0.32914287" />
+      <window_info anchor="bottom" id="Version Control" weight="0.32914287" />
+      <window_info active="true" anchor="bottom" id="Terminal" visible="true" weight="0.32914287" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
@@ -294,8 +274,8 @@
     <entry file="file://$PROJECT_DIR$/_docs/overview/index.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="276">
-            <caret line="12" column="113" lean-forward="true" selection-start-line="12" selection-start-column="113" selection-end-line="12" selection-end-column="113" />
+          <first_editor>
+            <caret lean-forward="true" />
           </first_editor>
           <second_editor />
         </state>

@@ -1,0 +1,93 @@
+#app {
+  width: 80%;
+  margin: 12px auto;
+}
+
+header {
+  padding: 0 12px;
+  border: 1px solid #dedede;
+}
+
+a {
+  margin: 0 5px;
+  color: #00CC99;
+}
+a:hover, a:focus {
+  color: #009966;
+}
+
+header nav ul {
+  display: inline-flex;
+  padding-left: 0;
+  margin-left: 0;
+  list-style-type: none;
+}
+header nav ul li {
+  margin: 0 4px;
+  font-size: 22px;
+}
+
+footer {
+  margin-top: 24px;
+  font-size: 14px;
+  color: gray;
+  font-style: italic;
+}
+
+.td-list_wrap {
+  padding: 0 16px;
+  margin: 12px 0;
+}
+
+.td-list {
+  list-style-type: none;
+  padding-left: 0;
+}
+.td-list li #li-body {
+  display: flex;
+  padding: 4px 8px;
+  border-bottom: 1px solid #dedede;
+  font-size: 18px;
+}
+.td-list li #li-body button {
+  border: 0;
+  padding: 0;
+  background-color: inherit;
+  cursor: pointer;
+}
+.td-list li #li-body button#submit {
+  margin-right: 8px;
+}
+.td-list li #li-body button#submit:hover {
+  color: #009966;
+}
+.td-list li #li-body button#submit i {
+  margin-left: 0;
+}
+.td-list li #li-body button#delete {
+  margin: 0 0 0 auto;
+}
+.td-list li #li-body button#delete:hover, .td-list li #li-body button#delete:focus {
+  color: #ff0033;
+}
+
+button#submit:focus {
+  color: #009966;
+}
+
+.clear-btn {
+  border-radius: 5px;
+  font-family: Arial, serif;
+  color: #00cc99;
+  background: #fff;
+  padding: 5px 10px;
+  border: solid #00cc99 1.8px;
+  text-decoration: none;
+  transtion: backgound-color 0.5s;
+}
+.clear-btn:hover {
+  cursor: pointer;
+  background: #00cc99;
+  color: #fff;
+  text-decoration: none;
+}

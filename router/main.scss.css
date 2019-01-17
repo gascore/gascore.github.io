@@ -71,11 +71,15 @@ footer {
   color: #ff0033;
 }
 
+#new button {
+  margin-left: 8px;
+}
+
 button#submit:focus {
   color: #009966;
 }
 
-.clear-btn {
+.clear-btn, #new-button {
   border-radius: 5px;
   font-family: Arial, serif;
   color: #00cc99;
@@ -85,7 +89,7 @@ button#submit:focus {
   text-decoration: none;
   transtion: backgound-color 0.5s;
 }
-.clear-btn:hover {
+.clear-btn:hover, #new-button:hover {
   cursor: pointer;
   background: #00cc99;
   color: #fff;

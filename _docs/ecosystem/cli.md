@@ -8,60 +8,6 @@ For compiling `.gas` to `.go`, create new projects,
 generate css rules by atomic css class names 
 and for many other development things you can use official cli: [gasx](https://github.com/gascore/gasx)
 
-## `.gas` syntax
-
-In order to make your development easily you can use gasx translator.
-gasx can translate your html-like code to valid golang code for using it in components.
-
-Gas templates syntax similar to vue templates syntax. It using xml tags for contains different type of code in one file.
-Valid gas template file need contain these tags:
-
-1. `<script>` - golang code
-2. `<template>` - html-like code. It translates in golang.
-
-And optional `<style>` tag it require supportStyle flag. For more information see [gas and styles](https://gascore.github.io/styles)
-
-Example:
-```
-<template>
-    <main>
-        ...
-    </main>
-</template>
-<script>
-...
-func getComponent(...) *gas.Component {
-    return gas.NewComponent(
-        &gas.Component{
-            ...
-        },
-        fileT,)
-}
-...
-var fileT gas.GetComponentChildes
-</script>
-
-<style>
-    main {
-        a {
-            color: #00cc99;
-        }
-    }
-</style>
-```
-(where file name is `file`).
-
-**REMEMBER**:
-
-You can't use `<fileName>T` string in gas templates.
-Because in compiling gasx replace first `<fileName>T` string in `<script>` by generated from `<template>` code.
-> You can add `var <fileName>T gas.GetComponentChildes` after component for make your code valid for syntax highlighters.
-
-#### External components
-For add external components in template use `<e>` tag with `run` attribute.
-Example: `<e run="externalFunction(some, function, values)" />`.
-
-
 ## "new" command
 
 `gasx new` generate new gas project. 

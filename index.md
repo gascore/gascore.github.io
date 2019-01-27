@@ -2,29 +2,23 @@
 title: Gas framework introduction
 ---
 
-This is gas framework documentation. Here you can learn new about [gas-core](https://github.com/gascore/gas), [gas-web](https://github.com/gascore/gas-web), [gasx](https://github.com/gascore/gasx), [gas-router](https://github.com/gascore/gas-router).
+# What is gas?
 
-### What is gas?
+Gas is golang framework for building ui. 
+Gas isn't a monolithic framework, gas have *core* and *backend*'s. 
+[Core](https://github.com/gascore/gas) contains all logic stuff (render, updates, e.t.c.). 
+*Backend* render your application to specific platform. platform can be anything where you can run golang (web, mobile, terminal, desktop),
+but now exist only one backend -- [gas-web](https://github.com/gascore/gas-web) which use web assembly or [gopherjs](https://github.com/gopherjs/gopherjs) for render.
 
-Gas -- golang framework for building frontend (only yet) GUI applications
+# Examples
 
-### How it works?
-
-Gas is module system.
-Main part is [gas-core](https://github.com/gascore/gas) - it contains all logic (for render, updates, e.t.c.)
-
-gas-core uses *backends* which render your components to user ui. *Backend* can be not only for web, but for anything where you can run golang(mobile, terminal, desktop).
-But now exist only one backend - [gas-web](https://github.com/gascore/gas-web) which use WASM or [gopherjs](https://github.com/gopherjs/gopherjs) for render.
-
-With gas-web you can use [gas-router](https://github.com/gascore/gas-router) - simple web router
-
-## Examples?
-
-Of course, there many examples:
+There are many examples:
 
 1. [Main example](https://gascore.github.io/examples/router) - biggest example, shows all gas-ecosystem technologies for this moment. Code [here](https://github.com/gascore/example)
 2. [TODO-MVC example](https://gascore.github.io/examples/todo)
-3. [Basic examples](https://github.com/gascore/gas/blob/master/examples) (hosting in [jsgo.io](https://jsgo.io))
+3. [Basic functional examples](https://github.com/gascore/gas/blob/master/examples) (hosting in [jsgo.io](https://jsgo.io))
 
-> Feel free to send us a message at [nowasmawesome@gmail.com](mailto:nowasmawesome@gmail.com) with your feedback.
+# [Get started](https://gascore.github.io/basic/overview)
+
+> Feel free to send us a message at [our mail](mailto:nowasmawesome@gmail.com) with your feedback.
 

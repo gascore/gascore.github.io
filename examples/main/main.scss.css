@@ -1,0 +1,113 @@
+/*=== Styles from main.gas ===*/
+a {
+  margin: 0 5px;
+  color: #00CC99; }
+  a:hover, a:focus {
+    color: #009966; }
+
+html {
+  height: 100%;
+  box-sizing: border-box; }
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit; }
+
+body {
+  position: relative;
+  margin: 0;
+  padding-bottom: 3rem;
+  min-height: 100%; }
+
+header {
+  padding: 4px 8px; }
+
+main {
+  padding: 0 8px; }
+
+footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 6px;
+  background-color: #efefef;
+  text-align: center; }
+
+.td-list_wrap {
+  padding: 0 16px;
+  margin: 12px 0; }
+
+.td-list {
+  list-style-type: none;
+  padding-left: 0; }
+  .td-list li #li-body {
+    display: flex;
+    padding: 4px 8px;
+    border-bottom: 1px solid #dedede;
+    font-size: 18px; }
+    .td-list li #li-body button {
+      border: 0;
+      padding: 0;
+      background-color: inherit;
+      cursor: pointer; }
+      .td-list li #li-body button#submit {
+        margin-right: 8px; }
+        .td-list li #li-body button#submit:hover {
+          color: #009966; }
+        .td-list li #li-body button#submit i {
+          margin-left: 0; }
+      .td-list li #li-body button#delete {
+        margin: 0 0 0 auto; }
+        .td-list li #li-body button#delete:hover, .td-list li #li-body button#delete:focus {
+          color: #ff0033; }
+
+#new button {
+  margin-left: 8px; }
+
+button#submit:focus {
+  color: #009966; }
+
+/*=== Styles from components/components.gas ===*/
+#components .layout {
+  height: 200px;
+  width: 400px; }
+#components .layout-horizontal {
+  display: flex; }
+#components .gutter-horizontal {
+  cursor: ew-resize; }
+#components .gutter-vertical {
+  cursor: row-resize; }
+#components .layout-item {
+  border: 1px solid #dedede;
+  border-radius: 0.12em;
+  box-shadow: 0px 0px 30px 5px rgba(209, 209, 209, 0.27);
+  padding: 4px 8px;
+  overflow-x: hidden;
+  overflow-y: auto; }
+#components .dnd-group {
+  min-height: 48px;
+  min-width: 96px;
+  list-style-type: none;
+  padding: 2px 4px 12px 4px;
+  margin: 0; }
+#components .dnd {
+  border-radius: 4px;
+  margin: 8px; }
+#components .dnd-ghost {
+  opacity: 0.6; }
+#components .wrap {
+  border-left: 4px solid #00cc99;
+  border-radius: 4px;
+  padding-left: 6px;
+  margin-bottom: 12px; }
+#components .dnd-item {
+  border: 1px solid #dedede;
+  padding: 2px 4px;
+  border-radius: 2px;
+  margin: 2px 3px; }
+#components .sortable-ghost {
+  border: 1px solid blue; }
+
+/*# sourceMappingURL=main.scss.css.map */

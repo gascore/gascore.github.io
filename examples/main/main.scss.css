@@ -1,3 +1,54 @@
+/*=== Styles from components/components.gas ===*/
+#components .tree {
+  border: 1px solid #dedede;
+  padding: 4px 8px;
+  width: 40%;
+  border-radius: 0.08em;
+  margin-bottom: 8px; }
+#components .layout-v {
+  height: 400px;
+  width: 90%; }
+#components .layout-v-2 {
+  height: 100%;
+  width: 100%; }
+#components .layout-h {
+  width: 100%;
+  height: 100%;
+  display: flex; }
+#components .layout-item {
+  border: 1px solid #dedede;
+  border-radius: 0.12em;
+  box-shadow: 0px 0px 30px 5px rgba(209, 209, 209, 0.27);
+  padding: 4px 8px;
+  overflow-x: hidden;
+  overflow-y: auto; }
+#components .layout-item-wrapper {
+  width: 100%;
+  height: 100%; }
+#components .dnd-group {
+  min-height: 48px;
+  min-width: 96px;
+  list-style-type: none;
+  padding: 2px 4px 12px 4px;
+  margin: 0; }
+#components .dnd {
+  border-radius: 4px;
+  margin: 8px; }
+#components .dnd-ghost {
+  opacity: 0.6; }
+#components .wrap {
+  border-left: 4px solid #00cc99;
+  border-radius: 4px;
+  padding-left: 6px;
+  margin-bottom: 12px; }
+#components .dnd-item {
+  border: 1px solid #dedede;
+  padding: 2px 4px;
+  border-radius: 2px;
+  margin: 2px 3px; }
+#components .sortable-ghost {
+  border: 1px solid blue; }
+
 /*=== Styles from main.gas ===*/
 a {
   margin: 0 5px;
@@ -68,46 +119,5 @@ footer {
 
 button#submit:focus {
   color: #009966; }
-
-/*=== Styles from components/components.gas ===*/
-#components .layout {
-  height: 200px;
-  width: 400px; }
-#components .layout-horizontal {
-  display: flex; }
-#components .gutter-horizontal {
-  cursor: ew-resize; }
-#components .gutter-vertical {
-  cursor: row-resize; }
-#components .layout-item {
-  border: 1px solid #dedede;
-  border-radius: 0.12em;
-  box-shadow: 0px 0px 30px 5px rgba(209, 209, 209, 0.27);
-  padding: 4px 8px;
-  overflow-x: hidden;
-  overflow-y: auto; }
-#components .dnd-group {
-  min-height: 48px;
-  min-width: 96px;
-  list-style-type: none;
-  padding: 2px 4px 12px 4px;
-  margin: 0; }
-#components .dnd {
-  border-radius: 4px;
-  margin: 8px; }
-#components .dnd-ghost {
-  opacity: 0.6; }
-#components .wrap {
-  border-left: 4px solid #00cc99;
-  border-radius: 4px;
-  padding-left: 6px;
-  margin-bottom: 12px; }
-#components .dnd-item {
-  border: 1px solid #dedede;
-  padding: 2px 4px;
-  border-radius: 2px;
-  margin: 2px 3px; }
-#components .sortable-ghost {
-  border: 1px solid blue; }
 
 /*# sourceMappingURL=main.scss.css.map */

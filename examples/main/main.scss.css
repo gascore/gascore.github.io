@@ -32,11 +32,16 @@
   height: 100%;
 }
 #components .dnd-group {
-  min-height: 48px;
-  min-width: 96px;
+  min-height: 96px;
+  min-width: 192px;
   list-style-type: none;
   padding: 2px 4px 12px 4px;
   margin: 0;
+  height: 100%;
+}
+#components .dnd-group-wrap {
+  height: 100%;
+  width: 100%;
 }
 #components .dnd {
   border-radius: 4px;
@@ -55,7 +60,9 @@
   border: 1px solid #dedede;
   padding: 2px 4px;
   border-radius: 2px;
-  margin: 2px 3px;
+  margin: 0.4em 0.1em;
+  min-height: 48px;
+  text-align: center;
 }
 #components .sortable-ghost {
   border: 1px solid blue;

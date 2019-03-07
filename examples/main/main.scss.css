@@ -1,14 +1,18 @@
 /*=== Styles from components/components.gas ===*/
+#components {
+  width: 80%;
+  margin: 0 auto;
+}
 #components .tree {
   border: 1px solid #dedede;
   padding: 4px 8px;
-  width: 60%;
+  width: 100%;
   border-radius: 0.08em;
   margin-bottom: 8px;
 }
 #components .layout-v {
   height: 300px;
-  width: 90%;
+  width: 100%;
 }
 #components .layout-v-2 {
   height: 100%;
@@ -24,6 +28,7 @@
   border-radius: 0.12em;
   box-shadow: 0px 0px 30px 5px rgba(209, 209, 209, 0.27);
   padding: 4px 8px;
+  padding: 0.5em 0.3em;
   overflow-x: hidden;
   overflow-y: auto;
 }
@@ -45,16 +50,21 @@
 }
 #components .dnd {
   border-radius: 4px;
-  margin: 8px;
+  margin: 0 0.5em;
+}
+#components .dnd:first-child {
+  margin: 0 0.5em 0 0;
 }
 #components .dnd-ghost {
+  background-color: #ffffff;
   opacity: 0.6;
 }
 #components .wrap {
-  border-left: 4px solid #00cc99;
-  border-radius: 4px;
-  padding: 2px 0 2px 6px;
-  margin-bottom: 12px;
+  width: 100%;
+  border-left: 0.15rem solid #00cc99;
+  border-radius: 0.1rem;
+  padding: 0 0 0 0.6em;
+  margin-bottom: 1.2em;
 }
 #components .dnd-item {
   border: 1px solid #dedede;
@@ -63,9 +73,6 @@
   margin: 0.4em 0.1em;
   min-height: 48px;
   text-align: center;
-}
-#components .sortable-ghost {
-  border: 1px solid blue;
 }
 
 /*=== Styles from main.gas ===*/

@@ -89,8 +89,32 @@
   padding: 8px 16px;
 }
 
+.m\(16px\,32px\) {
+  margin: 16px 32px;
+}
+
 .bdb\(1px\,solid\,\#dedede\) {
   border-bottom: 1px solid #dedede;
+}
+
+.p\(4px\,8px\) {
+  padding: 4px 8px;
+}
+
+.fz\(18px\) {
+  font-size: 18px;
+}
+
+.m\(8px\,0\,0\,12px\) {
+  margin: 8px 0 0 12px;
+}
+
+.c\(gray\) {
+  color: gray;
+}
+
+.fz\(12px\) {
+  font-size: 12px;
 }
 
 .mb\(12px\) {

@@ -1,7 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5bfe27c6-1c3d-4c00-ad02-c4b4e5f57aea" name="Default Changelist" comment="" />
+    <list default="true" id="5bfe27c6-1c3d-4c00-ad02-c4b4e5f57aea" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/_docs/basic/external.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/sinica.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/sinica.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_docs/basic/overview.md" beforeDir="false" afterPath="$PROJECT_DIR$/_docs/basic/overview.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_docs/basic/syntax.md" beforeDir="false" afterPath="$PROJECT_DIR$/_docs/basic/syntax.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_docs/basic/templates.md" beforeDir="false" afterPath="$PROJECT_DIR$/_docs/basic/templates.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_docs/ecosystem/cli.md" beforeDir="false" afterPath="$PROJECT_DIR$/_docs/ecosystem/cli.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_docs/ecosystem/router.md" beforeDir="false" afterPath="$PROJECT_DIR$/_docs/ecosystem/router.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_docs/ecosystem/store.md" beforeDir="false" afterPath="$PROJECT_DIR$/_docs/ecosystem/store.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_docs/styles/styles.md" beforeDir="false" afterPath="$PROJECT_DIR$/_docs/basic/styles.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/main/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/examples/main/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/main/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/examples/main/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/main/s.scss.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/main/se.scss.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/main/si.scss.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples/main/tree.scss.css" beforeDir="false" afterPath="$PROJECT_DIR$/examples/main/tree.scss.css" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -12,7 +29,104 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/_docs/basic/overview.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="230">
+                <caret line="10" column="41" selection-start-line="10" selection-start-column="41" selection-end-line="10" selection-end-column="41" />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/_docs/ecosystem/cli.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="392">
+                <caret line="33" column="141" selection-start-line="33" selection-start-column="141" selection-end-line="33" selection-end-column="141" />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/_docs/basic/external.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="414">
+                <caret line="18" column="119" selection-start-line="18" selection-start-column="119" selection-end-line="18" selection-end-column="119" />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/_docs/ecosystem/router.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="138">
+                <caret line="6" column="27" selection-start-line="6" selection-start-column="27" selection-end-line="6" selection-end-column="27" />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/_docs/ecosystem/store.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="138">
+                <caret line="6" column="32" selection-start-line="6" selection-start-column="32" selection-end-line="6" selection-end-column="32" />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/_docs/basic/styles.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="23">
+                <caret line="1" column="15" selection-start-line="1" selection-start-column="15" selection-end-line="1" selection-end-column="15" />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/_docs/basic/syntax.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="574">
+                <caret line="110" lean-forward="true" selection-start-line="110" selection-end-line="110" />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/_docs/basic/templates.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="652">
+                <caret line="59" column="124" selection-start-line="59" selection-start-column="124" selection-end-line="59" selection-end-column="124" />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -25,6 +139,9 @@
       <find>hsla</find>
       <find>hsla(</find>
       <find>{{</find>
+      <find>.(string</find>
+      <find>.(int</find>
+      <find>more</find>
     </findStrings>
   </component>
   <component name="GOROOT" path="/snap/go/3095" />
@@ -50,27 +167,31 @@
         <option value="$PROJECT_DIR$/_sass/_code.scss" />
         <option value="$PROJECT_DIR$/css/main.scss" />
         <option value="$PROJECT_DIR$/_docs/Basic/overview.md" />
-        <option value="$PROJECT_DIR$/_docs/ecosystem/cli.md" />
-        <option value="$PROJECT_DIR$/_docs/basic/syntax.md" />
-        <option value="$PROJECT_DIR$/_docs/basic/templates.md" />
-        <option value="$PROJECT_DIR$/_docs/ecosystem/router.md" />
-        <option value="$PROJECT_DIR$/_docs/ecosystem/store.md" />
         <option value="$PROJECT_DIR$/_docs/styles/styles.md" />
         <option value="$PROJECT_DIR$/index.md" />
         <option value="$PROJECT_DIR$/_docs/basic/overview.md" />
+        <option value="$PROJECT_DIR$/_docs/basic/templates.md" />
+        <option value="$PROJECT_DIR$/_docs/basic/external.md" />
+        <option value="$PROJECT_DIR$/_docs/ecosystem/router.md" />
+        <option value="$PROJECT_DIR$/_docs/ecosystem/store.md" />
+        <option value="$PROJECT_DIR$/_docs/basic/styles.md" />
+        <option value="$PROJECT_DIR$/_docs/ecosystem/cli.md" />
+        <option value="$PROJECT_DIR$/_docs/basic/syntax.md" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="14" />
     <option name="y" value="35" />
-    <option name="width" value="1920" />
-    <option name="height" value="1017" />
+    <option name="width" value="1144" />
+    <option name="height" value="920" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -83,11 +204,22 @@
               <item name="gascore.github.io" type="462c0819:PsiDirectoryNode" />
               <item name="_docs" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="gascore.github.io" type="b2602c69:ProjectViewProjectNode" />
+              <item name="gascore.github.io" type="462c0819:PsiDirectoryNode" />
+              <item name="_docs" type="462c0819:PsiDirectoryNode" />
+              <item name="basic" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="gascore.github.io" type="b2602c69:ProjectViewProjectNode" />
+              <item name="gascore.github.io" type="462c0819:PsiDirectoryNode" />
+              <item name="_docs" type="462c0819:PsiDirectoryNode" />
+              <item name="ecosystem" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -100,15 +232,16 @@
     <property name="settings.editor.selected.configurable" value="editor.preferences.tabs" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/_docs/Basic" />
+      <recent name="$PROJECT_DIR$/_docs/ecosystem" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/_docs/basic" />
       <recent name="$PROJECT_DIR$/_docs/styles" />
       <recent name="$PROJECT_DIR$/examples" />
       <recent name="$PROJECT_DIR$/_docs/ecosystem" />
       <recent name="$PROJECT_DIR$/_docs" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/_docs/Basic" />
-      <recent name="$PROJECT_DIR$/_docs/ecosystem" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -139,16 +272,17 @@
       <workItem from="1548504115759" duration="4345000" />
       <workItem from="1548604584006" duration="4074000" />
       <workItem from="1548672112481" duration="2385000" />
+      <workItem from="1552301406400" duration="3580000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13587000" />
+    <option name="totallyTimeSpent" value="17167000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="35" width="1920" height="1017" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22542734" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.11181434" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -160,7 +294,7 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32914287" />
-      <window_info anchor="bottom" id="Terminal" order="9" weight="0.328" />
+      <window_info anchor="bottom" id="Terminal" order="9" weight="0.29024944" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="11" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -300,21 +434,85 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/go/src/github.com/gascore/gasx/syntax.md" />
-    <entry file="file://$PROJECT_DIR$/_docs/basic/templates.md" />
-    <entry file="file://$PROJECT_DIR$/_docs/basic/syntax.md" />
-    <entry file="file://$PROJECT_DIR$/_docs/styles/styles.md" />
-    <entry file="file://$PROJECT_DIR$/_docs/ecosystem/router.md" />
-    <entry file="file://$PROJECT_DIR$/_docs/ecosystem/store.md" />
-    <entry file="file://$PROJECT_DIR$/_docs/ecosystem/cli.md" />
+    <entry file="file://$PROJECT_DIR$/../go/src/github.com/gascore/gasx/syntax.md" />
     <entry file="file://$PROJECT_DIR$/index.md" />
     <entry file="file://$PROJECT_DIR$/_docs/basic/overview.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor />
-          <second_editor>
-            <markdownNavigatorState />
-          </second_editor>
+          <first_editor relative-caret-position="230">
+            <caret line="10" column="41" selection-start-line="10" selection-start-column="41" selection-end-line="10" selection-end-column="41" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_docs/basic/templates.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="652">
+            <caret line="59" column="124" selection-start-line="59" selection-start-column="124" selection-end-line="59" selection-end-column="124" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_docs/ecosystem/router.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="138">
+            <caret line="6" column="27" selection-start-line="6" selection-start-column="27" selection-end-line="6" selection-end-column="27" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_docs/ecosystem/store.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="138">
+            <caret line="6" column="32" selection-start-line="6" selection-start-column="32" selection-end-line="6" selection-end-column="32" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_docs/ecosystem/cli.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="392">
+            <caret line="33" column="141" selection-start-line="33" selection-start-column="141" selection-end-line="33" selection-end-column="141" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_docs/basic/external.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="414">
+            <caret line="18" column="119" selection-start-line="18" selection-start-column="119" selection-end-line="18" selection-end-column="119" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_docs/basic/styles.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="23">
+            <caret line="1" column="15" selection-start-line="1" selection-start-column="15" selection-end-line="1" selection-end-column="15" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_docs/basic/syntax.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="574">
+            <caret line="110" lean-forward="true" selection-start-line="110" selection-end-line="110" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>

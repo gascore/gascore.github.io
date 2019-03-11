@@ -1,7 +1,7 @@
 ---
-category: Styles
+category: Basic
 title: Gas and styles
-order: 1
+order: 5
 ---
 
 # Styles

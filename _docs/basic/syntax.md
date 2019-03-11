@@ -4,22 +4,21 @@ category: Basic
 order: 3
 ---
 
-Gas uses html-like syntax in `<template>`, it allows you create logic stuff like: if, for and others.
-Here the specific template rules:
+In `<template>` gas uses html-like markup syntax. Here the template rules:
 
 ## Dynamic text
 
-You can add *dynamic text* by `{% raw %}{{{% endraw %}` and `{% raw %}}}{% endraw %}`
-Syntax: `{% raw %}{{ <your code> }}{% endraw %}` - your code should return string (maybe add support for other types in the future)
+You can add *dynamic variables* by `{% raw %}{{{% endraw %}` and `{% raw %}}}{% endraw %}`
+Syntax: `{% raw %}{{ <your code> }}{% endraw %}` - your code should return string or number.
 
 ```{% raw %}
-<h1 id="title-h1" class="title is-1">
-    {{ this.GetData("text").(string) }}
+<h1 id="title-h1" class="title is-1 c(#00cc99)">
+    {{ this.GetData("text") }}
 </h1>
 {% endraw %}```
 
-## Handlers - handler allow you catch element event and some stuff.
-
+## Handlers
+Event handlers for elements.
 Syntax: `g-on:<event-name>="<your code>"` (`<your code>` should return error).
 
 ```
@@ -28,42 +27,18 @@ Syntax: `g-on:<event-name>="<your code>"` (`<your code>` should return error).
 </button>
 ```
 
-## Binds - updating value for element attributes.
-
+## Binds
+Element attribute with binded value.
 Syntax: `g-bind:<attribute name>="<your code>"` (`<your code>` should return string).
 
 ```
-<h1 g-bind:color="this.GetData(`color`).(string)">
+<h1 g-bind:color="this.GetData(`color`)">
     Colored text
 </h1>
 ```
 
-## For directive - render a list of items based on an array.
-
-Syntax: `g-for="<index name(can be ignored)>, <element name> in <data name>"`
-Data name it's key for array in `this.GetData`,
-but if you add `@` before data name for directive will data name like *raw* data.
-
-```{% raw %}
-<li g-for="i, el in arrayName">
-    {{ fmt.Sprintf("%d", i) }}: {{ el.(string) }}
-</li>
-{% endraw %}```
-
-or with *raw* data
-
-```{% raw %}
-...
-array := []string{"lorem", "ipsum"}
-...
-<li g-for="i, el in @array">
-    {{ fmt.Sprintf("%d", i) }}: {{ el.(string) }}
-</li>
-{% endraw %}```
-(but array will don't update after array changed)
-
-## If directive - conditional block for your component rendering.
-
+## If-directive
+Conditional block for components rendering.
 Syntax: `g-if="<your code>"` - your code should return bool.
 
 ```
@@ -72,12 +47,57 @@ Syntax: `g-if="<your code>"` - your code should return bool.
 </h1>
 ```
 
-#### Show directive - like If directive but hiding your component by css styles (it will render from first parent render tick)
+## Show-directive
+Same with if-directive but show-directive render component and hide it by css styles.
 
+## For-directive
+Render a list of elements by array.
 
-## Model directive - dynamic updating your data after element value has changed.
+Syntax: `g-for="<index name(can be ignored)>, <element name> in <data name>"`.
+Data name is a key for array in `this.GetData`, 
+but if you add `@` before data name for-directive will use it as variable.
 
-Your data type should be compared with input (textarea, select) type:
+For-directive uses only array of interfaces(`[]interface{}`)
+
+```{% raw %}
+...
+Data: map[string]interface{} {
+    "arrayName": []interface{}{"foo","bar"},
+},
+...
+<li g-for="i, el in arrayName">
+    {{ fmt.Sprintf("%d", i) }}: {{ el }}
+</li>
+{% endraw %}```
+
+or with *raw* data
+
+```{% raw %}
+...
+array := []string{"foo", "bar"}
+...
+<li g-for="i, el in @array">
+    {{ fmt.Sprintf("%d", i) }}: {{ el }}
+</li>
+{% endraw %}```
+(but with raw array elements won't update after changes)
+
+## Model-directive
+Binding data to element input, textarea, select, etc.
+Syntax: `g-model="<key for data value>"`. You can *deep data keys* for bind structure attribute, array or map element.
+
+```
+<input g-model="currentText" />
+```
+
+or with *deep keys*
+
+```
+<input g-model="user.Email" />
+<textarea g-model="user.Stories[0].Text"></textarea>
+```
+
+Data type will be compared with input type:
 
 | Element                       | Variable type |
 |-------------------------------|---------------|
@@ -85,16 +105,10 @@ Your data type should be compared with input (textarea, select) type:
 | select, input (type checkbox) | bool          |
 | textarea, input(other types)  | string        |
 
-Syntax: `g-model="<key for data value>"`
-
-```
-<input g-model="currentText" />
-```
-
-## html directive - replace element innerHtml to this computed value
-
+## html-directive
+Replace element innerHtml with computed value.
 Syntax: `g-html="<your code>"` - your code should return string
 
 ```
-<p g-html="this.GetData(`markdownhtmled`).(string)"></p>
+<p g-html="this.GetData(`markdownhtmled`)"></p>
 ```

@@ -17,17 +17,16 @@ ul.tree-items, .directory-item ul {
 .tree-items span.tree-item {
   cursor: pointer;
 }
-.tree-items .directory-item .directory-item-header {
-  display: flex;
-}
 .tree-items .directory-item .directory-item-header button.directory-item-header__hide-btn {
   margin: 0 6px 0 0;
   border: 0;
   padding: 0;
   background: inherit;
+  display: inline-block;
 }
 .tree-items .directory-item .directory-item-header .directory-item-header__name {
   cursor: pointer;
+  display: inline-block;
 }
 
 /*# sourceMappingURL=tree.scss.css.map */

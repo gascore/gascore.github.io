@@ -21,11 +21,7 @@ If you create project not in your GOPATH/src you need to fix your imports.
 
 ## "compile" command
 
-`gasx compile` translate `.gas` files to valid golang code.
-
-If you want to add "_gas" prefix to generated files use "-w" (writeSuffix) flag.
-
-For generate css from your `<style>` tags use "-s" (styles) flag. (you can change output css file name by "-o" flag)
+`gasx compile` translate `.gas` files to go code.
 
 ## "css" commands
 
@@ -35,4 +31,13 @@ For generate css from your `<style>` tags use "-s" (styles) flag. (you can chang
 It's analogue for [atomizer](https://github.com/acss-io/atomizer) written in pure go.
 gasx atomizer have same rules with [acss.io](https://acss.io/atomic-classes.html), but there can be little differences.
 To find out what acss is see [official atomic css site](https://acss.io).
-If you want more see: [atomic css documentation](https://acss.io/quick-start.html) and [gas and styles page](https://gascore.github.io/styles)
+If you want more see: [atomic css documentation](https://acss.io/quick-start.html) and [gas and styles page](https://gascore.github.io/basic/styles)
+
+## "watch" command
+
+`gasx watch` (or `gasx run`) watching for changes in directories and runs commands after it.
+
+## config.json
+
+Configuration for "compile", "css acss", "watch", "serve" storing in `config.json`.
+`config.json` unmarshaling to [Config](https://github.com/gascore/gasx/blob/master/cmd/config/config.go#L59) structure.

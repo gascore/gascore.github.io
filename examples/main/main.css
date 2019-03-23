@@ -1,91 +1,3 @@
-/*=== Styles from /home/sinica/go/src/github.com/gascore/components/vlist/vlist.gas ===*/
-.vlist {
-  overflow-x: hidden;
-  overflow-y: auto;
-  position: relative; }
-
-.vlist-content {
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  position: absolute; }
-
-.vlist-padding {
-  width: 1px;
-  opacity: 0; }
-
-/*=== Styles from main.gas ===*/
-a {
-  margin: 0 5px;
-  color: #00CC99; }
-  a:hover, a:focus {
-    color: #009966; }
-
-html {
-  height: 100%;
-  box-sizing: border-box; }
-
-*,
-*:before,
-*:after {
-  box-sizing: inherit; }
-
-body {
-  position: relative;
-  margin: 0;
-  padding-bottom: 3rem;
-  min-height: 100%; }
-
-header {
-  padding: 4px 8px; }
-
-main {
-  padding: 0 8px; }
-
-footer {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  padding: 6px;
-  background-color: #efefef;
-  text-align: center; }
-
-.td-list_wrap {
-  padding: 0 16px;
-  margin: 12px 0; }
-
-.td-list {
-  list-style-type: none;
-  padding-left: 0; }
-  .td-list li #li-body {
-    display: flex;
-    padding: 4px 8px;
-    border-bottom: 1px solid #dedede;
-    font-size: 18px; }
-    .td-list li #li-body button {
-      border: 0;
-      padding: 0;
-      background-color: inherit;
-      cursor: pointer; }
-      .td-list li #li-body button#submit {
-        margin-right: 8px; }
-        .td-list li #li-body button#submit:hover {
-          color: #009966; }
-        .td-list li #li-body button#submit i {
-          margin-left: 0; }
-      .td-list li #li-body button#delete {
-        margin: 0 0 0 auto; }
-        .td-list li #li-body button#delete:hover, .td-list li #li-body button#delete:focus {
-          color: #ff0033; }
-
-#new button {
-  margin-left: 8px; }
-
-button#submit:focus {
-  color: #009966; }
-
 /*=== Styles from components/components.gas ===*/
 #components {
   width: 80%;
@@ -181,5 +93,93 @@ ul.tree-items, .directory-item ul {
 .tree-items .directory-item .directory-item-header .directory-item-header__name {
   cursor: pointer;
   display: inline-block; }
+
+/*=== Styles from /home/sinica/go/src/github.com/gascore/components/vlist/vlist.gas ===*/
+.vlist {
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: relative; }
+
+.vlist-content {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute; }
+
+.vlist-padding {
+  width: 1px;
+  opacity: 0; }
+
+/*=== Styles from main.gas ===*/
+a {
+  margin: 0 5px;
+  color: #00CC99; }
+  a:hover, a:focus {
+    color: #009966; }
+
+html {
+  height: 100%;
+  box-sizing: border-box; }
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit; }
+
+body {
+  position: relative;
+  margin: 0;
+  padding-bottom: 3rem;
+  min-height: 100%; }
+
+header {
+  padding: 4px 8px; }
+
+main {
+  padding: 0 8px; }
+
+footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 6px;
+  background-color: #efefef;
+  text-align: center; }
+
+.td-list_wrap {
+  padding: 0 16px;
+  margin: 12px 0; }
+
+.td-list {
+  list-style-type: none;
+  padding-left: 0; }
+  .td-list li #li-body {
+    display: flex;
+    padding: 4px 8px;
+    border-bottom: 1px solid #dedede;
+    font-size: 18px; }
+    .td-list li #li-body button {
+      border: 0;
+      padding: 0;
+      background-color: inherit;
+      cursor: pointer; }
+      .td-list li #li-body button#submit {
+        margin-right: 8px; }
+        .td-list li #li-body button#submit:hover {
+          color: #009966; }
+        .td-list li #li-body button#submit i {
+          margin-left: 0; }
+      .td-list li #li-body button#delete {
+        margin: 0 0 0 auto; }
+        .td-list li #li-body button#delete:hover, .td-list li #li-body button#delete:focus {
+          color: #ff0033; }
+
+#new button {
+  margin-left: 8px; }
+
+button#submit:focus {
+  color: #009966; }
 
 /*# sourceMappingURL=main.css.map */

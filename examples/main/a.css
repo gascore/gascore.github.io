@@ -7,26 +7,17 @@
 @media (min-width: 1000px) {
   .trs\(color\,1s\)--md {
     transition: color 1s; } }
-.d\(flex\) {
-  display: flex; }
-
-.p\(0\) {
-  padding: 0; }
-
-.bd\(b\) {
-  border: 1px solid #dedede; }
-
-.bdt\(\.42em\,solid\,pink\) {
-  border-top: .42em solid pink; }
-
-.bdt\(\.42em\,solid\,\#c09\) {
-  border-top: .42em solid #c09; }
-
 .m\(8px\) {
   margin: 8px; }
 
 .p\(\.8rem\) {
   padding: .8rem; }
+
+.d\(flex\) {
+  display: flex; }
+
+.p\(0\) {
+  padding: 0; }
 
 .m\(0\,0\,\.5rem\,0\) {
   margin: 0 0 .5rem 0; }

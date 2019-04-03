@@ -15155,7 +15155,7 @@ $packages["github.com/gopherjs/gopherjs/nosync"] = (function() {
 	return $pkg;
 })();
 $packages["time"] = (function() {
-	var $pkg = {}, $init, errors, js, nosync, runtime, syscall, ParseError, Time, Month, Weekday, Duration, Location, zone, zoneTrans, sliceType, sliceType$1, ptrType, sliceType$2, arrayType, sliceType$3, arrayType$1, arrayType$2, ptrType$2, arrayType$3, ptrType$4, ptrType$7, zoneSources, std0x, longDayNames, shortDayNames, shortMonthNames, longMonthNames, atoiError, errBad, errLeadingInt, months, days, daysBefore, startNano, utcLoc, utcLoc$24ptr, localLoc, localLoc$24ptr, localOnce, errLocation, badData, x, init, initLocal, runtimeNano, now, indexByte, startsWithLowerCase, nextStdChunk, match, lookup, appendInt, atoi, formatNano, quote, isDigit, getnum, cutspace, skip, Parse, parse, parseTimeZone, parseGMT, parseSignedOffset, parseNanoseconds, leadingInt, absWeekday, absClock, fmtFrac, fmtInt, lessThanHalf, absDate, daysIn, Now, unixTime, Unix, isLeap, norm, Date, div, FixedZone;
+	var $pkg = {}, $init, errors, js, nosync, runtime, syscall, ParseError, Time, Month, Weekday, Duration, Location, zone, zoneTrans, sliceType, sliceType$1, ptrType, sliceType$2, structType, arrayType, sliceType$3, arrayType$1, arrayType$2, ptrType$2, arrayType$3, ptrType$4, ptrType$7, zoneSources, std0x, longDayNames, shortDayNames, shortMonthNames, longMonthNames, atoiError, errBad, errLeadingInt, months, days, daysBefore, startNano, utcLoc, utcLoc$24ptr, localLoc, localLoc$24ptr, localOnce, errLocation, badData, x, init, initLocal, runtimeNano, now, Sleep, indexByte, startsWithLowerCase, nextStdChunk, match, lookup, appendInt, atoi, formatNano, quote, isDigit, getnum, cutspace, skip, Parse, parse, parseTimeZone, parseGMT, parseSignedOffset, parseNanoseconds, leadingInt, absWeekday, absClock, fmtFrac, fmtInt, lessThanHalf, absDate, daysIn, Now, unixTime, Unix, isLeap, norm, Date, div, FixedZone;
 	errors = $packages["errors"];
 	js = $packages["github.com/gopherjs/gopherjs/js"];
 	nosync = $packages["github.com/gopherjs/gopherjs/nosync"];
@@ -15240,6 +15240,7 @@ $packages["time"] = (function() {
 	sliceType$1 = $sliceType(zoneTrans);
 	ptrType = $ptrType(zone);
 	sliceType$2 = $sliceType($String);
+	structType = $structType("", []);
 	arrayType = $arrayType($Uint8, 20);
 	sliceType$3 = $sliceType($Uint8);
 	arrayType$1 = $arrayType($Uint8, 9);
@@ -15281,6 +15282,20 @@ $packages["time"] = (function() {
 		mono = _tmp$2;
 		return [sec, nsec, mono];
 	};
+	Sleep = function(d) {
+		var _r, c, d, x$1, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r = $f._r; c = $f.c; d = $f.d; x$1 = $f.x$1; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		c = [c];
+		c[0] = new $Chan(structType, 0);
+		$setTimeout((function(c) { return function() {
+			$close(c[0]);
+		}; })(c), (((x$1 = $div64(d, new Duration(0, 1000000), false), x$1.$low + ((x$1.$high >> 31) * 4294967296)) >> 0)));
+		_r = $recv(c[0]); /* */ $s = 1; case 1: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
+		_r[0];
+		$s = -1; return;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: Sleep }; } $f._r = _r; $f.c = c; $f.d = d; $f.x$1 = x$1; $f.$s = $s; $f.$r = $r; return $f;
+	};
+	$pkg.Sleep = Sleep;
 	indexByte = function(s, c) {
 		var c, s;
 		return $parseInt(s.indexOf($global.String.fromCharCode(c))) >> 0;
@@ -40555,6 +40570,16 @@ $packages["github.com/gascore/dom"] = (function() {
 		/* */ } return; } if ($f === undefined) { $f = { $blk: Element.ptr.prototype.SetUndoScope }; } $f.e = e; $f.v = v; $f.$s = $s; $f.$r = $r; return $f;
 	};
 	Element.prototype.SetUndoScope = function(v) { return this.$val.SetUndoScope(v); };
+	Element.ptr.prototype.Clone = function() {
+		var _r$2, e, v, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r$2 = $f._r$2; e = $f.e; v = $f.v; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		e = this;
+		_r$2 = $clone(e.NodeBase.JSValue(), js$1.Value).Call("cloneNode", new sliceType$3([new $Bool(true)])); /* */ $s = 1; case 1: if($c) { $c = false; _r$2 = _r$2.$blk(); } if (_r$2 && _r$2.$blk !== undefined) { break s; }
+		v = new js.Value.ptr($clone(_r$2, js$1.Value));
+		$s = -1; return AsElement($clone(v, js.Value));
+		/* */ } return; } if ($f === undefined) { $f = { $blk: Element.ptr.prototype.Clone }; } $f._r$2 = _r$2; $f.e = e; $f.v = v; $f.$s = $s; $f.$r = $r; return $f;
+	};
+	Element.prototype.Clone = function() { return this.$val.Clone(); };
 	Element.ptr.prototype.SetAttribute = function(k, v) {
 		var _arg, _arg$1, _r$2, _r$3, e, k, v, $s, $r;
 		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _arg = $f._arg; _arg$1 = $f._arg$1; _r$2 = $f._r$2; _r$3 = $f._r$3; e = $f.e; k = $f.k; v = $f.v; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
@@ -41639,6 +41664,21 @@ $packages["github.com/gascore/dom"] = (function() {
 		/* */ } return; } if ($f === undefined) { $f = { $blk: NodeBase.ptr.prototype.InsertBefore }; } $f._arg = _arg; $f._arg$1 = _arg$1; $f._r$2 = _r$2; $f._r$3 = _r$3; $f._r$4 = _r$4; $f.a = a; $f.b = b; $f.e = e; $f.x$2 = x$2; $f.x$3 = x$3; $f.$s = $s; $f.$r = $r; return $f;
 	};
 	NodeBase.prototype.InsertBefore = function(a, b) { return this.$val.InsertBefore(a, b); };
+	NodeBase.ptr.prototype.InsertAfter = function(a, b) {
+		var _arg, _arg$1, _r$2, _r$3, _r$4, _r$5, a, b, e, x$2, x$3, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _arg = $f._arg; _arg$1 = $f._arg$1; _r$2 = $f._r$2; _r$3 = $f._r$3; _r$4 = $f._r$4; _r$5 = $f._r$5; a = $f.a; b = $f.b; e = $f.e; x$2 = $f.x$2; x$3 = $f.x$3; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		e = this;
+		_r$2 = a.JSValue(); /* */ $s = 1; case 1: if($c) { $c = false; _r$2 = _r$2.$blk(); } if (_r$2 && _r$2.$blk !== undefined) { break s; }
+		_arg = (x$2 = _r$2, new x$2.constructor.elem(x$2));
+		_r$3 = b.JSValue(); /* */ $s = 2; case 2: if($c) { $c = false; _r$3 = _r$3.$blk(); } if (_r$3 && _r$3.$blk !== undefined) { break s; }
+		_r$4 = $clone(_r$3, js$1.Value).Get("nextSibling"); /* */ $s = 3; case 3: if($c) { $c = false; _r$4 = _r$4.$blk(); } if (_r$4 && _r$4.$blk !== undefined) { break s; }
+		_arg$1 = (x$3 = _r$4, new x$3.constructor.elem(x$3));
+		_r$5 = $clone(e.JSValue(), js$1.Value).Call("insertBefore", new sliceType$3([_arg, _arg$1])); /* */ $s = 4; case 4: if($c) { $c = false; _r$5 = _r$5.$blk(); } if (_r$5 && _r$5.$blk !== undefined) { break s; }
+		_r$5;
+		$s = -1; return;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: NodeBase.ptr.prototype.InsertAfter }; } $f._arg = _arg; $f._arg$1 = _arg$1; $f._r$2 = _r$2; $f._r$3 = _r$3; $f._r$4 = _r$4; $f._r$5 = _r$5; $f.a = a; $f.b = b; $f.e = e; $f.x$2 = x$2; $f.x$3 = x$3; $f.$s = $s; $f.$r = $r; return $f;
+	};
+	NodeBase.prototype.InsertAfter = function(a, b) { return this.$val.InsertAfter(a, b); };
 	NodeBase.ptr.prototype.Clone = function() {
 		var _r$2, e, v, $s, $r;
 		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r$2 = $f._r$2; e = $f.e; v = $f.v; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
@@ -41990,13 +42030,13 @@ $packages["github.com/gascore/dom"] = (function() {
 		return strings.Join(pairs, joiner);
 	};
 	ptrType.methods = [{prop: "CreateElement", name: "CreateElement", pkg: "", typ: $funcType([$String], [ptrType$1], false)}, {prop: "CreateTextNode", name: "CreateTextNode", pkg: "", typ: $funcType([$String], [ptrType$6], false)}, {prop: "CreateElementNS", name: "CreateElementNS", pkg: "", typ: $funcType([$String, $String], [ptrType$1], false)}, {prop: "GetElementById", name: "GetElementById", pkg: "", typ: $funcType([$String], [ptrType$1], false)}, {prop: "GetElementsByTagName", name: "GetElementsByTagName", pkg: "", typ: $funcType([$String], [NodeList], false)}, {prop: "QuerySelector", name: "QuerySelector", pkg: "", typ: $funcType([$String], [ptrType$1], false)}, {prop: "QuerySelectorAll", name: "QuerySelectorAll", pkg: "", typ: $funcType([$String], [NodeList], false)}, {prop: "NewInput", name: "NewInput", pkg: "", typ: $funcType([$String], [ptrType$8], false)}, {prop: "NewButton", name: "NewButton", pkg: "", typ: $funcType([$String], [ptrType$9], false)}];
-	ptrType$1.methods = [{prop: "ClassList", name: "ClassList", pkg: "", typ: $funcType([], [ptrType$7], false)}, {prop: "ClassName", name: "ClassName", pkg: "", typ: $funcType([], [$String], false)}, {prop: "SetClassName", name: "SetClassName", pkg: "", typ: $funcType([$String], [], false)}, {prop: "ClientHeight", name: "ClientHeight", pkg: "", typ: $funcType([], [$Int], false)}, {prop: "ClientLeft", name: "ClientLeft", pkg: "", typ: $funcType([], [$Int], false)}, {prop: "ClientTop", name: "ClientTop", pkg: "", typ: $funcType([], [$Int], false)}, {prop: "ClientWidth", name: "ClientWidth", pkg: "", typ: $funcType([], [$Int], false)}, {prop: "OffsetWidth", name: "OffsetWidth", pkg: "", typ: $funcType([], [$Int], false)}, {prop: "OffsetHeight", name: "OffsetHeight", pkg: "", typ: $funcType([], [$Int], false)}, {prop: "ComputedName", name: "ComputedName", pkg: "", typ: $funcType([], [$String], false)}, {prop: "ComputedRole", name: "ComputedRole", pkg: "", typ: $funcType([], [$String], false)}, {prop: "Id", name: "Id", pkg: "", typ: $funcType([], [$String], false)}, {prop: "SetId", name: "SetId", pkg: "", typ: $funcType([$String], [], false)}, {prop: "InnerHTML", name: "InnerHTML", pkg: "", typ: $funcType([], [$String], false)}, {prop: "SetInnerHTML", name: "SetInnerHTML", pkg: "", typ: $funcType([$String], [], false)}, {prop: "LocalName", name: "LocalName", pkg: "", typ: $funcType([], [$String], false)}, {prop: "NamespaceURI", name: "NamespaceURI", pkg: "", typ: $funcType([], [$String], false)}, {prop: "OuterHTML", name: "OuterHTML", pkg: "", typ: $funcType([], [$String], false)}, {prop: "SetOuterHTML", name: "SetOuterHTML", pkg: "", typ: $funcType([$String], [], false)}, {prop: "Prefix", name: "Prefix", pkg: "", typ: $funcType([], [$String], false)}, {prop: "ScrollHeight", name: "ScrollHeight", pkg: "", typ: $funcType([], [$Int], false)}, {prop: "ScrollLeft", name: "ScrollLeft", pkg: "", typ: $funcType([], [$Int], false)}, {prop: "SetScrollLeft", name: "SetScrollLeft", pkg: "", typ: $funcType([$Int], [], false)}, {prop: "ScrollLeftMax", name: "ScrollLeftMax", pkg: "", typ: $funcType([], [$Int], false)}, {prop: "ScrollTop", name: "ScrollTop", pkg: "", typ: $funcType([], [$Int], false)}, {prop: "SetScrollTop", name: "SetScrollTop", pkg: "", typ: $funcType([$Int], [], false)}, {prop: "ScrollTopMax", name: "ScrollTopMax", pkg: "", typ: $funcType([], [$Int], false)}, {prop: "ScrollWidth", name: "ScrollWidth", pkg: "", typ: $funcType([], [$Int], false)}, {prop: "ShadowRoot", name: "ShadowRoot", pkg: "", typ: $funcType([], [ptrType$2], false)}, {prop: "Slot", name: "Slot", pkg: "", typ: $funcType([], [$String], false)}, {prop: "SetSlot", name: "SetSlot", pkg: "", typ: $funcType([$String], [], false)}, {prop: "TabStop", name: "TabStop", pkg: "", typ: $funcType([], [$Bool], false)}, {prop: "SetTabStop", name: "SetTabStop", pkg: "", typ: $funcType([$Bool], [], false)}, {prop: "TagName", name: "TagName", pkg: "", typ: $funcType([], [$String], false)}, {prop: "UndoManager", name: "UndoManager", pkg: "", typ: $funcType([], [js.Value], false)}, {prop: "UndoScope", name: "UndoScope", pkg: "", typ: $funcType([], [$Bool], false)}, {prop: "SetUndoScope", name: "SetUndoScope", pkg: "", typ: $funcType([$Bool], [], false)}, {prop: "SetAttribute", name: "SetAttribute", pkg: "", typ: $funcType([$String, $emptyInterface], [], false)}, {prop: "GetAttribute", name: "GetAttribute", pkg: "", typ: $funcType([$String], [js.Value], false)}, {prop: "RemoveAttribute", name: "RemoveAttribute", pkg: "", typ: $funcType([$String], [], false)}, {prop: "GetBoundingClientRect", name: "GetBoundingClientRect", pkg: "", typ: $funcType([], [image.Rectangle], false)}, {prop: "GetBoundingClientRectRaw", name: "GetBoundingClientRectRaw", pkg: "", typ: $funcType([], [js.Value], false)}, {prop: "onMouseEvent", name: "onMouseEvent", pkg: "github.com/gascore/dom", typ: $funcType([$String, MouseEventHandler], [], false)}, {prop: "OnClick", name: "OnClick", pkg: "", typ: $funcType([MouseEventHandler], [], false)}, {prop: "OnMouseDown", name: "OnMouseDown", pkg: "", typ: $funcType([MouseEventHandler], [], false)}, {prop: "OnMouseMove", name: "OnMouseMove", pkg: "", typ: $funcType([MouseEventHandler], [], false)}, {prop: "OnMouseUp", name: "OnMouseUp", pkg: "", typ: $funcType([MouseEventHandler], [], false)}, {prop: "AttachShadow", name: "AttachShadow", pkg: "", typ: $funcType([AttachShadowOpts], [ptrType$2], false)}, {prop: "InsertAdjacentElement", name: "InsertAdjacentElement", pkg: "", typ: $funcType([Position, ptrType$1], [js.Value], false)}, {prop: "Style", name: "Style", pkg: "", typ: $funcType([], [ptrType$5], false)}, {prop: "SetStyle", name: "SetStyle", pkg: "", typ: $funcType([ptrType$5], [], false)}];
+	ptrType$1.methods = [{prop: "ClassList", name: "ClassList", pkg: "", typ: $funcType([], [ptrType$7], false)}, {prop: "ClassName", name: "ClassName", pkg: "", typ: $funcType([], [$String], false)}, {prop: "SetClassName", name: "SetClassName", pkg: "", typ: $funcType([$String], [], false)}, {prop: "ClientHeight", name: "ClientHeight", pkg: "", typ: $funcType([], [$Int], false)}, {prop: "ClientLeft", name: "ClientLeft", pkg: "", typ: $funcType([], [$Int], false)}, {prop: "ClientTop", name: "ClientTop", pkg: "", typ: $funcType([], [$Int], false)}, {prop: "ClientWidth", name: "ClientWidth", pkg: "", typ: $funcType([], [$Int], false)}, {prop: "OffsetWidth", name: "OffsetWidth", pkg: "", typ: $funcType([], [$Int], false)}, {prop: "OffsetHeight", name: "OffsetHeight", pkg: "", typ: $funcType([], [$Int], false)}, {prop: "ComputedName", name: "ComputedName", pkg: "", typ: $funcType([], [$String], false)}, {prop: "ComputedRole", name: "ComputedRole", pkg: "", typ: $funcType([], [$String], false)}, {prop: "Id", name: "Id", pkg: "", typ: $funcType([], [$String], false)}, {prop: "SetId", name: "SetId", pkg: "", typ: $funcType([$String], [], false)}, {prop: "InnerHTML", name: "InnerHTML", pkg: "", typ: $funcType([], [$String], false)}, {prop: "SetInnerHTML", name: "SetInnerHTML", pkg: "", typ: $funcType([$String], [], false)}, {prop: "LocalName", name: "LocalName", pkg: "", typ: $funcType([], [$String], false)}, {prop: "NamespaceURI", name: "NamespaceURI", pkg: "", typ: $funcType([], [$String], false)}, {prop: "OuterHTML", name: "OuterHTML", pkg: "", typ: $funcType([], [$String], false)}, {prop: "SetOuterHTML", name: "SetOuterHTML", pkg: "", typ: $funcType([$String], [], false)}, {prop: "Prefix", name: "Prefix", pkg: "", typ: $funcType([], [$String], false)}, {prop: "ScrollHeight", name: "ScrollHeight", pkg: "", typ: $funcType([], [$Int], false)}, {prop: "ScrollLeft", name: "ScrollLeft", pkg: "", typ: $funcType([], [$Int], false)}, {prop: "SetScrollLeft", name: "SetScrollLeft", pkg: "", typ: $funcType([$Int], [], false)}, {prop: "ScrollLeftMax", name: "ScrollLeftMax", pkg: "", typ: $funcType([], [$Int], false)}, {prop: "ScrollTop", name: "ScrollTop", pkg: "", typ: $funcType([], [$Int], false)}, {prop: "SetScrollTop", name: "SetScrollTop", pkg: "", typ: $funcType([$Int], [], false)}, {prop: "ScrollTopMax", name: "ScrollTopMax", pkg: "", typ: $funcType([], [$Int], false)}, {prop: "ScrollWidth", name: "ScrollWidth", pkg: "", typ: $funcType([], [$Int], false)}, {prop: "ShadowRoot", name: "ShadowRoot", pkg: "", typ: $funcType([], [ptrType$2], false)}, {prop: "Slot", name: "Slot", pkg: "", typ: $funcType([], [$String], false)}, {prop: "SetSlot", name: "SetSlot", pkg: "", typ: $funcType([$String], [], false)}, {prop: "TabStop", name: "TabStop", pkg: "", typ: $funcType([], [$Bool], false)}, {prop: "SetTabStop", name: "SetTabStop", pkg: "", typ: $funcType([$Bool], [], false)}, {prop: "TagName", name: "TagName", pkg: "", typ: $funcType([], [$String], false)}, {prop: "UndoManager", name: "UndoManager", pkg: "", typ: $funcType([], [js.Value], false)}, {prop: "UndoScope", name: "UndoScope", pkg: "", typ: $funcType([], [$Bool], false)}, {prop: "SetUndoScope", name: "SetUndoScope", pkg: "", typ: $funcType([$Bool], [], false)}, {prop: "Clone", name: "Clone", pkg: "", typ: $funcType([], [ptrType$1], false)}, {prop: "SetAttribute", name: "SetAttribute", pkg: "", typ: $funcType([$String, $emptyInterface], [], false)}, {prop: "GetAttribute", name: "GetAttribute", pkg: "", typ: $funcType([$String], [js.Value], false)}, {prop: "RemoveAttribute", name: "RemoveAttribute", pkg: "", typ: $funcType([$String], [], false)}, {prop: "GetBoundingClientRect", name: "GetBoundingClientRect", pkg: "", typ: $funcType([], [image.Rectangle], false)}, {prop: "GetBoundingClientRectRaw", name: "GetBoundingClientRectRaw", pkg: "", typ: $funcType([], [js.Value], false)}, {prop: "onMouseEvent", name: "onMouseEvent", pkg: "github.com/gascore/dom", typ: $funcType([$String, MouseEventHandler], [], false)}, {prop: "OnClick", name: "OnClick", pkg: "", typ: $funcType([MouseEventHandler], [], false)}, {prop: "OnMouseDown", name: "OnMouseDown", pkg: "", typ: $funcType([MouseEventHandler], [], false)}, {prop: "OnMouseMove", name: "OnMouseMove", pkg: "", typ: $funcType([MouseEventHandler], [], false)}, {prop: "OnMouseUp", name: "OnMouseUp", pkg: "", typ: $funcType([MouseEventHandler], [], false)}, {prop: "AttachShadow", name: "AttachShadow", pkg: "", typ: $funcType([AttachShadowOpts], [ptrType$2], false)}, {prop: "InsertAdjacentElement", name: "InsertAdjacentElement", pkg: "", typ: $funcType([Position, ptrType$1], [js.Value], false)}, {prop: "Style", name: "Style", pkg: "", typ: $funcType([], [ptrType$5], false)}, {prop: "SetStyle", name: "SetStyle", pkg: "", typ: $funcType([ptrType$5], [], false)}];
 	ptrType$10.methods = [{prop: "getBool", name: "getBool", pkg: "github.com/gascore/dom", typ: $funcType([$String], [$Bool], false)}, {prop: "Bubbles", name: "Bubbles", pkg: "", typ: $funcType([], [$Bool], false)}, {prop: "Cancelable", name: "Cancelable", pkg: "", typ: $funcType([], [$Bool], false)}, {prop: "Composed", name: "Composed", pkg: "", typ: $funcType([], [$Bool], false)}, {prop: "CurrentTarget", name: "CurrentTarget", pkg: "", typ: $funcType([], [ptrType$1], false)}, {prop: "DefaultPrevented", name: "DefaultPrevented", pkg: "", typ: $funcType([], [$Bool], false)}, {prop: "IsTrusted", name: "IsTrusted", pkg: "", typ: $funcType([], [$Bool], false)}, {prop: "JSValue", name: "JSValue", pkg: "", typ: $funcType([], [js$1.Value], false)}, {prop: "Type", name: "Type", pkg: "", typ: $funcType([], [$String], false)}, {prop: "Target", name: "Target", pkg: "", typ: $funcType([], [ptrType$1], false)}, {prop: "Path", name: "Path", pkg: "", typ: $funcType([], [NodeList], false)}, {prop: "Key", name: "Key", pkg: "", typ: $funcType([], [$String], false)}, {prop: "KeyCode", name: "KeyCode", pkg: "", typ: $funcType([], [$String], false)}, {prop: "ButtonAttr", name: "ButtonAttr", pkg: "", typ: $funcType([], [$String], false)}, {prop: "PreventDefault", name: "PreventDefault", pkg: "", typ: $funcType([], [], false)}, {prop: "StopPropagation", name: "StopPropagation", pkg: "", typ: $funcType([], [], false)}, {prop: "StopImmediatePropagation", name: "StopImmediatePropagation", pkg: "", typ: $funcType([], [], false)}];
 	ptrType$4.methods = [{prop: "getPos", name: "getPos", pkg: "github.com/gascore/dom", typ: $funcType([$String, $String], [image.Point], false)}, {prop: "getPosPref", name: "getPosPref", pkg: "github.com/gascore/dom", typ: $funcType([$String], [image.Point], false)}, {prop: "Button", name: "Button", pkg: "", typ: $funcType([], [MouseButton], false)}, {prop: "ClientPos", name: "ClientPos", pkg: "", typ: $funcType([], [image.Point], false)}, {prop: "OffsetPos", name: "OffsetPos", pkg: "", typ: $funcType([], [image.Point], false)}, {prop: "PagePos", name: "PagePos", pkg: "", typ: $funcType([], [image.Point], false)}, {prop: "ScreenPos", name: "ScreenPos", pkg: "", typ: $funcType([], [image.Point], false)}, {prop: "AltKey", name: "AltKey", pkg: "", typ: $funcType([], [$Bool], false)}, {prop: "CtrlKey", name: "CtrlKey", pkg: "", typ: $funcType([], [$Bool], false)}, {prop: "ShiftKey", name: "ShiftKey", pkg: "", typ: $funcType([], [$Bool], false)}, {prop: "MetaKey", name: "MetaKey", pkg: "", typ: $funcType([], [$Bool], false)}, {prop: "Key", name: "Key", pkg: "", typ: $funcType([], [$String], false)}, {prop: "KeyCode", name: "KeyCode", pkg: "", typ: $funcType([], [$String], false)}, {prop: "ButtonAttr", name: "ButtonAttr", pkg: "", typ: $funcType([], [$String], false)}];
 	ptrType$11.methods = [{prop: "AccessKey", name: "AccessKey", pkg: "", typ: $funcType([], [$String], false)}, {prop: "SetAccessKey", name: "SetAccessKey", pkg: "", typ: $funcType([$String], [], false)}, {prop: "AccessKeyLabel", name: "AccessKeyLabel", pkg: "", typ: $funcType([], [$String], false)}, {prop: "ContentEditable", name: "ContentEditable", pkg: "", typ: $funcType([], [$String], false)}, {prop: "SetContentEditable", name: "SetContentEditable", pkg: "", typ: $funcType([$String], [], false)}, {prop: "IsContentEditable", name: "IsContentEditable", pkg: "", typ: $funcType([], [$Bool], false)}, {prop: "Dataset", name: "Dataset", pkg: "", typ: $funcType([], [js.Value], false)}, {prop: "Dir", name: "Dir", pkg: "", typ: $funcType([], [$String], false)}, {prop: "SetDir", name: "SetDir", pkg: "", typ: $funcType([$String], [], false)}, {prop: "Draggable", name: "Draggable", pkg: "", typ: $funcType([], [$Bool], false)}, {prop: "SetDraggable", name: "SetDraggable", pkg: "", typ: $funcType([$Bool], [], false)}, {prop: "Dropzone", name: "Dropzone", pkg: "", typ: $funcType([], [ptrType$7], false)}, {prop: "Hidden", name: "Hidden", pkg: "", typ: $funcType([], [$Bool], false)}, {prop: "SetHidden", name: "SetHidden", pkg: "", typ: $funcType([$Bool], [], false)}, {prop: "Inert", name: "Inert", pkg: "", typ: $funcType([], [$Bool], false)}, {prop: "SetInert", name: "SetInert", pkg: "", typ: $funcType([$Bool], [], false)}, {prop: "InnerText", name: "InnerText", pkg: "", typ: $funcType([], [$String], false)}, {prop: "SetInnerText", name: "SetInnerText", pkg: "", typ: $funcType([$String], [], false)}, {prop: "ItemScope", name: "ItemScope", pkg: "", typ: $funcType([], [$Bool], false)}, {prop: "SetItemScope", name: "SetItemScope", pkg: "", typ: $funcType([$Bool], [], false)}, {prop: "ItemType", name: "ItemType", pkg: "", typ: $funcType([], [ptrType$7], false)}, {prop: "ItemId", name: "ItemId", pkg: "", typ: $funcType([], [$String], false)}, {prop: "SetItemId", name: "SetItemId", pkg: "", typ: $funcType([$String], [], false)}, {prop: "ItemRef", name: "ItemRef", pkg: "", typ: $funcType([], [ptrType$7], false)}, {prop: "ItemProp", name: "ItemProp", pkg: "", typ: $funcType([], [ptrType$7], false)}, {prop: "ItemValue", name: "ItemValue", pkg: "", typ: $funcType([], [js.Value], false)}, {prop: "SetItemValue", name: "SetItemValue", pkg: "", typ: $funcType([js.Value], [], false)}, {prop: "Lang", name: "Lang", pkg: "", typ: $funcType([], [$String], false)}, {prop: "SetLang", name: "SetLang", pkg: "", typ: $funcType([$String], [], false)}, {prop: "NoModule", name: "NoModule", pkg: "", typ: $funcType([], [$Bool], false)}, {prop: "SetNoModule", name: "SetNoModule", pkg: "", typ: $funcType([$Bool], [], false)}, {prop: "Nonce", name: "Nonce", pkg: "", typ: $funcType([], [js.Value], false)}, {prop: "SetNonce", name: "SetNonce", pkg: "", typ: $funcType([js.Value], [], false)}, {prop: "OffsetHeight", name: "OffsetHeight", pkg: "", typ: $funcType([], [$Float64], false)}, {prop: "OffsetLeft", name: "OffsetLeft", pkg: "", typ: $funcType([], [$Float64], false)}, {prop: "OffsetParent", name: "OffsetParent", pkg: "", typ: $funcType([], [ptrType$1], false)}, {prop: "OffsetTop", name: "OffsetTop", pkg: "", typ: $funcType([], [$Float64], false)}, {prop: "OffsetWidth", name: "OffsetWidth", pkg: "", typ: $funcType([], [$Float64], false)}, {prop: "Spellcheck", name: "Spellcheck", pkg: "", typ: $funcType([], [$Bool], false)}, {prop: "SetSpellcheck", name: "SetSpellcheck", pkg: "", typ: $funcType([$Bool], [], false)}, {prop: "TabIndex", name: "TabIndex", pkg: "", typ: $funcType([], [$Int], false)}, {prop: "SetTabIndex", name: "SetTabIndex", pkg: "", typ: $funcType([$Int], [], false)}, {prop: "Title", name: "Title", pkg: "", typ: $funcType([], [$String], false)}, {prop: "SetTitle", name: "SetTitle", pkg: "", typ: $funcType([$String], [], false)}, {prop: "Translate", name: "Translate", pkg: "", typ: $funcType([], [$Bool], false)}, {prop: "SetTranslate", name: "SetTranslate", pkg: "", typ: $funcType([$Bool], [], false)}];
 	ptrType$8.methods = [{prop: "Value", name: "Value", pkg: "", typ: $funcType([], [$String], false)}, {prop: "SetType", name: "SetType", pkg: "", typ: $funcType([$String], [], false)}, {prop: "SetName", name: "SetName", pkg: "", typ: $funcType([$String], [], false)}, {prop: "SetValue", name: "SetValue", pkg: "", typ: $funcType([$emptyInterface], [], false)}, {prop: "OnChange", name: "OnChange", pkg: "", typ: $funcType([EventHandler], [], false)}, {prop: "OnInput", name: "OnInput", pkg: "", typ: $funcType([EventHandler], [], false)}];
 	ptrType$9.methods = [{prop: "OnClick", name: "OnClick", pkg: "", typ: $funcType([EventHandler], [], false)}];
-	ptrType$12.methods = [{prop: "JSValue", name: "JSValue", pkg: "", typ: $funcType([], [js$1.Value], false)}, {prop: "Remove", name: "Remove", pkg: "", typ: $funcType([], [], false)}, {prop: "RemoveCustomEventListener", name: "RemoveCustomEventListener", pkg: "", typ: $funcType([$String, EventHandler, js.Value], [], false)}, {prop: "RemoveEventListener", name: "RemoveEventListener", pkg: "", typ: $funcType([$String, EventHandler], [], false)}, {prop: "RemovePassiveEventListener", name: "RemovePassiveEventListener", pkg: "", typ: $funcType([$String, EventHandler], [], false)}, {prop: "AddCustomEventListener", name: "AddCustomEventListener", pkg: "", typ: $funcType([$String, EventHandler, js.Value], [], false)}, {prop: "AddEventListener", name: "AddEventListener", pkg: "", typ: $funcType([$String, EventHandler], [], false)}, {prop: "AddPassiveEventListener", name: "AddPassiveEventListener", pkg: "", typ: $funcType([$String, EventHandler], [], false)}, {prop: "AddErrorListener", name: "AddErrorListener", pkg: "", typ: $funcType([funcType], [], false)}, {prop: "BaseURI", name: "BaseURI", pkg: "", typ: $funcType([], [$String], false)}, {prop: "NodeName", name: "NodeName", pkg: "", typ: $funcType([], [$String], false)}, {prop: "ChildNodes", name: "ChildNodes", pkg: "", typ: $funcType([], [NodeList], false)}, {prop: "ParentNode", name: "ParentNode", pkg: "", typ: $funcType([], [Node], false)}, {prop: "ParentElement", name: "ParentElement", pkg: "", typ: $funcType([], [ptrType$1], false)}, {prop: "TextContent", name: "TextContent", pkg: "", typ: $funcType([], [$String], false)}, {prop: "SetTextContent", name: "SetTextContent", pkg: "", typ: $funcType([$String], [], false)}, {prop: "AppendChild", name: "AppendChild", pkg: "", typ: $funcType([Node], [], false)}, {prop: "Contains", name: "Contains", pkg: "", typ: $funcType([Node], [$Bool], false)}, {prop: "IsEqualNode", name: "IsEqualNode", pkg: "", typ: $funcType([Node], [$Bool], false)}, {prop: "IsSameNode", name: "IsSameNode", pkg: "", typ: $funcType([Node], [$Bool], false)}, {prop: "RemoveChild", name: "RemoveChild", pkg: "", typ: $funcType([Node], [Node], false)}, {prop: "ReplaceChild", name: "ReplaceChild", pkg: "", typ: $funcType([Node, Node], [Node], false)}, {prop: "InsertBefore", name: "InsertBefore", pkg: "", typ: $funcType([Node, Node], [], false)}, {prop: "Clone", name: "Clone", pkg: "", typ: $funcType([], [Node], false)}, {prop: "Value", name: "Value", pkg: "", typ: $funcType([], [$String], false)}, {prop: "SetValue", name: "SetValue", pkg: "", typ: $funcType([$emptyInterface], [], false)}];
+	ptrType$12.methods = [{prop: "JSValue", name: "JSValue", pkg: "", typ: $funcType([], [js$1.Value], false)}, {prop: "Remove", name: "Remove", pkg: "", typ: $funcType([], [], false)}, {prop: "RemoveCustomEventListener", name: "RemoveCustomEventListener", pkg: "", typ: $funcType([$String, EventHandler, js.Value], [], false)}, {prop: "RemoveEventListener", name: "RemoveEventListener", pkg: "", typ: $funcType([$String, EventHandler], [], false)}, {prop: "RemovePassiveEventListener", name: "RemovePassiveEventListener", pkg: "", typ: $funcType([$String, EventHandler], [], false)}, {prop: "AddCustomEventListener", name: "AddCustomEventListener", pkg: "", typ: $funcType([$String, EventHandler, js.Value], [], false)}, {prop: "AddEventListener", name: "AddEventListener", pkg: "", typ: $funcType([$String, EventHandler], [], false)}, {prop: "AddPassiveEventListener", name: "AddPassiveEventListener", pkg: "", typ: $funcType([$String, EventHandler], [], false)}, {prop: "AddErrorListener", name: "AddErrorListener", pkg: "", typ: $funcType([funcType], [], false)}, {prop: "BaseURI", name: "BaseURI", pkg: "", typ: $funcType([], [$String], false)}, {prop: "NodeName", name: "NodeName", pkg: "", typ: $funcType([], [$String], false)}, {prop: "ChildNodes", name: "ChildNodes", pkg: "", typ: $funcType([], [NodeList], false)}, {prop: "ParentNode", name: "ParentNode", pkg: "", typ: $funcType([], [Node], false)}, {prop: "ParentElement", name: "ParentElement", pkg: "", typ: $funcType([], [ptrType$1], false)}, {prop: "TextContent", name: "TextContent", pkg: "", typ: $funcType([], [$String], false)}, {prop: "SetTextContent", name: "SetTextContent", pkg: "", typ: $funcType([$String], [], false)}, {prop: "AppendChild", name: "AppendChild", pkg: "", typ: $funcType([Node], [], false)}, {prop: "Contains", name: "Contains", pkg: "", typ: $funcType([Node], [$Bool], false)}, {prop: "IsEqualNode", name: "IsEqualNode", pkg: "", typ: $funcType([Node], [$Bool], false)}, {prop: "IsSameNode", name: "IsSameNode", pkg: "", typ: $funcType([Node], [$Bool], false)}, {prop: "RemoveChild", name: "RemoveChild", pkg: "", typ: $funcType([Node], [Node], false)}, {prop: "ReplaceChild", name: "ReplaceChild", pkg: "", typ: $funcType([Node, Node], [Node], false)}, {prop: "InsertBefore", name: "InsertBefore", pkg: "", typ: $funcType([Node, Node], [], false)}, {prop: "InsertAfter", name: "InsertAfter", pkg: "", typ: $funcType([Node, Node], [], false)}, {prop: "Clone", name: "Clone", pkg: "", typ: $funcType([], [Node], false)}, {prop: "Value", name: "Value", pkg: "", typ: $funcType([], [$String], false)}, {prop: "SetValue", name: "SetValue", pkg: "", typ: $funcType([$emptyInterface], [], false)}];
 	ptrType$2.methods = [{prop: "IsOpen", name: "IsOpen", pkg: "", typ: $funcType([], [$Bool], false)}, {prop: "Host", name: "Host", pkg: "", typ: $funcType([], [ptrType$1], false)}, {prop: "InnerHTML", name: "InnerHTML", pkg: "", typ: $funcType([], [$String], false)}, {prop: "SetInnerHTML", name: "SetInnerHTML", pkg: "", typ: $funcType([$String], [], false)}];
 	ptrType$5.methods = [{prop: "SetWidth", name: "SetWidth", pkg: "", typ: $funcType([Unit], [], false)}, {prop: "SetHeight", name: "SetHeight", pkg: "", typ: $funcType([Unit], [], false)}, {prop: "SetMarginsRaw", name: "SetMarginsRaw", pkg: "", typ: $funcType([$String], [], false)}, {prop: "Set", name: "Set", pkg: "", typ: $funcType([$String, $emptyInterface], [], false)}];
 	ptrType$7.methods = [{prop: "Add", name: "Add", pkg: "", typ: $funcType([sliceType$3], [], true)}, {prop: "Remove", name: "Remove", pkg: "", typ: $funcType([sliceType$3], [], true)}, {prop: "Contains", name: "Contains", pkg: "", typ: $funcType([$emptyInterface], [$Bool], false)}];
@@ -42469,7 +42509,7 @@ $packages["github.com/pkg/errors"] = (function() {
 	return $pkg;
 })();
 $packages["github.com/gascore/gas"] = (function() {
-	var $pkg = {}, $init, heap, errors$1, fmt, uuid4, errors, reflect, strings, sync, Method, GetChildes, Bind, ModelDirective, ModelDirectiveDeepData, ForDirective, HTMLDirective, Handler, Object, Watcher, Component, Gas, BackEnd, Template, External, Hooks, Hook, HookWithControl, PocketMethod, RenderCore, RenderNode, RenderType, Priority, PriorityQueue, sliceType, ptrType, mapType, funcType, funcType$1, sliceType$1, mapType$1, ptrType$1, ptrType$2, arrayType, ptrType$3, sliceType$2, sliceType$3, ptrType$4, mapType$2, mapType$3, mapType$4, mapType$5, mapType$6, ptrType$5, mapType$7, Changed, isComponentsEquals, compareWatchers, compareMethods, compareMapStringFunc, compareHooks, compareHookWithControl, compareHook, compareForDirectives, NewComponent, NewBasicComponent, UnSpliceBody, NewForByData, I2C, IsComponent, remove, New, Init, ToGetComponentList, CallBeforeCreatedIfCan, CallMountedIfCan, CallBeforeDestroyIfCan, CallUpdatedIfCan, CallBeforeUpdateIfCan, singleNode, RenderTree, UpdateComponentChildes;
+	var $pkg = {}, $init, heap, errors$1, fmt, uuid4, errors, reflect, strings, sync, Method, GetChildes, Bind, ModelDirective, ModelDirectiveDeepData, ForDirective, HTMLDirective, Handler, Object, Watcher, Component, Gas, BackEnd, Template, External, Hooks, Hook, HookWithControl, PocketMethod, RenderCore, RenderNode, RenderType, Priority, PriorityQueue, sliceType, ptrType, funcType, funcType$1, sliceType$1, mapType, ptrType$1, ptrType$2, arrayType, ptrType$3, sliceType$2, sliceType$3, ptrType$4, mapType$1, mapType$2, mapType$3, mapType$4, mapType$5, mapType$6, ptrType$5, mapType$7, Changed, isComponentsEquals, compareAttributes, compareWatchers, compareMethods, compareMapStringFunc, compareHooks, compareHookWithControl, compareHook, compareForDirectives, NewComponent, NewBasicComponent, UnSpliceBody, NewFor, NewForByData, I2C, IsComponent, IsString, RemoveStrings, remove, New, Init, ToGetComponentList, CallBeforeCreatedIfCan, CallMountedIfCan, CallBeforeDestroyIfCan, CallUpdatedIfCan, CallBeforeUpdateIfCan, singleNode, RenderTree, UpdateComponentChildes;
 	heap = $packages["container/heap"];
 	errors$1 = $packages["errors"];
 	fmt = $packages["fmt"];
@@ -42668,11 +42708,10 @@ $packages["github.com/gascore/gas"] = (function() {
 	PriorityQueue = $pkg.PriorityQueue = $newType(12, $kindSlice, "gas.PriorityQueue", true, "github.com/gascore/gas", true, null);
 	sliceType = $sliceType($emptyInterface);
 	ptrType = $ptrType(Component);
-	mapType = $mapType($String, $String);
 	funcType = $funcType([ptrType], [$String], false);
 	funcType$1 = $funcType([ptrType], [$Bool], false);
 	sliceType$1 = $sliceType(ptrType);
-	mapType$1 = $mapType($String, $emptyInterface);
+	mapType = $mapType($String, $emptyInterface);
 	ptrType$1 = $ptrType(PriorityQueue);
 	ptrType$2 = $ptrType(sync.WaitGroup);
 	arrayType = $arrayType($Uint32, 3);
@@ -42680,10 +42719,11 @@ $packages["github.com/gascore/gas"] = (function() {
 	sliceType$2 = $sliceType(ptrType$3);
 	sliceType$3 = $sliceType(ModelDirectiveDeepData);
 	ptrType$4 = $ptrType(RenderCore);
-	mapType$2 = $mapType($String, Watcher);
-	mapType$3 = $mapType($String, Method);
-	mapType$4 = $mapType($String, Handler);
-	mapType$5 = $mapType($String, Bind);
+	mapType$1 = $mapType($String, Watcher);
+	mapType$2 = $mapType($String, Method);
+	mapType$3 = $mapType($String, Handler);
+	mapType$4 = $mapType($String, Bind);
+	mapType$5 = $mapType($String, $String);
 	mapType$6 = $mapType($String, ptrType);
 	ptrType$5 = $ptrType(Gas);
 	mapType$7 = $mapType($String, Template);
@@ -42715,48 +42755,66 @@ $packages["github.com/gascore/gas"] = (function() {
 	};
 	$pkg.Changed = Changed;
 	isComponentsEquals = function(newC, oldC) {
-		var _r, _r$1, _r$10, _r$11, _r$12, _r$13, _r$2, _r$3, _r$4, _r$5, _r$6, _r$7, _r$8, _r$9, _v, _v$1, _v$2, _v$3, _v$4, _v$5, _v$6, _v$7, newC, oldC, $s, $r;
-		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r = $f._r; _r$1 = $f._r$1; _r$10 = $f._r$10; _r$11 = $f._r$11; _r$12 = $f._r$12; _r$13 = $f._r$13; _r$2 = $f._r$2; _r$3 = $f._r$3; _r$4 = $f._r$4; _r$5 = $f._r$5; _r$6 = $f._r$6; _r$7 = $f._r$7; _r$8 = $f._r$8; _r$9 = $f._r$9; _v = $f._v; _v$1 = $f._v$1; _v$2 = $f._v$2; _v$3 = $f._v$3; _v$4 = $f._v$4; _v$5 = $f._v$5; _v$6 = $f._v$6; _v$7 = $f._v$7; newC = $f.newC; oldC = $f.oldC; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		var _r, _r$1, _r$10, _r$11, _r$2, _r$3, _r$4, _r$5, _r$6, _r$7, _r$8, _r$9, _v, _v$1, _v$2, _v$3, _v$4, _v$5, newC, oldC, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r = $f._r; _r$1 = $f._r$1; _r$10 = $f._r$10; _r$11 = $f._r$11; _r$2 = $f._r$2; _r$3 = $f._r$3; _r$4 = $f._r$4; _r$5 = $f._r$5; _r$6 = $f._r$6; _r$7 = $f._r$7; _r$8 = $f._r$8; _r$9 = $f._r$9; _v = $f._v; _v$1 = $f._v$1; _v$2 = $f._v$2; _v$3 = $f._v$3; _v$4 = $f._v$4; _v$5 = $f._v$5; newC = $f.newC; oldC = $f.oldC; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
 		if (!(newC.isElement === oldC.isElement)) {
 			$s = -1; return false;
 		}
 		/* */ if (newC.isElement && oldC.isElement) { $s = 1; continue; }
 		/* */ $s = 2; continue;
 		/* if (newC.isElement && oldC.isElement) { */ case 1:
-			if (!(newC.Tag === oldC.Tag && newC.Ref === oldC.Ref && newC.HTML.Rendered === oldC.HTML.Rendered)) { _v$4 = false; $s = 7; continue s; }
-			_r = reflect.DeepEqual(new mapType(newC.Attrs), new mapType(oldC.Attrs)); /* */ $s = 8; case 8: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
-			_v$4 = _r; case 7:
-			if (!(_v$4)) { _v$3 = false; $s = 6; continue s; }
-			_r$1 = reflect.DeepEqual(new mapType(newC.RenderedBinds), new mapType(oldC.RenderedBinds)); /* */ $s = 9; case 9: if($c) { $c = false; _r$1 = _r$1.$blk(); } if (_r$1 && _r$1.$blk !== undefined) { break s; }
-			_v$3 = _r$1; case 6:
-			if (!(_v$3)) { _v$2 = false; $s = 5; continue s; }
-			_r$2 = reflect.ValueOf(new funcType(newC.HTML.Render)); /* */ $s = 10; case 10: if($c) { $c = false; _r$2 = _r$2.$blk(); } if (_r$2 && _r$2.$blk !== undefined) { break s; }
-			_r$3 = $clone(_r$2, reflect.Value).Pointer(); /* */ $s = 11; case 11: if($c) { $c = false; _r$3 = _r$3.$blk(); } if (_r$3 && _r$3.$blk !== undefined) { break s; }
-			_r$4 = reflect.ValueOf(new funcType(oldC.HTML.Render)); /* */ $s = 12; case 12: if($c) { $c = false; _r$4 = _r$4.$blk(); } if (_r$4 && _r$4.$blk !== undefined) { break s; }
-			_r$5 = $clone(_r$4, reflect.Value).Pointer(); /* */ $s = 13; case 13: if($c) { $c = false; _r$5 = _r$5.$blk(); } if (_r$5 && _r$5.$blk !== undefined) { break s; }
-			_v$2 = _r$3 === _r$5; case 5:
+			if (!(newC.Tag === oldC.Tag && newC.Ref === oldC.Ref && newC.HTML.Rendered === oldC.HTML.Rendered && compareAttributes(newC.Attrs, oldC.Attrs) && compareAttributes(newC.RenderedBinds, oldC.RenderedBinds))) { _v$2 = false; $s = 5; continue s; }
+			_r = reflect.ValueOf(new funcType(newC.HTML.Render)); /* */ $s = 6; case 6: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
+			_r$1 = $clone(_r, reflect.Value).Pointer(); /* */ $s = 7; case 7: if($c) { $c = false; _r$1 = _r$1.$blk(); } if (_r$1 && _r$1.$blk !== undefined) { break s; }
+			_r$2 = reflect.ValueOf(new funcType(oldC.HTML.Render)); /* */ $s = 8; case 8: if($c) { $c = false; _r$2 = _r$2.$blk(); } if (_r$2 && _r$2.$blk !== undefined) { break s; }
+			_r$3 = $clone(_r$2, reflect.Value).Pointer(); /* */ $s = 9; case 9: if($c) { $c = false; _r$3 = _r$3.$blk(); } if (_r$3 && _r$3.$blk !== undefined) { break s; }
+			_v$2 = _r$1 === _r$3; case 5:
 			if (!(_v$2)) { _v$1 = false; $s = 4; continue s; }
-			_r$6 = reflect.ValueOf(new funcType$1(newC.If)); /* */ $s = 14; case 14: if($c) { $c = false; _r$6 = _r$6.$blk(); } if (_r$6 && _r$6.$blk !== undefined) { break s; }
-			_r$7 = $clone(_r$6, reflect.Value).Pointer(); /* */ $s = 15; case 15: if($c) { $c = false; _r$7 = _r$7.$blk(); } if (_r$7 && _r$7.$blk !== undefined) { break s; }
-			_r$8 = reflect.ValueOf(new funcType$1(oldC.If)); /* */ $s = 16; case 16: if($c) { $c = false; _r$8 = _r$8.$blk(); } if (_r$8 && _r$8.$blk !== undefined) { break s; }
-			_r$9 = $clone(_r$8, reflect.Value).Pointer(); /* */ $s = 17; case 17: if($c) { $c = false; _r$9 = _r$9.$blk(); } if (_r$9 && _r$9.$blk !== undefined) { break s; }
-			_v$1 = _r$7 === _r$9; case 4:
+			_r$4 = reflect.ValueOf(new funcType$1(newC.If)); /* */ $s = 10; case 10: if($c) { $c = false; _r$4 = _r$4.$blk(); } if (_r$4 && _r$4.$blk !== undefined) { break s; }
+			_r$5 = $clone(_r$4, reflect.Value).Pointer(); /* */ $s = 11; case 11: if($c) { $c = false; _r$5 = _r$5.$blk(); } if (_r$5 && _r$5.$blk !== undefined) { break s; }
+			_r$6 = reflect.ValueOf(new funcType$1(oldC.If)); /* */ $s = 12; case 12: if($c) { $c = false; _r$6 = _r$6.$blk(); } if (_r$6 && _r$6.$blk !== undefined) { break s; }
+			_r$7 = $clone(_r$6, reflect.Value).Pointer(); /* */ $s = 13; case 13: if($c) { $c = false; _r$7 = _r$7.$blk(); } if (_r$7 && _r$7.$blk !== undefined) { break s; }
+			_v$1 = _r$5 === _r$7; case 4:
 			if (!(_v$1)) { _v = false; $s = 3; continue s; }
-			_r$10 = compareForDirectives(newC, oldC); /* */ $s = 18; case 18: if($c) { $c = false; _r$10 = _r$10.$blk(); } if (_r$10 && _r$10.$blk !== undefined) { break s; }
-			_v = _r$10; case 3:
+			_r$8 = compareForDirectives(newC, oldC); /* */ $s = 14; case 14: if($c) { $c = false; _r$8 = _r$8.$blk(); } if (_r$8 && _r$8.$blk !== undefined) { break s; }
+			_v = _r$8; case 3:
 			$s = -1; return _v && newC.Model.Data === oldC.Model.Data;
 		/* } */ case 2:
-		if (!(newC.Tag === oldC.Tag && newC.HTML.Rendered === oldC.HTML.Rendered && newC.RefsAllowed === oldC.RefsAllowed)) { _v$7 = false; $s = 21; continue s; }
-		_r$11 = compareWatchers(newC.Watchers, oldC.Watchers); /* */ $s = 22; case 22: if($c) { $c = false; _r$11 = _r$11.$blk(); } if (_r$11 && _r$11.$blk !== undefined) { break s; }
-		_v$7 = _r$11; case 21:
-		if (!(_v$7)) { _v$6 = false; $s = 20; continue s; }
-		_r$12 = compareMethods(newC.Methods, oldC.Methods); /* */ $s = 23; case 23: if($c) { $c = false; _r$12 = _r$12.$blk(); } if (_r$12 && _r$12.$blk !== undefined) { break s; }
-		_v$6 = _r$12; case 20:
-		if (!(_v$6)) { _v$5 = false; $s = 19; continue s; }
-		_r$13 = compareHooks(newC, oldC); /* */ $s = 24; case 24: if($c) { $c = false; _r$13 = _r$13.$blk(); } if (_r$13 && _r$13.$blk !== undefined) { break s; }
-		_v$5 = _r$13; case 19:
-		$s = -1; return _v$5;
-		/* */ } return; } if ($f === undefined) { $f = { $blk: isComponentsEquals }; } $f._r = _r; $f._r$1 = _r$1; $f._r$10 = _r$10; $f._r$11 = _r$11; $f._r$12 = _r$12; $f._r$13 = _r$13; $f._r$2 = _r$2; $f._r$3 = _r$3; $f._r$4 = _r$4; $f._r$5 = _r$5; $f._r$6 = _r$6; $f._r$7 = _r$7; $f._r$8 = _r$8; $f._r$9 = _r$9; $f._v = _v; $f._v$1 = _v$1; $f._v$2 = _v$2; $f._v$3 = _v$3; $f._v$4 = _v$4; $f._v$5 = _v$5; $f._v$6 = _v$6; $f._v$7 = _v$7; $f.newC = newC; $f.oldC = oldC; $f.$s = $s; $f.$r = $r; return $f;
+		if (!(newC.Tag === oldC.Tag && newC.HTML.Rendered === oldC.HTML.Rendered && newC.RefsAllowed === oldC.RefsAllowed)) { _v$5 = false; $s = 17; continue s; }
+		_r$9 = compareWatchers(newC.Watchers, oldC.Watchers); /* */ $s = 18; case 18: if($c) { $c = false; _r$9 = _r$9.$blk(); } if (_r$9 && _r$9.$blk !== undefined) { break s; }
+		_v$5 = _r$9; case 17:
+		if (!(_v$5)) { _v$4 = false; $s = 16; continue s; }
+		_r$10 = compareMethods(newC.Methods, oldC.Methods); /* */ $s = 19; case 19: if($c) { $c = false; _r$10 = _r$10.$blk(); } if (_r$10 && _r$10.$blk !== undefined) { break s; }
+		_v$4 = _r$10; case 16:
+		if (!(_v$4)) { _v$3 = false; $s = 15; continue s; }
+		_r$11 = compareHooks(newC, oldC); /* */ $s = 20; case 20: if($c) { $c = false; _r$11 = _r$11.$blk(); } if (_r$11 && _r$11.$blk !== undefined) { break s; }
+		_v$3 = _r$11; case 15:
+		$s = -1; return _v$3;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: isComponentsEquals }; } $f._r = _r; $f._r$1 = _r$1; $f._r$10 = _r$10; $f._r$11 = _r$11; $f._r$2 = _r$2; $f._r$3 = _r$3; $f._r$4 = _r$4; $f._r$5 = _r$5; $f._r$6 = _r$6; $f._r$7 = _r$7; $f._r$8 = _r$8; $f._r$9 = _r$9; $f._v = _v; $f._v$1 = _v$1; $f._v$2 = _v$2; $f._v$3 = _v$3; $f._v$4 = _v$4; $f._v$5 = _v$5; $f.newC = newC; $f.oldC = oldC; $f.$s = $s; $f.$r = $r; return $f;
+	};
+	compareAttributes = function(newMap, oldMap) {
+		var _entry, _entry$1, _i, _keys, _ref, el, i, newMap, oldMap;
+		if (!(($keys(newMap).length === $keys(oldMap).length))) {
+			return false;
+		}
+		_ref = newMap;
+		_i = 0;
+		_keys = $keys(_ref);
+		while (true) {
+			if (!(_i < _keys.length)) { break; }
+			_entry = _ref[_keys[_i]];
+			if (_entry === undefined) {
+				_i++;
+				continue;
+			}
+			i = _entry.k;
+			el = _entry.v;
+			if (!(el === (_entry$1 = oldMap[$String.keyFor(i)], _entry$1 !== undefined ? _entry$1.v : ""))) {
+				return false;
+			}
+			_i++;
+		}
+		return true;
 	};
 	compareWatchers = function(a, b) {
 		var _entry, _entry$1, _i, _i$1, _key, _key$1, _keys, _keys$1, _r, _ref, _ref$1, a, b, key, key$1, n, o, val, val$1, $s, $r;
@@ -43082,6 +43140,24 @@ $packages["github.com/gascore/gas"] = (function() {
 		return arr;
 	};
 	$pkg.UnSpliceBody = UnSpliceBody;
+	NewFor = function(data, this$1, renderer) {
+		var _entry, _r, _r$1, _tuple, data, dataForList, ok, renderer, this$1, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _entry = $f._entry; _r = $f._r; _r$1 = $f._r$1; _tuple = $f._tuple; data = $f.data; dataForList = $f.dataForList; ok = $f.ok; renderer = $f.renderer; this$1 = $f.this$1; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		_tuple = $assertType((_entry = this$1.Data[$String.keyFor(data)], _entry !== undefined ? _entry.v : $ifaceNil), sliceType, true);
+		dataForList = _tuple[0];
+		ok = _tuple[1];
+		/* */ if (!ok) { $s = 1; continue; }
+		/* */ $s = 2; continue;
+		/* if (!ok) { */ case 1:
+			_r = fmt.Errorf("invalid FOR directive in component %s", new sliceType([new $String(this$1.UUID)])); /* */ $s = 3; case 3: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
+			$r = this$1.WarnError(_r); /* */ $s = 4; case 4: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+			$s = -1; return sliceType.nil;
+		/* } */ case 2:
+		_r$1 = NewForByData(dataForList, renderer); /* */ $s = 5; case 5: if($c) { $c = false; _r$1 = _r$1.$blk(); } if (_r$1 && _r$1.$blk !== undefined) { break s; }
+		$s = -1; return _r$1;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: NewFor }; } $f._entry = _entry; $f._r = _r; $f._r$1 = _r$1; $f._tuple = _tuple; $f.data = data; $f.dataForList = dataForList; $f.ok = ok; $f.renderer = renderer; $f.this$1 = this$1; $f.$s = $s; $f.$r = $r; return $f;
+	};
+	$pkg.NewFor = NewFor;
 	NewForByData = function(dataForList, renderer) {
 		var _i, _key, _r, _r$1, _ref, dataForList, el, i, item, items, renderer, $s, $r;
 		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _i = $f._i; _key = $f._key; _r = $f._r; _r$1 = $f._r$1; _ref = $f._ref; dataForList = $f.dataForList; el = $f.el; i = $f.i; item = $f.item; items = $f.items; renderer = $f.renderer; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
@@ -43197,6 +43273,31 @@ $packages["github.com/gascore/gas"] = (function() {
 		return ok;
 	};
 	$pkg.IsComponent = IsComponent;
+	IsString = function(c) {
+		var _tuple, c, ok;
+		_tuple = $assertType(c, $String, true);
+		ok = _tuple[1];
+		return ok;
+	};
+	$pkg.IsString = IsString;
+	RemoveStrings = function(arr) {
+		var _i, _ref, arr, el, out;
+		out = sliceType.nil;
+		_ref = arr;
+		_i = 0;
+		while (true) {
+			if (!(_i < _ref.$length)) { break; }
+			el = ((_i < 0 || _i >= _ref.$length) ? ($throwRuntimeError("index out of range"), undefined) : _ref.$array[_ref.$offset + _i]);
+			if (IsString(el)) {
+				_i++;
+				continue;
+			}
+			out = $append(out, el);
+			_i++;
+		}
+		return out;
+	};
+	$pkg.RemoveStrings = RemoveStrings;
 	Gas.ptr.prototype.GetElement = function() {
 		var _r, g, $s, $r;
 		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r = $f._r; g = $f.g; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
@@ -43397,7 +43498,7 @@ $packages["github.com/gascore/gas"] = (function() {
 		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r = $f._r; _r$1 = $f._r$1; _r$2 = $f._r$2; _tuple = $f._tuple; c = $f.c; err = $f.err; key = $f.key; m = $f.m; ok = $f.ok; oldHTMLDirective = $f.oldHTMLDirective; query = $f.query; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
 		c = this;
 		_r = c.Get(query); /* */ $s = 1; case 1: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
-		_tuple = $assertType(_r, mapType$1, true);
+		_tuple = $assertType(_r, mapType, true);
 		m = _tuple[0];
 		ok = _tuple[1];
 		if (!ok) {
@@ -43420,7 +43521,7 @@ $packages["github.com/gascore/gas"] = (function() {
 		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _key = $f._key; _r = $f._r; _r$1 = $f._r$1; _r$2 = $f._r$2; _tuple = $f._tuple; c = $f.c; err = $f.err; key = $f.key; m = $f.m; ok = $f.ok; oldHTMLDirective = $f.oldHTMLDirective; query = $f.query; value = $f.value; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
 		c = this;
 		_r = c.Get(query); /* */ $s = 1; case 1: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
-		_tuple = $assertType(_r, mapType$1, true);
+		_tuple = $assertType(_r, mapType, true);
 		m = _tuple[0];
 		ok = _tuple[1];
 		if (!ok) {
@@ -44085,7 +44186,7 @@ $packages["github.com/gascore/gas"] = (function() {
 		/* */ } return; } if ($f === undefined) { $f = { $blk: RenderCore.ptr.prototype.updateComponent }; } $f._childes = _childes; $f._el = _el; $f._parent = _parent; $f._r = _r; $f._r$1 = _r$1; $f._r$2 = _r$2; $f._r$3 = _r$3; $f._tuple = _tuple; $f._tuple$1 = _tuple$1; $f.err = err; $f.index = index; $f.isChanged = isChanged; $f.new$1 = new$1; $f.newC = newC; $f.newIsComponent = newIsComponent; $f.nodes = nodes; $f.old = old; $f.oldC = oldC; $f.rc = rc; $f.renderNodes = renderNodes; $f.$s = $s; $f.$r = $r; return $f;
 	};
 	RenderCore.prototype.updateComponent = function(_parent, new$1, old, index) { return this.$val.updateComponent(_parent, new$1, old, index); };
-	ptrType.methods = [{prop: "IsElement", name: "IsElement", pkg: "", typ: $funcType([], [$Bool], false)}, {prop: "ForItemInfo", name: "ForItemInfo", pkg: "", typ: $funcType([], [$Bool, $Int, $emptyInterface], false)}, {prop: "Element", name: "Element", pkg: "", typ: $funcType([], [$emptyInterface], false)}, {prop: "ParentComponent", name: "ParentComponent", pkg: "", typ: $funcType([], [ptrType], false)}, {prop: "ParentWithAllowedRefs", name: "ParentWithAllowedRefs", pkg: "", typ: $funcType([], [ptrType], false)}, {prop: "GetElementUnsafely", name: "GetElementUnsafely", pkg: "", typ: $funcType([], [$emptyInterface], false)}, {prop: "Get", name: "Get", pkg: "", typ: $funcType([$String], [$emptyInterface], false)}, {prop: "Set", name: "Set", pkg: "", typ: $funcType([mapType$1], [], false)}, {prop: "SetValue", name: "SetValue", pkg: "", typ: $funcType([$String, $emptyInterface], [], false)}, {prop: "realSet", name: "realSet", pkg: "github.com/gascore/gas", typ: $funcType([ptrType$3], [$error], false)}, {prop: "SetValueImm", name: "SetValueImm", pkg: "", typ: $funcType([$String, $emptyInterface], [$error], false)}, {prop: "SetImm", name: "SetImm", pkg: "", typ: $funcType([mapType$1], [$error], false)}, {prop: "DataDeleteFromArray", name: "DataDeleteFromArray", pkg: "", typ: $funcType([$String, $Int], [$error], false)}, {prop: "DataAddToArray", name: "DataAddToArray", pkg: "", typ: $funcType([$String, $emptyInterface], [$error], false)}, {prop: "DataEditArray", name: "DataEditArray", pkg: "", typ: $funcType([$String, $Int, $emptyInterface], [$error], false)}, {prop: "DataDeleteFromMap", name: "DataDeleteFromMap", pkg: "", typ: $funcType([$String, $String], [$error], false)}, {prop: "DataEditMap", name: "DataEditMap", pkg: "", typ: $funcType([$String, $String, $emptyInterface], [$error], false)}, {prop: "WarnError", name: "WarnError", pkg: "", typ: $funcType([$error], [], false)}, {prop: "WarnIfNot", name: "WarnIfNot", pkg: "", typ: $funcType([$Bool], [], false)}, {prop: "ConsoleLog", name: "ConsoleLog", pkg: "", typ: $funcType([sliceType], [], true)}, {prop: "ConsoleError", name: "ConsoleError", pkg: "", typ: $funcType([sliceType], [], true)}, {prop: "Method", name: "Method", pkg: "", typ: $funcType([$String, sliceType], [$emptyInterface], true)}, {prop: "MethodSafely", name: "MethodSafely", pkg: "", typ: $funcType([$String, sliceType], [$emptyInterface, $error], true)}, {prop: "PocketMethod", name: "PocketMethod", pkg: "", typ: $funcType([$String], [PocketMethod], false)}, {prop: "htmlDirective", name: "htmlDirective", pkg: "github.com/gascore/gas", typ: $funcType([], [$String], false)}, {prop: "update", name: "update", pkg: "github.com/gascore/gas", typ: $funcType([$String], [$error], false)}, {prop: "UpdateHTMLDirective", name: "UpdateHTMLDirective", pkg: "", typ: $funcType([], [], false)}, {prop: "ForceUpdate", name: "ForceUpdate", pkg: "", typ: $funcType([], [$error], false)}, {prop: "ReCreate", name: "ReCreate", pkg: "", typ: $funcType([], [], false)}];
+	ptrType.methods = [{prop: "IsElement", name: "IsElement", pkg: "", typ: $funcType([], [$Bool], false)}, {prop: "ForItemInfo", name: "ForItemInfo", pkg: "", typ: $funcType([], [$Bool, $Int, $emptyInterface], false)}, {prop: "Element", name: "Element", pkg: "", typ: $funcType([], [$emptyInterface], false)}, {prop: "ParentComponent", name: "ParentComponent", pkg: "", typ: $funcType([], [ptrType], false)}, {prop: "ParentWithAllowedRefs", name: "ParentWithAllowedRefs", pkg: "", typ: $funcType([], [ptrType], false)}, {prop: "GetElementUnsafely", name: "GetElementUnsafely", pkg: "", typ: $funcType([], [$emptyInterface], false)}, {prop: "Get", name: "Get", pkg: "", typ: $funcType([$String], [$emptyInterface], false)}, {prop: "Set", name: "Set", pkg: "", typ: $funcType([mapType], [], false)}, {prop: "SetValue", name: "SetValue", pkg: "", typ: $funcType([$String, $emptyInterface], [], false)}, {prop: "realSet", name: "realSet", pkg: "github.com/gascore/gas", typ: $funcType([ptrType$3], [$error], false)}, {prop: "SetValueImm", name: "SetValueImm", pkg: "", typ: $funcType([$String, $emptyInterface], [$error], false)}, {prop: "SetImm", name: "SetImm", pkg: "", typ: $funcType([mapType], [$error], false)}, {prop: "DataDeleteFromArray", name: "DataDeleteFromArray", pkg: "", typ: $funcType([$String, $Int], [$error], false)}, {prop: "DataAddToArray", name: "DataAddToArray", pkg: "", typ: $funcType([$String, $emptyInterface], [$error], false)}, {prop: "DataEditArray", name: "DataEditArray", pkg: "", typ: $funcType([$String, $Int, $emptyInterface], [$error], false)}, {prop: "DataDeleteFromMap", name: "DataDeleteFromMap", pkg: "", typ: $funcType([$String, $String], [$error], false)}, {prop: "DataEditMap", name: "DataEditMap", pkg: "", typ: $funcType([$String, $String, $emptyInterface], [$error], false)}, {prop: "WarnError", name: "WarnError", pkg: "", typ: $funcType([$error], [], false)}, {prop: "WarnIfNot", name: "WarnIfNot", pkg: "", typ: $funcType([$Bool], [], false)}, {prop: "ConsoleLog", name: "ConsoleLog", pkg: "", typ: $funcType([sliceType], [], true)}, {prop: "ConsoleError", name: "ConsoleError", pkg: "", typ: $funcType([sliceType], [], true)}, {prop: "Method", name: "Method", pkg: "", typ: $funcType([$String, sliceType], [$emptyInterface], true)}, {prop: "MethodSafely", name: "MethodSafely", pkg: "", typ: $funcType([$String, sliceType], [$emptyInterface, $error], true)}, {prop: "PocketMethod", name: "PocketMethod", pkg: "", typ: $funcType([$String], [PocketMethod], false)}, {prop: "htmlDirective", name: "htmlDirective", pkg: "github.com/gascore/gas", typ: $funcType([], [$String], false)}, {prop: "update", name: "update", pkg: "github.com/gascore/gas", typ: $funcType([$String], [$error], false)}, {prop: "UpdateHTMLDirective", name: "UpdateHTMLDirective", pkg: "", typ: $funcType([], [], false)}, {prop: "ForceUpdate", name: "ForceUpdate", pkg: "", typ: $funcType([], [$error], false)}, {prop: "ReCreate", name: "ReCreate", pkg: "", typ: $funcType([], [], false)}];
 	ptrType$5.methods = [{prop: "GetElement", name: "GetElement", pkg: "", typ: $funcType([], [$emptyInterface], false)}];
 	ptrType$4.methods = [{prop: "Add", name: "Add", pkg: "", typ: $funcType([sliceType$2], [], false)}, {prop: "updateComponent", name: "updateComponent", pkg: "github.com/gascore/gas", typ: $funcType([$emptyInterface, $emptyInterface, $emptyInterface, $Int], [sliceType$2, $error], false)}];
 	PriorityQueue.methods = [{prop: "Len", name: "Len", pkg: "", typ: $funcType([], [$Int], false)}, {prop: "Less", name: "Less", pkg: "", typ: $funcType([$Int, $Int], [$Bool], false)}, {prop: "Swap", name: "Swap", pkg: "", typ: $funcType([$Int, $Int], [], false)}];
@@ -44100,17 +44201,17 @@ $packages["github.com/gascore/gas"] = (function() {
 	Handler.init([ptrType, Object], [], false);
 	Object.init([{prop: "Call", name: "Call", pkg: "", typ: $funcType([$String, sliceType], [Object], true)}, {prop: "Float", name: "Float", pkg: "", typ: $funcType([], [$Float64], false)}, {prop: "Get", name: "Get", pkg: "", typ: $funcType([$String], [Object], false)}, {prop: "GetBool", name: "GetBool", pkg: "", typ: $funcType([$String], [$Bool], false)}, {prop: "GetInt", name: "GetInt", pkg: "", typ: $funcType([$String], [$Int], false)}, {prop: "GetString", name: "GetString", pkg: "", typ: $funcType([$String], [$String], false)}, {prop: "Int", name: "Int", pkg: "", typ: $funcType([], [$Int], false)}, {prop: "Raw", name: "Raw", pkg: "", typ: $funcType([], [$emptyInterface], false)}, {prop: "Set", name: "Set", pkg: "", typ: $funcType([$String, $emptyInterface], [], false)}, {prop: "String", name: "String", pkg: "", typ: $funcType([], [$String], false)}]);
 	Watcher.init([ptrType, $emptyInterface, $emptyInterface], [$error], false);
-	Component.init("github.com/gascore/gas", [{prop: "Data", name: "Data", embedded: false, exported: true, typ: mapType$1, tag: ""}, {prop: "Watchers", name: "Watchers", embedded: false, exported: true, typ: mapType$2, tag: ""}, {prop: "Methods", name: "Methods", embedded: false, exported: true, typ: mapType$3, tag: ""}, {prop: "Hooks", name: "Hooks", embedded: false, exported: true, typ: Hooks, tag: ""}, {prop: "Handlers", name: "Handlers", embedded: false, exported: true, typ: mapType$4, tag: ""}, {prop: "Binds", name: "Binds", embedded: false, exported: true, typ: mapType$5, tag: ""}, {prop: "RenderedBinds", name: "RenderedBinds", embedded: false, exported: true, typ: mapType, tag: ""}, {prop: "If", name: "If", embedded: false, exported: true, typ: funcType$1, tag: ""}, {prop: "Else", name: "Else", embedded: false, exported: true, typ: $Bool, tag: ""}, {prop: "Show", name: "Show", embedded: false, exported: true, typ: funcType$1, tag: ""}, {prop: "For", name: "For", embedded: false, exported: true, typ: ForDirective, tag: ""}, {prop: "Model", name: "Model", embedded: false, exported: true, typ: ModelDirective, tag: ""}, {prop: "HTML", name: "HTML", embedded: false, exported: true, typ: HTMLDirective, tag: ""}, {prop: "Childes", name: "Childes", embedded: false, exported: true, typ: GetChildes, tag: ""}, {prop: "RChildes", name: "RChildes", embedded: false, exported: true, typ: sliceType, tag: ""}, {prop: "Tag", name: "Tag", embedded: false, exported: true, typ: $String, tag: ""}, {prop: "Attrs", name: "Attrs", embedded: false, exported: true, typ: mapType, tag: ""}, {prop: "UUID", name: "UUID", embedded: false, exported: true, typ: $String, tag: ""}, {prop: "isElement", name: "isElement", embedded: false, exported: false, typ: $Bool, tag: ""}, {prop: "Parent", name: "Parent", embedded: false, exported: true, typ: ptrType, tag: ""}, {prop: "Ref", name: "Ref", embedded: false, exported: true, typ: $String, tag: ""}, {prop: "RefsAllowed", name: "RefsAllowed", embedded: false, exported: true, typ: $Bool, tag: ""}, {prop: "Refs", name: "Refs", embedded: false, exported: true, typ: mapType$6, tag: ""}, {prop: "RC", name: "RC", embedded: false, exported: true, typ: ptrType$4, tag: ""}]);
+	Component.init("github.com/gascore/gas", [{prop: "Data", name: "Data", embedded: false, exported: true, typ: mapType, tag: ""}, {prop: "Watchers", name: "Watchers", embedded: false, exported: true, typ: mapType$1, tag: ""}, {prop: "Methods", name: "Methods", embedded: false, exported: true, typ: mapType$2, tag: ""}, {prop: "Hooks", name: "Hooks", embedded: false, exported: true, typ: Hooks, tag: ""}, {prop: "Handlers", name: "Handlers", embedded: false, exported: true, typ: mapType$3, tag: ""}, {prop: "Binds", name: "Binds", embedded: false, exported: true, typ: mapType$4, tag: ""}, {prop: "RenderedBinds", name: "RenderedBinds", embedded: false, exported: true, typ: mapType$5, tag: ""}, {prop: "If", name: "If", embedded: false, exported: true, typ: funcType$1, tag: ""}, {prop: "Else", name: "Else", embedded: false, exported: true, typ: $Bool, tag: ""}, {prop: "Show", name: "Show", embedded: false, exported: true, typ: funcType$1, tag: ""}, {prop: "For", name: "For", embedded: false, exported: true, typ: ForDirective, tag: ""}, {prop: "Model", name: "Model", embedded: false, exported: true, typ: ModelDirective, tag: ""}, {prop: "HTML", name: "HTML", embedded: false, exported: true, typ: HTMLDirective, tag: ""}, {prop: "Childes", name: "Childes", embedded: false, exported: true, typ: GetChildes, tag: ""}, {prop: "RChildes", name: "RChildes", embedded: false, exported: true, typ: sliceType, tag: ""}, {prop: "Tag", name: "Tag", embedded: false, exported: true, typ: $String, tag: ""}, {prop: "Attrs", name: "Attrs", embedded: false, exported: true, typ: mapType$5, tag: ""}, {prop: "UUID", name: "UUID", embedded: false, exported: true, typ: $String, tag: ""}, {prop: "isElement", name: "isElement", embedded: false, exported: false, typ: $Bool, tag: ""}, {prop: "Parent", name: "Parent", embedded: false, exported: true, typ: ptrType, tag: ""}, {prop: "Ref", name: "Ref", embedded: false, exported: true, typ: $String, tag: ""}, {prop: "RefsAllowed", name: "RefsAllowed", embedded: false, exported: true, typ: $Bool, tag: ""}, {prop: "Refs", name: "Refs", embedded: false, exported: true, typ: mapType$6, tag: ""}, {prop: "RC", name: "RC", embedded: false, exported: true, typ: ptrType$4, tag: ""}]);
 	Gas.init("", [{prop: "App", name: "App", embedded: false, exported: true, typ: ptrType, tag: ""}, {prop: "StartPoint", name: "StartPoint", embedded: false, exported: true, typ: $String, tag: ""}]);
 	BackEnd.init([{prop: "ChildNodes", name: "ChildNodes", pkg: "", typ: $funcType([$emptyInterface], [sliceType], false)}, {prop: "ConsoleError", name: "ConsoleError", pkg: "", typ: $funcType([sliceType], [], true)}, {prop: "ConsoleLog", name: "ConsoleLog", pkg: "", typ: $funcType([sliceType], [], true)}, {prop: "ExecNode", name: "ExecNode", pkg: "", typ: $funcType([ptrType$3], [$error], false)}, {prop: "GetElement", name: "GetElement", pkg: "", typ: $funcType([ptrType], [$emptyInterface], false)}, {prop: "GetGasEl", name: "GetGasEl", pkg: "", typ: $funcType([ptrType$5], [$emptyInterface], false)}, {prop: "Init", name: "Init", pkg: "", typ: $funcType([Gas], [$error], false)}, {prop: "New", name: "New", pkg: "", typ: $funcType([$String], [$String, $error], false)}]);
 	Template.init([sliceType], [sliceType], true);
-	External.init("", [{prop: "Body", name: "Body", embedded: false, exported: true, typ: sliceType, tag: ""}, {prop: "Slots", name: "Slots", embedded: false, exported: true, typ: mapType$1, tag: ""}, {prop: "Templates", name: "Templates", embedded: false, exported: true, typ: mapType$7, tag: ""}]);
+	External.init("", [{prop: "Body", name: "Body", embedded: false, exported: true, typ: sliceType, tag: ""}, {prop: "Slots", name: "Slots", embedded: false, exported: true, typ: mapType, tag: ""}, {prop: "Templates", name: "Templates", embedded: false, exported: true, typ: mapType$7, tag: ""}]);
 	Hooks.init("", [{prop: "BeforeCreated", name: "BeforeCreated", embedded: false, exported: true, typ: HookWithControl, tag: ""}, {prop: "Created", name: "Created", embedded: false, exported: true, typ: Hook, tag: ""}, {prop: "Mounted", name: "Mounted", embedded: false, exported: true, typ: Hook, tag: ""}, {prop: "BeforeDestroy", name: "BeforeDestroy", embedded: false, exported: true, typ: Hook, tag: ""}, {prop: "BeforeUpdate", name: "BeforeUpdate", embedded: false, exported: true, typ: Hook, tag: ""}, {prop: "Updated", name: "Updated", embedded: false, exported: true, typ: Hook, tag: ""}]);
 	Hook.init([ptrType], [$error], false);
 	HookWithControl.init([ptrType], [$Bool, $error], false);
 	PocketMethod.init([sliceType], [$emptyInterface, $error], true);
 	RenderCore.init("", [{prop: "Queue", name: "Queue", embedded: false, exported: true, typ: ptrType$1, tag: ""}, {prop: "BE", name: "BE", embedded: false, exported: true, typ: BackEnd, tag: ""}, {prop: "WG", name: "WG", embedded: false, exported: true, typ: ptrType$2, tag: ""}]);
-	RenderNode.init("github.com/gascore/gas", [{prop: "index", name: "index", embedded: false, exported: false, typ: $Int, tag: ""}, {prop: "Type", name: "Type", embedded: false, exported: true, typ: RenderType, tag: ""}, {prop: "Priority", name: "Priority", embedded: false, exported: true, typ: Priority, tag: ""}, {prop: "New", name: "New", embedded: false, exported: true, typ: $emptyInterface, tag: ""}, {prop: "Old", name: "Old", embedded: false, exported: true, typ: $emptyInterface, tag: ""}, {prop: "NodeParent", name: "NodeParent", embedded: false, exported: true, typ: $emptyInterface, tag: ""}, {prop: "NodeNew", name: "NodeNew", embedded: false, exported: true, typ: $emptyInterface, tag: ""}, {prop: "NodeOld", name: "NodeOld", embedded: false, exported: true, typ: $emptyInterface, tag: ""}, {prop: "Data", name: "Data", embedded: false, exported: true, typ: mapType$1, tag: ""}]);
+	RenderNode.init("github.com/gascore/gas", [{prop: "index", name: "index", embedded: false, exported: false, typ: $Int, tag: ""}, {prop: "Type", name: "Type", embedded: false, exported: true, typ: RenderType, tag: ""}, {prop: "Priority", name: "Priority", embedded: false, exported: true, typ: Priority, tag: ""}, {prop: "New", name: "New", embedded: false, exported: true, typ: $emptyInterface, tag: ""}, {prop: "Old", name: "Old", embedded: false, exported: true, typ: $emptyInterface, tag: ""}, {prop: "NodeParent", name: "NodeParent", embedded: false, exported: true, typ: $emptyInterface, tag: ""}, {prop: "NodeNew", name: "NodeNew", embedded: false, exported: true, typ: $emptyInterface, tag: ""}, {prop: "NodeOld", name: "NodeOld", embedded: false, exported: true, typ: $emptyInterface, tag: ""}, {prop: "Data", name: "Data", embedded: false, exported: true, typ: mapType, tag: ""}]);
 	PriorityQueue.init(ptrType$3);
 	$init = function() {
 		$pkg.$init = function() {};
@@ -44741,8 +44842,8 @@ $packages["github.com/gascore/gas-web"] = (function() {
 	};
 	$pkg.GetLocalStore = GetLocalStore;
 	BackEnd.ptr.prototype.ExecNode = function(node) {
-		var _1, _c, _e, _el, _i, _new, _new$1, _old, _old$1, _parent, _parent$1, _parent$2, _r, _r$1, _r$10, _r$11, _r$12, _r$13, _r$14, _r$2, _r$3, _r$4, _r$5, _r$6, _r$7, _r$8, _r$9, _ref, _tuple, _tuple$1, _tuple$2, _tuple$3, _tuple$4, _tuple$5, _tuple$6, _tuple$7, _tuple$8, _tuple$9, c, dataValue, err, err$1, err$2, err$3, field, newC, node, ok, ok$1, ok$2, ok$3, ok$4, w, $s, $r;
-		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _1 = $f._1; _c = $f._c; _e = $f._e; _el = $f._el; _i = $f._i; _new = $f._new; _new$1 = $f._new$1; _old = $f._old; _old$1 = $f._old$1; _parent = $f._parent; _parent$1 = $f._parent$1; _parent$2 = $f._parent$2; _r = $f._r; _r$1 = $f._r$1; _r$10 = $f._r$10; _r$11 = $f._r$11; _r$12 = $f._r$12; _r$13 = $f._r$13; _r$14 = $f._r$14; _r$2 = $f._r$2; _r$3 = $f._r$3; _r$4 = $f._r$4; _r$5 = $f._r$5; _r$6 = $f._r$6; _r$7 = $f._r$7; _r$8 = $f._r$8; _r$9 = $f._r$9; _ref = $f._ref; _tuple = $f._tuple; _tuple$1 = $f._tuple$1; _tuple$2 = $f._tuple$2; _tuple$3 = $f._tuple$3; _tuple$4 = $f._tuple$4; _tuple$5 = $f._tuple$5; _tuple$6 = $f._tuple$6; _tuple$7 = $f._tuple$7; _tuple$8 = $f._tuple$8; _tuple$9 = $f._tuple$9; c = $f.c; dataValue = $f.dataValue; err = $f.err; err$1 = $f.err$1; err$2 = $f.err$2; err$3 = $f.err$3; field = $f.field; newC = $f.newC; node = $f.node; ok = $f.ok; ok$1 = $f.ok$1; ok$2 = $f.ok$2; ok$3 = $f.ok$3; ok$4 = $f.ok$4; w = $f.w; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		var _1, _c, _e, _el, _i, _new, _new$1, _old, _old$1, _parent, _parent$1, _parent$2, _r, _r$1, _r$10, _r$11, _r$12, _r$13, _r$14, _r$15, _r$2, _r$3, _r$4, _r$5, _r$6, _r$7, _r$8, _r$9, _ref, _tuple, _tuple$1, _tuple$2, _tuple$3, _tuple$4, _tuple$5, _tuple$6, _tuple$7, _tuple$8, _tuple$9, c, dataValue, err, err$1, err$2, err$3, err$4, field, newC, node, ok, ok$1, ok$2, ok$3, ok$4, w, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _1 = $f._1; _c = $f._c; _e = $f._e; _el = $f._el; _i = $f._i; _new = $f._new; _new$1 = $f._new$1; _old = $f._old; _old$1 = $f._old$1; _parent = $f._parent; _parent$1 = $f._parent$1; _parent$2 = $f._parent$2; _r = $f._r; _r$1 = $f._r$1; _r$10 = $f._r$10; _r$11 = $f._r$11; _r$12 = $f._r$12; _r$13 = $f._r$13; _r$14 = $f._r$14; _r$15 = $f._r$15; _r$2 = $f._r$2; _r$3 = $f._r$3; _r$4 = $f._r$4; _r$5 = $f._r$5; _r$6 = $f._r$6; _r$7 = $f._r$7; _r$8 = $f._r$8; _r$9 = $f._r$9; _ref = $f._ref; _tuple = $f._tuple; _tuple$1 = $f._tuple$1; _tuple$2 = $f._tuple$2; _tuple$3 = $f._tuple$3; _tuple$4 = $f._tuple$4; _tuple$5 = $f._tuple$5; _tuple$6 = $f._tuple$6; _tuple$7 = $f._tuple$7; _tuple$8 = $f._tuple$8; _tuple$9 = $f._tuple$9; c = $f.c; dataValue = $f.dataValue; err = $f.err; err$1 = $f.err$1; err$2 = $f.err$2; err$3 = $f.err$3; err$4 = $f.err$4; field = $f.field; newC = $f.newC; node = $f.node; ok = $f.ok; ok$1 = $f.ok$1; ok$2 = $f.ok$2; ok$3 = $f.ok$3; ok$4 = $f.ok$4; w = $f.w; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
 		w = this;
 			_1 = node.Type;
 			/* */ if (_1 === (0)) { $s = 2; continue; }
@@ -44869,22 +44970,27 @@ $packages["github.com/gascore/gas-web"] = (function() {
 				if (!ok$4) {
 					$s = -1; return errors$1.New("invalid NodeNew type");
 				}
+				_r$13 = gas.CallBeforeDestroyIfCan(c); /* */ $s = 29; case 29: if($c) { $c = false; _r$13 = _r$13.$blk(); } if (_r$13 && _r$13.$blk !== undefined) { break s; }
+				err$4 = _r$13;
+				if (!($interfaceIsEqual(err$4, $ifaceNil))) {
+					$s = -1; return err$4;
+				}
 				_ref = _c.NodeBase.ChildNodes();
 				_i = 0;
-				/* while (true) { */ case 29:
-					/* if (!(_i < _ref.$length)) { break; } */ if(!(_i < _ref.$length)) { $s = 30; continue; }
+				/* while (true) { */ case 30:
+					/* if (!(_i < _ref.$length)) { break; } */ if(!(_i < _ref.$length)) { $s = 31; continue; }
 					_e = ((_i < 0 || _i >= _ref.$length) ? ($throwRuntimeError("index out of range"), undefined) : _ref.$array[_ref.$offset + _i]);
-					_r$13 = _c.NodeBase.RemoveChild(_e); /* */ $s = 31; case 31: if($c) { $c = false; _r$13 = _r$13.$blk(); } if (_r$13 && _r$13.$blk !== undefined) { break s; }
-					_r$13;
+					_r$14 = _c.NodeBase.RemoveChild(_e); /* */ $s = 32; case 32: if($c) { $c = false; _r$14 = _r$14.$blk(); } if (_r$14 && _r$14.$blk !== undefined) { break s; }
+					_r$14;
 					_i++;
-				/* } */ $s = 29; continue; case 30:
+				/* } */ $s = 30; continue; case 31:
 				c.RChildes = new sliceType([]);
-				_r$14 = c.ForceUpdate(); /* */ $s = 32; case 32: if($c) { $c = false; _r$14 = _r$14.$blk(); } if (_r$14 && _r$14.$blk !== undefined) { break s; }
-				$s = -1; return _r$14;
+				_r$15 = c.ForceUpdate(); /* */ $s = 33; case 33: if($c) { $c = false; _r$15 = _r$15.$blk(); } if (_r$15 && _r$15.$blk !== undefined) { break s; }
+				$s = -1; return _r$15;
 			/* } */ case 7:
 		case 1:
 		$s = -1; return $ifaceNil;
-		/* */ } return; } if ($f === undefined) { $f = { $blk: BackEnd.ptr.prototype.ExecNode }; } $f._1 = _1; $f._c = _c; $f._e = _e; $f._el = _el; $f._i = _i; $f._new = _new; $f._new$1 = _new$1; $f._old = _old; $f._old$1 = _old$1; $f._parent = _parent; $f._parent$1 = _parent$1; $f._parent$2 = _parent$2; $f._r = _r; $f._r$1 = _r$1; $f._r$10 = _r$10; $f._r$11 = _r$11; $f._r$12 = _r$12; $f._r$13 = _r$13; $f._r$14 = _r$14; $f._r$2 = _r$2; $f._r$3 = _r$3; $f._r$4 = _r$4; $f._r$5 = _r$5; $f._r$6 = _r$6; $f._r$7 = _r$7; $f._r$8 = _r$8; $f._r$9 = _r$9; $f._ref = _ref; $f._tuple = _tuple; $f._tuple$1 = _tuple$1; $f._tuple$2 = _tuple$2; $f._tuple$3 = _tuple$3; $f._tuple$4 = _tuple$4; $f._tuple$5 = _tuple$5; $f._tuple$6 = _tuple$6; $f._tuple$7 = _tuple$7; $f._tuple$8 = _tuple$8; $f._tuple$9 = _tuple$9; $f.c = c; $f.dataValue = dataValue; $f.err = err; $f.err$1 = err$1; $f.err$2 = err$2; $f.err$3 = err$3; $f.field = field; $f.newC = newC; $f.node = node; $f.ok = ok; $f.ok$1 = ok$1; $f.ok$2 = ok$2; $f.ok$3 = ok$3; $f.ok$4 = ok$4; $f.w = w; $f.$s = $s; $f.$r = $r; return $f;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: BackEnd.ptr.prototype.ExecNode }; } $f._1 = _1; $f._c = _c; $f._e = _e; $f._el = _el; $f._i = _i; $f._new = _new; $f._new$1 = _new$1; $f._old = _old; $f._old$1 = _old$1; $f._parent = _parent; $f._parent$1 = _parent$1; $f._parent$2 = _parent$2; $f._r = _r; $f._r$1 = _r$1; $f._r$10 = _r$10; $f._r$11 = _r$11; $f._r$12 = _r$12; $f._r$13 = _r$13; $f._r$14 = _r$14; $f._r$15 = _r$15; $f._r$2 = _r$2; $f._r$3 = _r$3; $f._r$4 = _r$4; $f._r$5 = _r$5; $f._r$6 = _r$6; $f._r$7 = _r$7; $f._r$8 = _r$8; $f._r$9 = _r$9; $f._ref = _ref; $f._tuple = _tuple; $f._tuple$1 = _tuple$1; $f._tuple$2 = _tuple$2; $f._tuple$3 = _tuple$3; $f._tuple$4 = _tuple$4; $f._tuple$5 = _tuple$5; $f._tuple$6 = _tuple$6; $f._tuple$7 = _tuple$7; $f._tuple$8 = _tuple$8; $f._tuple$9 = _tuple$9; $f.c = c; $f.dataValue = dataValue; $f.err = err; $f.err$1 = err$1; $f.err$2 = err$2; $f.err$3 = err$3; $f.err$4 = err$4; $f.field = field; $f.newC = newC; $f.node = node; $f.ok = ok; $f.ok$1 = ok$1; $f.ok$2 = ok$2; $f.ok$3 = ok$3; $f.ok$4 = ok$4; $f.w = w; $f.$s = $s; $f.$r = $r; return $f;
 	};
 	BackEnd.prototype.ExecNode = function(node) { return this.$val.ExecNode(node); };
 	BackEnd.ptr.prototype.ChildNodes = function(node) {
@@ -45132,18 +45238,18 @@ $packages["github.com/gascore/gas-web"] = (function() {
 	$pkg.$init = $init;
 	return $pkg;
 })();
-$packages["github.com/gascore/components/dnd-free"] = (function() {
-	var $pkg = {}, $init, fmt, uuid4, dom, js, gas, web, js$1, Config, sliceType, ptrType, sliceType$1, ptrType$1, ptrType$2, funcType, funcType$1, passive, _r, DNDFree, addEvent, removeEvent, event;
+$packages["github.com/gascore/components/dnd/free"] = (function() {
+	var $pkg = {}, $init, fmt, uuid4, dom, js, gas, web, Config, sliceType, ptrType, sliceType$1, ptrType$1, ptrType$2, funcType, funcType$1, DNDFree, addEvent, removeEvent, event;
 	fmt = $packages["fmt"];
 	uuid4 = $packages["github.com/frankenbeanies/uuid4"];
 	dom = $packages["github.com/gascore/dom"];
 	js = $packages["github.com/gascore/dom/js"];
 	gas = $packages["github.com/gascore/gas"];
 	web = $packages["github.com/gascore/gas-web"];
-	js$1 = $packages["github.com/gopherjs/gopherwasm/js"];
-	Config = $pkg.Config = $newType(0, $kindStruct, "dndfree.Config", true, "github.com/gascore/components/dnd-free", true, function(XDisabled_, YDisabled_, ifXDisabled_, ifYDisabled_, Boundary_, Handle_, Class_, OnStart_, OnMove_, OnEnd_) {
+	Config = $pkg.Config = $newType(0, $kindStruct, "dndfree.Config", true, "github.com/gascore/components/dnd/free", true, function(Tag_, XDisabled_, YDisabled_, ifXDisabled_, ifYDisabled_, Boundary_, Handle_, Class_, OnMove_, OnStart_, OnEnd_) {
 		this.$val = this;
 		if (arguments.length === 0) {
+			this.Tag = "";
 			this.XDisabled = false;
 			this.YDisabled = false;
 			this.ifXDisabled = 0;
@@ -45151,11 +45257,12 @@ $packages["github.com/gascore/components/dnd-free"] = (function() {
 			this.Boundary = "";
 			this.Handle = "";
 			this.Class = "";
-			this.OnStart = $throwNilPointerError;
 			this.OnMove = $throwNilPointerError;
+			this.OnStart = $throwNilPointerError;
 			this.OnEnd = $throwNilPointerError;
 			return;
 		}
+		this.Tag = Tag_;
 		this.XDisabled = XDisabled_;
 		this.YDisabled = YDisabled_;
 		this.ifXDisabled = ifXDisabled_;
@@ -45163,8 +45270,8 @@ $packages["github.com/gascore/components/dnd-free"] = (function() {
 		this.Boundary = Boundary_;
 		this.Handle = Handle_;
 		this.Class = Class_;
-		this.OnStart = OnStart_;
 		this.OnMove = OnMove_;
+		this.OnStart = OnStart_;
 		this.OnEnd = OnEnd_;
 	});
 	sliceType = $sliceType($emptyInterface);
@@ -45175,11 +45282,14 @@ $packages["github.com/gascore/components/dnd-free"] = (function() {
 	funcType = $funcType([gas.Object, $Int, $Int], [$error], false);
 	funcType$1 = $funcType([gas.Object, $Int, $Int], [$Bool, $error], false);
 	DNDFree = function(config, e) {
-		var _r$1, _r$2, _r$3, childUUID, config, e, $s, $r;
-		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r$1 = $f._r$1; _r$2 = $f._r$2; _r$3 = $f._r$3; childUUID = $f.childUUID; config = $f.config; e = $f.e; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		var _r, _r$1, _r$2, childUUID, config, e, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r = $f._r; _r$1 = $f._r$1; _r$2 = $f._r$2; childUUID = $f.childUUID; config = $f.config; e = $f.e; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
 		childUUID = [childUUID];
 		config = [config];
 		e = [e];
+		if (config[0].Tag === "") {
+			config[0].Tag = "div";
+		}
 		if (config[0].Class === "") {
 			config[0].Class = "dnd-free";
 		}
@@ -45199,20 +45309,20 @@ $packages["github.com/gascore/components/dnd-free"] = (function() {
 		} else {
 			config[0].ifYDisabled = 1;
 		}
-		_r$1 = uuid4.New(); /* */ $s = 4; case 4: if($c) { $c = false; _r$1 = _r$1.$blk(); } if (_r$1 && _r$1.$blk !== undefined) { break s; }
-		_r$2 = $clone(_r$1, uuid4.UUID4).String(); /* */ $s = 5; case 5: if($c) { $c = false; _r$2 = _r$2.$blk(); } if (_r$2 && _r$2.$blk !== undefined) { break s; }
-		childUUID[0] = _r$2;
-		_r$3 = gas.NC(new gas.Component.ptr($makeMap($String.keyFor, [{ k: "initialX", v: new $Int(0) }, { k: "initialY", v: new $Int(0) }, { k: "offsetX", v: new $Int(0) }, { k: "offsetY", v: new $Int(0) }, { k: "cursorOffsetLeft", v: new $Int(0) }, { k: "cursorOffsetTop", v: new $Int(0) }, { k: "cursorOffsetRight", v: new $Int(0) }, { k: "cursorOffsetBottom", v: new $Int(0) }, { k: "isActive", v: new $Bool(false) }, { k: "startEvent", v: $ifaceNil }, { k: "endEvent", v: $ifaceNil }, { k: "moveEvent", v: $ifaceNil }]), false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, (function(childUUID, config, e) { return function $b(this$1) {
-			var _boundary, _r$3, _r$4, endEvent, moveEvent, startEvent, this$1, $s, $r;
-			/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _boundary = $f._boundary; _r$3 = $f._r$3; _r$4 = $f._r$4; endEvent = $f.endEvent; moveEvent = $f.moveEvent; startEvent = $f.startEvent; this$1 = $f.this$1; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		_r = uuid4.New(); /* */ $s = 4; case 4: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
+		_r$1 = $clone(_r, uuid4.UUID4).String(); /* */ $s = 5; case 5: if($c) { $c = false; _r$1 = _r$1.$blk(); } if (_r$1 && _r$1.$blk !== undefined) { break s; }
+		childUUID[0] = _r$1;
+		_r$2 = gas.NC(new gas.Component.ptr($makeMap($String.keyFor, [{ k: "initialX", v: new $Int(0) }, { k: "initialY", v: new $Int(0) }, { k: "offsetX", v: new $Int(0) }, { k: "offsetY", v: new $Int(0) }, { k: "cursorOffsetLeft", v: new $Int(0) }, { k: "cursorOffsetTop", v: new $Int(0) }, { k: "cursorOffsetRight", v: new $Int(0) }, { k: "cursorOffsetBottom", v: new $Int(0) }, { k: "isActive", v: new $Bool(false) }, { k: "startEvent", v: $ifaceNil }, { k: "endEvent", v: $ifaceNil }, { k: "moveEvent", v: $ifaceNil }]), false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, (function(childUUID, config, e) { return function $b(this$1) {
+			var _boundary, _r$2, _r$3, endEvent, moveEvent, startEvent, this$1, $s, $r;
+			/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _boundary = $f._boundary; _r$2 = $f._r$2; _r$3 = $f._r$3; endEvent = $f.endEvent; moveEvent = $f.moveEvent; startEvent = $f.startEvent; this$1 = $f.this$1; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
 			_boundary = [_boundary];
 			this$1 = [this$1];
 			_boundary[0] = ptrType$2.nil;
 			/* */ if (!(config[0].Boundary === "")) { $s = 1; continue; }
 			/* */ $s = 2; continue;
 			/* if (!(config[0].Boundary === "")) { */ case 1:
-				_r$3 = dom.Doc.QuerySelector("." + config[0].Boundary); /* */ $s = 3; case 3: if($c) { $c = false; _r$3 = _r$3.$blk(); } if (_r$3 && _r$3.$blk !== undefined) { break s; }
-				_boundary[0] = _r$3;
+				_r$2 = dom.Doc.QuerySelector("." + config[0].Boundary); /* */ $s = 3; case 3: if($c) { $c = false; _r$2 = _r$2.$blk(); } if (_r$2 && _r$2.$blk !== undefined) { break s; }
+				_boundary[0] = _r$2;
 				/* */ if (_boundary[0] === ptrType$2.nil) { $s = 4; continue; }
 				/* */ $s = 5; continue;
 				/* if (_boundary[0] === ptrType$2.nil) { */ case 4:
@@ -45220,56 +45330,57 @@ $packages["github.com/gascore/components/dnd-free"] = (function() {
 				/* } */ case 5:
 			/* } */ case 2:
 			moveEvent = $clone(event((function(_boundary, childUUID, config, e, this$1) { return function $b(event$1) {
-				var _r$10, _r$11, _r$12, _r$13, _r$14, _r$15, _r$16, _r$17, _r$18, _r$19, _r$20, _r$21, _r$22, _r$23, _r$24, _r$4, _r$5, _r$6, _r$7, _r$8, _r$9, _tmp, _tmp$1, bottom, cursorOffsetBottom, cursorOffsetLeft, cursorOffsetRight, cursorOffsetTop, err, event$1, left, rect, right, t, top, x, y, $s, $r;
-				/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r$10 = $f._r$10; _r$11 = $f._r$11; _r$12 = $f._r$12; _r$13 = $f._r$13; _r$14 = $f._r$14; _r$15 = $f._r$15; _r$16 = $f._r$16; _r$17 = $f._r$17; _r$18 = $f._r$18; _r$19 = $f._r$19; _r$20 = $f._r$20; _r$21 = $f._r$21; _r$22 = $f._r$22; _r$23 = $f._r$23; _r$24 = $f._r$24; _r$4 = $f._r$4; _r$5 = $f._r$5; _r$6 = $f._r$6; _r$7 = $f._r$7; _r$8 = $f._r$8; _r$9 = $f._r$9; _tmp = $f._tmp; _tmp$1 = $f._tmp$1; bottom = $f.bottom; cursorOffsetBottom = $f.cursorOffsetBottom; cursorOffsetLeft = $f.cursorOffsetLeft; cursorOffsetRight = $f.cursorOffsetRight; cursorOffsetTop = $f.cursorOffsetTop; err = $f.err; event$1 = $f.event$1; left = $f.left; rect = $f.rect; right = $f.right; t = $f.t; top = $f.top; x = $f.x; y = $f.y; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
-				_r$4 = this$1[0].Get("isActive"); /* */ $s = 3; case 3: if($c) { $c = false; _r$4 = _r$4.$blk(); } if (_r$4 && _r$4.$blk !== undefined) { break s; }
-				/* */ if (!$assertType(_r$4, $Bool)) { $s = 1; continue; }
+				var _r$10, _r$11, _r$12, _r$13, _r$14, _r$15, _r$16, _r$17, _r$18, _r$19, _r$20, _r$21, _r$22, _r$23, _r$3, _r$4, _r$5, _r$6, _r$7, _r$8, _r$9, _tmp, _tmp$1, bottom, cursorOffsetBottom, cursorOffsetLeft, cursorOffsetRight, cursorOffsetTop, err, event$1, left, rect, right, t, top, x, y, $s, $r;
+				/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r$10 = $f._r$10; _r$11 = $f._r$11; _r$12 = $f._r$12; _r$13 = $f._r$13; _r$14 = $f._r$14; _r$15 = $f._r$15; _r$16 = $f._r$16; _r$17 = $f._r$17; _r$18 = $f._r$18; _r$19 = $f._r$19; _r$20 = $f._r$20; _r$21 = $f._r$21; _r$22 = $f._r$22; _r$23 = $f._r$23; _r$3 = $f._r$3; _r$4 = $f._r$4; _r$5 = $f._r$5; _r$6 = $f._r$6; _r$7 = $f._r$7; _r$8 = $f._r$8; _r$9 = $f._r$9; _tmp = $f._tmp; _tmp$1 = $f._tmp$1; bottom = $f.bottom; cursorOffsetBottom = $f.cursorOffsetBottom; cursorOffsetLeft = $f.cursorOffsetLeft; cursorOffsetRight = $f.cursorOffsetRight; cursorOffsetTop = $f.cursorOffsetTop; err = $f.err; event$1 = $f.event$1; left = $f.left; rect = $f.rect; right = $f.right; t = $f.t; top = $f.top; x = $f.x; y = $f.y; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+				_r$3 = this$1[0].Get("isActive"); /* */ $s = 3; case 3: if($c) { $c = false; _r$3 = _r$3.$blk(); } if (_r$3 && _r$3.$blk !== undefined) { break s; }
+				/* */ if (!$assertType(_r$3, $Bool)) { $s = 1; continue; }
 				/* */ $s = 2; continue;
-				/* if (!$assertType(_r$4, $Bool)) { */ case 1:
+				/* if (!$assertType(_r$3, $Bool)) { */ case 1:
 					$s = -1; return;
 				/* } */ case 2:
+				$r = event$1.PreventDefault(); /* */ $s = 4; case 4: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 				_tmp = 0;
 				_tmp$1 = 0;
 				x = _tmp;
 				y = _tmp$1;
-				_r$5 = event$1.Type(); /* */ $s = 7; case 7: if($c) { $c = false; _r$5 = _r$5.$blk(); } if (_r$5 && _r$5.$blk !== undefined) { break s; }
-				/* */ if (_r$5 === "touchmove") { $s = 4; continue; }
-				/* */ $s = 5; continue;
-				/* if (_r$5 === "touchmove") { */ case 4:
-					_r$6 = event$1.JSValue(); /* */ $s = 8; case 8: if($c) { $c = false; _r$6 = _r$6.$blk(); } if (_r$6 && _r$6.$blk !== undefined) { break s; }
-					_r$7 = $clone(_r$6, js$1.Value).Get("touches"); /* */ $s = 9; case 9: if($c) { $c = false; _r$7 = _r$7.$blk(); } if (_r$7 && _r$7.$blk !== undefined) { break s; }
-					_r$8 = $clone(_r$7, js$1.Value).Get("0"); /* */ $s = 10; case 10: if($c) { $c = false; _r$8 = _r$8.$blk(); } if (_r$8 && _r$8.$blk !== undefined) { break s; }
-					t = $clone(_r$8, js$1.Value);
-					x = $clone($clone(t, js$1.Value).Get("clientX"), js$1.Value).Int();
-					y = $clone($clone(t, js$1.Value).Get("clientY"), js$1.Value).Int();
-					$s = 6; continue;
-				/* } else { */ case 5:
-					_r$9 = event$1.JSValue(); /* */ $s = 11; case 11: if($c) { $c = false; _r$9 = _r$9.$blk(); } if (_r$9 && _r$9.$blk !== undefined) { break s; }
-					_r$10 = $clone(_r$9, js$1.Value).Get("clientX"); /* */ $s = 12; case 12: if($c) { $c = false; _r$10 = _r$10.$blk(); } if (_r$10 && _r$10.$blk !== undefined) { break s; }
-					_r$11 = $clone(_r$10, js$1.Value).Int(); /* */ $s = 13; case 13: if($c) { $c = false; _r$11 = _r$11.$blk(); } if (_r$11 && _r$11.$blk !== undefined) { break s; }
-					x = _r$11;
-					_r$12 = event$1.JSValue(); /* */ $s = 14; case 14: if($c) { $c = false; _r$12 = _r$12.$blk(); } if (_r$12 && _r$12.$blk !== undefined) { break s; }
-					_r$13 = $clone(_r$12, js$1.Value).Get("clientY"); /* */ $s = 15; case 15: if($c) { $c = false; _r$13 = _r$13.$blk(); } if (_r$13 && _r$13.$blk !== undefined) { break s; }
-					_r$14 = $clone(_r$13, js$1.Value).Int(); /* */ $s = 16; case 16: if($c) { $c = false; _r$14 = _r$14.$blk(); } if (_r$14 && _r$14.$blk !== undefined) { break s; }
-					y = _r$14;
-				/* } */ case 6:
-				/* */ if (!(_boundary[0] === ptrType$2.nil)) { $s = 17; continue; }
-				/* */ $s = 18; continue;
-				/* if (!(_boundary[0] === ptrType$2.nil)) { */ case 17:
-					_r$15 = $clone(_boundary[0].NodeBase.JSValue(), js$1.Value).Call("getBoundingClientRect", new sliceType([])); /* */ $s = 19; case 19: if($c) { $c = false; _r$15 = _r$15.$blk(); } if (_r$15 && _r$15.$blk !== undefined) { break s; }
-					rect = $clone(_r$15, js$1.Value);
-					left = $clone($clone(rect, js$1.Value).Get("left"), js$1.Value).Int();
-					top = $clone($clone(rect, js$1.Value).Get("top"), js$1.Value).Int();
-					bottom = $clone($clone(rect, js$1.Value).Get("bottom"), js$1.Value).Int();
-					right = $clone($clone(rect, js$1.Value).Get("right"), js$1.Value).Int();
-					_r$16 = this$1[0].Get("cursorOffsetLeft"); /* */ $s = 20; case 20: if($c) { $c = false; _r$16 = _r$16.$blk(); } if (_r$16 && _r$16.$blk !== undefined) { break s; }
-					cursorOffsetLeft = $assertType(_r$16, $Int);
-					_r$17 = this$1[0].Get("cursorOffsetTop"); /* */ $s = 21; case 21: if($c) { $c = false; _r$17 = _r$17.$blk(); } if (_r$17 && _r$17.$blk !== undefined) { break s; }
-					cursorOffsetTop = $assertType(_r$17, $Int);
-					_r$18 = this$1[0].Get("cursorOffsetRight"); /* */ $s = 22; case 22: if($c) { $c = false; _r$18 = _r$18.$blk(); } if (_r$18 && _r$18.$blk !== undefined) { break s; }
-					cursorOffsetRight = $assertType(_r$18, $Int);
-					_r$19 = this$1[0].Get("cursorOffsetBottom"); /* */ $s = 23; case 23: if($c) { $c = false; _r$19 = _r$19.$blk(); } if (_r$19 && _r$19.$blk !== undefined) { break s; }
-					cursorOffsetBottom = $assertType(_r$19, $Int);
+				_r$4 = event$1.Type(); /* */ $s = 8; case 8: if($c) { $c = false; _r$4 = _r$4.$blk(); } if (_r$4 && _r$4.$blk !== undefined) { break s; }
+				/* */ if (_r$4 === "touchmove") { $s = 5; continue; }
+				/* */ $s = 6; continue;
+				/* if (_r$4 === "touchmove") { */ case 5:
+					_r$5 = event$1.JSValue(); /* */ $s = 9; case 9: if($c) { $c = false; _r$5 = _r$5.$blk(); } if (_r$5 && _r$5.$blk !== undefined) { break s; }
+					_r$6 = $clone(_r$5, $packages["github.com/gopherjs/gopherwasm/js"].Value).Get("touches"); /* */ $s = 10; case 10: if($c) { $c = false; _r$6 = _r$6.$blk(); } if (_r$6 && _r$6.$blk !== undefined) { break s; }
+					_r$7 = $clone(_r$6, $packages["github.com/gopherjs/gopherwasm/js"].Value).Get("0"); /* */ $s = 11; case 11: if($c) { $c = false; _r$7 = _r$7.$blk(); } if (_r$7 && _r$7.$blk !== undefined) { break s; }
+					t = $clone(_r$7, $packages["github.com/gopherjs/gopherwasm/js"].Value);
+					x = $clone($clone(t, $packages["github.com/gopherjs/gopherwasm/js"].Value).Get("clientX"), $packages["github.com/gopherjs/gopherwasm/js"].Value).Int();
+					y = $clone($clone(t, $packages["github.com/gopherjs/gopherwasm/js"].Value).Get("clientY"), $packages["github.com/gopherjs/gopherwasm/js"].Value).Int();
+					$s = 7; continue;
+				/* } else { */ case 6:
+					_r$8 = event$1.JSValue(); /* */ $s = 12; case 12: if($c) { $c = false; _r$8 = _r$8.$blk(); } if (_r$8 && _r$8.$blk !== undefined) { break s; }
+					_r$9 = $clone(_r$8, $packages["github.com/gopherjs/gopherwasm/js"].Value).Get("clientX"); /* */ $s = 13; case 13: if($c) { $c = false; _r$9 = _r$9.$blk(); } if (_r$9 && _r$9.$blk !== undefined) { break s; }
+					_r$10 = $clone(_r$9, $packages["github.com/gopherjs/gopherwasm/js"].Value).Int(); /* */ $s = 14; case 14: if($c) { $c = false; _r$10 = _r$10.$blk(); } if (_r$10 && _r$10.$blk !== undefined) { break s; }
+					x = _r$10;
+					_r$11 = event$1.JSValue(); /* */ $s = 15; case 15: if($c) { $c = false; _r$11 = _r$11.$blk(); } if (_r$11 && _r$11.$blk !== undefined) { break s; }
+					_r$12 = $clone(_r$11, $packages["github.com/gopherjs/gopherwasm/js"].Value).Get("clientY"); /* */ $s = 16; case 16: if($c) { $c = false; _r$12 = _r$12.$blk(); } if (_r$12 && _r$12.$blk !== undefined) { break s; }
+					_r$13 = $clone(_r$12, $packages["github.com/gopherjs/gopherwasm/js"].Value).Int(); /* */ $s = 17; case 17: if($c) { $c = false; _r$13 = _r$13.$blk(); } if (_r$13 && _r$13.$blk !== undefined) { break s; }
+					y = _r$13;
+				/* } */ case 7:
+				/* */ if (!(_boundary[0] === ptrType$2.nil)) { $s = 18; continue; }
+				/* */ $s = 19; continue;
+				/* if (!(_boundary[0] === ptrType$2.nil)) { */ case 18:
+					_r$14 = $clone(_boundary[0].NodeBase.JSValue(), $packages["github.com/gopherjs/gopherwasm/js"].Value).Call("getBoundingClientRect", new sliceType([])); /* */ $s = 20; case 20: if($c) { $c = false; _r$14 = _r$14.$blk(); } if (_r$14 && _r$14.$blk !== undefined) { break s; }
+					rect = $clone(_r$14, $packages["github.com/gopherjs/gopherwasm/js"].Value);
+					left = $clone($clone(rect, $packages["github.com/gopherjs/gopherwasm/js"].Value).Get("left"), $packages["github.com/gopherjs/gopherwasm/js"].Value).Int();
+					top = $clone($clone(rect, $packages["github.com/gopherjs/gopherwasm/js"].Value).Get("top"), $packages["github.com/gopherjs/gopherwasm/js"].Value).Int();
+					bottom = $clone($clone(rect, $packages["github.com/gopherjs/gopherwasm/js"].Value).Get("bottom"), $packages["github.com/gopherjs/gopherwasm/js"].Value).Int();
+					right = $clone($clone(rect, $packages["github.com/gopherjs/gopherwasm/js"].Value).Get("right"), $packages["github.com/gopherjs/gopherwasm/js"].Value).Int();
+					_r$15 = this$1[0].Get("cursorOffsetLeft"); /* */ $s = 21; case 21: if($c) { $c = false; _r$15 = _r$15.$blk(); } if (_r$15 && _r$15.$blk !== undefined) { break s; }
+					cursorOffsetLeft = $assertType(_r$15, $Int);
+					_r$16 = this$1[0].Get("cursorOffsetTop"); /* */ $s = 22; case 22: if($c) { $c = false; _r$16 = _r$16.$blk(); } if (_r$16 && _r$16.$blk !== undefined) { break s; }
+					cursorOffsetTop = $assertType(_r$16, $Int);
+					_r$17 = this$1[0].Get("cursorOffsetRight"); /* */ $s = 23; case 23: if($c) { $c = false; _r$17 = _r$17.$blk(); } if (_r$17 && _r$17.$blk !== undefined) { break s; }
+					cursorOffsetRight = $assertType(_r$17, $Int);
+					_r$18 = this$1[0].Get("cursorOffsetBottom"); /* */ $s = 24; case 24: if($c) { $c = false; _r$18 = _r$18.$blk(); } if (_r$18 && _r$18.$blk !== undefined) { break s; }
+					cursorOffsetBottom = $assertType(_r$18, $Int);
 					if (((x - cursorOffsetLeft >> 0)) <= left) {
 						x = left + cursorOffsetLeft >> 0;
 					} else if (((x + cursorOffsetRight >> 0)) >= right) {
@@ -45280,247 +45391,272 @@ $packages["github.com/gascore/components/dnd-free"] = (function() {
 					} else if (((y + cursorOffsetBottom >> 0)) >= bottom) {
 						y = bottom - cursorOffsetBottom >> 0;
 					}
-				/* } */ case 18:
-				_r$20 = this$1[0].Get("initialX"); /* */ $s = 24; case 24: if($c) { $c = false; _r$20 = _r$20.$blk(); } if (_r$20 && _r$20.$blk !== undefined) { break s; }
-				x = $imul(((x - $assertType(_r$20, $Int) >> 0)), config[0].ifXDisabled);
-				_r$21 = this$1[0].Get("initialY"); /* */ $s = 25; case 25: if($c) { $c = false; _r$21 = _r$21.$blk(); } if (_r$21 && _r$21.$blk !== undefined) { break s; }
-				y = $imul(((y - $assertType(_r$21, $Int) >> 0)), config[0].ifYDisabled);
-				$r = this$1[0].Set($makeMap($String.keyFor, [{ k: "offsetX", v: new $Int(x) }, { k: "offsetY", v: new $Int(y) }])); /* */ $s = 26; case 26: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-				/* */ if (!(config[0].OnMove === $throwNilPointerError)) { $s = 27; continue; }
-				/* */ $s = 28; continue;
-				/* if (!(config[0].OnMove === $throwNilPointerError)) { */ case 27:
-					_r$22 = web.ToUniteObject(event$1); /* */ $s = 29; case 29: if($c) { $c = false; _r$22 = _r$22.$blk(); } if (_r$22 && _r$22.$blk !== undefined) { break s; }
-					_r$23 = config[0].OnMove(_r$22, x, y); /* */ $s = 30; case 30: if($c) { $c = false; _r$23 = _r$23.$blk(); } if (_r$23 && _r$23.$blk !== undefined) { break s; }
-					err = _r$23;
-					/* */ if (!($interfaceIsEqual(err, $ifaceNil))) { $s = 31; continue; }
-					/* */ $s = 32; continue;
-					/* if (!($interfaceIsEqual(err, $ifaceNil))) { */ case 31:
-						_r$24 = err.Error(); /* */ $s = 33; case 33: if($c) { $c = false; _r$24 = _r$24.$blk(); } if (_r$24 && _r$24.$blk !== undefined) { break s; }
-						$r = this$1[0].ConsoleError(new sliceType([new $String(_r$24)])); /* */ $s = 34; case 34: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-					/* } */ case 32:
-				/* } */ case 28:
+				/* } */ case 19:
+				_r$19 = this$1[0].Get("initialX"); /* */ $s = 25; case 25: if($c) { $c = false; _r$19 = _r$19.$blk(); } if (_r$19 && _r$19.$blk !== undefined) { break s; }
+				x = $imul(((x - $assertType(_r$19, $Int) >> 0)), config[0].ifXDisabled);
+				_r$20 = this$1[0].Get("initialY"); /* */ $s = 26; case 26: if($c) { $c = false; _r$20 = _r$20.$blk(); } if (_r$20 && _r$20.$blk !== undefined) { break s; }
+				y = $imul(((y - $assertType(_r$20, $Int) >> 0)), config[0].ifYDisabled);
+				$r = this$1[0].Set($makeMap($String.keyFor, [{ k: "offsetX", v: new $Int(x) }, { k: "offsetY", v: new $Int(y) }])); /* */ $s = 27; case 27: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+				/* */ if (!(config[0].OnMove === $throwNilPointerError)) { $s = 28; continue; }
+				/* */ $s = 29; continue;
+				/* if (!(config[0].OnMove === $throwNilPointerError)) { */ case 28:
+					_r$21 = web.ToUniteObject(event$1); /* */ $s = 30; case 30: if($c) { $c = false; _r$21 = _r$21.$blk(); } if (_r$21 && _r$21.$blk !== undefined) { break s; }
+					_r$22 = config[0].OnMove(_r$21, x, y); /* */ $s = 31; case 31: if($c) { $c = false; _r$22 = _r$22.$blk(); } if (_r$22 && _r$22.$blk !== undefined) { break s; }
+					err = _r$22;
+					/* */ if (!($interfaceIsEqual(err, $ifaceNil))) { $s = 32; continue; }
+					/* */ $s = 33; continue;
+					/* if (!($interfaceIsEqual(err, $ifaceNil))) { */ case 32:
+						_r$23 = err.Error(); /* */ $s = 34; case 34: if($c) { $c = false; _r$23 = _r$23.$blk(); } if (_r$23 && _r$23.$blk !== undefined) { break s; }
+						$r = this$1[0].ConsoleError(new sliceType([new $String(_r$23)])); /* */ $s = 35; case 35: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+					/* } */ case 33:
+				/* } */ case 29:
 				$s = -1; return;
-				/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._r$10 = _r$10; $f._r$11 = _r$11; $f._r$12 = _r$12; $f._r$13 = _r$13; $f._r$14 = _r$14; $f._r$15 = _r$15; $f._r$16 = _r$16; $f._r$17 = _r$17; $f._r$18 = _r$18; $f._r$19 = _r$19; $f._r$20 = _r$20; $f._r$21 = _r$21; $f._r$22 = _r$22; $f._r$23 = _r$23; $f._r$24 = _r$24; $f._r$4 = _r$4; $f._r$5 = _r$5; $f._r$6 = _r$6; $f._r$7 = _r$7; $f._r$8 = _r$8; $f._r$9 = _r$9; $f._tmp = _tmp; $f._tmp$1 = _tmp$1; $f.bottom = bottom; $f.cursorOffsetBottom = cursorOffsetBottom; $f.cursorOffsetLeft = cursorOffsetLeft; $f.cursorOffsetRight = cursorOffsetRight; $f.cursorOffsetTop = cursorOffsetTop; $f.err = err; $f.event$1 = event$1; $f.left = left; $f.rect = rect; $f.right = right; $f.t = t; $f.top = top; $f.x = x; $f.y = y; $f.$s = $s; $f.$r = $r; return $f;
-			}; })(_boundary, childUUID, config, e, this$1)), js$1.Func);
+				/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._r$10 = _r$10; $f._r$11 = _r$11; $f._r$12 = _r$12; $f._r$13 = _r$13; $f._r$14 = _r$14; $f._r$15 = _r$15; $f._r$16 = _r$16; $f._r$17 = _r$17; $f._r$18 = _r$18; $f._r$19 = _r$19; $f._r$20 = _r$20; $f._r$21 = _r$21; $f._r$22 = _r$22; $f._r$23 = _r$23; $f._r$3 = _r$3; $f._r$4 = _r$4; $f._r$5 = _r$5; $f._r$6 = _r$6; $f._r$7 = _r$7; $f._r$8 = _r$8; $f._r$9 = _r$9; $f._tmp = _tmp; $f._tmp$1 = _tmp$1; $f.bottom = bottom; $f.cursorOffsetBottom = cursorOffsetBottom; $f.cursorOffsetLeft = cursorOffsetLeft; $f.cursorOffsetRight = cursorOffsetRight; $f.cursorOffsetTop = cursorOffsetTop; $f.err = err; $f.event$1 = event$1; $f.left = left; $f.rect = rect; $f.right = right; $f.t = t; $f.top = top; $f.x = x; $f.y = y; $f.$s = $s; $f.$r = $r; return $f;
+			}; })(_boundary, childUUID, config, e, this$1)), $packages["github.com/gopherjs/gopherwasm/js"].Func);
 			startEvent = $clone(event((function(_boundary, childUUID, config, e, this$1) { return function $b(event$1) {
-				var _key, _key$1, _key$2, _key$3, _r$10, _r$11, _r$12, _r$13, _r$14, _r$15, _r$16, _r$17, _r$18, _r$19, _r$20, _r$21, _r$22, _r$23, _r$24, _r$4, _r$5, _r$6, _r$7, _r$8, _r$9, _tmp, _tmp$1, _v, clientX, clientY, err, event$1, rect, t, updatesMap, x, y, $s, $r;
-				/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _key = $f._key; _key$1 = $f._key$1; _key$2 = $f._key$2; _key$3 = $f._key$3; _r$10 = $f._r$10; _r$11 = $f._r$11; _r$12 = $f._r$12; _r$13 = $f._r$13; _r$14 = $f._r$14; _r$15 = $f._r$15; _r$16 = $f._r$16; _r$17 = $f._r$17; _r$18 = $f._r$18; _r$19 = $f._r$19; _r$20 = $f._r$20; _r$21 = $f._r$21; _r$22 = $f._r$22; _r$23 = $f._r$23; _r$24 = $f._r$24; _r$4 = $f._r$4; _r$5 = $f._r$5; _r$6 = $f._r$6; _r$7 = $f._r$7; _r$8 = $f._r$8; _r$9 = $f._r$9; _tmp = $f._tmp; _tmp$1 = $f._tmp$1; _v = $f._v; clientX = $f.clientX; clientY = $f.clientY; err = $f.err; event$1 = $f.event$1; rect = $f.rect; t = $f.t; updatesMap = $f.updatesMap; x = $f.x; y = $f.y; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
-				if (!(!(config[0].Handle === ""))) { _v = false; $s = 3; continue s; }
-				_r$4 = event$1.Target(); /* */ $s = 4; case 4: if($c) { $c = false; _r$4 = _r$4.$blk(); } if (_r$4 && _r$4.$blk !== undefined) { break s; }
-				_r$5 = _r$4.ClassList(); /* */ $s = 5; case 5: if($c) { $c = false; _r$5 = _r$5.$blk(); } if (_r$5 && _r$5.$blk !== undefined) { break s; }
-				_r$6 = _r$5.Contains(new $String(config[0].Handle)); /* */ $s = 6; case 6: if($c) { $c = false; _r$6 = _r$6.$blk(); } if (_r$6 && _r$6.$blk !== undefined) { break s; }
-				_v = !_r$6; case 3:
-				/* */ if (_v) { $s = 1; continue; }
-				/* */ $s = 2; continue;
-				/* if (_v) { */ case 1:
+				var _key, _key$1, _key$2, _key$3, _r$10, _r$11, _r$12, _r$13, _r$14, _r$15, _r$16, _r$17, _r$18, _r$19, _r$20, _r$21, _r$22, _r$23, _r$24, _r$25, _r$26, _r$27, _r$28, _r$3, _r$4, _r$5, _r$6, _r$7, _r$8, _r$9, _target, _tmp, _tmp$1, _tuple, _v, block, clientX, clientY, err, event$1, rect, t, updatesMap, x, y, $s, $r;
+				/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _key = $f._key; _key$1 = $f._key$1; _key$2 = $f._key$2; _key$3 = $f._key$3; _r$10 = $f._r$10; _r$11 = $f._r$11; _r$12 = $f._r$12; _r$13 = $f._r$13; _r$14 = $f._r$14; _r$15 = $f._r$15; _r$16 = $f._r$16; _r$17 = $f._r$17; _r$18 = $f._r$18; _r$19 = $f._r$19; _r$20 = $f._r$20; _r$21 = $f._r$21; _r$22 = $f._r$22; _r$23 = $f._r$23; _r$24 = $f._r$24; _r$25 = $f._r$25; _r$26 = $f._r$26; _r$27 = $f._r$27; _r$28 = $f._r$28; _r$3 = $f._r$3; _r$4 = $f._r$4; _r$5 = $f._r$5; _r$6 = $f._r$6; _r$7 = $f._r$7; _r$8 = $f._r$8; _r$9 = $f._r$9; _target = $f._target; _tmp = $f._tmp; _tmp$1 = $f._tmp$1; _tuple = $f._tuple; _v = $f._v; block = $f.block; clientX = $f.clientX; clientY = $f.clientY; err = $f.err; event$1 = $f.event$1; rect = $f.rect; t = $f.t; updatesMap = $f.updatesMap; x = $f.x; y = $f.y; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+				/* */ if (config[0].Handle === "") { $s = 1; continue; }
+				_r$3 = event$1.Target(); /* */ $s = 4; case 4: if($c) { $c = false; _r$3 = _r$3.$blk(); } if (_r$3 && _r$3.$blk !== undefined) { break s; }
+				_r$4 = _r$3.ClassList(); /* */ $s = 5; case 5: if($c) { $c = false; _r$4 = _r$4.$blk(); } if (_r$4 && _r$4.$blk !== undefined) { break s; }
+				_r$5 = _r$4.Contains(new $String(config[0].Handle)); /* */ $s = 6; case 6: if($c) { $c = false; _r$5 = _r$5.$blk(); } if (_r$5 && _r$5.$blk !== undefined) { break s; }
+				/* */ if (!_r$5) { $s = 2; continue; }
+				/* */ $s = 3; continue;
+				/* if (config[0].Handle === "") { */ case 1:
+					_r$6 = event$1.Target(); /* */ $s = 7; case 7: if($c) { $c = false; _r$6 = _r$6.$blk(); } if (_r$6 && _r$6.$blk !== undefined) { break s; }
+					_target = _r$6;
+					_r$7 = _target.GetAttribute("data-i"); /* */ $s = 11; case 11: if($c) { $c = false; _r$7 = _r$7.$blk(); } if (_r$7 && _r$7.$blk !== undefined) { break s; }
+					_r$8 = $clone(_r$7, js.Value).String(); /* */ $s = 12; case 12: if($c) { $c = false; _r$8 = _r$8.$blk(); } if (_r$8 && _r$8.$blk !== undefined) { break s; }
+					if (!(!(_r$8 === childUUID[0]))) { _v = false; $s = 10; continue s; }
+					_r$9 = this$1[0].Element(); /* */ $s = 13; case 13: if($c) { $c = false; _r$9 = _r$9.$blk(); } if (_r$9 && _r$9.$blk !== undefined) { break s; }
+					_r$10 = $assertType(_r$9, ptrType$2).NodeBase.Contains(_target); /* */ $s = 14; case 14: if($c) { $c = false; _r$10 = _r$10.$blk(); } if (_r$10 && _r$10.$blk !== undefined) { break s; }
+					_v = !_r$10; case 10:
+					/* */ if (_v) { $s = 8; continue; }
+					/* */ $s = 9; continue;
+					/* if (_v) { */ case 8:
+						$s = -1; return;
+					/* } */ case 9:
+					$s = 3; continue;
+				/* } else if (!_r$5) { */ case 2:
 					$s = -1; return;
-				/* } */ case 2:
+				/* } */ case 3:
 				_tmp = 0;
 				_tmp$1 = 0;
 				clientX = _tmp;
 				clientY = _tmp$1;
-				_r$7 = event$1.Type(); /* */ $s = 10; case 10: if($c) { $c = false; _r$7 = _r$7.$blk(); } if (_r$7 && _r$7.$blk !== undefined) { break s; }
-				/* */ if (_r$7 === "touchstart") { $s = 7; continue; }
-				/* */ $s = 8; continue;
-				/* if (_r$7 === "touchstart") { */ case 7:
-					_r$8 = event$1.JSValue(); /* */ $s = 11; case 11: if($c) { $c = false; _r$8 = _r$8.$blk(); } if (_r$8 && _r$8.$blk !== undefined) { break s; }
-					_r$9 = $clone(_r$8, js$1.Value).Get("touches"); /* */ $s = 12; case 12: if($c) { $c = false; _r$9 = _r$9.$blk(); } if (_r$9 && _r$9.$blk !== undefined) { break s; }
-					_r$10 = $clone(_r$9, js$1.Value).Get("0"); /* */ $s = 13; case 13: if($c) { $c = false; _r$10 = _r$10.$blk(); } if (_r$10 && _r$10.$blk !== undefined) { break s; }
-					t = $clone(_r$10, js$1.Value);
-					clientX = $clone($clone(t, js$1.Value).Get("clientX"), js$1.Value).Int();
-					clientY = $clone($clone(t, js$1.Value).Get("clientY"), js$1.Value).Int();
-					$s = 9; continue;
-				/* } else { */ case 8:
-					_r$11 = event$1.JSValue(); /* */ $s = 14; case 14: if($c) { $c = false; _r$11 = _r$11.$blk(); } if (_r$11 && _r$11.$blk !== undefined) { break s; }
-					_r$12 = $clone(_r$11, js$1.Value).Get("clientX"); /* */ $s = 15; case 15: if($c) { $c = false; _r$12 = _r$12.$blk(); } if (_r$12 && _r$12.$blk !== undefined) { break s; }
-					_r$13 = $clone(_r$12, js$1.Value).Int(); /* */ $s = 16; case 16: if($c) { $c = false; _r$13 = _r$13.$blk(); } if (_r$13 && _r$13.$blk !== undefined) { break s; }
-					clientX = _r$13;
-					_r$14 = event$1.JSValue(); /* */ $s = 17; case 17: if($c) { $c = false; _r$14 = _r$14.$blk(); } if (_r$14 && _r$14.$blk !== undefined) { break s; }
-					_r$15 = $clone(_r$14, js$1.Value).Get("clientY"); /* */ $s = 18; case 18: if($c) { $c = false; _r$15 = _r$15.$blk(); } if (_r$15 && _r$15.$blk !== undefined) { break s; }
-					_r$16 = $clone(_r$15, js$1.Value).Int(); /* */ $s = 19; case 19: if($c) { $c = false; _r$16 = _r$16.$blk(); } if (_r$16 && _r$16.$blk !== undefined) { break s; }
-					clientY = _r$16;
-				/* } */ case 9:
-				_r$17 = this$1[0].Get("offsetX"); /* */ $s = 20; case 20: if($c) { $c = false; _r$17 = _r$17.$blk(); } if (_r$17 && _r$17.$blk !== undefined) { break s; }
-				x = clientX - $assertType(_r$17, $Int) >> 0;
-				_r$18 = this$1[0].Get("offsetY"); /* */ $s = 21; case 21: if($c) { $c = false; _r$18 = _r$18.$blk(); } if (_r$18 && _r$18.$blk !== undefined) { break s; }
-				y = clientY - $assertType(_r$18, $Int) >> 0;
-				updatesMap = $makeMap($String.keyFor, [{ k: "initialX", v: new $Int(x) }, { k: "initialY", v: new $Int(y) }, { k: "isActive", v: new $Bool(true) }]);
-				/* */ if (!(_boundary[0] === ptrType$2.nil)) { $s = 22; continue; }
-				/* */ $s = 23; continue;
-				/* if (!(_boundary[0] === ptrType$2.nil)) { */ case 22:
-					_r$19 = dom.Doc.QuerySelector("[data-i='" + childUUID[0] + "']"); /* */ $s = 24; case 24: if($c) { $c = false; _r$19 = _r$19.$blk(); } if (_r$19 && _r$19.$blk !== undefined) { break s; }
-					_r$20 = _r$19.NodeBase.JSValue(); /* */ $s = 25; case 25: if($c) { $c = false; _r$20 = _r$20.$blk(); } if (_r$20 && _r$20.$blk !== undefined) { break s; }
-					_r$21 = $clone(_r$20, js$1.Value).Call("getBoundingClientRect", new sliceType([])); /* */ $s = 26; case 26: if($c) { $c = false; _r$21 = _r$21.$blk(); } if (_r$21 && _r$21.$blk !== undefined) { break s; }
-					rect = $clone(_r$21, js$1.Value);
-					_key = "cursorOffsetLeft"; (updatesMap || $throwRuntimeError("assignment to entry in nil map"))[$String.keyFor(_key)] = { k: _key, v: new $Int((clientX - $clone($clone(rect, js$1.Value).Get("left"), js$1.Value).Int() >> 0)) };
-					_key$1 = "cursorOffsetTop"; (updatesMap || $throwRuntimeError("assignment to entry in nil map"))[$String.keyFor(_key$1)] = { k: _key$1, v: new $Int((clientY - $clone($clone(rect, js$1.Value).Get("top"), js$1.Value).Int() >> 0)) };
-					_key$2 = "cursorOffsetRight"; (updatesMap || $throwRuntimeError("assignment to entry in nil map"))[$String.keyFor(_key$2)] = { k: _key$2, v: new $Int(($clone($clone(rect, js$1.Value).Get("right"), js$1.Value).Int() - clientX >> 0)) };
-					_key$3 = "cursorOffsetBottom"; (updatesMap || $throwRuntimeError("assignment to entry in nil map"))[$String.keyFor(_key$3)] = { k: _key$3, v: new $Int(($clone($clone(rect, js$1.Value).Get("bottom"), js$1.Value).Int() - clientY >> 0)) };
-				/* } */ case 23:
-				$r = this$1[0].Set(updatesMap); /* */ $s = 27; case 27: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-				/* */ if (!(config[0].OnStart === $throwNilPointerError)) { $s = 28; continue; }
-				/* */ $s = 29; continue;
-				/* if (!(config[0].OnStart === $throwNilPointerError)) { */ case 28:
-					_r$22 = web.ToUniteObject(event$1); /* */ $s = 30; case 30: if($c) { $c = false; _r$22 = _r$22.$blk(); } if (_r$22 && _r$22.$blk !== undefined) { break s; }
-					_r$23 = config[0].OnStart(_r$22, x, y); /* */ $s = 31; case 31: if($c) { $c = false; _r$23 = _r$23.$blk(); } if (_r$23 && _r$23.$blk !== undefined) { break s; }
-					err = _r$23;
-					/* */ if (!($interfaceIsEqual(err, $ifaceNil))) { $s = 32; continue; }
-					/* */ $s = 33; continue;
-					/* if (!($interfaceIsEqual(err, $ifaceNil))) { */ case 32:
-						_r$24 = err.Error(); /* */ $s = 34; case 34: if($c) { $c = false; _r$24 = _r$24.$blk(); } if (_r$24 && _r$24.$blk !== undefined) { break s; }
-						$r = this$1[0].ConsoleError(new sliceType([new $String(_r$24)])); /* */ $s = 35; case 35: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+				_r$11 = event$1.Type(); /* */ $s = 18; case 18: if($c) { $c = false; _r$11 = _r$11.$blk(); } if (_r$11 && _r$11.$blk !== undefined) { break s; }
+				/* */ if (_r$11 === "touchstart") { $s = 15; continue; }
+				/* */ $s = 16; continue;
+				/* if (_r$11 === "touchstart") { */ case 15:
+					_r$12 = event$1.JSValue(); /* */ $s = 19; case 19: if($c) { $c = false; _r$12 = _r$12.$blk(); } if (_r$12 && _r$12.$blk !== undefined) { break s; }
+					_r$13 = $clone(_r$12, $packages["github.com/gopherjs/gopherwasm/js"].Value).Get("touches"); /* */ $s = 20; case 20: if($c) { $c = false; _r$13 = _r$13.$blk(); } if (_r$13 && _r$13.$blk !== undefined) { break s; }
+					_r$14 = $clone(_r$13, $packages["github.com/gopherjs/gopherwasm/js"].Value).Get("0"); /* */ $s = 21; case 21: if($c) { $c = false; _r$14 = _r$14.$blk(); } if (_r$14 && _r$14.$blk !== undefined) { break s; }
+					t = $clone(_r$14, $packages["github.com/gopherjs/gopherwasm/js"].Value);
+					clientX = $clone($clone(t, $packages["github.com/gopherjs/gopherwasm/js"].Value).Get("clientX"), $packages["github.com/gopherjs/gopherwasm/js"].Value).Int();
+					clientY = $clone($clone(t, $packages["github.com/gopherjs/gopherwasm/js"].Value).Get("clientY"), $packages["github.com/gopherjs/gopherwasm/js"].Value).Int();
+					$s = 17; continue;
+				/* } else { */ case 16:
+					_r$15 = event$1.JSValue(); /* */ $s = 22; case 22: if($c) { $c = false; _r$15 = _r$15.$blk(); } if (_r$15 && _r$15.$blk !== undefined) { break s; }
+					_r$16 = $clone(_r$15, $packages["github.com/gopherjs/gopherwasm/js"].Value).Get("clientX"); /* */ $s = 23; case 23: if($c) { $c = false; _r$16 = _r$16.$blk(); } if (_r$16 && _r$16.$blk !== undefined) { break s; }
+					_r$17 = $clone(_r$16, $packages["github.com/gopherjs/gopherwasm/js"].Value).Int(); /* */ $s = 24; case 24: if($c) { $c = false; _r$17 = _r$17.$blk(); } if (_r$17 && _r$17.$blk !== undefined) { break s; }
+					clientX = _r$17;
+					_r$18 = event$1.JSValue(); /* */ $s = 25; case 25: if($c) { $c = false; _r$18 = _r$18.$blk(); } if (_r$18 && _r$18.$blk !== undefined) { break s; }
+					_r$19 = $clone(_r$18, $packages["github.com/gopherjs/gopherwasm/js"].Value).Get("clientY"); /* */ $s = 26; case 26: if($c) { $c = false; _r$19 = _r$19.$blk(); } if (_r$19 && _r$19.$blk !== undefined) { break s; }
+					_r$20 = $clone(_r$19, $packages["github.com/gopherjs/gopherwasm/js"].Value).Int(); /* */ $s = 27; case 27: if($c) { $c = false; _r$20 = _r$20.$blk(); } if (_r$20 && _r$20.$blk !== undefined) { break s; }
+					clientY = _r$20;
+				/* } */ case 17:
+				_r$21 = this$1[0].Get("offsetX"); /* */ $s = 28; case 28: if($c) { $c = false; _r$21 = _r$21.$blk(); } if (_r$21 && _r$21.$blk !== undefined) { break s; }
+				x = clientX - $assertType(_r$21, $Int) >> 0;
+				_r$22 = this$1[0].Get("offsetY"); /* */ $s = 29; case 29: if($c) { $c = false; _r$22 = _r$22.$blk(); } if (_r$22 && _r$22.$blk !== undefined) { break s; }
+				y = clientY - $assertType(_r$22, $Int) >> 0;
+				/* */ if (!(config[0].OnStart === $throwNilPointerError)) { $s = 30; continue; }
+				/* */ $s = 31; continue;
+				/* if (!(config[0].OnStart === $throwNilPointerError)) { */ case 30:
+					_r$23 = web.ToUniteObject(event$1); /* */ $s = 32; case 32: if($c) { $c = false; _r$23 = _r$23.$blk(); } if (_r$23 && _r$23.$blk !== undefined) { break s; }
+					_r$24 = config[0].OnStart(_r$23, x, y); /* */ $s = 33; case 33: if($c) { $c = false; _r$24 = _r$24.$blk(); } if (_r$24 && _r$24.$blk !== undefined) { break s; }
+					_tuple = _r$24;
+					block = _tuple[0];
+					err = _tuple[1];
+					/* */ if (!($interfaceIsEqual(err, $ifaceNil))) { $s = 34; continue; }
+					/* */ $s = 35; continue;
+					/* if (!($interfaceIsEqual(err, $ifaceNil))) { */ case 34:
+						_r$25 = err.Error(); /* */ $s = 36; case 36: if($c) { $c = false; _r$25 = _r$25.$blk(); } if (_r$25 && _r$25.$blk !== undefined) { break s; }
+						$r = this$1[0].ConsoleError(new sliceType([new $String(_r$25)])); /* */ $s = 37; case 37: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 						$s = -1; return;
-					/* } */ case 33:
-				/* } */ case 29:
+					/* } */ case 35:
+					if (block) {
+						$s = -1; return;
+					}
+				/* } */ case 31:
+				updatesMap = $makeMap($String.keyFor, [{ k: "initialX", v: new $Int(x) }, { k: "initialY", v: new $Int(y) }, { k: "isActive", v: new $Bool(true) }]);
+				/* */ if (!(_boundary[0] === ptrType$2.nil)) { $s = 38; continue; }
+				/* */ $s = 39; continue;
+				/* if (!(_boundary[0] === ptrType$2.nil)) { */ case 38:
+					_r$26 = dom.Doc.QuerySelector("[data-i='" + childUUID[0] + "']"); /* */ $s = 40; case 40: if($c) { $c = false; _r$26 = _r$26.$blk(); } if (_r$26 && _r$26.$blk !== undefined) { break s; }
+					_r$27 = _r$26.NodeBase.JSValue(); /* */ $s = 41; case 41: if($c) { $c = false; _r$27 = _r$27.$blk(); } if (_r$27 && _r$27.$blk !== undefined) { break s; }
+					_r$28 = $clone(_r$27, $packages["github.com/gopherjs/gopherwasm/js"].Value).Call("getBoundingClientRect", new sliceType([])); /* */ $s = 42; case 42: if($c) { $c = false; _r$28 = _r$28.$blk(); } if (_r$28 && _r$28.$blk !== undefined) { break s; }
+					rect = $clone(_r$28, $packages["github.com/gopherjs/gopherwasm/js"].Value);
+					_key = "cursorOffsetLeft"; (updatesMap || $throwRuntimeError("assignment to entry in nil map"))[$String.keyFor(_key)] = { k: _key, v: new $Int((clientX - $clone($clone(rect, $packages["github.com/gopherjs/gopherwasm/js"].Value).Get("left"), $packages["github.com/gopherjs/gopherwasm/js"].Value).Int() >> 0)) };
+					_key$1 = "cursorOffsetTop"; (updatesMap || $throwRuntimeError("assignment to entry in nil map"))[$String.keyFor(_key$1)] = { k: _key$1, v: new $Int((clientY - $clone($clone(rect, $packages["github.com/gopherjs/gopherwasm/js"].Value).Get("top"), $packages["github.com/gopherjs/gopherwasm/js"].Value).Int() >> 0)) };
+					_key$2 = "cursorOffsetRight"; (updatesMap || $throwRuntimeError("assignment to entry in nil map"))[$String.keyFor(_key$2)] = { k: _key$2, v: new $Int(($clone($clone(rect, $packages["github.com/gopherjs/gopherwasm/js"].Value).Get("right"), $packages["github.com/gopherjs/gopherwasm/js"].Value).Int() - clientX >> 0)) };
+					_key$3 = "cursorOffsetBottom"; (updatesMap || $throwRuntimeError("assignment to entry in nil map"))[$String.keyFor(_key$3)] = { k: _key$3, v: new $Int(($clone($clone(rect, $packages["github.com/gopherjs/gopherwasm/js"].Value).Get("bottom"), $packages["github.com/gopherjs/gopherwasm/js"].Value).Int() - clientY >> 0)) };
+				/* } */ case 39:
+				$r = this$1[0].Set(updatesMap); /* */ $s = 43; case 43: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 				$s = -1; return;
-				/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._key = _key; $f._key$1 = _key$1; $f._key$2 = _key$2; $f._key$3 = _key$3; $f._r$10 = _r$10; $f._r$11 = _r$11; $f._r$12 = _r$12; $f._r$13 = _r$13; $f._r$14 = _r$14; $f._r$15 = _r$15; $f._r$16 = _r$16; $f._r$17 = _r$17; $f._r$18 = _r$18; $f._r$19 = _r$19; $f._r$20 = _r$20; $f._r$21 = _r$21; $f._r$22 = _r$22; $f._r$23 = _r$23; $f._r$24 = _r$24; $f._r$4 = _r$4; $f._r$5 = _r$5; $f._r$6 = _r$6; $f._r$7 = _r$7; $f._r$8 = _r$8; $f._r$9 = _r$9; $f._tmp = _tmp; $f._tmp$1 = _tmp$1; $f._v = _v; $f.clientX = clientX; $f.clientY = clientY; $f.err = err; $f.event$1 = event$1; $f.rect = rect; $f.t = t; $f.updatesMap = updatesMap; $f.x = x; $f.y = y; $f.$s = $s; $f.$r = $r; return $f;
-			}; })(_boundary, childUUID, config, e, this$1)), js$1.Func);
+				/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._key = _key; $f._key$1 = _key$1; $f._key$2 = _key$2; $f._key$3 = _key$3; $f._r$10 = _r$10; $f._r$11 = _r$11; $f._r$12 = _r$12; $f._r$13 = _r$13; $f._r$14 = _r$14; $f._r$15 = _r$15; $f._r$16 = _r$16; $f._r$17 = _r$17; $f._r$18 = _r$18; $f._r$19 = _r$19; $f._r$20 = _r$20; $f._r$21 = _r$21; $f._r$22 = _r$22; $f._r$23 = _r$23; $f._r$24 = _r$24; $f._r$25 = _r$25; $f._r$26 = _r$26; $f._r$27 = _r$27; $f._r$28 = _r$28; $f._r$3 = _r$3; $f._r$4 = _r$4; $f._r$5 = _r$5; $f._r$6 = _r$6; $f._r$7 = _r$7; $f._r$8 = _r$8; $f._r$9 = _r$9; $f._target = _target; $f._tmp = _tmp; $f._tmp$1 = _tmp$1; $f._tuple = _tuple; $f._v = _v; $f.block = block; $f.clientX = clientX; $f.clientY = clientY; $f.err = err; $f.event$1 = event$1; $f.rect = rect; $f.t = t; $f.updatesMap = updatesMap; $f.x = x; $f.y = y; $f.$s = $s; $f.$r = $r; return $f;
+			}; })(_boundary, childUUID, config, e, this$1)), $packages["github.com/gopherjs/gopherwasm/js"].Func);
 			endEvent = $clone(event((function(_boundary, childUUID, config, e, this$1) { return function $b(event$1) {
-				var _arg, _arg$1, _arg$2, _r$10, _r$4, _r$5, _r$6, _r$7, _r$8, _r$9, _tuple, err, event$1, reset, $s, $r;
-				/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _arg = $f._arg; _arg$1 = $f._arg$1; _arg$2 = $f._arg$2; _r$10 = $f._r$10; _r$4 = $f._r$4; _r$5 = $f._r$5; _r$6 = $f._r$6; _r$7 = $f._r$7; _r$8 = $f._r$8; _r$9 = $f._r$9; _tuple = $f._tuple; err = $f.err; event$1 = $f.event$1; reset = $f.reset; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
-				/* */ if (!(config[0].OnEnd === $throwNilPointerError)) { $s = 1; continue; }
+				var _arg, _arg$1, _arg$2, _r$10, _r$3, _r$4, _r$5, _r$6, _r$7, _r$8, _r$9, _tuple, err, event$1, reset, $s, $r;
+				/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _arg = $f._arg; _arg$1 = $f._arg$1; _arg$2 = $f._arg$2; _r$10 = $f._r$10; _r$3 = $f._r$3; _r$4 = $f._r$4; _r$5 = $f._r$5; _r$6 = $f._r$6; _r$7 = $f._r$7; _r$8 = $f._r$8; _r$9 = $f._r$9; _tuple = $f._tuple; err = $f.err; event$1 = $f.event$1; reset = $f.reset; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+				_r$3 = this$1[0].Get("isActive"); /* */ $s = 3; case 3: if($c) { $c = false; _r$3 = _r$3.$blk(); } if (_r$3 && _r$3.$blk !== undefined) { break s; }
+				/* */ if (!$assertType(_r$3, $Bool)) { $s = 1; continue; }
 				/* */ $s = 2; continue;
-				/* if (!(config[0].OnEnd === $throwNilPointerError)) { */ case 1:
-					_r$4 = web.ToUniteObject(event$1); /* */ $s = 3; case 3: if($c) { $c = false; _r$4 = _r$4.$blk(); } if (_r$4 && _r$4.$blk !== undefined) { break s; }
+				/* if (!$assertType(_r$3, $Bool)) { */ case 1:
+					$s = -1; return;
+				/* } */ case 2:
+				/* */ if (!(config[0].OnEnd === $throwNilPointerError)) { $s = 4; continue; }
+				/* */ $s = 5; continue;
+				/* if (!(config[0].OnEnd === $throwNilPointerError)) { */ case 4:
+					_r$4 = web.ToUniteObject(event$1); /* */ $s = 6; case 6: if($c) { $c = false; _r$4 = _r$4.$blk(); } if (_r$4 && _r$4.$blk !== undefined) { break s; }
 					_arg = _r$4;
-					_r$5 = this$1[0].Get("offsetX"); /* */ $s = 4; case 4: if($c) { $c = false; _r$5 = _r$5.$blk(); } if (_r$5 && _r$5.$blk !== undefined) { break s; }
+					_r$5 = this$1[0].Get("offsetX"); /* */ $s = 7; case 7: if($c) { $c = false; _r$5 = _r$5.$blk(); } if (_r$5 && _r$5.$blk !== undefined) { break s; }
 					_arg$1 = $assertType(_r$5, $Int);
-					_r$6 = this$1[0].Get("offsetY"); /* */ $s = 5; case 5: if($c) { $c = false; _r$6 = _r$6.$blk(); } if (_r$6 && _r$6.$blk !== undefined) { break s; }
+					_r$6 = this$1[0].Get("offsetY"); /* */ $s = 8; case 8: if($c) { $c = false; _r$6 = _r$6.$blk(); } if (_r$6 && _r$6.$blk !== undefined) { break s; }
 					_arg$2 = $assertType(_r$6, $Int);
-					_r$7 = config[0].OnEnd(_arg, _arg$1, _arg$2); /* */ $s = 6; case 6: if($c) { $c = false; _r$7 = _r$7.$blk(); } if (_r$7 && _r$7.$blk !== undefined) { break s; }
+					_r$7 = config[0].OnEnd(_arg, _arg$1, _arg$2); /* */ $s = 9; case 9: if($c) { $c = false; _r$7 = _r$7.$blk(); } if (_r$7 && _r$7.$blk !== undefined) { break s; }
 					_tuple = _r$7;
 					reset = _tuple[0];
 					err = _tuple[1];
-					/* */ if (!($interfaceIsEqual(err, $ifaceNil))) { $s = 7; continue; }
-					/* */ $s = 8; continue;
-					/* if (!($interfaceIsEqual(err, $ifaceNil))) { */ case 7:
-						_r$8 = err.Error(); /* */ $s = 9; case 9: if($c) { $c = false; _r$8 = _r$8.$blk(); } if (_r$8 && _r$8.$blk !== undefined) { break s; }
-						$r = this$1[0].ConsoleError(new sliceType([new $String(_r$8)])); /* */ $s = 10; case 10: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+					/* */ if (!($interfaceIsEqual(err, $ifaceNil))) { $s = 10; continue; }
+					/* */ $s = 11; continue;
+					/* if (!($interfaceIsEqual(err, $ifaceNil))) { */ case 10:
+						_r$8 = err.Error(); /* */ $s = 12; case 12: if($c) { $c = false; _r$8 = _r$8.$blk(); } if (_r$8 && _r$8.$blk !== undefined) { break s; }
+						$r = this$1[0].ConsoleError(new sliceType([new $String(_r$8)])); /* */ $s = 13; case 13: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 						$s = -1; return;
-					/* } */ case 8:
-					/* */ if (reset) { $s = 11; continue; }
-					/* */ $s = 12; continue;
-					/* if (reset) { */ case 11:
-						$r = this$1[0].Set($makeMap($String.keyFor, [{ k: "initialX", v: new $Int(0) }, { k: "initialY", v: new $Int(0) }, { k: "offsetX", v: new $Int(0) }, { k: "offsetY", v: new $Int(0) }, { k: "isActive", v: new $Bool(false) }])); /* */ $s = 13; case 13: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+					/* } */ case 11:
+					/* */ if (reset) { $s = 14; continue; }
+					/* */ $s = 15; continue;
+					/* if (reset) { */ case 14:
+						$r = this$1[0].Set($makeMap($String.keyFor, [{ k: "initialX", v: new $Int(0) }, { k: "initialY", v: new $Int(0) }, { k: "offsetX", v: new $Int(0) }, { k: "offsetY", v: new $Int(0) }, { k: "isActive", v: new $Bool(false) }])); /* */ $s = 16; case 16: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 						$s = -1; return;
-					/* } */ case 12:
-				/* } */ case 2:
-				_r$9 = this$1[0].Get("offsetX"); /* */ $s = 14; case 14: if($c) { $c = false; _r$9 = _r$9.$blk(); } if (_r$9 && _r$9.$blk !== undefined) { break s; }
-				_r$10 = this$1[0].Get("offsetY"); /* */ $s = 15; case 15: if($c) { $c = false; _r$10 = _r$10.$blk(); } if (_r$10 && _r$10.$blk !== undefined) { break s; }
-				$r = this$1[0].Set($makeMap($String.keyFor, [{ k: "initialX", v: _r$9 }, { k: "initialY", v: _r$10 }, { k: "isActive", v: new $Bool(false) }])); /* */ $s = 16; case 16: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+					/* } */ case 15:
+				/* } */ case 5:
+				_r$9 = this$1[0].Get("offsetX"); /* */ $s = 17; case 17: if($c) { $c = false; _r$9 = _r$9.$blk(); } if (_r$9 && _r$9.$blk !== undefined) { break s; }
+				_r$10 = this$1[0].Get("offsetY"); /* */ $s = 18; case 18: if($c) { $c = false; _r$10 = _r$10.$blk(); } if (_r$10 && _r$10.$blk !== undefined) { break s; }
+				$r = this$1[0].Set($makeMap($String.keyFor, [{ k: "initialX", v: _r$9 }, { k: "initialY", v: _r$10 }, { k: "isActive", v: new $Bool(false) }])); /* */ $s = 19; case 19: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 				$s = -1; return;
-				/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._arg = _arg; $f._arg$1 = _arg$1; $f._arg$2 = _arg$2; $f._r$10 = _r$10; $f._r$4 = _r$4; $f._r$5 = _r$5; $f._r$6 = _r$6; $f._r$7 = _r$7; $f._r$8 = _r$8; $f._r$9 = _r$9; $f._tuple = _tuple; $f.err = err; $f.event$1 = event$1; $f.reset = reset; $f.$s = $s; $f.$r = $r; return $f;
-			}; })(_boundary, childUUID, config, e, this$1)), js$1.Func);
-			$r = addEvent(dom.Doc, "mousemove", $clone(moveEvent, js$1.Func)); /* */ $s = 7; case 7: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-			$r = addEvent(dom.Doc, "mousedown", $clone(startEvent, js$1.Func)); /* */ $s = 8; case 8: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-			$r = addEvent(dom.Doc, "mouseup", $clone(endEvent, js$1.Func)); /* */ $s = 9; case 9: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-			_r$4 = this$1[0].SetImm($makeMap($String.keyFor, [{ k: "moveEvent", v: new moveEvent.constructor.elem(moveEvent) }, { k: "startEvent", v: new startEvent.constructor.elem(startEvent) }, { k: "endEvent", v: new endEvent.constructor.elem(endEvent) }])); /* */ $s = 10; case 10: if($c) { $c = false; _r$4 = _r$4.$blk(); } if (_r$4 && _r$4.$blk !== undefined) { break s; }
-			_r$4;
+				/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._arg = _arg; $f._arg$1 = _arg$1; $f._arg$2 = _arg$2; $f._r$10 = _r$10; $f._r$3 = _r$3; $f._r$4 = _r$4; $f._r$5 = _r$5; $f._r$6 = _r$6; $f._r$7 = _r$7; $f._r$8 = _r$8; $f._r$9 = _r$9; $f._tuple = _tuple; $f.err = err; $f.event$1 = event$1; $f.reset = reset; $f.$s = $s; $f.$r = $r; return $f;
+			}; })(_boundary, childUUID, config, e, this$1)), $packages["github.com/gopherjs/gopherwasm/js"].Func);
+			$r = addEvent(dom.Doc, "mousemove", $clone(moveEvent, $packages["github.com/gopherjs/gopherwasm/js"].Func)); /* */ $s = 7; case 7: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+			$r = addEvent(dom.Doc, "mousedown", $clone(startEvent, $packages["github.com/gopherjs/gopherwasm/js"].Func)); /* */ $s = 8; case 8: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+			$r = addEvent(dom.Doc, "mouseup", $clone(endEvent, $packages["github.com/gopherjs/gopherwasm/js"].Func)); /* */ $s = 9; case 9: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+			_r$3 = this$1[0].SetImm($makeMap($String.keyFor, [{ k: "moveEvent", v: new moveEvent.constructor.elem(moveEvent) }, { k: "startEvent", v: new startEvent.constructor.elem(startEvent) }, { k: "endEvent", v: new endEvent.constructor.elem(endEvent) }])); /* */ $s = 10; case 10: if($c) { $c = false; _r$3 = _r$3.$blk(); } if (_r$3 && _r$3.$blk !== undefined) { break s; }
+			_r$3;
 			$s = -1; return $ifaceNil;
-			/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._boundary = _boundary; $f._r$3 = _r$3; $f._r$4 = _r$4; $f.endEvent = endEvent; $f.moveEvent = moveEvent; $f.startEvent = startEvent; $f.this$1 = this$1; $f.$s = $s; $f.$r = $r; return $f;
+			/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._boundary = _boundary; $f._r$2 = _r$2; $f._r$3 = _r$3; $f.endEvent = endEvent; $f.moveEvent = moveEvent; $f.startEvent = startEvent; $f.this$1 = this$1; $f.$s = $s; $f.$r = $r; return $f;
 		}; })(childUUID, config, e), (function(childUUID, config, e) { return function $b(this$1) {
-			var _arg, _arg$1, _arg$2, _arg$3, _arg$4, _arg$5, _r$3, _r$4, _r$5, this$1, $s, $r;
-			/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _arg = $f._arg; _arg$1 = $f._arg$1; _arg$2 = $f._arg$2; _arg$3 = $f._arg$3; _arg$4 = $f._arg$4; _arg$5 = $f._arg$5; _r$3 = $f._r$3; _r$4 = $f._r$4; _r$5 = $f._r$5; this$1 = $f.this$1; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+			var _arg, _arg$1, _arg$2, _arg$3, _arg$4, _arg$5, _r$2, _r$3, _r$4, this$1, $s, $r;
+			/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _arg = $f._arg; _arg$1 = $f._arg$1; _arg$2 = $f._arg$2; _arg$3 = $f._arg$3; _arg$4 = $f._arg$4; _arg$5 = $f._arg$5; _r$2 = $f._r$2; _r$3 = $f._r$3; _r$4 = $f._r$4; this$1 = $f.this$1; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
 			_arg = dom.Doc;
-			_r$3 = this$1.Get("moveEvent"); /* */ $s = 1; case 1: if($c) { $c = false; _r$3 = _r$3.$blk(); } if (_r$3 && _r$3.$blk !== undefined) { break s; }
-			_arg$1 = $clone($assertType(_r$3, js$1.Func), js$1.Func);
+			_r$2 = this$1.Get("moveEvent"); /* */ $s = 1; case 1: if($c) { $c = false; _r$2 = _r$2.$blk(); } if (_r$2 && _r$2.$blk !== undefined) { break s; }
+			_arg$1 = $clone($assertType(_r$2, $packages["github.com/gopherjs/gopherwasm/js"].Func), $packages["github.com/gopherjs/gopherwasm/js"].Func);
 			$r = removeEvent(_arg, "mousemove", _arg$1); /* */ $s = 2; case 2: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 			_arg$2 = dom.Doc;
-			_r$4 = this$1.Get("startEvent"); /* */ $s = 3; case 3: if($c) { $c = false; _r$4 = _r$4.$blk(); } if (_r$4 && _r$4.$blk !== undefined) { break s; }
-			_arg$3 = $clone($assertType(_r$4, js$1.Func), js$1.Func);
+			_r$3 = this$1.Get("startEvent"); /* */ $s = 3; case 3: if($c) { $c = false; _r$3 = _r$3.$blk(); } if (_r$3 && _r$3.$blk !== undefined) { break s; }
+			_arg$3 = $clone($assertType(_r$3, $packages["github.com/gopherjs/gopherwasm/js"].Func), $packages["github.com/gopherjs/gopherwasm/js"].Func);
 			$r = removeEvent(_arg$2, "mousedown", _arg$3); /* */ $s = 4; case 4: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 			_arg$4 = dom.Doc;
-			_r$5 = this$1.Get("endEvent"); /* */ $s = 5; case 5: if($c) { $c = false; _r$5 = _r$5.$blk(); } if (_r$5 && _r$5.$blk !== undefined) { break s; }
-			_arg$5 = $clone($assertType(_r$5, js$1.Func), js$1.Func);
+			_r$4 = this$1.Get("endEvent"); /* */ $s = 5; case 5: if($c) { $c = false; _r$4 = _r$4.$blk(); } if (_r$4 && _r$4.$blk !== undefined) { break s; }
+			_arg$5 = $clone($assertType(_r$4, $packages["github.com/gopherjs/gopherwasm/js"].Func), $packages["github.com/gopherjs/gopherwasm/js"].Func);
 			$r = removeEvent(_arg$4, "mouseup", _arg$5); /* */ $s = 6; case 6: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 			$s = -1; return $ifaceNil;
-			/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._arg = _arg; $f._arg$1 = _arg$1; $f._arg$2 = _arg$2; $f._arg$3 = _arg$3; $f._arg$4 = _arg$4; $f._arg$5 = _arg$5; $f._r$3 = _r$3; $f._r$4 = _r$4; $f._r$5 = _r$5; $f.this$1 = this$1; $f.$s = $s; $f.$r = $r; return $f;
-		}; })(childUUID, config, e), $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "", $makeMap($String.keyFor, [{ k: "class", v: config[0].Class + "-wrap" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil), (function(childUUID, config, e) { return function $b(this$1) {
-			var _r$3, this$1, $s, $r;
-			/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r$3 = $f._r$3; this$1 = $f.this$1; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+			/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._arg = _arg; $f._arg$1 = _arg$1; $f._arg$2 = _arg$2; $f._arg$3 = _arg$3; $f._arg$4 = _arg$4; $f._arg$5 = _arg$5; $f._r$2 = _r$2; $f._r$3 = _r$3; $f._r$4 = _r$4; $f.this$1 = this$1; $f.$s = $s; $f.$r = $r; return $f;
+		}; })(childUUID, config, e), $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, config[0].Tag, $makeMap($String.keyFor, [{ k: "class", v: config[0].Class + "-wrap" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil), (function(childUUID, config, e) { return function $b(this$1) {
+			var _r$2, this$1, $s, $r;
+			/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r$2 = $f._r$2; this$1 = $f.this$1; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
 			this$1 = [this$1];
-			_r$3 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, (function(childUUID, config, e, this$1) { return function $b(p) {
-				var _arg, _arg$1, _arg$2, _arg$3, _arg$4, _arg$5, _arg$6, _arg$7, _el, _r$3, _r$4, _r$5, _r$6, _r$7, p, $s, $r;
-				/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _arg = $f._arg; _arg$1 = $f._arg$1; _arg$2 = $f._arg$2; _arg$3 = $f._arg$3; _arg$4 = $f._arg$4; _arg$5 = $f._arg$5; _arg$6 = $f._arg$6; _arg$7 = $f._arg$7; _el = $f._el; _r$3 = $f._r$3; _r$4 = $f._r$4; _r$5 = $f._r$5; _r$6 = $f._r$6; _r$7 = $f._r$7; p = $f.p; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
-				_r$3 = p.Element(); /* */ $s = 1; case 1: if($c) { $c = false; _r$3 = _r$3.$blk(); } if (_r$3 && _r$3.$blk !== undefined) { break s; }
-				_el = $assertType(_r$3, ptrType$2);
+			_r$2 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, (function(childUUID, config, e, this$1) { return function $b(p) {
+				var _arg, _arg$1, _arg$2, _arg$3, _arg$4, _arg$5, _arg$6, _arg$7, _el, _r$2, _r$3, _r$4, _r$5, _r$6, p, $s, $r;
+				/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _arg = $f._arg; _arg$1 = $f._arg$1; _arg$2 = $f._arg$2; _arg$3 = $f._arg$3; _arg$4 = $f._arg$4; _arg$5 = $f._arg$5; _arg$6 = $f._arg$6; _arg$7 = $f._arg$7; _el = $f._el; _r$2 = $f._r$2; _r$3 = $f._r$3; _r$4 = $f._r$4; _r$5 = $f._r$5; _r$6 = $f._r$6; p = $f.p; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+				_r$2 = p.Element(); /* */ $s = 1; case 1: if($c) { $c = false; _r$2 = _r$2.$blk(); } if (_r$2 && _r$2.$blk !== undefined) { break s; }
+				_el = $assertType(_r$2, ptrType$2);
 				_arg = _el;
-				_r$4 = this$1[0].Get("startEvent"); /* */ $s = 2; case 2: if($c) { $c = false; _r$4 = _r$4.$blk(); } if (_r$4 && _r$4.$blk !== undefined) { break s; }
-				_arg$1 = $clone($assertType(_r$4, js$1.Func), js$1.Func);
+				_r$3 = this$1[0].Get("startEvent"); /* */ $s = 2; case 2: if($c) { $c = false; _r$3 = _r$3.$blk(); } if (_r$3 && _r$3.$blk !== undefined) { break s; }
+				_arg$1 = $clone($assertType(_r$3, $packages["github.com/gopherjs/gopherwasm/js"].Func), $packages["github.com/gopherjs/gopherwasm/js"].Func);
 				$r = addEvent(_arg, "touchstart", _arg$1); /* */ $s = 3; case 3: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 				_arg$2 = _el;
-				_r$5 = this$1[0].Get("endEvent"); /* */ $s = 4; case 4: if($c) { $c = false; _r$5 = _r$5.$blk(); } if (_r$5 && _r$5.$blk !== undefined) { break s; }
-				_arg$3 = $clone($assertType(_r$5, js$1.Func), js$1.Func);
+				_r$4 = this$1[0].Get("endEvent"); /* */ $s = 4; case 4: if($c) { $c = false; _r$4 = _r$4.$blk(); } if (_r$4 && _r$4.$blk !== undefined) { break s; }
+				_arg$3 = $clone($assertType(_r$4, $packages["github.com/gopherjs/gopherwasm/js"].Func), $packages["github.com/gopherjs/gopherwasm/js"].Func);
 				$r = addEvent(_arg$2, "touchend", _arg$3); /* */ $s = 5; case 5: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 				_arg$4 = _el;
-				_r$6 = this$1[0].Get("endEvent"); /* */ $s = 6; case 6: if($c) { $c = false; _r$6 = _r$6.$blk(); } if (_r$6 && _r$6.$blk !== undefined) { break s; }
-				_arg$5 = $clone($assertType(_r$6, js$1.Func), js$1.Func);
+				_r$5 = this$1[0].Get("endEvent"); /* */ $s = 6; case 6: if($c) { $c = false; _r$5 = _r$5.$blk(); } if (_r$5 && _r$5.$blk !== undefined) { break s; }
+				_arg$5 = $clone($assertType(_r$5, $packages["github.com/gopherjs/gopherwasm/js"].Func), $packages["github.com/gopherjs/gopherwasm/js"].Func);
 				$r = addEvent(_arg$4, "touchcancel", _arg$5); /* */ $s = 7; case 7: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 				_arg$6 = _el;
-				_r$7 = this$1[0].Get("moveEvent"); /* */ $s = 8; case 8: if($c) { $c = false; _r$7 = _r$7.$blk(); } if (_r$7 && _r$7.$blk !== undefined) { break s; }
-				_arg$7 = $clone($assertType(_r$7, js$1.Func), js$1.Func);
+				_r$6 = this$1[0].Get("moveEvent"); /* */ $s = 8; case 8: if($c) { $c = false; _r$6 = _r$6.$blk(); } if (_r$6 && _r$6.$blk !== undefined) { break s; }
+				_arg$7 = $clone($assertType(_r$6, $packages["github.com/gopherjs/gopherwasm/js"].Func), $packages["github.com/gopherjs/gopherwasm/js"].Func);
 				$r = addEvent(_arg$6, "touchmove", _arg$7); /* */ $s = 9; case 9: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 				$s = -1; return $ifaceNil;
-				/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._arg = _arg; $f._arg$1 = _arg$1; $f._arg$2 = _arg$2; $f._arg$3 = _arg$3; $f._arg$4 = _arg$4; $f._arg$5 = _arg$5; $f._arg$6 = _arg$6; $f._arg$7 = _arg$7; $f._el = _el; $f._r$3 = _r$3; $f._r$4 = _r$4; $f._r$5 = _r$5; $f._r$6 = _r$6; $f._r$7 = _r$7; $f.p = p; $f.$s = $s; $f.$r = $r; return $f;
+				/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._arg = _arg; $f._arg$1 = _arg$1; $f._arg$2 = _arg$2; $f._arg$3 = _arg$3; $f._arg$4 = _arg$4; $f._arg$5 = _arg$5; $f._arg$6 = _arg$6; $f._arg$7 = _arg$7; $f._el = _el; $f._r$2 = _r$2; $f._r$3 = _r$3; $f._r$4 = _r$4; $f._r$5 = _r$5; $f._r$6 = _r$6; $f.p = p; $f.$s = $s; $f.$r = $r; return $f;
 			}; })(childUUID, config, e, this$1), $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, $makeMap($String.keyFor, [{ k: "style", v: (function(childUUID, config, e, this$1) { return function $b() {
-				var _arg, _arg$1, _r$3, _r$4, _r$5, $s, $r;
-				/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _arg = $f._arg; _arg$1 = $f._arg$1; _r$3 = $f._r$3; _r$4 = $f._r$4; _r$5 = $f._r$5; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
-				_r$3 = this$1[0].Get("offsetX"); /* */ $s = 1; case 1: if($c) { $c = false; _r$3 = _r$3.$blk(); } if (_r$3 && _r$3.$blk !== undefined) { break s; }
-				_arg = _r$3;
-				_r$4 = this$1[0].Get("offsetY"); /* */ $s = 2; case 2: if($c) { $c = false; _r$4 = _r$4.$blk(); } if (_r$4 && _r$4.$blk !== undefined) { break s; }
-				_arg$1 = _r$4;
-				_r$5 = fmt.Sprintf("transform: translate3d(%dpx, %dpx, 0px)", new sliceType([_arg, _arg$1])); /* */ $s = 3; case 3: if($c) { $c = false; _r$5 = _r$5.$blk(); } if (_r$5 && _r$5.$blk !== undefined) { break s; }
-				$s = -1; return _r$5;
-				/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._arg = _arg; $f._arg$1 = _arg$1; $f._r$3 = _r$3; $f._r$4 = _r$4; $f._r$5 = _r$5; $f.$s = $s; $f.$r = $r; return $f;
+				var _arg, _arg$1, _r$2, _r$3, _r$4, $s, $r;
+				/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _arg = $f._arg; _arg$1 = $f._arg$1; _r$2 = $f._r$2; _r$3 = $f._r$3; _r$4 = $f._r$4; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+				_r$2 = this$1[0].Get("offsetX"); /* */ $s = 1; case 1: if($c) { $c = false; _r$2 = _r$2.$blk(); } if (_r$2 && _r$2.$blk !== undefined) { break s; }
+				_arg = _r$2;
+				_r$3 = this$1[0].Get("offsetY"); /* */ $s = 2; case 2: if($c) { $c = false; _r$3 = _r$3.$blk(); } if (_r$3 && _r$3.$blk !== undefined) { break s; }
+				_arg$1 = _r$3;
+				_r$4 = fmt.Sprintf("transform: translate3d(%dpx, %dpx, 0px)", new sliceType([_arg, _arg$1])); /* */ $s = 3; case 3: if($c) { $c = false; _r$4 = _r$4.$blk(); } if (_r$4 && _r$4.$blk !== undefined) { break s; }
+				$s = -1; return _r$4;
+				/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._arg = _arg; $f._arg$1 = _arg$1; $f._r$2 = _r$2; $f._r$3 = _r$3; $f._r$4 = _r$4; $f.$s = $s; $f.$r = $r; return $f;
 			}; })(childUUID, config, e, this$1) }, { k: "class", v: (function(childUUID, config, e, this$1) { return function $b() {
-				var _r$3, isActive, isActiveClass, $s, $r;
-				/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r$3 = $f._r$3; isActive = $f.isActive; isActiveClass = $f.isActiveClass; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
-				_r$3 = this$1[0].Get("isActive"); /* */ $s = 1; case 1: if($c) { $c = false; _r$3 = _r$3.$blk(); } if (_r$3 && _r$3.$blk !== undefined) { break s; }
-				isActive = $assertType(_r$3, $Bool);
+				var _r$2, isActive, isActiveClass, $s, $r;
+				/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r$2 = $f._r$2; isActive = $f.isActive; isActiveClass = $f.isActiveClass; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+				_r$2 = this$1[0].Get("isActive"); /* */ $s = 1; case 1: if($c) { $c = false; _r$2 = _r$2.$blk(); } if (_r$2 && _r$2.$blk !== undefined) { break s; }
+				isActive = $assertType(_r$2, $Bool);
 				isActiveClass = "";
 				if (isActive) {
 					isActiveClass = config[0].Class + "-active";
 				}
 				$s = -1; return config[0].Class + " " + isActiveClass;
-				/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._r$3 = _r$3; $f.isActive = isActive; $f.isActiveClass = isActiveClass; $f.$s = $s; $f.$r = $r; return $f;
-			}; })(childUUID, config, e, this$1) }]), false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "", false, childUUID[0], false, ptrType.nil, "", false, false, ptrType$1.nil), e[0].Body); /* */ $s = 1; case 1: if($c) { $c = false; _r$3 = _r$3.$blk(); } if (_r$3 && _r$3.$blk !== undefined) { break s; }
-			$s = -1; return new sliceType([_r$3]);
-			/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._r$3 = _r$3; $f.this$1 = this$1; $f.$s = $s; $f.$r = $r; return $f;
-		}; })(childUUID, config, e)); /* */ $s = 6; case 6: if($c) { $c = false; _r$3 = _r$3.$blk(); } if (_r$3 && _r$3.$blk !== undefined) { break s; }
-		$s = -1; return _r$3;
-		/* */ } return; } if ($f === undefined) { $f = { $blk: DNDFree }; } $f._r$1 = _r$1; $f._r$2 = _r$2; $f._r$3 = _r$3; $f.childUUID = childUUID; $f.config = config; $f.e = e; $f.$s = $s; $f.$r = $r; return $f;
+				/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._r$2 = _r$2; $f.isActive = isActive; $f.isActiveClass = isActiveClass; $f.$s = $s; $f.$r = $r; return $f;
+			}; })(childUUID, config, e, this$1) }]), false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "", false, childUUID[0], false, ptrType.nil, "", false, false, ptrType$1.nil), e[0].Body); /* */ $s = 1; case 1: if($c) { $c = false; _r$2 = _r$2.$blk(); } if (_r$2 && _r$2.$blk !== undefined) { break s; }
+			$s = -1; return new sliceType([_r$2]);
+			/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._r$2 = _r$2; $f.this$1 = this$1; $f.$s = $s; $f.$r = $r; return $f;
+		}; })(childUUID, config, e)); /* */ $s = 6; case 6: if($c) { $c = false; _r$2 = _r$2.$blk(); } if (_r$2 && _r$2.$blk !== undefined) { break s; }
+		$s = -1; return _r$2;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: DNDFree }; } $f._r = _r; $f._r$1 = _r$1; $f._r$2 = _r$2; $f.childUUID = childUUID; $f.config = config; $f.e = e; $f.$s = $s; $f.$r = $r; return $f;
 	};
 	$pkg.DNDFree = DNDFree;
 	addEvent = function(e, typ, h) {
-		var _r$1, _r$2, e, h, typ, $s, $r;
-		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r$1 = $f._r$1; _r$2 = $f._r$2; e = $f.e; h = $f.h; typ = $f.typ; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
-		_r$1 = e.JSValue(); /* */ $s = 1; case 1: if($c) { $c = false; _r$1 = _r$1.$blk(); } if (_r$1 && _r$1.$blk !== undefined) { break s; }
-		_r$2 = $clone(_r$1, js$1.Value).Call("addEventListener", new sliceType([new $String(typ), new h.constructor.elem(h), new passive.constructor.elem(passive)])); /* */ $s = 2; case 2: if($c) { $c = false; _r$2 = _r$2.$blk(); } if (_r$2 && _r$2.$blk !== undefined) { break s; }
-		_r$2;
+		var _r, _r$1, e, h, typ, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r = $f._r; _r$1 = $f._r$1; e = $f.e; h = $f.h; typ = $f.typ; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		_r = e.JSValue(); /* */ $s = 1; case 1: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
+		_r$1 = $clone(_r, $packages["github.com/gopherjs/gopherwasm/js"].Value).Call("addEventListener", new sliceType([new $String(typ), new h.constructor.elem(h)])); /* */ $s = 2; case 2: if($c) { $c = false; _r$1 = _r$1.$blk(); } if (_r$1 && _r$1.$blk !== undefined) { break s; }
+		_r$1;
 		$s = -1; return;
-		/* */ } return; } if ($f === undefined) { $f = { $blk: addEvent }; } $f._r$1 = _r$1; $f._r$2 = _r$2; $f.e = e; $f.h = h; $f.typ = typ; $f.$s = $s; $f.$r = $r; return $f;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: addEvent }; } $f._r = _r; $f._r$1 = _r$1; $f.e = e; $f.h = h; $f.typ = typ; $f.$s = $s; $f.$r = $r; return $f;
 	};
 	removeEvent = function(e, typ, h) {
-		var _r$1, _r$2, e, h, typ, $s, $r;
-		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r$1 = $f._r$1; _r$2 = $f._r$2; e = $f.e; h = $f.h; typ = $f.typ; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
-		_r$1 = e.JSValue(); /* */ $s = 1; case 1: if($c) { $c = false; _r$1 = _r$1.$blk(); } if (_r$1 && _r$1.$blk !== undefined) { break s; }
-		_r$2 = $clone(_r$1, js$1.Value).Call("removeEventListener", new sliceType([new $String(typ), new h.constructor.elem(h), new passive.constructor.elem(passive)])); /* */ $s = 2; case 2: if($c) { $c = false; _r$2 = _r$2.$blk(); } if (_r$2 && _r$2.$blk !== undefined) { break s; }
-		_r$2;
+		var _r, _r$1, e, h, typ, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r = $f._r; _r$1 = $f._r$1; e = $f.e; h = $f.h; typ = $f.typ; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		_r = e.JSValue(); /* */ $s = 1; case 1: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
+		_r$1 = $clone(_r, $packages["github.com/gopherjs/gopherwasm/js"].Value).Call("removeEventListener", new sliceType([new $String(typ), new h.constructor.elem(h)])); /* */ $s = 2; case 2: if($c) { $c = false; _r$1 = _r$1.$blk(); } if (_r$1 && _r$1.$blk !== undefined) { break s; }
+		_r$1;
 		$s = -1; return;
-		/* */ } return; } if ($f === undefined) { $f = { $blk: removeEvent }; } $f._r$1 = _r$1; $f._r$2 = _r$2; $f.e = e; $f.h = h; $f.typ = typ; $f.$s = $s; $f.$r = $r; return $f;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: removeEvent }; } $f._r = _r; $f._r$1 = _r$1; $f.e = e; $f.h = h; $f.typ = typ; $f.$s = $s; $f.$r = $r; return $f;
 	};
 	event = function(f) {
 		var f;
 		return js.NewEventCallback((function $b(v) {
-			var _r$1, v, $s, $r;
-			/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r$1 = $f._r$1; v = $f.v; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
-			_r$1 = dom.ConvertEvent($clone(v, js.Value)); /* */ $s = 1; case 1: if($c) { $c = false; _r$1 = _r$1.$blk(); } if (_r$1 && _r$1.$blk !== undefined) { break s; }
-			$r = f(_r$1); /* */ $s = 2; case 2: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+			var _r, v, $s, $r;
+			/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r = $f._r; v = $f.v; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+			_r = dom.ConvertEvent($clone(v, js.Value)); /* */ $s = 1; case 1: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
+			$r = f(_r); /* */ $s = 2; case 2: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 			$s = -1; return;
-			/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._r$1 = _r$1; $f.v = v; $f.$s = $s; $f.$r = $r; return $f;
+			/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._r = _r; $f.v = v; $f.$s = $s; $f.$r = $r; return $f;
 		}));
 	};
-	Config.init("github.com/gascore/components/dnd-free", [{prop: "XDisabled", name: "XDisabled", embedded: false, exported: true, typ: $Bool, tag: ""}, {prop: "YDisabled", name: "YDisabled", embedded: false, exported: true, typ: $Bool, tag: ""}, {prop: "ifXDisabled", name: "ifXDisabled", embedded: false, exported: false, typ: $Int, tag: ""}, {prop: "ifYDisabled", name: "ifYDisabled", embedded: false, exported: false, typ: $Int, tag: ""}, {prop: "Boundary", name: "Boundary", embedded: false, exported: true, typ: $String, tag: ""}, {prop: "Handle", name: "Handle", embedded: false, exported: true, typ: $String, tag: ""}, {prop: "Class", name: "Class", embedded: false, exported: true, typ: $String, tag: ""}, {prop: "OnStart", name: "OnStart", embedded: false, exported: true, typ: funcType, tag: ""}, {prop: "OnMove", name: "OnMove", embedded: false, exported: true, typ: funcType, tag: ""}, {prop: "OnEnd", name: "OnEnd", embedded: false, exported: true, typ: funcType$1, tag: ""}]);
+	Config.init("github.com/gascore/components/dnd/free", [{prop: "Tag", name: "Tag", embedded: false, exported: true, typ: $String, tag: ""}, {prop: "XDisabled", name: "XDisabled", embedded: false, exported: true, typ: $Bool, tag: ""}, {prop: "YDisabled", name: "YDisabled", embedded: false, exported: true, typ: $Bool, tag: ""}, {prop: "ifXDisabled", name: "ifXDisabled", embedded: false, exported: false, typ: $Int, tag: ""}, {prop: "ifYDisabled", name: "ifYDisabled", embedded: false, exported: false, typ: $Int, tag: ""}, {prop: "Boundary", name: "Boundary", embedded: false, exported: true, typ: $String, tag: ""}, {prop: "Handle", name: "Handle", embedded: false, exported: true, typ: $String, tag: ""}, {prop: "Class", name: "Class", embedded: false, exported: true, typ: $String, tag: ""}, {prop: "OnMove", name: "OnMove", embedded: false, exported: true, typ: funcType, tag: ""}, {prop: "OnStart", name: "OnStart", embedded: false, exported: true, typ: funcType$1, tag: ""}, {prop: "OnEnd", name: "OnEnd", embedded: false, exported: true, typ: funcType$1, tag: ""}]);
 	$init = function() {
 		$pkg.$init = function() {};
 		/* */ var $f, $c = false, $s = 0, $r; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
@@ -45530,25 +45666,720 @@ $packages["github.com/gascore/components/dnd-free"] = (function() {
 		$r = js.$init(); /* */ $s = 4; case 4: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 		$r = gas.$init(); /* */ $s = 5; case 5: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 		$r = web.$init(); /* */ $s = 6; case 6: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-		$r = js$1.$init(); /* */ $s = 7; case 7: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-		_r = (function $b() {
-			var _r, obj, $s, $r;
-			/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r = $f._r; obj = $f.obj; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
-			_r = js.NewObject(); /* */ $s = 1; case 1: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
-			obj = $clone(_r, js.Value);
-			$r = $clone(obj, js.Value).Set("passive", new $Bool(true)); /* */ $s = 2; case 2: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-			$r = $clone(obj, js.Value).Set("capture", new $Bool(false)); /* */ $s = 3; case 3: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-			$s = -1; return $clone(obj, js.Value).JSValue();
-			/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._r = _r; $f.obj = obj; $f.$s = $s; $f.$r = $r; return $f;
-		})(); /* */ $s = 8; case 8: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
-		passive = $clone(_r, js$1.Value);
+		/* */ } return; } if ($f === undefined) { $f = { $blk: $init }; } $f.$s = $s; $f.$r = $r; return $f;
+	};
+	$pkg.$init = $init;
+	return $pkg;
+})();
+$packages["github.com/gascore/components/dnd/lists"] = (function() {
+	var $pkg = {}, $init, fmt, dom, gas, web, js, errors, strconv, strings, time, EventsHandlers, StartedEvent, RemovedEvent, EnteredEvent, LeavedEvent, StandardEvent, Config, ptrType, sliceType, ptrType$1, sliceType$1, ptrType$2, funcType, funcType$1, funcType$2, funcType$3, funcType$4, Lists, dropEvent, getPlaceholderNode, addToArr, replaceInArr, elementIndex;
+	fmt = $packages["fmt"];
+	dom = $packages["github.com/gascore/dom"];
+	gas = $packages["github.com/gascore/gas"];
+	web = $packages["github.com/gascore/gas-web"];
+	js = $packages["github.com/gopherjs/gopherwasm/js"];
+	errors = $packages["github.com/pkg/errors"];
+	strconv = $packages["strconv"];
+	strings = $packages["strings"];
+	time = $packages["time"];
+	EventsHandlers = $pkg.EventsHandlers = $newType(0, $kindStruct, "dnd.EventsHandlers", true, "github.com/gascore/components/dnd/lists", true, function(Started_, Entered_, Leaved_, Ended_, Added_, Updated_, Removed_, Moved_) {
+		this.$val = this;
+		if (arguments.length === 0) {
+			this.Started = $throwNilPointerError;
+			this.Entered = $throwNilPointerError;
+			this.Leaved = $throwNilPointerError;
+			this.Ended = $throwNilPointerError;
+			this.Added = $throwNilPointerError;
+			this.Updated = $throwNilPointerError;
+			this.Removed = $throwNilPointerError;
+			this.Moved = $throwNilPointerError;
+			return;
+		}
+		this.Started = Started_;
+		this.Entered = Entered_;
+		this.Leaved = Leaved_;
+		this.Ended = Ended_;
+		this.Added = Added_;
+		this.Updated = Updated_;
+		this.Removed = Removed_;
+		this.Moved = Moved_;
+	});
+	StartedEvent = $pkg.StartedEvent = $newType(0, $kindStruct, "dnd.StartedEvent", true, "github.com/gascore/components/dnd/lists", true, function(Index_, Body_) {
+		this.$val = this;
+		if (arguments.length === 0) {
+			this.Index = 0;
+			this.Body = $ifaceNil;
+			return;
+		}
+		this.Index = Index_;
+		this.Body = Body_;
+	});
+	RemovedEvent = $pkg.RemovedEvent = $newType(0, $kindStruct, "dnd.RemovedEvent", true, "github.com/gascore/components/dnd/lists", true, function(OldIndex_, Body_) {
+		this.$val = this;
+		if (arguments.length === 0) {
+			this.OldIndex = 0;
+			this.Body = $ifaceNil;
+			return;
+		}
+		this.OldIndex = OldIndex_;
+		this.Body = Body_;
+	});
+	EnteredEvent = $pkg.EnteredEvent = $newType(0, $kindStruct, "dnd.EnteredEvent", true, "github.com/gascore/components/dnd/lists", true, function(Body_) {
+		this.$val = this;
+		if (arguments.length === 0) {
+			this.Body = $ifaceNil;
+			return;
+		}
+		this.Body = Body_;
+	});
+	LeavedEvent = $pkg.LeavedEvent = $newType(0, $kindStruct, "dnd.LeavedEvent", true, "github.com/gascore/components/dnd/lists", true, function(Body_) {
+		this.$val = this;
+		if (arguments.length === 0) {
+			this.Body = $ifaceNil;
+			return;
+		}
+		this.Body = Body_;
+	});
+	StandardEvent = $pkg.StandardEvent = $newType(0, $kindStruct, "dnd.StandardEvent", true, "github.com/gascore/components/dnd/lists", true, function(OldIndex_, NewIndex_, Body_) {
+		this.$val = this;
+		if (arguments.length === 0) {
+			this.OldIndex = 0;
+			this.NewIndex = 0;
+			this.Body = $ifaceNil;
+			return;
+		}
+		this.OldIndex = OldIndex_;
+		this.NewIndex = NewIndex_;
+		this.Body = Body_;
+	});
+	Config = $pkg.Config = $newType(0, $kindStruct, "dnd.Config", true, "github.com/gascore/components/dnd/lists", true, function(This_, Tag_, Group_, FieldName_, Events_, GroupClass_, PreviewClass_, PlaceholderClass_) {
+		this.$val = this;
+		if (arguments.length === 0) {
+			this.This = ptrType.nil;
+			this.Tag = "";
+			this.Group = "";
+			this.FieldName = "";
+			this.Events = new EventsHandlers.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError);
+			this.GroupClass = "";
+			this.PreviewClass = "";
+			this.PlaceholderClass = "";
+			return;
+		}
+		this.This = This_;
+		this.Tag = Tag_;
+		this.Group = Group_;
+		this.FieldName = FieldName_;
+		this.Events = Events_;
+		this.GroupClass = GroupClass_;
+		this.PreviewClass = PreviewClass_;
+		this.PlaceholderClass = PlaceholderClass_;
+	});
+	ptrType = $ptrType(gas.Component);
+	sliceType = $sliceType($emptyInterface);
+	ptrType$1 = $ptrType(dom.Element);
+	sliceType$1 = $sliceType(gas.ModelDirectiveDeepData);
+	ptrType$2 = $ptrType(gas.RenderCore);
+	funcType = $funcType([StartedEvent], [$Bool, $error], false);
+	funcType$1 = $funcType([EnteredEvent], [$error], false);
+	funcType$2 = $funcType([LeavedEvent], [$error], false);
+	funcType$3 = $funcType([StandardEvent], [$error], false);
+	funcType$4 = $funcType([RemovedEvent], [$error], false);
+	Lists = function(config, e) {
+		var _i, _key, _key$1, _key$2, _key$3, _r, _r$1, _ref, body, config, e, i, item, item$1, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _i = $f._i; _key = $f._key; _key$1 = $f._key$1; _key$2 = $f._key$2; _key$3 = $f._key$3; _r = $f._r; _r$1 = $f._r$1; _ref = $f._ref; body = $f.body; config = $f.config; e = $f.e; i = $f.i; item = $f.item; item$1 = $f.item$1; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		body = [body];
+		config = [config];
+		e = [e];
+			/* */ if (config[0].This === ptrType.nil) { $s = 2; continue; }
+			/* */ if ((e[0].Body.$length === 0)) { $s = 3; continue; }
+			/* */ if ((config[0].Group.length === 0)) { $s = 4; continue; }
+			/* */ if ((config[0].FieldName.length === 0)) { $s = 5; continue; }
+			/* */ if ((config[0].PlaceholderClass.length === 0)) { $s = 6; continue; }
+			/* */ if ((config[0].PreviewClass.length === 0)) { $s = 7; continue; }
+			/* */ $s = 8; continue;
+			/* if (config[0].This === ptrType.nil) { */ case 2:
+				$r = dom.ConsoleError(new sliceType([new $String("invalid This: config.This == nil")])); /* */ $s = 9; case 9: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+				$s = -1; return ptrType.nil;
+			/* } else if ((e[0].Body.$length === 0)) { */ case 3:
+				$r = dom.ConsoleError(new sliceType([new $String("no items in DragAndDrop body")])); /* */ $s = 10; case 10: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+				$s = -1; return ptrType.nil;
+			/* } else if ((config[0].Group.length === 0)) { */ case 4:
+				$r = dom.ConsoleError(new sliceType([new $String("invalid Group name")])); /* */ $s = 11; case 11: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+				$s = -1; return ptrType.nil;
+			/* } else if ((config[0].FieldName.length === 0)) { */ case 5:
+				$r = dom.ConsoleError(new sliceType([new $String("invalid FieldName name")])); /* */ $s = 12; case 12: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+				$s = -1; return ptrType.nil;
+			/* } else if ((config[0].PlaceholderClass.length === 0)) { */ case 6:
+				config[0].PlaceholderClass = "dnd-placeholder";
+				$s = 8; continue;
+			/* } else if ((config[0].PreviewClass.length === 0)) { */ case 7:
+				config[0].PreviewClass = "dnd-preview";
+			/* } */ case 8:
+		case 1:
+		body[0] = gas.UnSpliceBody(e[0].Body);
+		_ref = body[0];
+		_i = 0;
+		/* while (true) { */ case 13:
+			/* if (!(_i < _ref.$length)) { break; } */ if(!(_i < _ref.$length)) { $s = 14; continue; }
+			i = _i;
+			item = ((_i < 0 || _i >= _ref.$length) ? ($throwRuntimeError("index out of range"), undefined) : _ref.$array[_ref.$offset + _i]);
+			/* */ if (!gas.IsComponent(item)) { $s = 15; continue; }
+			/* */ $s = 16; continue;
+			/* if (!gas.IsComponent(item)) { */ case 15:
+				$r = dom.ConsoleError(new sliceType([new $String("invalid body child type (not *gas.Component)")])); /* */ $s = 17; case 17: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+				$s = -1; return ptrType.nil;
+			/* } */ case 16:
+			item$1 = gas.I2C(item);
+			if (item$1.Handlers === false) {
+				item$1.Handlers = {};
+			}
+			if (item$1.Attrs === false) {
+				item$1.Attrs = {};
+			}
+			_key = "draggable"; (item$1.Attrs || $throwRuntimeError("assignment to entry in nil map"))[$String.keyFor(_key)] = { k: _key, v: "true" };
+			_key$1 = "data-group"; (item$1.Attrs || $throwRuntimeError("assignment to entry in nil map"))[$String.keyFor(_key$1)] = { k: _key$1, v: config[0].Group };
+			_key$2 = "data-is-item"; (item$1.Attrs || $throwRuntimeError("assignment to entry in nil map"))[$String.keyFor(_key$2)] = { k: _key$2, v: "true" };
+			_r = fmt.Sprintf("%d", new sliceType([new $Int(i)])); /* */ $s = 18; case 18: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
+			_key$3 = "data-dnd-index"; (item$1.Attrs || $throwRuntimeError("assignment to entry in nil map"))[$String.keyFor(_key$3)] = { k: _key$3, v: _r };
+			item$1.Hooks.Mounted = (function(body, config, e) { return function $b(this$1) {
+				var _el, _r$1, this$1, $s, $r;
+				/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _el = $f._el; _r$1 = $f._r$1; this$1 = $f.this$1; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+				_el = [_el];
+				this$1 = [this$1];
+				_r$1 = this$1[0].Element(); /* */ $s = 1; case 1: if($c) { $c = false; _r$1 = _r$1.$blk(); } if (_r$1 && _r$1.$blk !== undefined) { break s; }
+				_el[0] = $assertType(_r$1, ptrType$1);
+				$r = _el[0].NodeBase.AddEventListener("dragstart", (function(_el, body, config, e, this$1) { return function $b(e$1) {
+					var _arg, _arg$1, _arg$2, _arg$3, _arg$4, _el$1, _preview, _r$10, _r$11, _r$12, _r$13, _r$14, _r$15, _r$16, _r$17, _r$18, _r$19, _r$2, _r$20, _r$21, _r$22, _r$23, _r$24, _r$25, _r$26, _r$27, _r$28, _r$29, _r$3, _r$4, _r$5, _r$6, _r$7, _r$8, _r$9, _tuple, _tuple$1, canContinue, dataTransfer, e$1, err, err$1, index, indexS, x, $s, $r;
+					/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _arg = $f._arg; _arg$1 = $f._arg$1; _arg$2 = $f._arg$2; _arg$3 = $f._arg$3; _arg$4 = $f._arg$4; _el$1 = $f._el$1; _preview = $f._preview; _r$10 = $f._r$10; _r$11 = $f._r$11; _r$12 = $f._r$12; _r$13 = $f._r$13; _r$14 = $f._r$14; _r$15 = $f._r$15; _r$16 = $f._r$16; _r$17 = $f._r$17; _r$18 = $f._r$18; _r$19 = $f._r$19; _r$2 = $f._r$2; _r$20 = $f._r$20; _r$21 = $f._r$21; _r$22 = $f._r$22; _r$23 = $f._r$23; _r$24 = $f._r$24; _r$25 = $f._r$25; _r$26 = $f._r$26; _r$27 = $f._r$27; _r$28 = $f._r$28; _r$29 = $f._r$29; _r$3 = $f._r$3; _r$4 = $f._r$4; _r$5 = $f._r$5; _r$6 = $f._r$6; _r$7 = $f._r$7; _r$8 = $f._r$8; _r$9 = $f._r$9; _tuple = $f._tuple; _tuple$1 = $f._tuple$1; canContinue = $f.canContinue; dataTransfer = $f.dataTransfer; e$1 = $f.e$1; err = $f.err; err$1 = $f.err$1; index = $f.index; indexS = $f.indexS; x = $f.x; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+					_preview = [_preview];
+					_r$2 = e$1.Target(); /* */ $s = 1; case 1: if($c) { $c = false; _r$2 = _r$2.$blk(); } if (_r$2 && _r$2.$blk !== undefined) { break s; }
+					_el$1 = _r$2;
+					_r$3 = _el$1.GetAttribute("data-dnd-index"); /* */ $s = 2; case 2: if($c) { $c = false; _r$3 = _r$3.$blk(); } if (_r$3 && _r$3.$blk !== undefined) { break s; }
+					_r$4 = $clone(_r$3, $packages["github.com/gascore/dom/js"].Value).String(); /* */ $s = 3; case 3: if($c) { $c = false; _r$4 = _r$4.$blk(); } if (_r$4 && _r$4.$blk !== undefined) { break s; }
+					indexS = _r$4;
+					_tuple = strconv.Atoi(indexS);
+					index = _tuple[0];
+					err = _tuple[1];
+					/* */ if (!($interfaceIsEqual(err, $ifaceNil))) { $s = 4; continue; }
+					/* */ $s = 5; continue;
+					/* if (!($interfaceIsEqual(err, $ifaceNil))) { */ case 4:
+						_r$5 = err.Error(); /* */ $s = 6; case 6: if($c) { $c = false; _r$5 = _r$5.$blk(); } if (_r$5 && _r$5.$blk !== undefined) { break s; }
+						$r = dom.ConsoleError(new sliceType([new $String(_r$5)])); /* */ $s = 7; case 7: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+						$s = -1; return;
+					/* } */ case 5:
+					/* */ if (!(config[0].Events.Started === $throwNilPointerError)) { $s = 8; continue; }
+					/* */ $s = 9; continue;
+					/* if (!(config[0].Events.Started === $throwNilPointerError)) { */ case 8:
+						_r$6 = web.ToUniteObject(e$1); /* */ $s = 10; case 10: if($c) { $c = false; _r$6 = _r$6.$blk(); } if (_r$6 && _r$6.$blk !== undefined) { break s; }
+						_r$7 = config[0].Events.Started(new StartedEvent.ptr(index, _r$6)); /* */ $s = 11; case 11: if($c) { $c = false; _r$7 = _r$7.$blk(); } if (_r$7 && _r$7.$blk !== undefined) { break s; }
+						_tuple$1 = _r$7;
+						canContinue = _tuple$1[0];
+						err$1 = _tuple$1[1];
+						/* */ if (!($interfaceIsEqual(err$1, $ifaceNil))) { $s = 12; continue; }
+						/* */ $s = 13; continue;
+						/* if (!($interfaceIsEqual(err$1, $ifaceNil))) { */ case 12:
+							_r$8 = err$1.Error(); /* */ $s = 14; case 14: if($c) { $c = false; _r$8 = _r$8.$blk(); } if (_r$8 && _r$8.$blk !== undefined) { break s; }
+							$r = dom.ConsoleError(new sliceType([new $String(_r$8)])); /* */ $s = 15; case 15: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+							$s = -1; return;
+						/* } */ case 13:
+						if (!canContinue) {
+							$s = -1; return;
+						}
+					/* } */ case 9:
+					_r$9 = e$1.JSValue(); /* */ $s = 16; case 16: if($c) { $c = false; _r$9 = _r$9.$blk(); } if (_r$9 && _r$9.$blk !== undefined) { break s; }
+					_r$10 = $clone(_r$9, js.Value).Get("dataTransfer"); /* */ $s = 17; case 17: if($c) { $c = false; _r$10 = _r$10.$blk(); } if (_r$10 && _r$10.$blk !== undefined) { break s; }
+					dataTransfer = $clone(_r$10, js.Value);
+					_r$11 = $clone(dataTransfer, js.Value).Call("setData", new sliceType([new $String("group"), new $String(config[0].Group)])); /* */ $s = 18; case 18: if($c) { $c = false; _r$11 = _r$11.$blk(); } if (_r$11 && _r$11.$blk !== undefined) { break s; }
+					_r$11;
+					_r$12 = $clone(dataTransfer, js.Value).Call("setData", new sliceType([new $String("field"), new $String(config[0].FieldName)])); /* */ $s = 19; case 19: if($c) { $c = false; _r$12 = _r$12.$blk(); } if (_r$12 && _r$12.$blk !== undefined) { break s; }
+					_r$12;
+					_r$13 = $clone(dataTransfer, js.Value).Call("setData", new sliceType([new $String("index"), new $String(indexS)])); /* */ $s = 20; case 20: if($c) { $c = false; _r$13 = _r$13.$blk(); } if (_r$13 && _r$13.$blk !== undefined) { break s; }
+					_r$13;
+					_r$14 = _el$1.GetAttribute("data-i"); /* */ $s = 21; case 21: if($c) { $c = false; _r$14 = _r$14.$blk(); } if (_r$14 && _r$14.$blk !== undefined) { break s; }
+					_r$15 = $clone(_r$14, $packages["github.com/gascore/dom/js"].Value).String(); /* */ $s = 22; case 22: if($c) { $c = false; _r$15 = _r$15.$blk(); } if (_r$15 && _r$15.$blk !== undefined) { break s; }
+					_arg = new $String(_r$15);
+					_r$16 = $clone(dataTransfer, js.Value).Call("setData", new sliceType([new $String("uuid"), _arg])); /* */ $s = 23; case 23: if($c) { $c = false; _r$16 = _r$16.$blk(); } if (_r$16 && _r$16.$blk !== undefined) { break s; }
+					_r$16;
+					_r$17 = _el$1.NodeBase.ParentElement().GetAttribute("data-dnd-group-id"); /* */ $s = 24; case 24: if($c) { $c = false; _r$17 = _r$17.$blk(); } if (_r$17 && _r$17.$blk !== undefined) { break s; }
+					_r$18 = $clone(_r$17, $packages["github.com/gascore/dom/js"].Value).String(); /* */ $s = 25; case 25: if($c) { $c = false; _r$18 = _r$18.$blk(); } if (_r$18 && _r$18.$blk !== undefined) { break s; }
+					_arg$1 = new $String(_r$18);
+					_r$19 = $clone(dataTransfer, js.Value).Call("setData", new sliceType([new $String("group-id"), _arg$1])); /* */ $s = 26; case 26: if($c) { $c = false; _r$19 = _r$19.$blk(); } if (_r$19 && _r$19.$blk !== undefined) { break s; }
+					_r$19;
+					$clone(dataTransfer, js.Value).Set("effectAllowed", new $String("move"));
+					_r$20 = _el$1.Clone(); /* */ $s = 27; case 27: if($c) { $c = false; _r$20 = _r$20.$blk(); } if (_r$20 && _r$20.$blk !== undefined) { break s; }
+					_preview[0] = _r$20;
+					$r = _preview[0].ClassList().Add(new sliceType([new $String(config[0].PreviewClass)])); /* */ $s = 28; case 28: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+					$r = _preview[0].Style().Set("position", new $String("absolute")); /* */ $s = 29; case 29: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+					$r = _preview[0].Style().Set("top", new $String("0")); /* */ $s = 30; case 30: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+					$r = _preview[0].Style().Set("left", new $String("0")); /* */ $s = 31; case 31: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+					$r = _preview[0].Style().Set("zIndex", new $String("-1")); /* */ $s = 32; case 32: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+					$r = _el$1.NodeBase.AppendChild(_preview[0]); /* */ $s = 33; case 33: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+					_arg$2 = (x = _preview[0].NodeBase.JSValue(), new x.constructor.elem(x));
+					_r$21 = e$1.JSValue(); /* */ $s = 34; case 34: if($c) { $c = false; _r$21 = _r$21.$blk(); } if (_r$21 && _r$21.$blk !== undefined) { break s; }
+					_r$22 = $clone(_r$21, js.Value).Get("offsetX"); /* */ $s = 35; case 35: if($c) { $c = false; _r$22 = _r$22.$blk(); } if (_r$22 && _r$22.$blk !== undefined) { break s; }
+					_r$23 = $clone(_r$22, js.Value).Int(); /* */ $s = 36; case 36: if($c) { $c = false; _r$23 = _r$23.$blk(); } if (_r$23 && _r$23.$blk !== undefined) { break s; }
+					_arg$3 = new $Int((_r$23 + 10 >> 0));
+					_r$24 = e$1.JSValue(); /* */ $s = 37; case 37: if($c) { $c = false; _r$24 = _r$24.$blk(); } if (_r$24 && _r$24.$blk !== undefined) { break s; }
+					_r$25 = $clone(_r$24, js.Value).Get("offsetY"); /* */ $s = 38; case 38: if($c) { $c = false; _r$25 = _r$25.$blk(); } if (_r$25 && _r$25.$blk !== undefined) { break s; }
+					_r$26 = $clone(_r$25, js.Value).Int(); /* */ $s = 39; case 39: if($c) { $c = false; _r$26 = _r$26.$blk(); } if (_r$26 && _r$26.$blk !== undefined) { break s; }
+					_arg$4 = new $Int((_r$26 + 10 >> 0));
+					_r$27 = $clone(dataTransfer, js.Value).Call("setDragImage", new sliceType([_arg$2, _arg$3, _arg$4])); /* */ $s = 40; case 40: if($c) { $c = false; _r$27 = _r$27.$blk(); } if (_r$27 && _r$27.$blk !== undefined) { break s; }
+					_r$27;
+					$go((function(_el, _preview, body, config, e, this$1) { return function $b() {
+						var _r$28, $s, $r;
+						/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r$28 = $f._r$28; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+						$r = time.Sleep(new time.Duration(0, 50000000)); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+						_r$28 = _preview[0].NodeBase.ParentElement().NodeBase.RemoveChild(_preview[0]); /* */ $s = 2; case 2: if($c) { $c = false; _r$28 = _r$28.$blk(); } if (_r$28 && _r$28.$blk !== undefined) { break s; }
+						_r$28;
+						$s = -1; return;
+						/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._r$28 = _r$28; $f.$s = $s; $f.$r = $r; return $f;
+					}; })(_el, _preview, body, config, e, this$1), []);
+					_r$28 = e$1.Target(); /* */ $s = 41; case 41: if($c) { $c = false; _r$28 = _r$28.$blk(); } if (_r$28 && _r$28.$blk !== undefined) { break s; }
+					_r$29 = _r$28.ClassList(); /* */ $s = 42; case 42: if($c) { $c = false; _r$29 = _r$29.$blk(); } if (_r$29 && _r$29.$blk !== undefined) { break s; }
+					$r = _r$29.Add(new sliceType([new $String(config[0].PlaceholderClass)])); /* */ $s = 43; case 43: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+					$s = -1; return;
+					/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._arg = _arg; $f._arg$1 = _arg$1; $f._arg$2 = _arg$2; $f._arg$3 = _arg$3; $f._arg$4 = _arg$4; $f._el$1 = _el$1; $f._preview = _preview; $f._r$10 = _r$10; $f._r$11 = _r$11; $f._r$12 = _r$12; $f._r$13 = _r$13; $f._r$14 = _r$14; $f._r$15 = _r$15; $f._r$16 = _r$16; $f._r$17 = _r$17; $f._r$18 = _r$18; $f._r$19 = _r$19; $f._r$2 = _r$2; $f._r$20 = _r$20; $f._r$21 = _r$21; $f._r$22 = _r$22; $f._r$23 = _r$23; $f._r$24 = _r$24; $f._r$25 = _r$25; $f._r$26 = _r$26; $f._r$27 = _r$27; $f._r$28 = _r$28; $f._r$29 = _r$29; $f._r$3 = _r$3; $f._r$4 = _r$4; $f._r$5 = _r$5; $f._r$6 = _r$6; $f._r$7 = _r$7; $f._r$8 = _r$8; $f._r$9 = _r$9; $f._tuple = _tuple; $f._tuple$1 = _tuple$1; $f.canContinue = canContinue; $f.dataTransfer = dataTransfer; $f.e$1 = e$1; $f.err = err; $f.err$1 = err$1; $f.index = index; $f.indexS = indexS; $f.x = x; $f.$s = $s; $f.$r = $r; return $f;
+				}; })(_el, body, config, e, this$1)); /* */ $s = 2; case 2: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+				$r = _el[0].NodeBase.AddEventListener("drop", (function(_el, body, config, e, this$1) { return function $b(e$1) {
+					var _r$2, _r$3, e$1, err, $s, $r;
+					/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r$2 = $f._r$2; _r$3 = $f._r$3; e$1 = $f.e$1; err = $f.err; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+					_r$2 = dropEvent(_el[0], $clone(config[0], Config), e$1); /* */ $s = 1; case 1: if($c) { $c = false; _r$2 = _r$2.$blk(); } if (_r$2 && _r$2.$blk !== undefined) { break s; }
+					err = _r$2;
+					/* */ if (!($interfaceIsEqual(err, $ifaceNil))) { $s = 2; continue; }
+					/* */ $s = 3; continue;
+					/* if (!($interfaceIsEqual(err, $ifaceNil))) { */ case 2:
+						_r$3 = err.Error(); /* */ $s = 4; case 4: if($c) { $c = false; _r$3 = _r$3.$blk(); } if (_r$3 && _r$3.$blk !== undefined) { break s; }
+						$r = dom.ConsoleError(new sliceType([new $String(_r$3)])); /* */ $s = 5; case 5: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+						$s = -1; return;
+					/* } */ case 3:
+					$s = -1; return;
+					/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._r$2 = _r$2; $f._r$3 = _r$3; $f.e$1 = e$1; $f.err = err; $f.$s = $s; $f.$r = $r; return $f;
+				}; })(_el, body, config, e, this$1)); /* */ $s = 3; case 3: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+				$r = _el[0].NodeBase.AddEventListener("dragend", (function(_el, body, config, e, this$1) { return function $b(event) {
+					var _r$2, _r$3, _r$4, _r$5, _r$6, _r$7, _r$8, _r$9, _tuple, err, event, indexS, newIndex, oldIndex, target, $s, $r;
+					/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r$2 = $f._r$2; _r$3 = $f._r$3; _r$4 = $f._r$4; _r$5 = $f._r$5; _r$6 = $f._r$6; _r$7 = $f._r$7; _r$8 = $f._r$8; _r$9 = $f._r$9; _tuple = $f._tuple; err = $f.err; event = $f.event; indexS = $f.indexS; newIndex = $f.newIndex; oldIndex = $f.oldIndex; target = $f.target; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+					target = [target];
+					_r$2 = event.Target(); /* */ $s = 1; case 1: if($c) { $c = false; _r$2 = _r$2.$blk(); } if (_r$2 && _r$2.$blk !== undefined) { break s; }
+					target[0] = _r$2;
+					$r = target[0].ClassList().Remove(new sliceType([new $String(config[0].PlaceholderClass)])); /* */ $s = 2; case 2: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+					_r$3 = target[0].GetAttribute("data-dnd-index"); /* */ $s = 3; case 3: if($c) { $c = false; _r$3 = _r$3.$blk(); } if (_r$3 && _r$3.$blk !== undefined) { break s; }
+					_r$4 = $clone(_r$3, $packages["github.com/gascore/dom/js"].Value).String(); /* */ $s = 4; case 4: if($c) { $c = false; _r$4 = _r$4.$blk(); } if (_r$4 && _r$4.$blk !== undefined) { break s; }
+					indexS = _r$4;
+					_tuple = strconv.Atoi(indexS);
+					oldIndex = _tuple[0];
+					err = _tuple[1];
+					/* */ if (!($interfaceIsEqual(err, $ifaceNil))) { $s = 5; continue; }
+					/* */ $s = 6; continue;
+					/* if (!($interfaceIsEqual(err, $ifaceNil))) { */ case 5:
+						$r = this$1[0].WarnError(err); /* */ $s = 7; case 7: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+						$s = -1; return;
+					/* } */ case 6:
+					_r$5 = (function(_el, body, config, e, target, this$1) { return function $b() {
+						var _childes, _i$1, _r$10, _r$5, _r$6, _r$7, _r$8, _r$9, _ref$1, el, elID, i$1, $s, $r;
+						/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _childes = $f._childes; _i$1 = $f._i$1; _r$10 = $f._r$10; _r$5 = $f._r$5; _r$6 = $f._r$6; _r$7 = $f._r$7; _r$8 = $f._r$8; _r$9 = $f._r$9; _ref$1 = $f._ref$1; el = $f.el; elID = $f.elID; i$1 = $f.i$1; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+						_r$5 = this$1[0].Parent.Element(); /* */ $s = 1; case 1: if($c) { $c = false; _r$5 = _r$5.$blk(); } if (_r$5 && _r$5.$blk !== undefined) { break s; }
+						_r$6 = $assertType(_r$5, ptrType$1).NodeBase.ChildNodes(); /* */ $s = 2; case 2: if($c) { $c = false; _r$6 = _r$6.$blk(); } if (_r$6 && _r$6.$blk !== undefined) { break s; }
+						_childes = _r$6;
+						_r$7 = target[0].GetAttribute("data-i"); /* */ $s = 3; case 3: if($c) { $c = false; _r$7 = _r$7.$blk(); } if (_r$7 && _r$7.$blk !== undefined) { break s; }
+						_r$8 = $clone(_r$7, $packages["github.com/gascore/dom/js"].Value).String(); /* */ $s = 4; case 4: if($c) { $c = false; _r$8 = _r$8.$blk(); } if (_r$8 && _r$8.$blk !== undefined) { break s; }
+						elID = _r$8;
+						_ref$1 = _childes;
+						_i$1 = 0;
+						/* while (true) { */ case 5:
+							/* if (!(_i$1 < _ref$1.$length)) { break; } */ if(!(_i$1 < _ref$1.$length)) { $s = 6; continue; }
+							i$1 = _i$1;
+							el = ((_i$1 < 0 || _i$1 >= _ref$1.$length) ? ($throwRuntimeError("index out of range"), undefined) : _ref$1.$array[_ref$1.$offset + _i$1]);
+							_r$9 = el.GetAttribute("data-i"); /* */ $s = 9; case 9: if($c) { $c = false; _r$9 = _r$9.$blk(); } if (_r$9 && _r$9.$blk !== undefined) { break s; }
+							_r$10 = $clone(_r$9, $packages["github.com/gascore/dom/js"].Value).String(); /* */ $s = 10; case 10: if($c) { $c = false; _r$10 = _r$10.$blk(); } if (_r$10 && _r$10.$blk !== undefined) { break s; }
+							/* */ if (_r$10 === elID) { $s = 7; continue; }
+							/* */ $s = 8; continue;
+							/* if (_r$10 === elID) { */ case 7:
+								$s = -1; return i$1;
+							/* } */ case 8:
+							_i$1++;
+						/* } */ $s = 5; continue; case 6:
+						$s = -1; return -1;
+						/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._childes = _childes; $f._i$1 = _i$1; $f._r$10 = _r$10; $f._r$5 = _r$5; $f._r$6 = _r$6; $f._r$7 = _r$7; $f._r$8 = _r$8; $f._r$9 = _r$9; $f._ref$1 = _ref$1; $f.el = el; $f.elID = elID; $f.i$1 = i$1; $f.$s = $s; $f.$r = $r; return $f;
+					}; })(_el, body, config, e, target, this$1)(); /* */ $s = 8; case 8: if($c) { $c = false; _r$5 = _r$5.$blk(); } if (_r$5 && _r$5.$blk !== undefined) { break s; }
+					newIndex = _r$5;
+					/* */ if (newIndex === -1) { $s = 9; continue; }
+					/* */ $s = 10; continue;
+					/* if (newIndex === -1) { */ case 9:
+						/* */ if (!(config[0].Events.Removed === $throwNilPointerError)) { $s = 11; continue; }
+						/* */ $s = 12; continue;
+						/* if (!(config[0].Events.Removed === $throwNilPointerError)) { */ case 11:
+							_r$6 = web.ToUniteObject(event); /* */ $s = 13; case 13: if($c) { $c = false; _r$6 = _r$6.$blk(); } if (_r$6 && _r$6.$blk !== undefined) { break s; }
+							_r$7 = config[0].Events.Removed(new RemovedEvent.ptr(oldIndex, _r$6)); /* */ $s = 14; case 14: if($c) { $c = false; _r$7 = _r$7.$blk(); } if (_r$7 && _r$7.$blk !== undefined) { break s; }
+							$r = this$1[0].WarnError(_r$7); /* */ $s = 15; case 15: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+						/* } */ case 12:
+					/* } */ case 10:
+					/* */ if (!(config[0].Events.Moved === $throwNilPointerError)) { $s = 16; continue; }
+					/* */ $s = 17; continue;
+					/* if (!(config[0].Events.Moved === $throwNilPointerError)) { */ case 16:
+						_r$8 = web.ToUniteObject(event); /* */ $s = 18; case 18: if($c) { $c = false; _r$8 = _r$8.$blk(); } if (_r$8 && _r$8.$blk !== undefined) { break s; }
+						_r$9 = config[0].Events.Moved(new StandardEvent.ptr(oldIndex, newIndex, _r$8)); /* */ $s = 19; case 19: if($c) { $c = false; _r$9 = _r$9.$blk(); } if (_r$9 && _r$9.$blk !== undefined) { break s; }
+						$r = this$1[0].WarnError(_r$9); /* */ $s = 20; case 20: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+					/* } */ case 17:
+					$s = -1; return;
+					/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._r$2 = _r$2; $f._r$3 = _r$3; $f._r$4 = _r$4; $f._r$5 = _r$5; $f._r$6 = _r$6; $f._r$7 = _r$7; $f._r$8 = _r$8; $f._r$9 = _r$9; $f._tuple = _tuple; $f.err = err; $f.event = event; $f.indexS = indexS; $f.newIndex = newIndex; $f.oldIndex = oldIndex; $f.target = target; $f.$s = $s; $f.$r = $r; return $f;
+				}; })(_el, body, config, e, this$1)); /* */ $s = 4; case 4: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+				$s = -1; return $ifaceNil;
+				/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._el = _el; $f._r$1 = _r$1; $f.this$1 = this$1; $f.$s = $s; $f.$r = $r; return $f;
+			}; })(body, config, e);
+			_i++;
+		/* } */ $s = 13; continue; case 14:
+		_r$1 = gas.NC(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, (function(body, config, e) { return function $b(this$1) {
+			var _el, _r$1, this$1, $s, $r;
+			/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _el = $f._el; _r$1 = $f._r$1; this$1 = $f.this$1; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+			_el = [_el];
+			this$1 = [this$1];
+			_r$1 = this$1[0].Element(); /* */ $s = 1; case 1: if($c) { $c = false; _r$1 = _r$1.$blk(); } if (_r$1 && _r$1.$blk !== undefined) { break s; }
+			_el[0] = $assertType(_r$1, ptrType$1);
+			$r = _el[0].NodeBase.AddEventListener("drop", (function(_el, body, config, e, this$1) { return function $b(e$1) {
+				var _r$2, _r$3, e$1, err, $s, $r;
+				/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r$2 = $f._r$2; _r$3 = $f._r$3; e$1 = $f.e$1; err = $f.err; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+				_r$2 = dropEvent(_el[0], $clone(config[0], Config), e$1); /* */ $s = 1; case 1: if($c) { $c = false; _r$2 = _r$2.$blk(); } if (_r$2 && _r$2.$blk !== undefined) { break s; }
+				err = _r$2;
+				/* */ if (!($interfaceIsEqual(err, $ifaceNil))) { $s = 2; continue; }
+				/* */ $s = 3; continue;
+				/* if (!($interfaceIsEqual(err, $ifaceNil))) { */ case 2:
+					_r$3 = err.Error(); /* */ $s = 4; case 4: if($c) { $c = false; _r$3 = _r$3.$blk(); } if (_r$3 && _r$3.$blk !== undefined) { break s; }
+					$r = dom.ConsoleError(new sliceType([new $String(_r$3)])); /* */ $s = 5; case 5: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+					$s = -1; return;
+				/* } */ case 3:
+				$s = -1; return;
+				/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._r$2 = _r$2; $f._r$3 = _r$3; $f.e$1 = e$1; $f.err = err; $f.$s = $s; $f.$r = $r; return $f;
+			}; })(_el, body, config, e, this$1)); /* */ $s = 2; case 2: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+			$r = _el[0].NodeBase.AddEventListener("dragenter", (function(_el, body, config, e, this$1) { return function $b(e$1) {
+				var _pcParent, _placeholder, _r$10, _r$11, _r$2, _r$3, _r$4, _r$5, _r$6, _r$7, _r$8, _r$9, _target, e$1, insertAfter, placeholderIndex, targetIndex, targetTag, $s, $r;
+				/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _pcParent = $f._pcParent; _placeholder = $f._placeholder; _r$10 = $f._r$10; _r$11 = $f._r$11; _r$2 = $f._r$2; _r$3 = $f._r$3; _r$4 = $f._r$4; _r$5 = $f._r$5; _r$6 = $f._r$6; _r$7 = $f._r$7; _r$8 = $f._r$8; _r$9 = $f._r$9; _target = $f._target; e$1 = $f.e$1; insertAfter = $f.insertAfter; placeholderIndex = $f.placeholderIndex; targetIndex = $f.targetIndex; targetTag = $f.targetTag; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+				_r$2 = getPlaceholderNode($clone(config[0], Config)); /* */ $s = 1; case 1: if($c) { $c = false; _r$2 = _r$2.$blk(); } if (_r$2 && _r$2.$blk !== undefined) { break s; }
+				_placeholder = _r$2;
+				/* */ if (_placeholder === ptrType$1.nil) { $s = 2; continue; }
+				/* */ $s = 3; continue;
+				/* if (_placeholder === ptrType$1.nil) { */ case 2:
+					$r = dom.ConsoleError(new sliceType([new $String("placeholder not found")])); /* */ $s = 4; case 4: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+					$s = -1; return;
+				/* } */ case 3:
+				_r$3 = e$1.Target(); /* */ $s = 5; case 5: if($c) { $c = false; _r$3 = _r$3.$blk(); } if (_r$3 && _r$3.$blk !== undefined) { break s; }
+				_target = _r$3;
+				_r$4 = strings.ToLower(_target.TagName()); /* */ $s = 6; case 6: if($c) { $c = false; _r$4 = _r$4.$blk(); } if (_r$4 && _r$4.$blk !== undefined) { break s; }
+				targetTag = _r$4;
+				/* */ if (targetTag === "ul") { $s = 7; continue; }
+				_r$5 = _target.GetAttribute("data-is-item"); /* */ $s = 10; case 10: if($c) { $c = false; _r$5 = _r$5.$blk(); } if (_r$5 && _r$5.$blk !== undefined) { break s; }
+				_r$6 = $clone(_r$5, $packages["github.com/gascore/dom/js"].Value).String(); /* */ $s = 11; case 11: if($c) { $c = false; _r$6 = _r$6.$blk(); } if (_r$6 && _r$6.$blk !== undefined) { break s; }
+				/* */ if (!(_r$6 === "true") || $equal(_target.NodeBase.JSValue(), _placeholder.NodeBase.JSValue(), js.Value)) { $s = 8; continue; }
+				/* */ $s = 9; continue;
+				/* if (targetTag === "ul") { */ case 7:
+					_r$7 = _target.ClassList().Contains(new $String(config[0].GroupClass)); /* */ $s = 14; case 14: if($c) { $c = false; _r$7 = _r$7.$blk(); } if (_r$7 && _r$7.$blk !== undefined) { break s; }
+					/* */ if (!_r$7) { $s = 12; continue; }
+					/* */ $s = 13; continue;
+					/* if (!_r$7) { */ case 12:
+						$s = -1; return;
+					/* } */ case 13:
+					$s = 9; continue;
+				/* } else if (!(_r$6 === "true") || $equal(_target.NodeBase.JSValue(), _placeholder.NodeBase.JSValue(), js.Value)) { */ case 8:
+					$s = -1; return;
+				/* } */ case 9:
+				_r$8 = _placeholder.GetAttribute("data-group"); /* */ $s = 17; case 17: if($c) { $c = false; _r$8 = _r$8.$blk(); } if (_r$8 && _r$8.$blk !== undefined) { break s; }
+				_r$9 = $clone(_r$8, $packages["github.com/gascore/dom/js"].Value).String(); /* */ $s = 18; case 18: if($c) { $c = false; _r$9 = _r$9.$blk(); } if (_r$9 && _r$9.$blk !== undefined) { break s; }
+				/* */ if (!(_r$9 === config[0].Group)) { $s = 15; continue; }
+				/* */ $s = 16; continue;
+				/* if (!(_r$9 === config[0].Group)) { */ case 15:
+					$s = -1; return;
+				/* } */ case 16:
+				$r = e$1.PreventDefault(); /* */ $s = 19; case 19: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+				/* */ if (targetTag === "ul") { $s = 20; continue; }
+				/* */ $s = 21; continue;
+				/* if (targetTag === "ul") { */ case 20:
+					$r = _target.NodeBase.AppendChild(_placeholder); /* */ $s = 23; case 23: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+					$s = 22; continue;
+				/* } else { */ case 21:
+					_pcParent = _placeholder.NodeBase.ParentElement();
+					insertAfter = false;
+					/* */ if ($equal(_placeholder.NodeBase.ParentElement().NodeBase.JSValue(), _target.NodeBase.ParentElement().NodeBase.JSValue(), js.Value)) { $s = 24; continue; }
+					/* */ $s = 25; continue;
+					/* if ($equal(_placeholder.NodeBase.ParentElement().NodeBase.JSValue(), _target.NodeBase.ParentElement().NodeBase.JSValue(), js.Value)) { */ case 24:
+						placeholderIndex = elementIndex(_placeholder);
+						/* */ if (placeholderIndex === -1) { $s = 26; continue; }
+						/* */ $s = 27; continue;
+						/* if (placeholderIndex === -1) { */ case 26:
+							$r = dom.ConsoleError(new sliceType([new $String("cannot get _placeholder index in parent")])); /* */ $s = 28; case 28: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+							$s = -1; return;
+						/* } */ case 27:
+						targetIndex = elementIndex(_target);
+						/* */ if (targetIndex === -1) { $s = 29; continue; }
+						/* */ $s = 30; continue;
+						/* if (targetIndex === -1) { */ case 29:
+							$r = dom.ConsoleError(new sliceType([new $String("cannot get _target index in parent")])); /* */ $s = 31; case 31: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+							$s = -1; return;
+						/* } */ case 30:
+						if (placeholderIndex === (targetIndex - 1 >> 0)) {
+							insertAfter = true;
+						}
+					/* } */ case 25:
+					/* */ if (insertAfter) { $s = 32; continue; }
+					/* */ $s = 33; continue;
+					/* if (insertAfter) { */ case 32:
+						$r = _pcParent.NodeBase.InsertAfter(_placeholder, _target); /* */ $s = 35; case 35: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+						$s = 34; continue;
+					/* } else { */ case 33:
+						$r = _target.NodeBase.ParentElement().NodeBase.InsertBefore(_placeholder, _target); /* */ $s = 36; case 36: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+					/* } */ case 34:
+				/* } */ case 22:
+				/* */ if (!(config[0].Events.Entered === $throwNilPointerError)) { $s = 37; continue; }
+				/* */ $s = 38; continue;
+				/* if (!(config[0].Events.Entered === $throwNilPointerError)) { */ case 37:
+					_r$10 = web.ToUniteObject(e$1); /* */ $s = 39; case 39: if($c) { $c = false; _r$10 = _r$10.$blk(); } if (_r$10 && _r$10.$blk !== undefined) { break s; }
+					_r$11 = config[0].Events.Entered(new EnteredEvent.ptr(_r$10)); /* */ $s = 40; case 40: if($c) { $c = false; _r$11 = _r$11.$blk(); } if (_r$11 && _r$11.$blk !== undefined) { break s; }
+					$r = this$1[0].WarnError(_r$11); /* */ $s = 41; case 41: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+				/* } */ case 38:
+				$s = -1; return;
+				/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._pcParent = _pcParent; $f._placeholder = _placeholder; $f._r$10 = _r$10; $f._r$11 = _r$11; $f._r$2 = _r$2; $f._r$3 = _r$3; $f._r$4 = _r$4; $f._r$5 = _r$5; $f._r$6 = _r$6; $f._r$7 = _r$7; $f._r$8 = _r$8; $f._r$9 = _r$9; $f._target = _target; $f.e$1 = e$1; $f.insertAfter = insertAfter; $f.placeholderIndex = placeholderIndex; $f.targetIndex = targetIndex; $f.targetTag = targetTag; $f.$s = $s; $f.$r = $r; return $f;
+			}; })(_el, body, config, e, this$1)); /* */ $s = 3; case 3: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+			$r = _el[0].NodeBase.AddEventListener("dragleave", (function(_el, body, config, e, this$1) { return function $b(event) {
+				var _r$2, _r$3, _r$4, _r$5, event, target, $s, $r;
+				/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r$2 = $f._r$2; _r$3 = $f._r$3; _r$4 = $f._r$4; _r$5 = $f._r$5; event = $f.event; target = $f.target; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+				_r$2 = event.JSValue(); /* */ $s = 1; case 1: if($c) { $c = false; _r$2 = _r$2.$blk(); } if (_r$2 && _r$2.$blk !== undefined) { break s; }
+				_r$3 = $clone(_r$2, js.Value).Get("target"); /* */ $s = 2; case 2: if($c) { $c = false; _r$3 = _r$3.$blk(); } if (_r$3 && _r$3.$blk !== undefined) { break s; }
+				target = $clone(_r$3, js.Value);
+				if (!($clone($clone(target, js.Value).Get("data"), js.Value).String() === "")) {
+					$s = -1; return;
+				}
+				/* */ if (!(config[0].Events.Leaved === $throwNilPointerError)) { $s = 3; continue; }
+				/* */ $s = 4; continue;
+				/* if (!(config[0].Events.Leaved === $throwNilPointerError)) { */ case 3:
+					_r$4 = web.ToUniteObject(event); /* */ $s = 5; case 5: if($c) { $c = false; _r$4 = _r$4.$blk(); } if (_r$4 && _r$4.$blk !== undefined) { break s; }
+					_r$5 = config[0].Events.Leaved(new LeavedEvent.ptr(_r$4)); /* */ $s = 6; case 6: if($c) { $c = false; _r$5 = _r$5.$blk(); } if (_r$5 && _r$5.$blk !== undefined) { break s; }
+					$r = this$1[0].WarnError(_r$5); /* */ $s = 7; case 7: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+				/* } */ case 4:
+				$s = -1; return;
+				/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._r$2 = _r$2; $f._r$3 = _r$3; $f._r$4 = _r$4; $f._r$5 = _r$5; $f.event = event; $f.target = target; $f.$s = $s; $f.$r = $r; return $f;
+			}; })(_el, body, config, e, this$1)); /* */ $s = 4; case 4: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+			$r = _el[0].NodeBase.AddEventListener("dragover", (function(_el, body, config, e, this$1) { return function $b(event) {
+				var _r$2, _r$3, event, $s, $r;
+				/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r$2 = $f._r$2; _r$3 = $f._r$3; event = $f.event; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+				$r = event.PreventDefault(); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+				_r$2 = event.JSValue(); /* */ $s = 2; case 2: if($c) { $c = false; _r$2 = _r$2.$blk(); } if (_r$2 && _r$2.$blk !== undefined) { break s; }
+				_r$3 = $clone(_r$2, js.Value).Get("dataTransfer"); /* */ $s = 3; case 3: if($c) { $c = false; _r$3 = _r$3.$blk(); } if (_r$3 && _r$3.$blk !== undefined) { break s; }
+				$r = $clone(_r$3, js.Value).Set("dropEffect", new $String("move")); /* */ $s = 4; case 4: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+				$s = -1; return;
+				/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._r$2 = _r$2; $f._r$3 = _r$3; $f.event = event; $f.$s = $s; $f.$r = $r; return $f;
+			}; })(_el, body, config, e, this$1)); /* */ $s = 5; case 5: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+			$s = -1; return $ifaceNil;
+			/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._el = _el; $f._r$1 = _r$1; $f.this$1 = this$1; $f.$s = $s; $f.$r = $r; return $f;
+		}; })(body, config, e), $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, config[0].Tag, $makeMap($String.keyFor, [{ k: "data-dnd-field", v: config[0].FieldName }, { k: "class", v: config[0].GroupClass }]), "", false, ptrType.nil, "", false, false, ptrType$2.nil), (function(body, config, e) { return function(this$1) {
+			var _entry, _entry$1, _entry$2, _entry$3, this$1;
+			if (!(e[0].Slots === false) && !($interfaceIsEqual((_entry = e[0].Slots[$String.keyFor("header")], _entry !== undefined ? _entry.v : $ifaceNil), $ifaceNil))) {
+				body[0] = $appendSlice(new sliceType([(_entry$1 = e[0].Slots[$String.keyFor("header")], _entry$1 !== undefined ? _entry$1.v : $ifaceNil)]), body[0]);
+			}
+			if (!(e[0].Slots === false) && !($interfaceIsEqual((_entry$2 = e[0].Slots[$String.keyFor("footer")], _entry$2 !== undefined ? _entry$2.v : $ifaceNil), $ifaceNil))) {
+				body[0] = $append(body[0], (_entry$3 = e[0].Slots[$String.keyFor("footer")], _entry$3 !== undefined ? _entry$3.v : $ifaceNil));
+			}
+			return body[0];
+		}; })(body, config, e)); /* */ $s = 19; case 19: if($c) { $c = false; _r$1 = _r$1.$blk(); } if (_r$1 && _r$1.$blk !== undefined) { break s; }
+		$s = -1; return _r$1;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: Lists }; } $f._i = _i; $f._key = _key; $f._key$1 = _key$1; $f._key$2 = _key$2; $f._key$3 = _key$3; $f._r = _r; $f._r$1 = _r$1; $f._ref = _ref; $f.body = body; $f.config = config; $f.e = e; $f.i = i; $f.item = item; $f.item$1 = item$1; $f.$s = $s; $f.$r = $r; return $f;
+	};
+	$pkg.Lists = Lists;
+	dropEvent = function(_x, config, event) {
+		var _aGroup, _placeholder, _r, _r$1, _r$10, _r$11, _r$12, _r$13, _r$14, _r$15, _r$16, _r$17, _r$18, _r$19, _r$2, _r$20, _r$3, _r$4, _r$5, _r$6, _r$7, _r$8, _r$9, _tuple, _x, aData, aField, aGroup, config, data, dataTransfer, eData, err, err$1, err$2, err$3, event, newIndex, oldIndex, oldIndexS, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _aGroup = $f._aGroup; _placeholder = $f._placeholder; _r = $f._r; _r$1 = $f._r$1; _r$10 = $f._r$10; _r$11 = $f._r$11; _r$12 = $f._r$12; _r$13 = $f._r$13; _r$14 = $f._r$14; _r$15 = $f._r$15; _r$16 = $f._r$16; _r$17 = $f._r$17; _r$18 = $f._r$18; _r$19 = $f._r$19; _r$2 = $f._r$2; _r$20 = $f._r$20; _r$3 = $f._r$3; _r$4 = $f._r$4; _r$5 = $f._r$5; _r$6 = $f._r$6; _r$7 = $f._r$7; _r$8 = $f._r$8; _r$9 = $f._r$9; _tuple = $f._tuple; _x = $f._x; aData = $f.aData; aField = $f.aField; aGroup = $f.aGroup; config = $f.config; data = $f.data; dataTransfer = $f.dataTransfer; eData = $f.eData; err = $f.err; err$1 = $f.err$1; err$2 = $f.err$2; err$3 = $f.err$3; event = $f.event; newIndex = $f.newIndex; oldIndex = $f.oldIndex; oldIndexS = $f.oldIndexS; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		_aGroup = [_aGroup];
+		_placeholder = [_placeholder];
+		oldIndex = [oldIndex];
+		_r = event.JSValue(); /* */ $s = 1; case 1: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
+		_r$1 = $clone(_r, js.Value).Get("dataTransfer"); /* */ $s = 2; case 2: if($c) { $c = false; _r$1 = _r$1.$blk(); } if (_r$1 && _r$1.$blk !== undefined) { break s; }
+		dataTransfer = $clone(_r$1, js.Value);
+		if ($clone(dataTransfer, js.Value).Type() === 1) {
+			$s = -1; return $ifaceNil;
+		}
+		_r$2 = $clone(dataTransfer, js.Value).Call("getData", new sliceType([new $String("group")])); /* */ $s = 3; case 3: if($c) { $c = false; _r$2 = _r$2.$blk(); } if (_r$2 && _r$2.$blk !== undefined) { break s; }
+		_r$3 = $clone(_r$2, js.Value).String(); /* */ $s = 4; case 4: if($c) { $c = false; _r$3 = _r$3.$blk(); } if (_r$3 && _r$3.$blk !== undefined) { break s; }
+		aGroup = _r$3;
+		if (!(aGroup === config.Group)) {
+			$s = -1; return $ifaceNil;
+		}
+		_r$4 = getPlaceholderNode($clone(config, Config)); /* */ $s = 5; case 5: if($c) { $c = false; _r$4 = _r$4.$blk(); } if (_r$4 && _r$4.$blk !== undefined) { break s; }
+		_placeholder[0] = _r$4;
+		if (_placeholder[0] === ptrType$1.nil) {
+			$s = -1; return errors.New("placeholder not found");
+		}
+		_r$5 = _x.GetAttribute("data-i"); /* */ $s = 8; case 8: if($c) { $c = false; _r$5 = _r$5.$blk(); } if (_r$5 && _r$5.$blk !== undefined) { break s; }
+		_r$6 = $clone(_r$5, $packages["github.com/gascore/dom/js"].Value).String(); /* */ $s = 9; case 9: if($c) { $c = false; _r$6 = _r$6.$blk(); } if (_r$6 && _r$6.$blk !== undefined) { break s; }
+		_r$7 = _placeholder[0].GetAttribute("data-i"); /* */ $s = 10; case 10: if($c) { $c = false; _r$7 = _r$7.$blk(); } if (_r$7 && _r$7.$blk !== undefined) { break s; }
+		_r$8 = $clone(_r$7, $packages["github.com/gascore/dom/js"].Value).String(); /* */ $s = 11; case 11: if($c) { $c = false; _r$8 = _r$8.$blk(); } if (_r$8 && _r$8.$blk !== undefined) { break s; }
+		/* */ if (_r$6 === _r$8) { $s = 6; continue; }
+		/* */ $s = 7; continue;
+		/* if (_r$6 === _r$8) { */ case 6:
+			$s = -1; return $ifaceNil;
+		/* } */ case 7:
+		$r = event.PreventDefault(); /* */ $s = 12; case 12: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = event.StopPropagation(); /* */ $s = 13; case 13: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		_r$9 = $clone(dataTransfer, js.Value).Call("getData", new sliceType([new $String("field")])); /* */ $s = 14; case 14: if($c) { $c = false; _r$9 = _r$9.$blk(); } if (_r$9 && _r$9.$blk !== undefined) { break s; }
+		_r$10 = $clone(_r$9, js.Value).String(); /* */ $s = 15; case 15: if($c) { $c = false; _r$10 = _r$10.$blk(); } if (_r$10 && _r$10.$blk !== undefined) { break s; }
+		aField = _r$10;
+		_r$11 = $clone(dataTransfer, js.Value).Call("getData", new sliceType([new $String("index")])); /* */ $s = 16; case 16: if($c) { $c = false; _r$11 = _r$11.$blk(); } if (_r$11 && _r$11.$blk !== undefined) { break s; }
+		_r$12 = $clone(_r$11, js.Value).String(); /* */ $s = 17; case 17: if($c) { $c = false; _r$12 = _r$12.$blk(); } if (_r$12 && _r$12.$blk !== undefined) { break s; }
+		oldIndexS = _r$12;
+		_tuple = strconv.Atoi(oldIndexS);
+		oldIndex[0] = _tuple[0];
+		err = _tuple[1];
+		if (!($interfaceIsEqual(err, $ifaceNil))) {
+			$s = -1; return err;
+		}
+		newIndex = elementIndex(_placeholder[0]);
+		if (newIndex === -1) {
+			$s = -1; return errors.New("_placeholder undefined");
+		}
+		_r$13 = dom.Doc.QuerySelector("[data-dnd-field='" + aField + "']"); /* */ $s = 18; case 18: if($c) { $c = false; _r$13 = _r$13.$blk(); } if (_r$13 && _r$13.$blk !== undefined) { break s; }
+		_aGroup[0] = _r$13;
+		if (_aGroup[0] === ptrType$1.nil) {
+			$s = -1; return errors.New("another group element undefined");
+		}
+		_r$14 = (function(_aGroup, _placeholder, oldIndex) { return function $b() {
+			var _child, _i, _ref, childNodes, i, $s, $r;
+			/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _child = $f._child; _i = $f._i; _ref = $f._ref; childNodes = $f.childNodes; i = $f.i; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+			childNodes = _aGroup[0].NodeBase.ChildNodes();
+			/* */ if (childNodes.$length === oldIndex[0]) { $s = 1; continue; }
+			/* */ $s = 2; continue;
+			/* if (childNodes.$length === oldIndex[0]) { */ case 1:
+				$r = _aGroup[0].NodeBase.AppendChild(_placeholder[0]); /* */ $s = 3; case 3: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+				$s = -1; return $ifaceNil;
+			/* } */ case 2:
+			_ref = childNodes;
+			_i = 0;
+			/* while (true) { */ case 4:
+				/* if (!(_i < _ref.$length)) { break; } */ if(!(_i < _ref.$length)) { $s = 5; continue; }
+				i = _i;
+				_child = ((_i < 0 || _i >= _ref.$length) ? ($throwRuntimeError("index out of range"), undefined) : _ref.$array[_ref.$offset + _i]);
+				/* */ if (i === oldIndex[0]) { $s = 6; continue; }
+				/* */ $s = 7; continue;
+				/* if (i === oldIndex[0]) { */ case 6:
+					$r = _aGroup[0].NodeBase.InsertBefore(_placeholder[0], _child); /* */ $s = 8; case 8: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+					$s = -1; return $ifaceNil;
+				/* } */ case 7:
+				_i++;
+			/* } */ $s = 4; continue; case 5:
+			$s = -1; return errors.New("cannot move placeholder to old place");
+			/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._child = _child; $f._i = _i; $f._ref = _ref; $f.childNodes = childNodes; $f.i = i; $f.$s = $s; $f.$r = $r; return $f;
+		}; })(_aGroup, _placeholder, oldIndex)(); /* */ $s = 19; case 19: if($c) { $c = false; _r$14 = _r$14.$blk(); } if (_r$14 && _r$14.$blk !== undefined) { break s; }
+		err = _r$14;
+		if (!($interfaceIsEqual(err, $ifaceNil))) {
+			$s = -1; return err;
+		}
+		_r$15 = web.ToUniteObject(event); /* */ $s = 20; case 20: if($c) { $c = false; _r$15 = _r$15.$blk(); } if (_r$15 && _r$15.$blk !== undefined) { break s; }
+		eData = new StandardEvent.ptr(oldIndex[0], newIndex, _r$15);
+		_r$16 = config.This.Get(config.FieldName); /* */ $s = 21; case 21: if($c) { $c = false; _r$16 = _r$16.$blk(); } if (_r$16 && _r$16.$blk !== undefined) { break s; }
+		data = $assertType(_r$16, sliceType);
+		/* */ if (aField === config.FieldName) { $s = 22; continue; }
+		/* */ $s = 23; continue;
+		/* if (aField === config.FieldName) { */ case 22:
+			if (newIndex === oldIndex[0]) {
+				$s = -1; return $ifaceNil;
+			}
+			$r = config.This.SetValue(config.FieldName, replaceInArr(data, newIndex, oldIndex[0])); /* */ $s = 25; case 25: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+			/* */ if (!(config.Events.Updated === $throwNilPointerError)) { $s = 26; continue; }
+			/* */ $s = 27; continue;
+			/* if (!(config.Events.Updated === $throwNilPointerError)) { */ case 26:
+				_r$17 = config.Events.Updated($clone(eData, StandardEvent)); /* */ $s = 28; case 28: if($c) { $c = false; _r$17 = _r$17.$blk(); } if (_r$17 && _r$17.$blk !== undefined) { break s; }
+				err$1 = _r$17;
+				if (!($interfaceIsEqual(err$1, $ifaceNil))) {
+					$s = -1; return err$1;
+				}
+			/* } */ case 27:
+			$s = 24; continue;
+		/* } else { */ case 23:
+			_r$18 = config.This.Get(aField); /* */ $s = 29; case 29: if($c) { $c = false; _r$18 = _r$18.$blk(); } if (_r$18 && _r$18.$blk !== undefined) { break s; }
+			aData = $assertType(_r$18, sliceType);
+			$r = config.This.Set($makeMap($String.keyFor, [{ k: config.FieldName, v: $appendSlice($subslice(data, 0, newIndex), $appendSlice(new sliceType([((oldIndex[0] < 0 || oldIndex[0] >= aData.$length) ? ($throwRuntimeError("index out of range"), undefined) : aData.$array[aData.$offset + oldIndex[0]])]), $subslice(data, newIndex))) }, { k: aField, v: $appendSlice($subslice(aData, 0, oldIndex[0]), $subslice(aData, (oldIndex[0] + 1 >> 0))) }])); /* */ $s = 30; case 30: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+			/* */ if (!(config.Events.Added === $throwNilPointerError)) { $s = 31; continue; }
+			/* */ $s = 32; continue;
+			/* if (!(config.Events.Added === $throwNilPointerError)) { */ case 31:
+				_r$19 = config.Events.Added($clone(eData, StandardEvent)); /* */ $s = 33; case 33: if($c) { $c = false; _r$19 = _r$19.$blk(); } if (_r$19 && _r$19.$blk !== undefined) { break s; }
+				err$2 = _r$19;
+				if (!($interfaceIsEqual(err$2, $ifaceNil))) {
+					$s = -1; return err$2;
+				}
+			/* } */ case 32:
+		/* } */ case 24:
+		/* */ if (!(config.Events.Ended === $throwNilPointerError)) { $s = 34; continue; }
+		/* */ $s = 35; continue;
+		/* if (!(config.Events.Ended === $throwNilPointerError)) { */ case 34:
+			_r$20 = config.Events.Ended($clone(eData, StandardEvent)); /* */ $s = 36; case 36: if($c) { $c = false; _r$20 = _r$20.$blk(); } if (_r$20 && _r$20.$blk !== undefined) { break s; }
+			err$3 = _r$20;
+			if (!($interfaceIsEqual(err$3, $ifaceNil))) {
+				$s = -1; return err$3;
+			}
+		/* } */ case 35:
+		$s = -1; return $ifaceNil;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: dropEvent }; } $f._aGroup = _aGroup; $f._placeholder = _placeholder; $f._r = _r; $f._r$1 = _r$1; $f._r$10 = _r$10; $f._r$11 = _r$11; $f._r$12 = _r$12; $f._r$13 = _r$13; $f._r$14 = _r$14; $f._r$15 = _r$15; $f._r$16 = _r$16; $f._r$17 = _r$17; $f._r$18 = _r$18; $f._r$19 = _r$19; $f._r$2 = _r$2; $f._r$20 = _r$20; $f._r$3 = _r$3; $f._r$4 = _r$4; $f._r$5 = _r$5; $f._r$6 = _r$6; $f._r$7 = _r$7; $f._r$8 = _r$8; $f._r$9 = _r$9; $f._tuple = _tuple; $f._x = _x; $f.aData = aData; $f.aField = aField; $f.aGroup = aGroup; $f.config = config; $f.data = data; $f.dataTransfer = dataTransfer; $f.eData = eData; $f.err = err; $f.err$1 = err$1; $f.err$2 = err$2; $f.err$3 = err$3; $f.event = event; $f.newIndex = newIndex; $f.oldIndex = oldIndex; $f.oldIndexS = oldIndexS; $f.$s = $s; $f.$r = $r; return $f;
+	};
+	getPlaceholderNode = function(config) {
+		var _r, config, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r = $f._r; config = $f.config; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		_r = dom.GetDocument().QuerySelector("." + config.PlaceholderClass); /* */ $s = 1; case 1: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
+		$s = -1; return _r;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: getPlaceholderNode }; } $f._r = _r; $f.config = config; $f.$s = $s; $f.$r = $r; return $f;
+	};
+	addToArr = function(arr, el, i) {
+		var arr, el, i;
+		if (arr.$length === 0) {
+			return new sliceType([el]);
+		}
+		arr = $append(arr, el);
+		$copySlice($subslice(arr, (i + 1 >> 0)), $subslice(arr, i));
+		((i < 0 || i >= arr.$length) ? ($throwRuntimeError("index out of range"), undefined) : arr.$array[arr.$offset + i] = el);
+		return arr;
+	};
+	replaceInArr = function(arr, new$1, old) {
+		var arr, new$1, old, out, x;
+		x = ((old < 0 || old >= arr.$length) ? ($throwRuntimeError("index out of range"), undefined) : arr.$array[arr.$offset + old]);
+		out = addToArr($appendSlice($subslice(arr, 0, old), $subslice(arr, (old + 1 >> 0))), x, new$1);
+		return out;
+	};
+	elementIndex = function(_el) {
+		var _el, _i, _node, _ref, childes, i;
+		childes = _el.NodeBase.ParentElement().NodeBase.ChildNodes();
+		_ref = childes;
+		_i = 0;
+		while (true) {
+			if (!(_i < _ref.$length)) { break; }
+			i = _i;
+			_node = ((_i < 0 || _i >= _ref.$length) ? ($throwRuntimeError("index out of range"), undefined) : _ref.$array[_ref.$offset + _i]);
+			if ($equal(_node.NodeBase.JSValue(), _el.NodeBase.JSValue(), js.Value)) {
+				return i;
+			}
+			_i++;
+		}
+		return -1;
+	};
+	EventsHandlers.init("", [{prop: "Started", name: "Started", embedded: false, exported: true, typ: funcType, tag: ""}, {prop: "Entered", name: "Entered", embedded: false, exported: true, typ: funcType$1, tag: ""}, {prop: "Leaved", name: "Leaved", embedded: false, exported: true, typ: funcType$2, tag: ""}, {prop: "Ended", name: "Ended", embedded: false, exported: true, typ: funcType$3, tag: ""}, {prop: "Added", name: "Added", embedded: false, exported: true, typ: funcType$3, tag: ""}, {prop: "Updated", name: "Updated", embedded: false, exported: true, typ: funcType$3, tag: ""}, {prop: "Removed", name: "Removed", embedded: false, exported: true, typ: funcType$4, tag: ""}, {prop: "Moved", name: "Moved", embedded: false, exported: true, typ: funcType$3, tag: ""}]);
+	StartedEvent.init("", [{prop: "Index", name: "Index", embedded: false, exported: true, typ: $Int, tag: ""}, {prop: "Body", name: "Body", embedded: false, exported: true, typ: gas.Object, tag: ""}]);
+	RemovedEvent.init("", [{prop: "OldIndex", name: "OldIndex", embedded: false, exported: true, typ: $Int, tag: ""}, {prop: "Body", name: "Body", embedded: false, exported: true, typ: gas.Object, tag: ""}]);
+	EnteredEvent.init("", [{prop: "Body", name: "Body", embedded: false, exported: true, typ: gas.Object, tag: ""}]);
+	LeavedEvent.init("", [{prop: "Body", name: "Body", embedded: false, exported: true, typ: gas.Object, tag: ""}]);
+	StandardEvent.init("", [{prop: "OldIndex", name: "OldIndex", embedded: false, exported: true, typ: $Int, tag: ""}, {prop: "NewIndex", name: "NewIndex", embedded: false, exported: true, typ: $Int, tag: ""}, {prop: "Body", name: "Body", embedded: false, exported: true, typ: gas.Object, tag: ""}]);
+	Config.init("", [{prop: "This", name: "This", embedded: false, exported: true, typ: ptrType, tag: ""}, {prop: "Tag", name: "Tag", embedded: false, exported: true, typ: $String, tag: ""}, {prop: "Group", name: "Group", embedded: false, exported: true, typ: $String, tag: ""}, {prop: "FieldName", name: "FieldName", embedded: false, exported: true, typ: $String, tag: ""}, {prop: "Events", name: "Events", embedded: false, exported: true, typ: EventsHandlers, tag: ""}, {prop: "GroupClass", name: "GroupClass", embedded: false, exported: true, typ: $String, tag: ""}, {prop: "PreviewClass", name: "PreviewClass", embedded: false, exported: true, typ: $String, tag: ""}, {prop: "PlaceholderClass", name: "PlaceholderClass", embedded: false, exported: true, typ: $String, tag: ""}]);
+	$init = function() {
+		$pkg.$init = function() {};
+		/* */ var $f, $c = false, $s = 0, $r; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		$r = fmt.$init(); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = dom.$init(); /* */ $s = 2; case 2: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = gas.$init(); /* */ $s = 3; case 3: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = web.$init(); /* */ $s = 4; case 4: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = js.$init(); /* */ $s = 5; case 5: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = errors.$init(); /* */ $s = 6; case 6: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = strconv.$init(); /* */ $s = 7; case 7: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = strings.$init(); /* */ $s = 8; case 8: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = time.$init(); /* */ $s = 9; case 9: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 		/* */ } return; } if ($f === undefined) { $f = { $blk: $init }; } $f.$s = $s; $f.$r = $r; return $f;
 	};
 	$pkg.$init = $init;
 	return $pkg;
 })();
 $packages["github.com/gascore/components/layout"] = (function() {
-	var $pkg = {}, $init, fmt, dom, js, gas, js$1, strconv, strings, Config, Event, MoveEvent, Size, Element, sliceType, ptrType, sliceType$1, sliceType$2, sliceType$3, ptrType$1, ptrType$2, sliceType$4, sliceType$5, passive, _r, Layout, gutter, event, addEvent, removeEvent, getSizes, getMousePosition, notJsNull, parseP;
+	var $pkg = {}, $init, fmt, dom, js, gas, js$1, strconv, strings, Config, Event, MoveEvent, Size, Element, sliceType, ptrType, sliceType$1, sliceType$2, sliceType$3, ptrType$1, ptrType$2, sliceType$4, sliceType$5, Layout, gutter, event, addEvent, removeEvent, getSizes, getMousePosition, notJsNull, parseP;
 	fmt = $packages["fmt"];
 	dom = $packages["github.com/gascore/dom"];
 	js = $packages["github.com/gascore/dom/js"];
@@ -45632,10 +46463,11 @@ $packages["github.com/gascore/components/layout"] = (function() {
 	sliceType$4 = $sliceType($String);
 	sliceType$5 = $sliceType(ptrType$2);
 	Layout = function(config, e) {
-		var _i, _i$1, _r$1, _r$2, _r$3, _ref, _ref$1, child, childC, config, e, elements, i, size, size$1, sizes, sizesSum, x, $s, $r;
-		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _i = $f._i; _i$1 = $f._i$1; _r$1 = $f._r$1; _r$2 = $f._r$2; _r$3 = $f._r$3; _ref = $f._ref; _ref$1 = $f._ref$1; child = $f.child; childC = $f.childC; config = $f.config; e = $f.e; elements = $f.elements; i = $f.i; size = $f.size; size$1 = $f.size$1; sizes = $f.sizes; sizesSum = $f.sizesSum; x = $f.x; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		var _i, _i$1, _r, _r$1, _r$2, _ref, _ref$1, child, childC, config, e, elements, i, size, size$1, sizes, sizesSum, x, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _i = $f._i; _i$1 = $f._i$1; _r = $f._r; _r$1 = $f._r$1; _r$2 = $f._r$2; _ref = $f._ref; _ref$1 = $f._ref$1; child = $f.child; childC = $f.childC; config = $f.config; e = $f.e; elements = $f.elements; i = $f.i; size = $f.size; size$1 = $f.size$1; sizes = $f.sizes; sizesSum = $f.sizesSum; x = $f.x; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
 		config = [config];
 		elements = [elements];
+		e.Body = gas.RemoveStrings(e.Body);
 		/* */ if (!((e.Body.$length === config[0].Sizes.$length))) { $s = 1; continue; }
 		/* */ $s = 2; continue;
 		/* if (!((e.Body.$length === config[0].Sizes.$length))) { */ case 1:
@@ -45700,8 +46532,8 @@ $packages["github.com/gascore/components/layout"] = (function() {
 			/* */ if (!gas.IsComponent(child)) { $s = 9; continue; }
 			/* */ $s = 10; continue;
 			/* if (!gas.IsComponent(child)) { */ case 9:
-				_r$1 = fmt.Sprintf("invalid child in layout - child is not component, want: '*gas.Component' got: '%T'", new sliceType([child])); /* */ $s = 11; case 11: if($c) { $c = false; _r$1 = _r$1.$blk(); } if (_r$1 && _r$1.$blk !== undefined) { break s; }
-				$r = dom.ConsoleError(new sliceType([new $String(_r$1)])); /* */ $s = 12; case 12: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+				_r = fmt.Sprintf("invalid child in layout - child is not component, want: '*gas.Component' got: '%T'", new sliceType([child])); /* */ $s = 11; case 11: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
+				$r = dom.ConsoleError(new sliceType([new $String(_r)])); /* */ $s = 12; case 12: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 				$s = -1; return ptrType.nil;
 			/* } */ case 10:
 			childC = gas.I2C(child);
@@ -45716,41 +46548,41 @@ $packages["github.com/gascore/components/layout"] = (function() {
 		/* } */ $s = 7; continue; case 8:
 		config[0].allGuttersSize = $imul(((elements[0].$length - 1 >> 0)), config[0].GutterSize);
 		config[0].byGuttersOffset = (config[0].allGuttersSize) / (elements[0].$length);
-		_r$2 = fmt.Sprintf("%s %s-%s", new sliceType([new $String(config[0].LayoutClass), new $String(config[0].LayoutClass), new $String(config[0].typeString)])); /* */ $s = 13; case 13: if($c) { $c = false; _r$2 = _r$2.$blk(); } if (_r$2 && _r$2.$blk !== undefined) { break s; }
-		_r$3 = gas.NC(new gas.Component.ptr($makeMap($String.keyFor, [{ k: "sizes", v: sizes }]), false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$3.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "", $makeMap($String.keyFor, [{ k: "class", v: _r$2 }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil), (function(config, elements) { return function $b(this$1) {
-			var _i$2, _r$3, _r$4, _r$5, _r$6, _r$7, _ref$2, aSizes, child$1, childes, i$1, this$1, x$1, x$2, $s, $r;
-			/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _i$2 = $f._i$2; _r$3 = $f._r$3; _r$4 = $f._r$4; _r$5 = $f._r$5; _r$6 = $f._r$6; _r$7 = $f._r$7; _ref$2 = $f._ref$2; aSizes = $f.aSizes; child$1 = $f.child$1; childes = $f.childes; i$1 = $f.i$1; this$1 = $f.this$1; x$1 = $f.x$1; x$2 = $f.x$2; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		_r$1 = fmt.Sprintf("%s %s-%s", new sliceType([new $String(config[0].LayoutClass), new $String(config[0].LayoutClass), new $String(config[0].typeString)])); /* */ $s = 13; case 13: if($c) { $c = false; _r$1 = _r$1.$blk(); } if (_r$1 && _r$1.$blk !== undefined) { break s; }
+		_r$2 = gas.NC(new gas.Component.ptr($makeMap($String.keyFor, [{ k: "sizes", v: sizes }]), false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$3.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "", $makeMap($String.keyFor, [{ k: "class", v: _r$1 }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil), (function(config, elements) { return function $b(this$1) {
+			var _i$2, _r$2, _r$3, _r$4, _r$5, _r$6, _ref$2, aSizes, child$1, childes, i$1, this$1, x$1, x$2, $s, $r;
+			/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _i$2 = $f._i$2; _r$2 = $f._r$2; _r$3 = $f._r$3; _r$4 = $f._r$4; _r$5 = $f._r$5; _r$6 = $f._r$6; _ref$2 = $f._ref$2; aSizes = $f.aSizes; child$1 = $f.child$1; childes = $f.childes; i$1 = $f.i$1; this$1 = $f.this$1; x$1 = $f.x$1; x$2 = $f.x$2; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
 			childes = sliceType.nil;
-			_r$3 = this$1.Get("sizes"); /* */ $s = 1; case 1: if($c) { $c = false; _r$3 = _r$3.$blk(); } if (_r$3 && _r$3.$blk !== undefined) { break s; }
-			aSizes = $assertType(_r$3, sliceType$2);
+			_r$2 = this$1.Get("sizes"); /* */ $s = 1; case 1: if($c) { $c = false; _r$2 = _r$2.$blk(); } if (_r$2 && _r$2.$blk !== undefined) { break s; }
+			aSizes = $assertType(_r$2, sliceType$2);
 			_ref$2 = elements[0];
 			_i$2 = 0;
 			/* while (true) { */ case 2:
 				/* if (!(_i$2 < _ref$2.$length)) { break; } */ if(!(_i$2 < _ref$2.$length)) { $s = 3; continue; }
 				i$1 = _i$2;
 				child$1 = $clone(((_i$2 < 0 || _i$2 >= _ref$2.$length) ? ($throwRuntimeError("index out of range"), undefined) : _ref$2.$array[_ref$2.$offset + _i$2]), Element);
-				_r$4 = fmt.Sprintf("%s: calc(%f%s - %fpx);", new sliceType([new $String(config[0].orientation), new $Float64((x$1 = child$1.Index, ((x$1 < 0 || x$1 >= aSizes.$length) ? ($throwRuntimeError("index out of range"), undefined) : aSizes.$array[aSizes.$offset + x$1])).current), new $String("%"), new $Float64(config[0].byGuttersOffset)])); /* */ $s = 4; case 4: if($c) { $c = false; _r$4 = _r$4.$blk(); } if (_r$4 && _r$4.$blk !== undefined) { break s; }
-				_r$5 = fmt.Sprintf("%d", new sliceType([new $Int(i$1)])); /* */ $s = 5; case 5: if($c) { $c = false; _r$5 = _r$5.$blk(); } if (_r$5 && _r$5.$blk !== undefined) { break s; }
-				_r$6 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$3.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "", $makeMap($String.keyFor, [{ k: "class", v: config[0].LayoutClass + "-item" }, { k: "style", v: _r$4 }, { k: "data-i", v: _r$5 }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([child$1.C])); /* */ $s = 6; case 6: if($c) { $c = false; _r$6 = _r$6.$blk(); } if (_r$6 && _r$6.$blk !== undefined) { break s; }
-				childes = $append(childes, _r$6);
+				_r$3 = fmt.Sprintf("%s: calc(%f%s - %fpx); %s: 100%s;", new sliceType([new $String(config[0].orientation), new $Float64((x$1 = child$1.Index, ((x$1 < 0 || x$1 >= aSizes.$length) ? ($throwRuntimeError("index out of range"), undefined) : aSizes.$array[aSizes.$offset + x$1])).current), new $String("%"), new $Float64(config[0].byGuttersOffset), new $String(config[0].subOrientation), new $String("%")])); /* */ $s = 4; case 4: if($c) { $c = false; _r$3 = _r$3.$blk(); } if (_r$3 && _r$3.$blk !== undefined) { break s; }
+				_r$4 = fmt.Sprintf("%d", new sliceType([new $Int(i$1)])); /* */ $s = 5; case 5: if($c) { $c = false; _r$4 = _r$4.$blk(); } if (_r$4 && _r$4.$blk !== undefined) { break s; }
+				_r$5 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$3.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "", $makeMap($String.keyFor, [{ k: "class", v: config[0].LayoutClass + "-item" }, { k: "style", v: _r$3 }, { k: "data-i", v: _r$4 }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([child$1.C])); /* */ $s = 6; case 6: if($c) { $c = false; _r$5 = _r$5.$blk(); } if (_r$5 && _r$5.$blk !== undefined) { break s; }
+				childes = $append(childes, _r$5);
 				/* */ if (!((i$1 === (elements[0].$length - 1 >> 0)))) { $s = 7; continue; }
 				/* */ $s = 8; continue;
 				/* if (!((i$1 === (elements[0].$length - 1 >> 0)))) { */ case 7:
-					_r$7 = gutter(this$1, config[0], $clone(child$1, Element), $clone((x$2 = i$1 + 1 >> 0, ((x$2 < 0 || x$2 >= elements[0].$length) ? ($throwRuntimeError("index out of range"), undefined) : elements[0].$array[elements[0].$offset + x$2])), Element)); /* */ $s = 9; case 9: if($c) { $c = false; _r$7 = _r$7.$blk(); } if (_r$7 && _r$7.$blk !== undefined) { break s; }
-					childes = $append(childes, _r$7);
+					_r$6 = gutter(this$1, config[0], $clone(child$1, Element), $clone((x$2 = i$1 + 1 >> 0, ((x$2 < 0 || x$2 >= elements[0].$length) ? ($throwRuntimeError("index out of range"), undefined) : elements[0].$array[elements[0].$offset + x$2])), Element)); /* */ $s = 9; case 9: if($c) { $c = false; _r$6 = _r$6.$blk(); } if (_r$6 && _r$6.$blk !== undefined) { break s; }
+					childes = $append(childes, _r$6);
 				/* } */ case 8:
 				_i$2++;
 			/* } */ $s = 2; continue; case 3:
 			$s = -1; return childes;
-			/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._i$2 = _i$2; $f._r$3 = _r$3; $f._r$4 = _r$4; $f._r$5 = _r$5; $f._r$6 = _r$6; $f._r$7 = _r$7; $f._ref$2 = _ref$2; $f.aSizes = aSizes; $f.child$1 = child$1; $f.childes = childes; $f.i$1 = i$1; $f.this$1 = this$1; $f.x$1 = x$1; $f.x$2 = x$2; $f.$s = $s; $f.$r = $r; return $f;
-		}; })(config, elements)); /* */ $s = 14; case 14: if($c) { $c = false; _r$3 = _r$3.$blk(); } if (_r$3 && _r$3.$blk !== undefined) { break s; }
-		$s = -1; return _r$3;
-		/* */ } return; } if ($f === undefined) { $f = { $blk: Layout }; } $f._i = _i; $f._i$1 = _i$1; $f._r$1 = _r$1; $f._r$2 = _r$2; $f._r$3 = _r$3; $f._ref = _ref; $f._ref$1 = _ref$1; $f.child = child; $f.childC = childC; $f.config = config; $f.e = e; $f.elements = elements; $f.i = i; $f.size = size; $f.size$1 = size$1; $f.sizes = sizes; $f.sizesSum = sizesSum; $f.x = x; $f.$s = $s; $f.$r = $r; return $f;
+			/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._i$2 = _i$2; $f._r$2 = _r$2; $f._r$3 = _r$3; $f._r$4 = _r$4; $f._r$5 = _r$5; $f._r$6 = _r$6; $f._ref$2 = _ref$2; $f.aSizes = aSizes; $f.child$1 = child$1; $f.childes = childes; $f.i$1 = i$1; $f.this$1 = this$1; $f.x$1 = x$1; $f.x$2 = x$2; $f.$s = $s; $f.$r = $r; return $f;
+		}; })(config, elements)); /* */ $s = 14; case 14: if($c) { $c = false; _r$2 = _r$2.$blk(); } if (_r$2 && _r$2.$blk !== undefined) { break s; }
+		$s = -1; return _r$2;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: Layout }; } $f._i = _i; $f._i$1 = _i$1; $f._r = _r; $f._r$1 = _r$1; $f._r$2 = _r$2; $f._ref = _ref; $f._ref$1 = _ref$1; $f.child = child; $f.childC = childC; $f.config = config; $f.e = e; $f.elements = elements; $f.i = i; $f.size = size; $f.size$1 = size$1; $f.sizes = sizes; $f.sizesSum = sizesSum; $f.x = x; $f.$s = $s; $f.$r = $r; return $f;
 	};
 	$pkg.Layout = Layout;
 	gutter = function(pThis, config, first, second) {
-		var _r$1, _r$2, _r$3, config, cursorType, first, pThis, second, x, x$1, x$2, $s, $r;
-		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r$1 = $f._r$1; _r$2 = $f._r$2; _r$3 = $f._r$3; config = $f.config; cursorType = $f.cursorType; first = $f.first; pThis = $f.pThis; second = $f.second; x = $f.x; x$1 = $f.x$1; x$2 = $f.x$2; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		var _r, _r$1, _r$2, config, cursorType, first, pThis, second, x, x$1, x$2, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r = $f._r; _r$1 = $f._r$1; _r$2 = $f._r$2; config = $f.config; cursorType = $f.cursorType; first = $f.first; pThis = $f.pThis; second = $f.second; x = $f.x; x$1 = $f.x$1; x$2 = $f.x$2; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
 		config = [config];
 		first = [first];
 		pThis = [pThis];
@@ -45761,54 +46593,55 @@ $packages["github.com/gascore/components/layout"] = (function() {
 		} else {
 			cursorType = "row-resize";
 		}
-		_r$1 = fmt.Sprintf("%s %s-%s", new sliceType([new $String(config[0].GutterClass), new $String(config[0].GutterClass), new $String(config[0].typeString)])); /* */ $s = 1; case 1: if($c) { $c = false; _r$1 = _r$1.$blk(); } if (_r$1 && _r$1.$blk !== undefined) { break s; }
-		_r$2 = fmt.Sprintf("cursor: %s; %s: %dpx", new sliceType([new $String(cursorType), new $String(config[0].orientation), new $Int(config[0].GutterSize)])); /* */ $s = 2; case 2: if($c) { $c = false; _r$2 = _r$2.$blk(); } if (_r$2 && _r$2.$blk !== undefined) { break s; }
-		_r$3 = gas.NE(new gas.Component.ptr($makeMap($String.keyFor, [{ k: "dragOffset", v: new $Float64(0) }, { k: "dragging", v: new $Bool(false) }, { k: "startEvent", v: (x = new js$1.Func.ptr(new js$1.Value.ptr(null)), new x.constructor.elem(x)) }, { k: "moveEvent", v: (x$1 = new js$1.Func.ptr(new js$1.Value.ptr(null)), new x$1.constructor.elem(x$1)) }, { k: "stopEvent", v: (x$2 = new js$1.Func.ptr(new js$1.Value.ptr(null)), new x$2.constructor.elem(x$2)) }]), false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, (function(config, first, pThis, second) { return function $b(this$1) {
-			var _arg, _arg$1, _el, _r$3, _r$4, _r$5, _r$6, computedStyles, moveEvent, parentSize, startEvent, stopEvent, this$1, x$3, $s, $r;
-			/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _arg = $f._arg; _arg$1 = $f._arg$1; _el = $f._el; _r$3 = $f._r$3; _r$4 = $f._r$4; _r$5 = $f._r$5; _r$6 = $f._r$6; computedStyles = $f.computedStyles; moveEvent = $f.moveEvent; parentSize = $f.parentSize; startEvent = $f.startEvent; stopEvent = $f.stopEvent; this$1 = $f.this$1; x$3 = $f.x$3; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		_r = fmt.Sprintf("%s %s-%s", new sliceType([new $String(config[0].GutterClass), new $String(config[0].GutterClass), new $String(config[0].typeString)])); /* */ $s = 1; case 1: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
+		_r$1 = fmt.Sprintf("cursor: %s; %s: %dpx", new sliceType([new $String(cursorType), new $String(config[0].orientation), new $Int(config[0].GutterSize)])); /* */ $s = 2; case 2: if($c) { $c = false; _r$1 = _r$1.$blk(); } if (_r$1 && _r$1.$blk !== undefined) { break s; }
+		_r$2 = gas.NE(new gas.Component.ptr($makeMap($String.keyFor, [{ k: "dragOffset", v: new $Float64(0) }, { k: "dragging", v: new $Bool(false) }, { k: "startEvent", v: (x = new js$1.Func.ptr(new js$1.Value.ptr(null)), new x.constructor.elem(x)) }, { k: "moveEvent", v: (x$1 = new js$1.Func.ptr(new js$1.Value.ptr(null)), new x$1.constructor.elem(x$1)) }, { k: "stopEvent", v: (x$2 = new js$1.Func.ptr(new js$1.Value.ptr(null)), new x$2.constructor.elem(x$2)) }]), false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, (function(config, first, pThis, second) { return function $b(this$1) {
+			var _arg, _arg$1, _el, _r$2, _r$3, _r$4, _r$5, computedStyles, moveEvent, parentSize, startEvent, stopEvent, this$1, x$3, $s, $r;
+			/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _arg = $f._arg; _arg$1 = $f._arg$1; _el = $f._el; _r$2 = $f._r$2; _r$3 = $f._r$3; _r$4 = $f._r$4; _r$5 = $f._r$5; computedStyles = $f.computedStyles; moveEvent = $f.moveEvent; parentSize = $f.parentSize; startEvent = $f.startEvent; stopEvent = $f.stopEvent; this$1 = $f.this$1; x$3 = $f.x$3; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
 			_el = [_el];
 			this$1 = [this$1];
 			parentSize = 0;
-			_r$3 = this$1[0].Element(); /* */ $s = 1; case 1: if($c) { $c = false; _r$3 = _r$3.$blk(); } if (_r$3 && _r$3.$blk !== undefined) { break s; }
-			_el[0] = $assertType(_r$3, ptrType$2);
-			_r$4 = $clone(js$1.Global(), js$1.Value).Call("getComputedStyle", new sliceType([(x$3 = _el[0].NodeBase.JSValue(), new x$3.constructor.elem(x$3))])); /* */ $s = 2; case 2: if($c) { $c = false; _r$4 = _r$4.$blk(); } if (_r$4 && _r$4.$blk !== undefined) { break s; }
-			computedStyles = $clone(_r$4, js$1.Value);
+			_r$2 = this$1[0].Element(); /* */ $s = 1; case 1: if($c) { $c = false; _r$2 = _r$2.$blk(); } if (_r$2 && _r$2.$blk !== undefined) { break s; }
+			_el[0] = $assertType(_r$2, ptrType$2);
+			_r$3 = $clone(js$1.Global(), js$1.Value).Call("getComputedStyle", new sliceType([(x$3 = _el[0].NodeBase.JSValue(), new x$3.constructor.elem(x$3))])); /* */ $s = 2; case 2: if($c) { $c = false; _r$3 = _r$3.$blk(); } if (_r$3 && _r$3.$blk !== undefined) { break s; }
+			computedStyles = $clone(_r$3, js$1.Value);
 			if (config[0].Type) {
 				parentSize = (_el[0].NodeBase.ParentElement().ClientHeight() - parseP($clone($clone(computedStyles, js$1.Value).Get("paddingTop"), js$1.Value)) >> 0) - parseP($clone($clone(computedStyles, js$1.Value).Get("paddingBottom"), js$1.Value)) >> 0;
 			} else {
 				parentSize = (_el[0].NodeBase.ParentElement().ClientWidth() - parseP($clone($clone(computedStyles, js$1.Value).Get("paddingLeft"), js$1.Value)) >> 0) - parseP($clone($clone(computedStyles, js$1.Value).Get("paddingRight"), js$1.Value)) >> 0;
 			}
 			moveEvent = $clone(event((function(_el, config, first, pThis, second, this$1) { return function $b(event$1) {
-				var _r$10, _r$11, _r$12, _r$13, _r$14, _r$5, _r$6, _r$7, _r$8, _r$9, _tmp, _tmp$1, _tuple, _tuple$1, _tuple$2, err, event$1, newFirst, newSecond, offset, sizes, start, stopIt, x$4, x$5, x$6, x$7, x$8, x$9, $s, $r;
-				/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r$10 = $f._r$10; _r$11 = $f._r$11; _r$12 = $f._r$12; _r$13 = $f._r$13; _r$14 = $f._r$14; _r$5 = $f._r$5; _r$6 = $f._r$6; _r$7 = $f._r$7; _r$8 = $f._r$8; _r$9 = $f._r$9; _tmp = $f._tmp; _tmp$1 = $f._tmp$1; _tuple = $f._tuple; _tuple$1 = $f._tuple$1; _tuple$2 = $f._tuple$2; err = $f.err; event$1 = $f.event$1; newFirst = $f.newFirst; newSecond = $f.newSecond; offset = $f.offset; sizes = $f.sizes; start = $f.start; stopIt = $f.stopIt; x$4 = $f.x$4; x$5 = $f.x$5; x$6 = $f.x$6; x$7 = $f.x$7; x$8 = $f.x$8; x$9 = $f.x$9; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
-				_r$5 = this$1[0].Get("dragging"); /* */ $s = 3; case 3: if($c) { $c = false; _r$5 = _r$5.$blk(); } if (_r$5 && _r$5.$blk !== undefined) { break s; }
-				/* */ if (!$assertType(_r$5, $Bool)) { $s = 1; continue; }
+				var _r$10, _r$11, _r$12, _r$13, _r$4, _r$5, _r$6, _r$7, _r$8, _r$9, _tmp, _tmp$1, _tuple, _tuple$1, _tuple$2, err, event$1, newFirst, newSecond, offset, sizes, start, stopIt, x$4, x$5, x$6, x$7, x$8, x$9, $s, $r;
+				/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r$10 = $f._r$10; _r$11 = $f._r$11; _r$12 = $f._r$12; _r$13 = $f._r$13; _r$4 = $f._r$4; _r$5 = $f._r$5; _r$6 = $f._r$6; _r$7 = $f._r$7; _r$8 = $f._r$8; _r$9 = $f._r$9; _tmp = $f._tmp; _tmp$1 = $f._tmp$1; _tuple = $f._tuple; _tuple$1 = $f._tuple$1; _tuple$2 = $f._tuple$2; err = $f.err; event$1 = $f.event$1; newFirst = $f.newFirst; newSecond = $f.newSecond; offset = $f.offset; sizes = $f.sizes; start = $f.start; stopIt = $f.stopIt; x$4 = $f.x$4; x$5 = $f.x$5; x$6 = $f.x$6; x$7 = $f.x$7; x$8 = $f.x$8; x$9 = $f.x$9; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+				_r$4 = this$1[0].Get("dragging"); /* */ $s = 3; case 3: if($c) { $c = false; _r$4 = _r$4.$blk(); } if (_r$4 && _r$4.$blk !== undefined) { break s; }
+				/* */ if (!$assertType(_r$4, $Bool)) { $s = 1; continue; }
 				/* */ $s = 2; continue;
-				/* if (!$assertType(_r$5, $Bool)) { */ case 1:
+				/* if (!$assertType(_r$4, $Bool)) { */ case 1:
 					$s = -1; return $ifaceNil;
 				/* } */ case 2:
+				$r = event$1.PreventDefault(); /* */ $s = 4; case 4: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 				start = 0;
-				/* */ if (config[0].Type) { $s = 4; continue; }
-				/* */ $s = 5; continue;
-				/* if (config[0].Type) { */ case 4:
-					_r$6 = _el[0].GetBoundingClientRectRaw(); /* */ $s = 7; case 7: if($c) { $c = false; _r$6 = _r$6.$blk(); } if (_r$6 && _r$6.$blk !== undefined) { break s; }
-					_r$7 = $clone(_r$6, js.Value).Get("left", new sliceType$4([])); /* */ $s = 8; case 8: if($c) { $c = false; _r$7 = _r$7.$blk(); } if (_r$7 && _r$7.$blk !== undefined) { break s; }
-					_r$8 = $clone(_r$7.Ref, js$1.Value).Float(); /* */ $s = 9; case 9: if($c) { $c = false; _r$8 = _r$8.$blk(); } if (_r$8 && _r$8.$blk !== undefined) { break s; }
-					start = _r$8;
-					$s = 6; continue;
-				/* } else { */ case 5:
-					_r$9 = _el[0].GetBoundingClientRectRaw(); /* */ $s = 10; case 10: if($c) { $c = false; _r$9 = _r$9.$blk(); } if (_r$9 && _r$9.$blk !== undefined) { break s; }
-					_r$10 = $clone(_r$9, js.Value).Get("top", new sliceType$4([])); /* */ $s = 11; case 11: if($c) { $c = false; _r$10 = _r$10.$blk(); } if (_r$10 && _r$10.$blk !== undefined) { break s; }
-					_r$11 = $clone(_r$10.Ref, js$1.Value).Float(); /* */ $s = 12; case 12: if($c) { $c = false; _r$11 = _r$11.$blk(); } if (_r$11 && _r$11.$blk !== undefined) { break s; }
-					start = _r$11;
-				/* } */ case 6:
-				_r$12 = getMousePosition(config[0].clientAxis, event$1); /* */ $s = 13; case 13: if($c) { $c = false; _r$12 = _r$12.$blk(); } if (_r$12 && _r$12.$blk !== undefined) { break s; }
-				offset = _r$12 - start + (config[0].GutterSize);
+				/* */ if (config[0].Type) { $s = 5; continue; }
+				/* */ $s = 6; continue;
+				/* if (config[0].Type) { */ case 5:
+					_r$5 = _el[0].GetBoundingClientRectRaw(); /* */ $s = 8; case 8: if($c) { $c = false; _r$5 = _r$5.$blk(); } if (_r$5 && _r$5.$blk !== undefined) { break s; }
+					_r$6 = $clone(_r$5, js.Value).Get("left", new sliceType$4([])); /* */ $s = 9; case 9: if($c) { $c = false; _r$6 = _r$6.$blk(); } if (_r$6 && _r$6.$blk !== undefined) { break s; }
+					_r$7 = $clone(_r$6.Ref, js$1.Value).Float(); /* */ $s = 10; case 10: if($c) { $c = false; _r$7 = _r$7.$blk(); } if (_r$7 && _r$7.$blk !== undefined) { break s; }
+					start = _r$7;
+					$s = 7; continue;
+				/* } else { */ case 6:
+					_r$8 = _el[0].GetBoundingClientRectRaw(); /* */ $s = 11; case 11: if($c) { $c = false; _r$8 = _r$8.$blk(); } if (_r$8 && _r$8.$blk !== undefined) { break s; }
+					_r$9 = $clone(_r$8, js.Value).Get("top", new sliceType$4([])); /* */ $s = 12; case 12: if($c) { $c = false; _r$9 = _r$9.$blk(); } if (_r$9 && _r$9.$blk !== undefined) { break s; }
+					_r$10 = $clone(_r$9.Ref, js$1.Value).Float(); /* */ $s = 13; case 13: if($c) { $c = false; _r$10 = _r$10.$blk(); } if (_r$10 && _r$10.$blk !== undefined) { break s; }
+					start = _r$10;
+				/* } */ case 7:
+				_r$11 = getMousePosition(config[0].clientAxis, event$1); /* */ $s = 14; case 14: if($c) { $c = false; _r$11 = _r$11.$blk(); } if (_r$11 && _r$11.$blk !== undefined) { break s; }
+				offset = _r$11 - start + (config[0].GutterSize);
 				if (offset === 0) {
 					$s = -1; return $ifaceNil;
 				}
-				_r$13 = pThis[0].Get("sizes"); /* */ $s = 14; case 14: if($c) { $c = false; _r$13 = _r$13.$blk(); } if (_r$13 && _r$13.$blk !== undefined) { break s; }
-				sizes = $assertType(_r$13, sliceType$2);
+				_r$12 = pThis[0].Get("sizes"); /* */ $s = 15; case 15: if($c) { $c = false; _r$12 = _r$12.$blk(); } if (_r$12 && _r$12.$blk !== undefined) { break s; }
+				sizes = $assertType(_r$12, sliceType$2);
 				_tmp = 0;
 				_tmp$1 = 0;
 				newFirst = _tmp;
@@ -45824,12 +46657,12 @@ $packages["github.com/gascore/components/layout"] = (function() {
 				}
 				(x$8 = first[0].Index, ((x$8 < 0 || x$8 >= sizes.$length) ? ($throwRuntimeError("index out of range"), undefined) : sizes.$array[sizes.$offset + x$8])).current = newFirst;
 				(x$9 = second[0].Index, ((x$9 < 0 || x$9 >= sizes.$length) ? ($throwRuntimeError("index out of range"), undefined) : sizes.$array[sizes.$offset + x$9])).current = newSecond;
-				$r = pThis[0].SetValue("sizes", sizes); /* */ $s = 15; case 15: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-				/* */ if (!(config[0].OnMove === $throwNilPointerError)) { $s = 16; continue; }
-				/* */ $s = 17; continue;
-				/* if (!(config[0].OnMove === $throwNilPointerError)) { */ case 16:
-					_r$14 = config[0].OnMove($clone(first[0], Element), $clone(second[0], Element), _el[0], offset); /* */ $s = 18; case 18: if($c) { $c = false; _r$14 = _r$14.$blk(); } if (_r$14 && _r$14.$blk !== undefined) { break s; }
-					_tuple$2 = _r$14;
+				$r = pThis[0].SetValue("sizes", sizes); /* */ $s = 16; case 16: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+				/* */ if (!(config[0].OnMove === $throwNilPointerError)) { $s = 17; continue; }
+				/* */ $s = 18; continue;
+				/* if (!(config[0].OnMove === $throwNilPointerError)) { */ case 17:
+					_r$13 = config[0].OnMove($clone(first[0], Element), $clone(second[0], Element), _el[0], offset); /* */ $s = 19; case 19: if($c) { $c = false; _r$13 = _r$13.$blk(); } if (_r$13 && _r$13.$blk !== undefined) { break s; }
+					_tuple$2 = _r$13;
 					stopIt = _tuple$2[0];
 					err = _tuple$2[1];
 					if (!($interfaceIsEqual(err, $ifaceNil))) {
@@ -45838,28 +46671,28 @@ $packages["github.com/gascore/components/layout"] = (function() {
 					if (stopIt) {
 						$s = -1; return $ifaceNil;
 					}
-				/* } */ case 17:
+				/* } */ case 18:
 				$s = -1; return $ifaceNil;
-				/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._r$10 = _r$10; $f._r$11 = _r$11; $f._r$12 = _r$12; $f._r$13 = _r$13; $f._r$14 = _r$14; $f._r$5 = _r$5; $f._r$6 = _r$6; $f._r$7 = _r$7; $f._r$8 = _r$8; $f._r$9 = _r$9; $f._tmp = _tmp; $f._tmp$1 = _tmp$1; $f._tuple = _tuple; $f._tuple$1 = _tuple$1; $f._tuple$2 = _tuple$2; $f.err = err; $f.event$1 = event$1; $f.newFirst = newFirst; $f.newSecond = newSecond; $f.offset = offset; $f.sizes = sizes; $f.start = start; $f.stopIt = stopIt; $f.x$4 = x$4; $f.x$5 = x$5; $f.x$6 = x$6; $f.x$7 = x$7; $f.x$8 = x$8; $f.x$9 = x$9; $f.$s = $s; $f.$r = $r; return $f;
+				/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._r$10 = _r$10; $f._r$11 = _r$11; $f._r$12 = _r$12; $f._r$13 = _r$13; $f._r$4 = _r$4; $f._r$5 = _r$5; $f._r$6 = _r$6; $f._r$7 = _r$7; $f._r$8 = _r$8; $f._r$9 = _r$9; $f._tmp = _tmp; $f._tmp$1 = _tmp$1; $f._tuple = _tuple; $f._tuple$1 = _tuple$1; $f._tuple$2 = _tuple$2; $f.err = err; $f.event$1 = event$1; $f.newFirst = newFirst; $f.newSecond = newSecond; $f.offset = offset; $f.sizes = sizes; $f.start = start; $f.stopIt = stopIt; $f.x$4 = x$4; $f.x$5 = x$5; $f.x$6 = x$6; $f.x$7 = x$7; $f.x$8 = x$8; $f.x$9 = x$9; $f.$s = $s; $f.$r = $r; return $f;
 			}; })(_el, config, first, pThis, second, this$1)), js$1.Func);
 			stopEvent = $clone(event((function(_el, config, first, pThis, second, this$1) { return function $b(event$1) {
-				var _arg, _arg$1, _arg$2, _arg$3, _arg$4, _arg$5, _arg$6, _arg$7, _arg$8, _arg$9, _first, _i, _r$10, _r$11, _r$12, _r$13, _r$5, _r$6, _r$7, _r$8, _r$9, _ref, _second, _tuple, _x, err, event$1, stopIt, $s, $r;
-				/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _arg = $f._arg; _arg$1 = $f._arg$1; _arg$2 = $f._arg$2; _arg$3 = $f._arg$3; _arg$4 = $f._arg$4; _arg$5 = $f._arg$5; _arg$6 = $f._arg$6; _arg$7 = $f._arg$7; _arg$8 = $f._arg$8; _arg$9 = $f._arg$9; _first = $f._first; _i = $f._i; _r$10 = $f._r$10; _r$11 = $f._r$11; _r$12 = $f._r$12; _r$13 = $f._r$13; _r$5 = $f._r$5; _r$6 = $f._r$6; _r$7 = $f._r$7; _r$8 = $f._r$8; _r$9 = $f._r$9; _ref = $f._ref; _second = $f._second; _tuple = $f._tuple; _x = $f._x; err = $f.err; event$1 = $f.event$1; stopIt = $f.stopIt; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
-				_r$5 = this$1[0].Get("dragging"); /* */ $s = 3; case 3: if($c) { $c = false; _r$5 = _r$5.$blk(); } if (_r$5 && _r$5.$blk !== undefined) { break s; }
-				/* */ if (!$assertType(_r$5, $Bool)) { $s = 1; continue; }
+				var _arg, _arg$1, _arg$2, _arg$3, _arg$4, _arg$5, _arg$6, _arg$7, _arg$8, _arg$9, _first, _i, _r$10, _r$11, _r$12, _r$4, _r$5, _r$6, _r$7, _r$8, _r$9, _ref, _second, _tuple, _x, err, event$1, stopIt, $s, $r;
+				/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _arg = $f._arg; _arg$1 = $f._arg$1; _arg$2 = $f._arg$2; _arg$3 = $f._arg$3; _arg$4 = $f._arg$4; _arg$5 = $f._arg$5; _arg$6 = $f._arg$6; _arg$7 = $f._arg$7; _arg$8 = $f._arg$8; _arg$9 = $f._arg$9; _first = $f._first; _i = $f._i; _r$10 = $f._r$10; _r$11 = $f._r$11; _r$12 = $f._r$12; _r$4 = $f._r$4; _r$5 = $f._r$5; _r$6 = $f._r$6; _r$7 = $f._r$7; _r$8 = $f._r$8; _r$9 = $f._r$9; _ref = $f._ref; _second = $f._second; _tuple = $f._tuple; _x = $f._x; err = $f.err; event$1 = $f.event$1; stopIt = $f.stopIt; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+				_r$4 = this$1[0].Get("dragging"); /* */ $s = 3; case 3: if($c) { $c = false; _r$4 = _r$4.$blk(); } if (_r$4 && _r$4.$blk !== undefined) { break s; }
+				/* */ if (!$assertType(_r$4, $Bool)) { $s = 1; continue; }
 				/* */ $s = 2; continue;
-				/* if (!$assertType(_r$5, $Bool)) { */ case 1:
+				/* if (!$assertType(_r$4, $Bool)) { */ case 1:
 					$s = -1; return $ifaceNil;
 				/* } */ case 2:
-				_r$6 = first[0].C.Element(); /* */ $s = 4; case 4: if($c) { $c = false; _r$6 = _r$6.$blk(); } if (_r$6 && _r$6.$blk !== undefined) { break s; }
-				_first = $assertType(_r$6, ptrType$2);
-				_r$7 = second[0].C.Element(); /* */ $s = 5; case 5: if($c) { $c = false; _r$7 = _r$7.$blk(); } if (_r$7 && _r$7.$blk !== undefined) { break s; }
-				_second = $assertType(_r$7, ptrType$2);
+				_r$5 = first[0].C.Element(); /* */ $s = 4; case 4: if($c) { $c = false; _r$5 = _r$5.$blk(); } if (_r$5 && _r$5.$blk !== undefined) { break s; }
+				_first = $assertType(_r$5, ptrType$2);
+				_r$6 = second[0].C.Element(); /* */ $s = 5; case 5: if($c) { $c = false; _r$6 = _r$6.$blk(); } if (_r$6 && _r$6.$blk !== undefined) { break s; }
+				_second = $assertType(_r$6, ptrType$2);
 				/* */ if (!(config[0].OnStop === $throwNilPointerError)) { $s = 6; continue; }
 				/* */ $s = 7; continue;
 				/* if (!(config[0].OnStop === $throwNilPointerError)) { */ case 6:
-					_r$8 = config[0].OnStop($clone(first[0], Element), $clone(second[0], Element), _el[0]); /* */ $s = 8; case 8: if($c) { $c = false; _r$8 = _r$8.$blk(); } if (_r$8 && _r$8.$blk !== undefined) { break s; }
-					_tuple = _r$8;
+					_r$7 = config[0].OnStop($clone(first[0], Element), $clone(second[0], Element), _el[0]); /* */ $s = 8; case 8: if($c) { $c = false; _r$7 = _r$7.$blk(); } if (_r$7 && _r$7.$blk !== undefined) { break s; }
+					_tuple = _r$7;
 					stopIt = _tuple[0];
 					err = _tuple[1];
 					if (!($interfaceIsEqual(err, $ifaceNil))) {
@@ -45870,24 +46703,24 @@ $packages["github.com/gascore/components/layout"] = (function() {
 					}
 				/* } */ case 7:
 				_arg = _el[0];
-				_r$9 = this$1[0].Get("stopEvent"); /* */ $s = 9; case 9: if($c) { $c = false; _r$9 = _r$9.$blk(); } if (_r$9 && _r$9.$blk !== undefined) { break s; }
-				_arg$1 = $clone($assertType(_r$9, js$1.Func), js$1.Func);
+				_r$8 = this$1[0].Get("stopEvent"); /* */ $s = 9; case 9: if($c) { $c = false; _r$8 = _r$8.$blk(); } if (_r$8 && _r$8.$blk !== undefined) { break s; }
+				_arg$1 = $clone($assertType(_r$8, js$1.Func), js$1.Func);
 				$r = removeEvent(_arg, "touchend", _arg$1); /* */ $s = 10; case 10: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 				_arg$2 = _el[0];
-				_r$10 = this$1[0].Get("stopEvent"); /* */ $s = 11; case 11: if($c) { $c = false; _r$10 = _r$10.$blk(); } if (_r$10 && _r$10.$blk !== undefined) { break s; }
-				_arg$3 = $clone($assertType(_r$10, js$1.Func), js$1.Func);
+				_r$9 = this$1[0].Get("stopEvent"); /* */ $s = 11; case 11: if($c) { $c = false; _r$9 = _r$9.$blk(); } if (_r$9 && _r$9.$blk !== undefined) { break s; }
+				_arg$3 = $clone($assertType(_r$9, js$1.Func), js$1.Func);
 				$r = removeEvent(_arg$2, "touchcancel", _arg$3); /* */ $s = 12; case 12: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 				_arg$4 = _el[0];
-				_r$11 = this$1[0].Get("moveEvent"); /* */ $s = 13; case 13: if($c) { $c = false; _r$11 = _r$11.$blk(); } if (_r$11 && _r$11.$blk !== undefined) { break s; }
-				_arg$5 = $clone($assertType(_r$11, js$1.Func), js$1.Func);
+				_r$10 = this$1[0].Get("moveEvent"); /* */ $s = 13; case 13: if($c) { $c = false; _r$10 = _r$10.$blk(); } if (_r$10 && _r$10.$blk !== undefined) { break s; }
+				_arg$5 = $clone($assertType(_r$10, js$1.Func), js$1.Func);
 				$r = removeEvent(_arg$4, "touchmove", _arg$5); /* */ $s = 14; case 14: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 				_arg$6 = dom.Doc;
-				_r$12 = this$1[0].Get("stopEvent"); /* */ $s = 15; case 15: if($c) { $c = false; _r$12 = _r$12.$blk(); } if (_r$12 && _r$12.$blk !== undefined) { break s; }
-				_arg$7 = $clone($assertType(_r$12, js$1.Func), js$1.Func);
+				_r$11 = this$1[0].Get("stopEvent"); /* */ $s = 15; case 15: if($c) { $c = false; _r$11 = _r$11.$blk(); } if (_r$11 && _r$11.$blk !== undefined) { break s; }
+				_arg$7 = $clone($assertType(_r$11, js$1.Func), js$1.Func);
 				$r = removeEvent(_arg$6, "mouseup", _arg$7); /* */ $s = 16; case 16: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 				_arg$8 = dom.Doc;
-				_r$13 = this$1[0].Get("moveEvent"); /* */ $s = 17; case 17: if($c) { $c = false; _r$13 = _r$13.$blk(); } if (_r$13 && _r$13.$blk !== undefined) { break s; }
-				_arg$9 = $clone($assertType(_r$13, js$1.Func), js$1.Func);
+				_r$12 = this$1[0].Get("moveEvent"); /* */ $s = 17; case 17: if($c) { $c = false; _r$12 = _r$12.$blk(); } if (_r$12 && _r$12.$blk !== undefined) { break s; }
+				_arg$9 = $clone($assertType(_r$12, js$1.Func), js$1.Func);
 				$r = removeEvent(_arg$8, "mousemove", _arg$9); /* */ $s = 18; case 18: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 				_ref = new sliceType$5([_first, _second]);
 				_i = 0;
@@ -45901,28 +46734,28 @@ $packages["github.com/gascore/components/layout"] = (function() {
 				/* } */ $s = 19; continue; case 20:
 				$r = this$1[0].Set($makeMap($String.keyFor, [{ k: "dragging", v: new $Bool(false) }])); /* */ $s = 24; case 24: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 				$s = -1; return $ifaceNil;
-				/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._arg = _arg; $f._arg$1 = _arg$1; $f._arg$2 = _arg$2; $f._arg$3 = _arg$3; $f._arg$4 = _arg$4; $f._arg$5 = _arg$5; $f._arg$6 = _arg$6; $f._arg$7 = _arg$7; $f._arg$8 = _arg$8; $f._arg$9 = _arg$9; $f._first = _first; $f._i = _i; $f._r$10 = _r$10; $f._r$11 = _r$11; $f._r$12 = _r$12; $f._r$13 = _r$13; $f._r$5 = _r$5; $f._r$6 = _r$6; $f._r$7 = _r$7; $f._r$8 = _r$8; $f._r$9 = _r$9; $f._ref = _ref; $f._second = _second; $f._tuple = _tuple; $f._x = _x; $f.err = err; $f.event$1 = event$1; $f.stopIt = stopIt; $f.$s = $s; $f.$r = $r; return $f;
+				/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._arg = _arg; $f._arg$1 = _arg$1; $f._arg$2 = _arg$2; $f._arg$3 = _arg$3; $f._arg$4 = _arg$4; $f._arg$5 = _arg$5; $f._arg$6 = _arg$6; $f._arg$7 = _arg$7; $f._arg$8 = _arg$8; $f._arg$9 = _arg$9; $f._first = _first; $f._i = _i; $f._r$10 = _r$10; $f._r$11 = _r$11; $f._r$12 = _r$12; $f._r$4 = _r$4; $f._r$5 = _r$5; $f._r$6 = _r$6; $f._r$7 = _r$7; $f._r$8 = _r$8; $f._r$9 = _r$9; $f._ref = _ref; $f._second = _second; $f._tuple = _tuple; $f._x = _x; $f.err = err; $f.event$1 = event$1; $f.stopIt = stopIt; $f.$s = $s; $f.$r = $r; return $f;
 			}; })(_el, config, first, pThis, second, this$1)), js$1.Func);
 			startEvent = $clone(event((function(_el, config, first, pThis, second, this$1) { return function $b(event$1) {
-				var _arg, _arg$1, _arg$2, _arg$3, _arg$4, _arg$5, _arg$6, _arg$7, _arg$8, _arg$9, _el$1, _first, _i, _r$10, _r$11, _r$12, _r$13, _r$14, _r$15, _r$16, _r$17, _r$18, _r$5, _r$6, _r$7, _r$8, _r$9, _ref, _second, _tuple, _x, err, event$1, stopIt, $s, $r;
-				/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _arg = $f._arg; _arg$1 = $f._arg$1; _arg$2 = $f._arg$2; _arg$3 = $f._arg$3; _arg$4 = $f._arg$4; _arg$5 = $f._arg$5; _arg$6 = $f._arg$6; _arg$7 = $f._arg$7; _arg$8 = $f._arg$8; _arg$9 = $f._arg$9; _el$1 = $f._el$1; _first = $f._first; _i = $f._i; _r$10 = $f._r$10; _r$11 = $f._r$11; _r$12 = $f._r$12; _r$13 = $f._r$13; _r$14 = $f._r$14; _r$15 = $f._r$15; _r$16 = $f._r$16; _r$17 = $f._r$17; _r$18 = $f._r$18; _r$5 = $f._r$5; _r$6 = $f._r$6; _r$7 = $f._r$7; _r$8 = $f._r$8; _r$9 = $f._r$9; _ref = $f._ref; _second = $f._second; _tuple = $f._tuple; _x = $f._x; err = $f.err; event$1 = $f.event$1; stopIt = $f.stopIt; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
-				_r$5 = this$1[0].Get("dragging"); /* */ $s = 3; case 3: if($c) { $c = false; _r$5 = _r$5.$blk(); } if (_r$5 && _r$5.$blk !== undefined) { break s; }
-				/* */ if ($assertType(_r$5, $Bool)) { $s = 1; continue; }
+				var _arg, _arg$1, _arg$2, _arg$3, _arg$4, _arg$5, _arg$6, _arg$7, _arg$8, _arg$9, _el$1, _first, _i, _r$10, _r$11, _r$12, _r$13, _r$14, _r$15, _r$16, _r$17, _r$4, _r$5, _r$6, _r$7, _r$8, _r$9, _ref, _second, _tuple, _x, err, event$1, stopIt, $s, $r;
+				/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _arg = $f._arg; _arg$1 = $f._arg$1; _arg$2 = $f._arg$2; _arg$3 = $f._arg$3; _arg$4 = $f._arg$4; _arg$5 = $f._arg$5; _arg$6 = $f._arg$6; _arg$7 = $f._arg$7; _arg$8 = $f._arg$8; _arg$9 = $f._arg$9; _el$1 = $f._el$1; _first = $f._first; _i = $f._i; _r$10 = $f._r$10; _r$11 = $f._r$11; _r$12 = $f._r$12; _r$13 = $f._r$13; _r$14 = $f._r$14; _r$15 = $f._r$15; _r$16 = $f._r$16; _r$17 = $f._r$17; _r$4 = $f._r$4; _r$5 = $f._r$5; _r$6 = $f._r$6; _r$7 = $f._r$7; _r$8 = $f._r$8; _r$9 = $f._r$9; _ref = $f._ref; _second = $f._second; _tuple = $f._tuple; _x = $f._x; err = $f.err; event$1 = $f.event$1; stopIt = $f.stopIt; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+				_r$4 = this$1[0].Get("dragging"); /* */ $s = 3; case 3: if($c) { $c = false; _r$4 = _r$4.$blk(); } if (_r$4 && _r$4.$blk !== undefined) { break s; }
+				/* */ if ($assertType(_r$4, $Bool)) { $s = 1; continue; }
 				/* */ $s = 2; continue;
-				/* if ($assertType(_r$5, $Bool)) { */ case 1:
+				/* if ($assertType(_r$4, $Bool)) { */ case 1:
 					$s = -1; return $ifaceNil;
 				/* } */ case 2:
-				_r$6 = event$1.Target(); /* */ $s = 4; case 4: if($c) { $c = false; _r$6 = _r$6.$blk(); } if (_r$6 && _r$6.$blk !== undefined) { break s; }
-				_el$1 = _r$6;
-				_r$7 = first[0].C.Element(); /* */ $s = 5; case 5: if($c) { $c = false; _r$7 = _r$7.$blk(); } if (_r$7 && _r$7.$blk !== undefined) { break s; }
-				_first = $assertType(_r$7, ptrType$2);
-				_r$8 = second[0].C.Element(); /* */ $s = 6; case 6: if($c) { $c = false; _r$8 = _r$8.$blk(); } if (_r$8 && _r$8.$blk !== undefined) { break s; }
-				_second = $assertType(_r$8, ptrType$2);
+				_r$5 = event$1.Target(); /* */ $s = 4; case 4: if($c) { $c = false; _r$5 = _r$5.$blk(); } if (_r$5 && _r$5.$blk !== undefined) { break s; }
+				_el$1 = _r$5;
+				_r$6 = first[0].C.Element(); /* */ $s = 5; case 5: if($c) { $c = false; _r$6 = _r$6.$blk(); } if (_r$6 && _r$6.$blk !== undefined) { break s; }
+				_first = $assertType(_r$6, ptrType$2);
+				_r$7 = second[0].C.Element(); /* */ $s = 6; case 6: if($c) { $c = false; _r$7 = _r$7.$blk(); } if (_r$7 && _r$7.$blk !== undefined) { break s; }
+				_second = $assertType(_r$7, ptrType$2);
 				/* */ if (!(config[0].OnStart === $throwNilPointerError)) { $s = 7; continue; }
 				/* */ $s = 8; continue;
 				/* if (!(config[0].OnStart === $throwNilPointerError)) { */ case 7:
-					_r$9 = config[0].OnStart($clone(first[0], Element), $clone(second[0], Element), _el$1); /* */ $s = 9; case 9: if($c) { $c = false; _r$9 = _r$9.$blk(); } if (_r$9 && _r$9.$blk !== undefined) { break s; }
-					_tuple = _r$9;
+					_r$8 = config[0].OnStart($clone(first[0], Element), $clone(second[0], Element), _el$1); /* */ $s = 9; case 9: if($c) { $c = false; _r$8 = _r$8.$blk(); } if (_r$8 && _r$8.$blk !== undefined) { break s; }
+					_tuple = _r$8;
 					stopIt = _tuple[0];
 					err = _tuple[1];
 					if (!($interfaceIsEqual(err, $ifaceNil))) {
@@ -45933,24 +46766,24 @@ $packages["github.com/gascore/components/layout"] = (function() {
 					}
 				/* } */ case 8:
 				_arg = _el$1;
-				_r$10 = this$1[0].Get("stopEvent"); /* */ $s = 10; case 10: if($c) { $c = false; _r$10 = _r$10.$blk(); } if (_r$10 && _r$10.$blk !== undefined) { break s; }
-				_arg$1 = $clone($assertType(_r$10, js$1.Func), js$1.Func);
+				_r$9 = this$1[0].Get("stopEvent"); /* */ $s = 10; case 10: if($c) { $c = false; _r$9 = _r$9.$blk(); } if (_r$9 && _r$9.$blk !== undefined) { break s; }
+				_arg$1 = $clone($assertType(_r$9, js$1.Func), js$1.Func);
 				$r = addEvent(_arg, "touchend", _arg$1); /* */ $s = 11; case 11: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 				_arg$2 = _el$1;
-				_r$11 = this$1[0].Get("stopEvent"); /* */ $s = 12; case 12: if($c) { $c = false; _r$11 = _r$11.$blk(); } if (_r$11 && _r$11.$blk !== undefined) { break s; }
-				_arg$3 = $clone($assertType(_r$11, js$1.Func), js$1.Func);
+				_r$10 = this$1[0].Get("stopEvent"); /* */ $s = 12; case 12: if($c) { $c = false; _r$10 = _r$10.$blk(); } if (_r$10 && _r$10.$blk !== undefined) { break s; }
+				_arg$3 = $clone($assertType(_r$10, js$1.Func), js$1.Func);
 				$r = addEvent(_arg$2, "touchcancel", _arg$3); /* */ $s = 13; case 13: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 				_arg$4 = _el$1;
-				_r$12 = this$1[0].Get("moveEvent"); /* */ $s = 14; case 14: if($c) { $c = false; _r$12 = _r$12.$blk(); } if (_r$12 && _r$12.$blk !== undefined) { break s; }
-				_arg$5 = $clone($assertType(_r$12, js$1.Func), js$1.Func);
+				_r$11 = this$1[0].Get("moveEvent"); /* */ $s = 14; case 14: if($c) { $c = false; _r$11 = _r$11.$blk(); } if (_r$11 && _r$11.$blk !== undefined) { break s; }
+				_arg$5 = $clone($assertType(_r$11, js$1.Func), js$1.Func);
 				$r = addEvent(_arg$4, "touchmove", _arg$5); /* */ $s = 15; case 15: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 				_arg$6 = dom.Doc;
-				_r$13 = this$1[0].Get("stopEvent"); /* */ $s = 16; case 16: if($c) { $c = false; _r$13 = _r$13.$blk(); } if (_r$13 && _r$13.$blk !== undefined) { break s; }
-				_arg$7 = $clone($assertType(_r$13, js$1.Func), js$1.Func);
+				_r$12 = this$1[0].Get("stopEvent"); /* */ $s = 16; case 16: if($c) { $c = false; _r$12 = _r$12.$blk(); } if (_r$12 && _r$12.$blk !== undefined) { break s; }
+				_arg$7 = $clone($assertType(_r$12, js$1.Func), js$1.Func);
 				$r = addEvent(_arg$6, "mouseup", _arg$7); /* */ $s = 17; case 17: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 				_arg$8 = dom.Doc;
-				_r$14 = this$1[0].Get("moveEvent"); /* */ $s = 18; case 18: if($c) { $c = false; _r$14 = _r$14.$blk(); } if (_r$14 && _r$14.$blk !== undefined) { break s; }
-				_arg$9 = $clone($assertType(_r$14, js$1.Func), js$1.Func);
+				_r$13 = this$1[0].Get("moveEvent"); /* */ $s = 18; case 18: if($c) { $c = false; _r$13 = _r$13.$blk(); } if (_r$13 && _r$13.$blk !== undefined) { break s; }
+				_arg$9 = $clone($assertType(_r$13, js$1.Func), js$1.Func);
 				$r = addEvent(_arg$8, "mousemove", _arg$9); /* */ $s = 19; case 19: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 				_ref = new sliceType$5([_first, _second]);
 				_i = 0;
@@ -45963,17 +46796,17 @@ $packages["github.com/gascore/components/layout"] = (function() {
 					_i++;
 				/* } */ $s = 20; continue; case 21:
 				$r = _el$1.ClassList().Add(new sliceType([new $String(config[0].GutterClass + "-focus")])); /* */ $s = 25; case 25: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-				_r$15 = getMousePosition(config[0].clientAxis, event$1); /* */ $s = 26; case 26: if($c) { $c = false; _r$15 = _r$15.$blk(); } if (_r$15 && _r$15.$blk !== undefined) { break s; }
-				_r$16 = _first.GetBoundingClientRectRaw(); /* */ $s = 27; case 27: if($c) { $c = false; _r$16 = _r$16.$blk(); } if (_r$16 && _r$16.$blk !== undefined) { break s; }
-				_r$17 = $clone(_r$16, js.Value).Get(config[0].positionEnd, new sliceType$4([])); /* */ $s = 28; case 28: if($c) { $c = false; _r$17 = _r$17.$blk(); } if (_r$17 && _r$17.$blk !== undefined) { break s; }
-				_r$18 = $clone(_r$17.Ref, js$1.Value).Float(); /* */ $s = 29; case 29: if($c) { $c = false; _r$18 = _r$18.$blk(); } if (_r$18 && _r$18.$blk !== undefined) { break s; }
-				$r = this$1[0].Set($makeMap($String.keyFor, [{ k: "dragOffset", v: new $Float64(_r$15 - _r$18) }, { k: "dragging", v: new $Bool(true) }])); /* */ $s = 30; case 30: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+				_r$14 = getMousePosition(config[0].clientAxis, event$1); /* */ $s = 26; case 26: if($c) { $c = false; _r$14 = _r$14.$blk(); } if (_r$14 && _r$14.$blk !== undefined) { break s; }
+				_r$15 = _first.GetBoundingClientRectRaw(); /* */ $s = 27; case 27: if($c) { $c = false; _r$15 = _r$15.$blk(); } if (_r$15 && _r$15.$blk !== undefined) { break s; }
+				_r$16 = $clone(_r$15, js.Value).Get(config[0].positionEnd, new sliceType$4([])); /* */ $s = 28; case 28: if($c) { $c = false; _r$16 = _r$16.$blk(); } if (_r$16 && _r$16.$blk !== undefined) { break s; }
+				_r$17 = $clone(_r$16.Ref, js$1.Value).Float(); /* */ $s = 29; case 29: if($c) { $c = false; _r$17 = _r$17.$blk(); } if (_r$17 && _r$17.$blk !== undefined) { break s; }
+				$r = this$1[0].Set($makeMap($String.keyFor, [{ k: "dragOffset", v: new $Float64(_r$14 - _r$17) }, { k: "dragging", v: new $Bool(true) }])); /* */ $s = 30; case 30: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 				$s = -1; return $ifaceNil;
-				/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._arg = _arg; $f._arg$1 = _arg$1; $f._arg$2 = _arg$2; $f._arg$3 = _arg$3; $f._arg$4 = _arg$4; $f._arg$5 = _arg$5; $f._arg$6 = _arg$6; $f._arg$7 = _arg$7; $f._arg$8 = _arg$8; $f._arg$9 = _arg$9; $f._el$1 = _el$1; $f._first = _first; $f._i = _i; $f._r$10 = _r$10; $f._r$11 = _r$11; $f._r$12 = _r$12; $f._r$13 = _r$13; $f._r$14 = _r$14; $f._r$15 = _r$15; $f._r$16 = _r$16; $f._r$17 = _r$17; $f._r$18 = _r$18; $f._r$5 = _r$5; $f._r$6 = _r$6; $f._r$7 = _r$7; $f._r$8 = _r$8; $f._r$9 = _r$9; $f._ref = _ref; $f._second = _second; $f._tuple = _tuple; $f._x = _x; $f.err = err; $f.event$1 = event$1; $f.stopIt = stopIt; $f.$s = $s; $f.$r = $r; return $f;
+				/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._arg = _arg; $f._arg$1 = _arg$1; $f._arg$2 = _arg$2; $f._arg$3 = _arg$3; $f._arg$4 = _arg$4; $f._arg$5 = _arg$5; $f._arg$6 = _arg$6; $f._arg$7 = _arg$7; $f._arg$8 = _arg$8; $f._arg$9 = _arg$9; $f._el$1 = _el$1; $f._first = _first; $f._i = _i; $f._r$10 = _r$10; $f._r$11 = _r$11; $f._r$12 = _r$12; $f._r$13 = _r$13; $f._r$14 = _r$14; $f._r$15 = _r$15; $f._r$16 = _r$16; $f._r$17 = _r$17; $f._r$4 = _r$4; $f._r$5 = _r$5; $f._r$6 = _r$6; $f._r$7 = _r$7; $f._r$8 = _r$8; $f._r$9 = _r$9; $f._ref = _ref; $f._second = _second; $f._tuple = _tuple; $f._x = _x; $f.err = err; $f.event$1 = event$1; $f.stopIt = stopIt; $f.$s = $s; $f.$r = $r; return $f;
 			}; })(_el, config, first, pThis, second, this$1)), js$1.Func);
 			_arg = config[0].subOrientation;
-			_r$5 = fmt.Sprintf("%dpx", new sliceType([new $Int(parentSize)])); /* */ $s = 3; case 3: if($c) { $c = false; _r$5 = _r$5.$blk(); } if (_r$5 && _r$5.$blk !== undefined) { break s; }
-			_arg$1 = new $String(_r$5);
+			_r$4 = fmt.Sprintf("%dpx", new sliceType([new $Int(parentSize)])); /* */ $s = 3; case 3: if($c) { $c = false; _r$4 = _r$4.$blk(); } if (_r$4 && _r$4.$blk !== undefined) { break s; }
+			_arg$1 = new $String(_r$4);
 			$r = _el[0].Style().Set(_arg, _arg$1); /* */ $s = 4; case 4: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 			$r = addEvent(_el[0], "mousedown", $clone(startEvent, js$1.Func)); /* */ $s = 5; case 5: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 			$r = addEvent(_el[0], "touchstart", $clone(startEvent, js$1.Func)); /* */ $s = 6; case 6: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
@@ -45982,68 +46815,68 @@ $packages["github.com/gascore/components/layout"] = (function() {
 			$r = addEvent(_el[0], "touchmove", $clone(moveEvent, js$1.Func)); /* */ $s = 9; case 9: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 			$r = addEvent(_el[0], "mouseup", $clone(stopEvent, js$1.Func)); /* */ $s = 10; case 10: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 			$r = addEvent(_el[0], "mousemove", $clone(moveEvent, js$1.Func)); /* */ $s = 11; case 11: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-			_r$6 = this$1[0].SetImm($makeMap($String.keyFor, [{ k: "startEvent", v: new startEvent.constructor.elem(startEvent) }, { k: "moveEvent", v: new moveEvent.constructor.elem(moveEvent) }, { k: "stopEvent", v: new stopEvent.constructor.elem(stopEvent) }])); /* */ $s = 12; case 12: if($c) { $c = false; _r$6 = _r$6.$blk(); } if (_r$6 && _r$6.$blk !== undefined) { break s; }
-			_r$6;
+			_r$5 = this$1[0].SetImm($makeMap($String.keyFor, [{ k: "startEvent", v: new startEvent.constructor.elem(startEvent) }, { k: "moveEvent", v: new moveEvent.constructor.elem(moveEvent) }, { k: "stopEvent", v: new stopEvent.constructor.elem(stopEvent) }])); /* */ $s = 12; case 12: if($c) { $c = false; _r$5 = _r$5.$blk(); } if (_r$5 && _r$5.$blk !== undefined) { break s; }
+			_r$5;
 			$s = -1; return $ifaceNil;
-			/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._arg = _arg; $f._arg$1 = _arg$1; $f._el = _el; $f._r$3 = _r$3; $f._r$4 = _r$4; $f._r$5 = _r$5; $f._r$6 = _r$6; $f.computedStyles = computedStyles; $f.moveEvent = moveEvent; $f.parentSize = parentSize; $f.startEvent = startEvent; $f.stopEvent = stopEvent; $f.this$1 = this$1; $f.x$3 = x$3; $f.$s = $s; $f.$r = $r; return $f;
+			/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._arg = _arg; $f._arg$1 = _arg$1; $f._el = _el; $f._r$2 = _r$2; $f._r$3 = _r$3; $f._r$4 = _r$4; $f._r$5 = _r$5; $f.computedStyles = computedStyles; $f.moveEvent = moveEvent; $f.parentSize = parentSize; $f.startEvent = startEvent; $f.stopEvent = stopEvent; $f.this$1 = this$1; $f.x$3 = x$3; $f.$s = $s; $f.$r = $r; return $f;
 		}; })(config, first, pThis, second), (function(config, first, pThis, second) { return function $b(this$1) {
-			var _arg, _arg$1, _arg$2, _arg$3, _el, _r$3, _r$4, _r$5, this$1, $s, $r;
-			/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _arg = $f._arg; _arg$1 = $f._arg$1; _arg$2 = $f._arg$2; _arg$3 = $f._arg$3; _el = $f._el; _r$3 = $f._r$3; _r$4 = $f._r$4; _r$5 = $f._r$5; this$1 = $f.this$1; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
-			_r$3 = this$1.Element(); /* */ $s = 1; case 1: if($c) { $c = false; _r$3 = _r$3.$blk(); } if (_r$3 && _r$3.$blk !== undefined) { break s; }
-			_el = $assertType(_r$3, ptrType$2);
+			var _arg, _arg$1, _arg$2, _arg$3, _el, _r$2, _r$3, _r$4, this$1, $s, $r;
+			/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _arg = $f._arg; _arg$1 = $f._arg$1; _arg$2 = $f._arg$2; _arg$3 = $f._arg$3; _el = $f._el; _r$2 = $f._r$2; _r$3 = $f._r$3; _r$4 = $f._r$4; this$1 = $f.this$1; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+			_r$2 = this$1.Element(); /* */ $s = 1; case 1: if($c) { $c = false; _r$2 = _r$2.$blk(); } if (_r$2 && _r$2.$blk !== undefined) { break s; }
+			_el = $assertType(_r$2, ptrType$2);
 			if (_el === ptrType$2.nil) {
 				$s = -1; return $ifaceNil;
 			}
 			_arg = _el;
-			_r$4 = this$1.Get("startEvent"); /* */ $s = 2; case 2: if($c) { $c = false; _r$4 = _r$4.$blk(); } if (_r$4 && _r$4.$blk !== undefined) { break s; }
-			_arg$1 = $clone($assertType(_r$4, js$1.Func), js$1.Func);
+			_r$3 = this$1.Get("startEvent"); /* */ $s = 2; case 2: if($c) { $c = false; _r$3 = _r$3.$blk(); } if (_r$3 && _r$3.$blk !== undefined) { break s; }
+			_arg$1 = $clone($assertType(_r$3, js$1.Func), js$1.Func);
 			$r = removeEvent(_arg, "mousedown", _arg$1); /* */ $s = 3; case 3: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 			_arg$2 = _el;
-			_r$5 = this$1.Get("startEvent"); /* */ $s = 4; case 4: if($c) { $c = false; _r$5 = _r$5.$blk(); } if (_r$5 && _r$5.$blk !== undefined) { break s; }
-			_arg$3 = $clone($assertType(_r$5, js$1.Func), js$1.Func);
+			_r$4 = this$1.Get("startEvent"); /* */ $s = 4; case 4: if($c) { $c = false; _r$4 = _r$4.$blk(); } if (_r$4 && _r$4.$blk !== undefined) { break s; }
+			_arg$3 = $clone($assertType(_r$4, js$1.Func), js$1.Func);
 			$r = removeEvent(_arg$2, "touchstart", _arg$3); /* */ $s = 5; case 5: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 			$s = -1; return $ifaceNil;
-			/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._arg = _arg; $f._arg$1 = _arg$1; $f._arg$2 = _arg$2; $f._arg$3 = _arg$3; $f._el = _el; $f._r$3 = _r$3; $f._r$4 = _r$4; $f._r$5 = _r$5; $f.this$1 = this$1; $f.$s = $s; $f.$r = $r; return $f;
-		}; })(config, first, pThis, second), $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$3.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "", $makeMap($String.keyFor, [{ k: "class", v: _r$1 }, { k: "style", v: _r$2 }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([])); /* */ $s = 3; case 3: if($c) { $c = false; _r$3 = _r$3.$blk(); } if (_r$3 && _r$3.$blk !== undefined) { break s; }
-		$s = -1; return _r$3;
-		/* */ } return; } if ($f === undefined) { $f = { $blk: gutter }; } $f._r$1 = _r$1; $f._r$2 = _r$2; $f._r$3 = _r$3; $f.config = config; $f.cursorType = cursorType; $f.first = first; $f.pThis = pThis; $f.second = second; $f.x = x; $f.x$1 = x$1; $f.x$2 = x$2; $f.$s = $s; $f.$r = $r; return $f;
+			/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._arg = _arg; $f._arg$1 = _arg$1; $f._arg$2 = _arg$2; $f._arg$3 = _arg$3; $f._el = _el; $f._r$2 = _r$2; $f._r$3 = _r$3; $f._r$4 = _r$4; $f.this$1 = this$1; $f.$s = $s; $f.$r = $r; return $f;
+		}; })(config, first, pThis, second), $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$3.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "", $makeMap($String.keyFor, [{ k: "class", v: _r }, { k: "style", v: _r$1 }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([])); /* */ $s = 3; case 3: if($c) { $c = false; _r$2 = _r$2.$blk(); } if (_r$2 && _r$2.$blk !== undefined) { break s; }
+		$s = -1; return _r$2;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: gutter }; } $f._r = _r; $f._r$1 = _r$1; $f._r$2 = _r$2; $f.config = config; $f.cursorType = cursorType; $f.first = first; $f.pThis = pThis; $f.second = second; $f.x = x; $f.x$1 = x$1; $f.x$2 = x$2; $f.$s = $s; $f.$r = $r; return $f;
 	};
 	event = function(f) {
 		var f;
 		return js.NewEventCallback((function $b(v) {
-			var _r$1, _r$2, _r$3, err, v, $s, $r;
-			/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r$1 = $f._r$1; _r$2 = $f._r$2; _r$3 = $f._r$3; err = $f.err; v = $f.v; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
-			_r$1 = dom.ConvertEvent($clone(v, js.Value)); /* */ $s = 1; case 1: if($c) { $c = false; _r$1 = _r$1.$blk(); } if (_r$1 && _r$1.$blk !== undefined) { break s; }
-			_r$2 = f(_r$1); /* */ $s = 2; case 2: if($c) { $c = false; _r$2 = _r$2.$blk(); } if (_r$2 && _r$2.$blk !== undefined) { break s; }
-			err = _r$2;
+			var _r, _r$1, _r$2, err, v, $s, $r;
+			/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r = $f._r; _r$1 = $f._r$1; _r$2 = $f._r$2; err = $f.err; v = $f.v; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+			_r = dom.ConvertEvent($clone(v, js.Value)); /* */ $s = 1; case 1: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
+			_r$1 = f(_r); /* */ $s = 2; case 2: if($c) { $c = false; _r$1 = _r$1.$blk(); } if (_r$1 && _r$1.$blk !== undefined) { break s; }
+			err = _r$1;
 			/* */ if (!($interfaceIsEqual(err, $ifaceNil))) { $s = 3; continue; }
 			/* */ $s = 4; continue;
 			/* if (!($interfaceIsEqual(err, $ifaceNil))) { */ case 3:
-				_r$3 = err.Error(); /* */ $s = 5; case 5: if($c) { $c = false; _r$3 = _r$3.$blk(); } if (_r$3 && _r$3.$blk !== undefined) { break s; }
-				$r = dom.ConsoleError(new sliceType([new $String(_r$3)])); /* */ $s = 6; case 6: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+				_r$2 = err.Error(); /* */ $s = 5; case 5: if($c) { $c = false; _r$2 = _r$2.$blk(); } if (_r$2 && _r$2.$blk !== undefined) { break s; }
+				$r = dom.ConsoleError(new sliceType([new $String(_r$2)])); /* */ $s = 6; case 6: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 				$s = -1; return;
 			/* } */ case 4:
 			$s = -1; return;
-			/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._r$1 = _r$1; $f._r$2 = _r$2; $f._r$3 = _r$3; $f.err = err; $f.v = v; $f.$s = $s; $f.$r = $r; return $f;
+			/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._r = _r; $f._r$1 = _r$1; $f._r$2 = _r$2; $f.err = err; $f.v = v; $f.$s = $s; $f.$r = $r; return $f;
 		}));
 	};
 	addEvent = function(e, typ, h) {
-		var _r$1, _r$2, e, h, typ, $s, $r;
-		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r$1 = $f._r$1; _r$2 = $f._r$2; e = $f.e; h = $f.h; typ = $f.typ; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
-		_r$1 = e.JSValue(); /* */ $s = 1; case 1: if($c) { $c = false; _r$1 = _r$1.$blk(); } if (_r$1 && _r$1.$blk !== undefined) { break s; }
-		_r$2 = $clone(_r$1, js$1.Value).Call("addEventListener", new sliceType([new $String(typ), new h.constructor.elem(h), new passive.constructor.elem(passive)])); /* */ $s = 2; case 2: if($c) { $c = false; _r$2 = _r$2.$blk(); } if (_r$2 && _r$2.$blk !== undefined) { break s; }
-		_r$2;
+		var _r, _r$1, e, h, typ, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r = $f._r; _r$1 = $f._r$1; e = $f.e; h = $f.h; typ = $f.typ; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		_r = e.JSValue(); /* */ $s = 1; case 1: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
+		_r$1 = $clone(_r, js$1.Value).Call("addEventListener", new sliceType([new $String(typ), new h.constructor.elem(h)])); /* */ $s = 2; case 2: if($c) { $c = false; _r$1 = _r$1.$blk(); } if (_r$1 && _r$1.$blk !== undefined) { break s; }
+		_r$1;
 		$s = -1; return;
-		/* */ } return; } if ($f === undefined) { $f = { $blk: addEvent }; } $f._r$1 = _r$1; $f._r$2 = _r$2; $f.e = e; $f.h = h; $f.typ = typ; $f.$s = $s; $f.$r = $r; return $f;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: addEvent }; } $f._r = _r; $f._r$1 = _r$1; $f.e = e; $f.h = h; $f.typ = typ; $f.$s = $s; $f.$r = $r; return $f;
 	};
 	removeEvent = function(e, typ, h) {
-		var _r$1, _r$2, e, h, typ, $s, $r;
-		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r$1 = $f._r$1; _r$2 = $f._r$2; e = $f.e; h = $f.h; typ = $f.typ; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
-		_r$1 = e.JSValue(); /* */ $s = 1; case 1: if($c) { $c = false; _r$1 = _r$1.$blk(); } if (_r$1 && _r$1.$blk !== undefined) { break s; }
-		_r$2 = $clone(_r$1, js$1.Value).Call("removeEventListener", new sliceType([new $String(typ), new h.constructor.elem(h), new passive.constructor.elem(passive)])); /* */ $s = 2; case 2: if($c) { $c = false; _r$2 = _r$2.$blk(); } if (_r$2 && _r$2.$blk !== undefined) { break s; }
-		_r$2;
+		var _r, _r$1, e, h, typ, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r = $f._r; _r$1 = $f._r$1; e = $f.e; h = $f.h; typ = $f.typ; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		_r = e.JSValue(); /* */ $s = 1; case 1: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
+		_r$1 = $clone(_r, js$1.Value).Call("removeEventListener", new sliceType([new $String(typ), new h.constructor.elem(h)])); /* */ $s = 2; case 2: if($c) { $c = false; _r$1 = _r$1.$blk(); } if (_r$1 && _r$1.$blk !== undefined) { break s; }
+		_r$1;
 		$s = -1; return;
-		/* */ } return; } if ($f === undefined) { $f = { $blk: removeEvent }; } $f._r$1 = _r$1; $f._r$2 = _r$2; $f.e = e; $f.h = h; $f.typ = typ; $f.$s = $s; $f.$r = $r; return $f;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: removeEvent }; } $f._r = _r; $f._r$1 = _r$1; $f.e = e; $f.h = h; $f.typ = typ; $f.$s = $s; $f.$r = $r; return $f;
 	};
 	getSizes = function(offset, _parent, first, second, config) {
 		var _parent, config, first, layoutSize, makeSecond, offset, offsetOri, offsetP, second, theirSizeP;
@@ -46067,26 +46900,26 @@ $packages["github.com/gascore/components/layout"] = (function() {
 		return [first.current - offsetP, theirSizeP - (first.current - offsetP)];
 	};
 	getMousePosition = function(clientAxis, event$1) {
-		var _r$1, _r$10, _r$11, _r$2, _r$3, _r$4, _r$5, _r$6, _r$7, _r$8, _r$9, clientAxis, event$1, $s, $r;
-		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r$1 = $f._r$1; _r$10 = $f._r$10; _r$11 = $f._r$11; _r$2 = $f._r$2; _r$3 = $f._r$3; _r$4 = $f._r$4; _r$5 = $f._r$5; _r$6 = $f._r$6; _r$7 = $f._r$7; _r$8 = $f._r$8; _r$9 = $f._r$9; clientAxis = $f.clientAxis; event$1 = $f.event$1; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
-		_r$1 = event$1.JSValue(); /* */ $s = 3; case 3: if($c) { $c = false; _r$1 = _r$1.$blk(); } if (_r$1 && _r$1.$blk !== undefined) { break s; }
-		_r$2 = $clone(_r$1, js$1.Value).Get("touches"); /* */ $s = 4; case 4: if($c) { $c = false; _r$2 = _r$2.$blk(); } if (_r$2 && _r$2.$blk !== undefined) { break s; }
-		_r$3 = notJsNull($clone(_r$2, js$1.Value)); /* */ $s = 5; case 5: if($c) { $c = false; _r$3 = _r$3.$blk(); } if (_r$3 && _r$3.$blk !== undefined) { break s; }
-		/* */ if (_r$3) { $s = 1; continue; }
+		var _r, _r$1, _r$10, _r$2, _r$3, _r$4, _r$5, _r$6, _r$7, _r$8, _r$9, clientAxis, event$1, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r = $f._r; _r$1 = $f._r$1; _r$10 = $f._r$10; _r$2 = $f._r$2; _r$3 = $f._r$3; _r$4 = $f._r$4; _r$5 = $f._r$5; _r$6 = $f._r$6; _r$7 = $f._r$7; _r$8 = $f._r$8; _r$9 = $f._r$9; clientAxis = $f.clientAxis; event$1 = $f.event$1; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		_r = event$1.JSValue(); /* */ $s = 3; case 3: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
+		_r$1 = $clone(_r, js$1.Value).Get("touches"); /* */ $s = 4; case 4: if($c) { $c = false; _r$1 = _r$1.$blk(); } if (_r$1 && _r$1.$blk !== undefined) { break s; }
+		_r$2 = notJsNull($clone(_r$1, js$1.Value)); /* */ $s = 5; case 5: if($c) { $c = false; _r$2 = _r$2.$blk(); } if (_r$2 && _r$2.$blk !== undefined) { break s; }
+		/* */ if (_r$2) { $s = 1; continue; }
 		/* */ $s = 2; continue;
-		/* if (_r$3) { */ case 1:
-			_r$4 = event$1.JSValue(); /* */ $s = 6; case 6: if($c) { $c = false; _r$4 = _r$4.$blk(); } if (_r$4 && _r$4.$blk !== undefined) { break s; }
-			_r$5 = $clone(_r$4, js$1.Value).Get("touches"); /* */ $s = 7; case 7: if($c) { $c = false; _r$5 = _r$5.$blk(); } if (_r$5 && _r$5.$blk !== undefined) { break s; }
-			_r$6 = $clone(_r$5, js$1.Value).Get("0"); /* */ $s = 8; case 8: if($c) { $c = false; _r$6 = _r$6.$blk(); } if (_r$6 && _r$6.$blk !== undefined) { break s; }
-			_r$7 = $clone(_r$6, js$1.Value).Get(clientAxis); /* */ $s = 9; case 9: if($c) { $c = false; _r$7 = _r$7.$blk(); } if (_r$7 && _r$7.$blk !== undefined) { break s; }
-			_r$8 = $clone(_r$7, js$1.Value).Float(); /* */ $s = 10; case 10: if($c) { $c = false; _r$8 = _r$8.$blk(); } if (_r$8 && _r$8.$blk !== undefined) { break s; }
-			$s = -1; return _r$8;
+		/* if (_r$2) { */ case 1:
+			_r$3 = event$1.JSValue(); /* */ $s = 6; case 6: if($c) { $c = false; _r$3 = _r$3.$blk(); } if (_r$3 && _r$3.$blk !== undefined) { break s; }
+			_r$4 = $clone(_r$3, js$1.Value).Get("touches"); /* */ $s = 7; case 7: if($c) { $c = false; _r$4 = _r$4.$blk(); } if (_r$4 && _r$4.$blk !== undefined) { break s; }
+			_r$5 = $clone(_r$4, js$1.Value).Get("0"); /* */ $s = 8; case 8: if($c) { $c = false; _r$5 = _r$5.$blk(); } if (_r$5 && _r$5.$blk !== undefined) { break s; }
+			_r$6 = $clone(_r$5, js$1.Value).Get(clientAxis); /* */ $s = 9; case 9: if($c) { $c = false; _r$6 = _r$6.$blk(); } if (_r$6 && _r$6.$blk !== undefined) { break s; }
+			_r$7 = $clone(_r$6, js$1.Value).Float(); /* */ $s = 10; case 10: if($c) { $c = false; _r$7 = _r$7.$blk(); } if (_r$7 && _r$7.$blk !== undefined) { break s; }
+			$s = -1; return _r$7;
 		/* } */ case 2:
-		_r$9 = event$1.JSValue(); /* */ $s = 11; case 11: if($c) { $c = false; _r$9 = _r$9.$blk(); } if (_r$9 && _r$9.$blk !== undefined) { break s; }
-		_r$10 = $clone(_r$9, js$1.Value).Get(clientAxis); /* */ $s = 12; case 12: if($c) { $c = false; _r$10 = _r$10.$blk(); } if (_r$10 && _r$10.$blk !== undefined) { break s; }
-		_r$11 = $clone(_r$10, js$1.Value).Float(); /* */ $s = 13; case 13: if($c) { $c = false; _r$11 = _r$11.$blk(); } if (_r$11 && _r$11.$blk !== undefined) { break s; }
-		$s = -1; return _r$11;
-		/* */ } return; } if ($f === undefined) { $f = { $blk: getMousePosition }; } $f._r$1 = _r$1; $f._r$10 = _r$10; $f._r$11 = _r$11; $f._r$2 = _r$2; $f._r$3 = _r$3; $f._r$4 = _r$4; $f._r$5 = _r$5; $f._r$6 = _r$6; $f._r$7 = _r$7; $f._r$8 = _r$8; $f._r$9 = _r$9; $f.clientAxis = clientAxis; $f.event$1 = event$1; $f.$s = $s; $f.$r = $r; return $f;
+		_r$8 = event$1.JSValue(); /* */ $s = 11; case 11: if($c) { $c = false; _r$8 = _r$8.$blk(); } if (_r$8 && _r$8.$blk !== undefined) { break s; }
+		_r$9 = $clone(_r$8, js$1.Value).Get(clientAxis); /* */ $s = 12; case 12: if($c) { $c = false; _r$9 = _r$9.$blk(); } if (_r$9 && _r$9.$blk !== undefined) { break s; }
+		_r$10 = $clone(_r$9, js$1.Value).Float(); /* */ $s = 13; case 13: if($c) { $c = false; _r$10 = _r$10.$blk(); } if (_r$10 && _r$10.$blk !== undefined) { break s; }
+		$s = -1; return _r$10;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: getMousePosition }; } $f._r = _r; $f._r$1 = _r$1; $f._r$10 = _r$10; $f._r$2 = _r$2; $f._r$3 = _r$3; $f._r$4 = _r$4; $f._r$5 = _r$5; $f._r$6 = _r$6; $f._r$7 = _r$7; $f._r$8 = _r$8; $f._r$9 = _r$9; $f.clientAxis = clientAxis; $f.event$1 = event$1; $f.$s = $s; $f.$r = $r; return $f;
 	};
 	notJsNull = function(e) {
 		var e;
@@ -46113,17 +46946,6 @@ $packages["github.com/gascore/components/layout"] = (function() {
 		$r = js$1.$init(); /* */ $s = 5; case 5: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 		$r = strconv.$init(); /* */ $s = 6; case 6: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 		$r = strings.$init(); /* */ $s = 7; case 7: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-		_r = (function $b() {
-			var _r, obj, $s, $r;
-			/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r = $f._r; obj = $f.obj; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
-			_r = js.NewObject(); /* */ $s = 1; case 1: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
-			obj = $clone(_r, js.Value);
-			$r = $clone(obj, js.Value).Set("passive", new $Bool(true)); /* */ $s = 2; case 2: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-			$r = $clone(obj, js.Value).Set("capture", new $Bool(false)); /* */ $s = 3; case 3: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-			$s = -1; return $clone(obj, js.Value).JSValue();
-			/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._r = _r; $f.obj = obj; $f.$s = $s; $f.$r = $r; return $f;
-		})(); /* */ $s = 8; case 8: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
-		passive = $clone(_r, js$1.Value);
 		/* */ } return; } if ($f === undefined) { $f = { $blk: $init }; } $f.$s = $s; $f.$r = $r; return $f;
 	};
 	$pkg.$init = $init;
@@ -46527,9 +47349,9 @@ $packages["github.com/gascore/components/tree"] = (function() {
 				_r$1 = this$1[0].Get("isHidden"); /* */ $s = 1; case 1: if($c) { $c = false; _r$1 = _r$1.$blk(); } if (_r$1 && _r$1.$blk !== undefined) { break s; }
 				$s = -1; return $assertType(_r$1, $Bool);
 				/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._r$1 = _r$1; $f.p = p; $f.$s = $s; $f.$r = $r; return $f;
-			}; })(c, cName, this$1), false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType$1.nil, "span", false, "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType$1([new $String("Show")])); /* */ $s = 2; case 2: if($c) { $c = false; _r$1 = _r$1.$blk(); } if (_r$1 && _r$1.$blk !== undefined) { break s; }
+			}; })(c, cName, this$1), false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType$1.nil, "span", false, "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType$1([new $String("\n                    Show\n                ")])); /* */ $s = 2; case 2: if($c) { $c = false; _r$1 = _r$1.$blk(); } if (_r$1 && _r$1.$blk !== undefined) { break s; }
 			_arg$4 = _r$1;
-			_r$2 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, true, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType$1.nil, "span", false, "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType$1([new $String("Hide")])); /* */ $s = 3; case 3: if($c) { $c = false; _r$2 = _r$2.$blk(); } if (_r$2 && _r$2.$blk !== undefined) { break s; }
+			_r$2 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, true, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType$1.nil, "span", false, "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType$1([new $String("\n                    Hide\n                ")])); /* */ $s = 3; case 3: if($c) { $c = false; _r$2 = _r$2.$blk(); } if (_r$2 && _r$2.$blk !== undefined) { break s; }
 			_arg$5 = _r$2;
 			_r$3 = gas.NE(_arg$3, new sliceType$1([_arg$4, _arg$5])); /* */ $s = 4; case 4: if($c) { $c = false; _r$3 = _r$3.$blk(); } if (_r$3 && _r$3.$blk !== undefined) { break s; }
 			_arg$6 = _r$3;
@@ -46592,22 +47414,32 @@ $packages["github.com/gascore/components/vlist"] = (function() {
 	js = $packages["github.com/gascore/dom/js"];
 	gas = $packages["github.com/gascore/gas"];
 	strconv = $packages["strconv"];
-	Config = $pkg.Config = $newType(0, $kindStruct, "vlist.Config", true, "github.com/gascore/components/vlist", true, function(ItemsWrapperTag_, Padding_, Items_, DefaultItemsSmooth_, ChildHeight_, Change_) {
+	Config = $pkg.Config = $newType(0, $kindStruct, "vlist.Config", true, "github.com/gascore/components/vlist", true, function(Direction_, directionV_, directionTransform_, ItemsWrapperTag_, Padding_, Items_, DefaultItemsSmooth_, ChildHeight_, ChildWidth_, childSize_, Change_) {
 		this.$val = this;
 		if (arguments.length === 0) {
+			this.Direction = false;
+			this.directionV = "";
+			this.directionTransform = "";
 			this.ItemsWrapperTag = "";
 			this.Padding = 0;
 			this.Items = sliceType.nil;
 			this.DefaultItemsSmooth = 0;
 			this.ChildHeight = 0;
+			this.ChildWidth = 0;
+			this.childSize = 0;
 			this.Change = $throwNilPointerError;
 			return;
 		}
+		this.Direction = Direction_;
+		this.directionV = directionV_;
+		this.directionTransform = directionTransform_;
 		this.ItemsWrapperTag = ItemsWrapperTag_;
 		this.Padding = Padding_;
 		this.Items = Items_;
 		this.DefaultItemsSmooth = DefaultItemsSmooth_;
 		this.ChildHeight = ChildHeight_;
+		this.ChildWidth = ChildWidth_;
+		this.childSize = childSize_;
 		this.Change = Change_;
 	});
 	sliceType = $sliceType($emptyInterface);
@@ -46621,6 +47453,15 @@ $packages["github.com/gascore/components/vlist"] = (function() {
 		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _entry = $f._entry; _r = $f._r; _tuple = $f._tuple; config = $f.config; e = $f.e; ok = $f.ok; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
 		config = [config];
 		e = [e];
+		if (config[0].Direction) {
+			config[0].directionTransform = "translateY";
+			config[0].directionV = "height";
+			config[0].childSize = config[0].ChildHeight;
+		} else {
+			config[0].directionTransform = "translateX";
+			config[0].directionV = "width";
+			config[0].childSize = config[0].ChildWidth;
+		}
 		if (config[0].DefaultItemsSmooth === 0) {
 			config[0].DefaultItemsSmooth = 4;
 		}
@@ -46635,7 +47476,7 @@ $packages["github.com/gascore/components/vlist"] = (function() {
 			$r = dom.ConsoleError(new sliceType([new $String("invalid item template for virtual list")])); /* */ $s = 3; case 3: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 			$s = -1; return ptrType.nil;
 		/* } */ case 2:
-		_r = gas.NC(new gas.Component.ptr($makeMap($String.keyFor, [{ k: "topPadding", v: new $Int(0) }, { k: "items", v: new sliceType([]) }, { k: "scrollHeight", v: new $Int(($imul(config[0].ChildHeight, config[0].Items.$length))) }, { k: "start", v: new $Int(0) }]), false, $makeMap($String.keyFor, [{ k: "onScroll", v: (function(config, e) { return function $b(this$1, values) {
+		_r = gas.NC(new gas.Component.ptr($makeMap($String.keyFor, [{ k: "topPadding", v: new $Int(0) }, { k: "items", v: new sliceType([]) }, { k: "scrollHeight", v: new $Int(($imul(config[0].childSize, config[0].Items.$length))) }, { k: "start", v: new $Int(0) }]), false, $makeMap($String.keyFor, [{ k: "onScroll", v: (function(config, e) { return function $b(this$1, values) {
 			var this$1, values, $s, $r;
 			/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; this$1 = $f.this$1; values = $f.values; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
 			this$1 = [this$1];
@@ -46658,15 +47499,25 @@ $packages["github.com/gascore/components/vlist"] = (function() {
 			$s = -1; return [$ifaceNil, $ifaceNil];
 			/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._r = _r; $f.items = items; $f.this$1 = this$1; $f.values = values; $f.$s = $s; $f.$r = $r; return $f;
 		}; })(config, e) }, { k: "calculateItems", v: (function(config, e) { return function $b(this$1, values) {
-			var _el, _q, _r, _r$1, _r$2, _r$3, _r$4, _r$5, _tuple$1, end, endRaw, err, scrollTop, start, this$1, values, x, $s, $r;
-			/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _el = $f._el; _q = $f._q; _r = $f._r; _r$1 = $f._r$1; _r$2 = $f._r$2; _r$3 = $f._r$3; _r$4 = $f._r$4; _r$5 = $f._r$5; _tuple$1 = $f._tuple$1; end = $f.end; endRaw = $f.endRaw; err = $f.err; scrollTop = $f.scrollTop; start = $f.start; this$1 = $f.this$1; values = $f.values; x = $f.x; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+			var _el, _q, _r, _r$1, _r$2, _r$3, _r$4, _r$5, _tmp, _tmp$1, _tuple$1, end, endRaw, err, offsetHeight, scrollTop, start, this$1, values, x, x$1, $s, $r;
+			/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _el = $f._el; _q = $f._q; _r = $f._r; _r$1 = $f._r$1; _r$2 = $f._r$2; _r$3 = $f._r$3; _r$4 = $f._r$4; _r$5 = $f._r$5; _tmp = $f._tmp; _tmp$1 = $f._tmp$1; _tuple$1 = $f._tuple$1; end = $f.end; endRaw = $f.endRaw; err = $f.err; offsetHeight = $f.offsetHeight; scrollTop = $f.scrollTop; start = $f.start; this$1 = $f.this$1; values = $f.values; x = $f.x; x$1 = $f.x$1; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
 			_r = this$1.Element(); /* */ $s = 1; case 1: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
 			_el = $assertType(_r, ptrType$2);
 			if (_el === ptrType$2.nil) {
 				$s = -1; return [new sliceType([]), $ifaceNil];
 			}
-			scrollTop = (x = _el.NodeBase.ChildNodes(), (0 >= x.$length ? ($throwRuntimeError("index out of range"), undefined) : x.$array[x.$offset + 0])).ScrollTop();
-			_r$1 = fmt.Sprintf("%.0f", new sliceType([new $Float64((_el.OffsetHeight()) / (config[0].ChildHeight))])); /* */ $s = 2; case 2: if($c) { $c = false; _r$1 = _r$1.$blk(); } if (_r$1 && _r$1.$blk !== undefined) { break s; }
+			_tmp = 0;
+			_tmp$1 = 0;
+			scrollTop = _tmp;
+			offsetHeight = _tmp$1;
+			if (config[0].Direction) {
+				scrollTop = (x = _el.NodeBase.ChildNodes(), (0 >= x.$length ? ($throwRuntimeError("index out of range"), undefined) : x.$array[x.$offset + 0])).ScrollTop();
+				offsetHeight = _el.OffsetHeight();
+			} else {
+				scrollTop = (x$1 = _el.NodeBase.ChildNodes(), (0 >= x$1.$length ? ($throwRuntimeError("index out of range"), undefined) : x$1.$array[x$1.$offset + 0])).ScrollLeft();
+				offsetHeight = _el.OffsetWidth();
+			}
+			_r$1 = fmt.Sprintf("%.0f", new sliceType([new $Float64((offsetHeight) / (config[0].childSize))])); /* */ $s = 2; case 2: if($c) { $c = false; _r$1 = _r$1.$blk(); } if (_r$1 && _r$1.$blk !== undefined) { break s; }
 			_r$2 = strconv.Atoi(_r$1); /* */ $s = 3; case 3: if($c) { $c = false; _r$2 = _r$2.$blk(); } if (_r$2 && _r$2.$blk !== undefined) { break s; }
 			_tuple$1 = _r$2;
 			endRaw = _tuple$1[0];
@@ -46674,14 +47525,14 @@ $packages["github.com/gascore/components/vlist"] = (function() {
 			if (!($interfaceIsEqual(err, $ifaceNil))) {
 				$s = -1; return [new sliceType([]), err];
 			}
-			start = (_q = scrollTop / config[0].ChildHeight, (_q === _q && _q !== 1/0 && _q !== -1/0) ? _q >> 0 : $throwRuntimeError("integer divide by zero"));
-			end = (start + endRaw >> 0) + config[0].DefaultItemsSmooth >> 0;
+			start = (_q = scrollTop / config[0].childSize, (_q === _q && _q !== 1/0 && _q !== -1/0) ? _q >> 0 : $throwRuntimeError("integer divide by zero"));
+			end = start + endRaw >> 0;
 			_r$3 = this$1.SetValueImm("start", new $Int(start)); /* */ $s = 4; case 4: if($c) { $c = false; _r$3 = _r$3.$blk(); } if (_r$3 && _r$3.$blk !== undefined) { break s; }
 			err = _r$3;
 			if (!($interfaceIsEqual(err, $ifaceNil))) {
 				$s = -1; return [new sliceType([]), err];
 			}
-			_r$4 = this$1.SetValueImm("topPadding", new $Int(($imul(start, config[0].ChildHeight)))); /* */ $s = 5; case 5: if($c) { $c = false; _r$4 = _r$4.$blk(); } if (_r$4 && _r$4.$blk !== undefined) { break s; }
+			_r$4 = this$1.SetValueImm("topPadding", new $Int(($imul(start, config[0].childSize)))); /* */ $s = 5; case 5: if($c) { $c = false; _r$4 = _r$4.$blk(); } if (_r$4 && _r$4.$blk !== undefined) { break s; }
 			err = _r$4;
 			if (!($interfaceIsEqual(err, $ifaceNil))) {
 				$s = -1; return [new sliceType([]), err];
@@ -46696,7 +47547,7 @@ $packages["github.com/gascore/components/vlist"] = (function() {
 				}
 			/* } */ case 7:
 			$s = -1; return [getSlice(config[0].Items, start, end), $ifaceNil];
-			/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._el = _el; $f._q = _q; $f._r = _r; $f._r$1 = _r$1; $f._r$2 = _r$2; $f._r$3 = _r$3; $f._r$4 = _r$4; $f._r$5 = _r$5; $f._tuple$1 = _tuple$1; $f.end = end; $f.endRaw = endRaw; $f.err = err; $f.scrollTop = scrollTop; $f.start = start; $f.this$1 = this$1; $f.values = values; $f.x = x; $f.$s = $s; $f.$r = $r; return $f;
+			/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._el = _el; $f._q = _q; $f._r = _r; $f._r$1 = _r$1; $f._r$2 = _r$2; $f._r$3 = _r$3; $f._r$4 = _r$4; $f._r$5 = _r$5; $f._tmp = _tmp; $f._tmp$1 = _tmp$1; $f._tuple$1 = _tuple$1; $f.end = end; $f.endRaw = endRaw; $f.err = err; $f.offsetHeight = offsetHeight; $f.scrollTop = scrollTop; $f.start = start; $f.this$1 = this$1; $f.values = values; $f.x = x; $f.x$1 = x$1; $f.$s = $s; $f.$r = $r; return $f;
 		}; })(config, e) }, { k: "genItems", v: (function(config, e) { return function $b(this$1, values) {
 			var _arg, _arg$1, _arg$2, _entry$1, _i, _items, _r, _r$1, _r$2, _r$3, _ref, i, item, items, t, this$1, values, $s, $r;
 			/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _arg = $f._arg; _arg$1 = $f._arg$1; _arg$2 = $f._arg$2; _entry$1 = $f._entry$1; _i = $f._i; _items = $f._items; _r = $f._r; _r$1 = $f._r$1; _r$2 = $f._r$2; _r$3 = $f._r$3; _ref = $f._ref; i = $f.i; item = $f.item; items = $f.items; t = $f.t; this$1 = $f.this$1; values = $f.values; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
@@ -46725,13 +47576,19 @@ $packages["github.com/gascore/components/vlist"] = (function() {
 				_i++;
 			/* } */ $s = 4; continue; case 5:
 			_r$3 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, $makeMap($String.keyFor, [{ k: "style", v: (function(config, e, this$1) { return function $b() {
-				var _arg$3, _r$3, _r$4, $s, $r;
-				/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _arg$3 = $f._arg$3; _r$3 = $f._r$3; _r$4 = $f._r$4; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+				var _arg$3, _arg$4, _arg$5, _r$3, _r$4, dFlex, $s, $r;
+				/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _arg$3 = $f._arg$3; _arg$4 = $f._arg$4; _arg$5 = $f._arg$5; _r$3 = $f._r$3; _r$4 = $f._r$4; dFlex = $f.dFlex; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+				dFlex = "";
+				if (!config[0].Direction) {
+					dFlex = "display: flex;";
+				}
+				_arg$3 = new $String(config[0].directionTransform);
 				_r$3 = this$1[0].Get("topPadding"); /* */ $s = 1; case 1: if($c) { $c = false; _r$3 = _r$3.$blk(); } if (_r$3 && _r$3.$blk !== undefined) { break s; }
-				_arg$3 = _r$3;
-				_r$4 = fmt.Sprintf("transform: translateY(%dpx);", new sliceType([_arg$3])); /* */ $s = 2; case 2: if($c) { $c = false; _r$4 = _r$4.$blk(); } if (_r$4 && _r$4.$blk !== undefined) { break s; }
+				_arg$4 = _r$3;
+				_arg$5 = new $String(dFlex);
+				_r$4 = fmt.Sprintf("transform: %s(%dpx);%s", new sliceType([_arg$3, _arg$4, _arg$5])); /* */ $s = 2; case 2: if($c) { $c = false; _r$4 = _r$4.$blk(); } if (_r$4 && _r$4.$blk !== undefined) { break s; }
 				$s = -1; return _r$4;
-				/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._arg$3 = _arg$3; $f._r$3 = _r$3; $f._r$4 = _r$4; $f.$s = $s; $f.$r = $r; return $f;
+				/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._arg$3 = _arg$3; $f._arg$4 = _arg$4; $f._arg$5 = _arg$5; $f._r$3 = _r$3; $f._r$4 = _r$4; $f.dFlex = dFlex; $f.$s = $s; $f.$r = $r; return $f;
 			}; })(config, e, this$1) }]), false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, config[0].ItemsWrapperTag, $makeMap($String.keyFor, [{ k: "class", v: "vlist-content" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil), _items); /* */ $s = 8; case 8: if($c) { $c = false; _r$3 = _r$3.$blk(); } if (_r$3 && _r$3.$blk !== undefined) { break s; }
 			$s = -1; return [_r$3, $ifaceNil];
 			/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._arg = _arg; $f._arg$1 = _arg$1; $f._arg$2 = _arg$2; $f._entry$1 = _entry$1; $f._i = _i; $f._items = _items; $f._r = _r; $f._r$1 = _r$1; $f._r$2 = _r$2; $f._r$3 = _r$3; $f._ref = _ref; $f.i = i; $f.item = item; $f.items = items; $f.t = t; $f.this$1 = this$1; $f.values = values; $f.$s = $s; $f.$r = $r; return $f;
@@ -46743,7 +47600,7 @@ $packages["github.com/gascore/components/vlist"] = (function() {
 			$r = this$1.SetValue("items", items); /* */ $s = 2; case 2: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 			$s = -1; return $ifaceNil;
 			/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._r = _r; $f.items = items; $f.this$1 = this$1; $f.$s = $s; $f.$r = $r; return $f;
-		}; })(config, e), $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "", false, "", false, ptrType.nil, "", false, false, ptrType$1.nil), (function(config, e) { return function $b(this$1) {
+		}; })(config, e), $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "", $makeMap($String.keyFor, [{ k: "style", v: "height: 100%; width: 100%" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil), (function(config, e) { return function $b(this$1) {
 			var _arg, _arg$1, _arg$2, _arg$3, _r, _r$1, _r$2, _r$3, _r$4, this$1, $s, $r;
 			/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _arg = $f._arg; _arg$1 = $f._arg$1; _arg$2 = $f._arg$2; _arg$3 = $f._arg$3; _r = $f._r; _r$1 = $f._r$1; _r$2 = $f._r$2; _r$3 = $f._r$3; _r$4 = $f._r$4; this$1 = $f.this$1; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
 			this$1 = [this$1];
@@ -46756,13 +47613,14 @@ $packages["github.com/gascore/components/vlist"] = (function() {
 				/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._r = _r; $f.e$1 = e$1; $f.p = p; $f.$s = $s; $f.$r = $r; return $f;
 			}; })(config, e, this$1) }]), false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "div", $makeMap($String.keyFor, [{ k: "class", v: "vlist" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil);
 			_r = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, $makeMap($String.keyFor, [{ k: "style", v: (function(config, e, this$1) { return function $b() {
-				var _arg$1, _r, _r$1, $s, $r;
-				/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _arg$1 = $f._arg$1; _r = $f._r; _r$1 = $f._r$1; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+				var _arg$1, _arg$2, _r, _r$1, $s, $r;
+				/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _arg$1 = $f._arg$1; _arg$2 = $f._arg$2; _r = $f._r; _r$1 = $f._r$1; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+				_arg$1 = new $String(config[0].directionV);
 				_r = this$1[0].Get("scrollHeight"); /* */ $s = 1; case 1: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
-				_arg$1 = _r;
-				_r$1 = fmt.Sprintf("height: %dpx;", new sliceType([_arg$1])); /* */ $s = 2; case 2: if($c) { $c = false; _r$1 = _r$1.$blk(); } if (_r$1 && _r$1.$blk !== undefined) { break s; }
+				_arg$2 = _r;
+				_r$1 = fmt.Sprintf("%s: %dpx;", new sliceType([_arg$1, _arg$2])); /* */ $s = 2; case 2: if($c) { $c = false; _r$1 = _r$1.$blk(); } if (_r$1 && _r$1.$blk !== undefined) { break s; }
 				$s = -1; return _r$1;
-				/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._arg$1 = _arg$1; $f._r = _r; $f._r$1 = _r$1; $f.$s = $s; $f.$r = $r; return $f;
+				/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._arg$1 = _arg$1; $f._arg$2 = _arg$2; $f._r = _r; $f._r$1 = _r$1; $f.$s = $s; $f.$r = $r; return $f;
 			}; })(config, e, this$1) }]), false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "div", $makeMap($String.keyFor, [{ k: "class", v: "vlist-padding" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([])); /* */ $s = 1; case 1: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
 			_arg$1 = _r;
 			_r$1 = this$1[0].Get("items"); /* */ $s = 2; case 2: if($c) { $c = false; _r$1 = _r$1.$blk(); } if (_r$1 && _r$1.$blk !== undefined) { break s; }
@@ -46788,7 +47646,7 @@ $packages["github.com/gascore/components/vlist"] = (function() {
 		}
 		return $subslice(arr, start, end);
 	};
-	Config.init("", [{prop: "ItemsWrapperTag", name: "ItemsWrapperTag", embedded: false, exported: true, typ: $String, tag: ""}, {prop: "Padding", name: "Padding", embedded: false, exported: true, typ: $Int, tag: ""}, {prop: "Items", name: "Items", embedded: false, exported: true, typ: sliceType, tag: ""}, {prop: "DefaultItemsSmooth", name: "DefaultItemsSmooth", embedded: false, exported: true, typ: $Int, tag: ""}, {prop: "ChildHeight", name: "ChildHeight", embedded: false, exported: true, typ: $Int, tag: ""}, {prop: "Change", name: "Change", embedded: false, exported: true, typ: funcType, tag: ""}]);
+	Config.init("github.com/gascore/components/vlist", [{prop: "Direction", name: "Direction", embedded: false, exported: true, typ: $Bool, tag: ""}, {prop: "directionV", name: "directionV", embedded: false, exported: false, typ: $String, tag: ""}, {prop: "directionTransform", name: "directionTransform", embedded: false, exported: false, typ: $String, tag: ""}, {prop: "ItemsWrapperTag", name: "ItemsWrapperTag", embedded: false, exported: true, typ: $String, tag: ""}, {prop: "Padding", name: "Padding", embedded: false, exported: true, typ: $Int, tag: ""}, {prop: "Items", name: "Items", embedded: false, exported: true, typ: sliceType, tag: ""}, {prop: "DefaultItemsSmooth", name: "DefaultItemsSmooth", embedded: false, exported: true, typ: $Int, tag: ""}, {prop: "ChildHeight", name: "ChildHeight", embedded: false, exported: true, typ: $Int, tag: ""}, {prop: "ChildWidth", name: "ChildWidth", embedded: false, exported: true, typ: $Int, tag: ""}, {prop: "childSize", name: "childSize", embedded: false, exported: false, typ: $Int, tag: ""}, {prop: "Change", name: "Change", embedded: false, exported: true, typ: funcType, tag: ""}]);
 	$init = function() {
 		$pkg.$init = function() {};
 		/* */ var $f, $c = false, $s = 0, $r; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
@@ -55794,7 +56652,7 @@ $packages["regexp"] = (function() {
 	return $pkg;
 })();
 $packages["github.com/gascore/gas-router"] = (function() {
-	var $pkg = {}, $init, errors, fmt, dom, js, gas, js$1, regexp, strings, RouteInfo, Route, Ctx, Settings, sliceType, sliceType$1, ptrType, sliceType$2, ptrType$1, ptrType$2, mapType, funcType, sliceType$3, funcType$1, funcType$2, funcType$3, renderedPaths, Push, PushDynamic, fillPath, getRoute, beforePush, LinkStatic, LinkDynamic, InitRouter, ChangeRoute, ChangeRouteDynamic, updateFunction, findRoute, matchPath, renderPath, splitPath, SupportHistory, windowAddEventListener, windowRemoveEventListener;
+	var $pkg = {}, $init, errors, fmt, dom, js, gas, js$1, regexp, strings, RouteInfo, Route, Ctx, Settings, sliceType, sliceType$1, ptrType, sliceType$2, ptrType$1, ptrType$2, ptrType$3, mapType, funcType, sliceType$3, funcType$1, funcType$2, funcType$3, renderedPaths, beforePush, InitRouter, matchPath, renderPath, splitPath, SupportHistory, event, windowAddEventListener, windowRemoveEventListener;
 	errors = $packages["errors"];
 	fmt = $packages["fmt"];
 	dom = $packages["github.com/gascore/dom"];
@@ -55811,7 +56669,7 @@ $packages["github.com/gascore/gas-router"] = (function() {
 			this.Params = false;
 			this.QueryParams = false;
 			this.Route = new Route.ptr("", $throwNilPointerError, false, false, "", false, false, "", sliceType$1.nil);
-			this.Ctx = ptrType$2.nil;
+			this.Ctx = ptrType$3.nil;
 			return;
 		}
 		this.Name = Name_;
@@ -55882,7 +56740,8 @@ $packages["github.com/gascore/gas-router"] = (function() {
 	ptrType = $ptrType(gas.Component);
 	sliceType$2 = $sliceType(gas.ModelDirectiveDeepData);
 	ptrType$1 = $ptrType(gas.RenderCore);
-	ptrType$2 = $ptrType(Ctx);
+	ptrType$2 = $ptrType(dom.Element);
+	ptrType$3 = $ptrType(Ctx);
 	mapType = $mapType($String, $String);
 	funcType = $funcType([RouteInfo], [ptrType], false);
 	sliceType$3 = $sliceType(Route);
@@ -55893,14 +56752,15 @@ $packages["github.com/gascore/gas-router"] = (function() {
 		var i, path, replace, $s, $r;
 		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; i = $f.i; path = $f.path; replace = $f.replace; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
 		i = this;
-		$r = Push(path, replace, i.Ctx); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = i.Ctx.Push(path, replace); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 		$s = -1; return;
 		/* */ } return; } if ($f === undefined) { $f = { $blk: RouteInfo.ptr.prototype.Push }; } $f.i = i; $f.path = path; $f.replace = replace; $f.$s = $s; $f.$r = $r; return $f;
 	};
 	RouteInfo.prototype.Push = function(path, replace) { return this.$val.Push(path, replace); };
-	Push = function(path, replace, ctx) {
+	Ctx.ptr.prototype.Push = function(path, replace) {
 		var _r, _r$1, _v, ctx, path, replace, $s, $r;
 		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r = $f._r; _r$1 = $f._r$1; _v = $f._v; ctx = $f.ctx; path = $f.path; replace = $f.replace; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		ctx = this;
 		if (!(!(ctx.Settings.GetUserConfirmation === $throwNilPointerError))) { _v = false; $s = 3; continue s; }
 		_r = ctx.Settings.GetUserConfirmation(); /* */ $s = 4; case 4: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
 		_v = _r; case 3:
@@ -55909,35 +56769,37 @@ $packages["github.com/gascore/gas-router"] = (function() {
 		/* if (_v) { */ case 1:
 			$s = -1; return;
 		/* } */ case 2:
-		$r = ChangeRoute(path, replace, ctx); /* */ $s = 5; case 5: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = ctx.ChangeRoute(path, replace); /* */ $s = 5; case 5: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 		_r$1 = js.New("Event", new sliceType([new $String("changeroute")])); /* */ $s = 6; case 6: if($c) { $c = false; _r$1 = _r$1.$blk(); } if (_r$1 && _r$1.$blk !== undefined) { break s; }
 		$r = dom.GetWindow().DispatchEvent($clone(_r$1, js.Value)); /* */ $s = 7; case 7: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 		$s = -1; return;
-		/* */ } return; } if ($f === undefined) { $f = { $blk: Push }; } $f._r = _r; $f._r$1 = _r$1; $f._v = _v; $f.ctx = ctx; $f.path = path; $f.replace = replace; $f.$s = $s; $f.$r = $r; return $f;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: Ctx.ptr.prototype.Push }; } $f._r = _r; $f._r$1 = _r$1; $f._v = _v; $f.ctx = ctx; $f.path = path; $f.replace = replace; $f.$s = $s; $f.$r = $r; return $f;
 	};
-	$pkg.Push = Push;
+	Ctx.prototype.Push = function(path, replace) { return this.$val.Push(path, replace); };
 	RouteInfo.ptr.prototype.PushDynamic = function(name, params, queries, replace) {
 		var i, name, params, queries, replace, $s, $r;
 		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; i = $f.i; name = $f.name; params = $f.params; queries = $f.queries; replace = $f.replace; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
 		i = this;
-		$r = PushDynamic(name, params, queries, replace, i.Ctx); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = i.Ctx.PushDynamic(name, params, queries, replace); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 		$s = -1; return;
 		/* */ } return; } if ($f === undefined) { $f = { $blk: RouteInfo.ptr.prototype.PushDynamic }; } $f.i = i; $f.name = name; $f.params = params; $f.queries = queries; $f.replace = replace; $f.$s = $s; $f.$r = $r; return $f;
 	};
 	RouteInfo.prototype.PushDynamic = function(name, params, queries, replace) { return this.$val.PushDynamic(name, params, queries, replace); };
-	PushDynamic = function(name, params, queries, replace, ctx) {
+	Ctx.ptr.prototype.PushDynamic = function(name, params, queries, replace) {
 		var _r, ctx, name, params, queries, replace, $s, $r;
 		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r = $f._r; ctx = $f.ctx; name = $f.name; params = $f.params; queries = $f.queries; replace = $f.replace; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
-		_r = fillPath(name, params, queries, ctx); /* */ $s = 1; case 1: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
-		$r = Push(_r, replace, ctx); /* */ $s = 2; case 2: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		ctx = this;
+		_r = ctx.fillPath(name, params, queries); /* */ $s = 1; case 1: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
+		$r = ctx.Push(_r, replace); /* */ $s = 2; case 2: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 		$s = -1; return;
-		/* */ } return; } if ($f === undefined) { $f = { $blk: PushDynamic }; } $f._r = _r; $f.ctx = ctx; $f.name = name; $f.params = params; $f.queries = queries; $f.replace = replace; $f.$s = $s; $f.$r = $r; return $f;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: Ctx.ptr.prototype.PushDynamic }; } $f._r = _r; $f.ctx = ctx; $f.name = name; $f.params = params; $f.queries = queries; $f.replace = replace; $f.$s = $s; $f.$r = $r; return $f;
 	};
-	$pkg.PushDynamic = PushDynamic;
-	fillPath = function(name, params, queries, ctx) {
+	Ctx.prototype.PushDynamic = function(name, params, queries, replace) { return this.$val.PushDynamic(name, params, queries, replace); };
+	Ctx.ptr.prototype.fillPath = function(name, params, queries) {
 		var _entry, _entry$1, _i, _keys, _r, _r$1, _r$2, _ref, _tuple, ctx, key, name, name$1, p1, p2, params, path, queries, queriesString, route, value, x, $s, $r;
 		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _entry = $f._entry; _entry$1 = $f._entry$1; _i = $f._i; _keys = $f._keys; _r = $f._r; _r$1 = $f._r$1; _r$2 = $f._r$2; _ref = $f._ref; _tuple = $f._tuple; ctx = $f.ctx; key = $f.key; name = $f.name; name$1 = $f.name$1; p1 = $f.p1; p2 = $f.p2; params = $f.params; path = $f.path; queries = $f.queries; queriesString = $f.queriesString; route = $f.route; value = $f.value; x = $f.x; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
-		_r = getRoute(name, ctx); /* */ $s = 1; case 1: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
+		ctx = this;
+		_r = ctx.getRoute(name); /* */ $s = 1; case 1: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
 		route = $clone(_r, Route);
 		if (route.Name === "") {
 			$s = -1; return "";
@@ -55980,11 +56842,13 @@ $packages["github.com/gascore/gas-router"] = (function() {
 		_r$2 = fmt.Errorf("invalid path", new sliceType([])); /* */ $s = 5; case 5: if($c) { $c = false; _r$2 = _r$2.$blk(); } if (_r$2 && _r$2.$blk !== undefined) { break s; }
 		$r = ctx.This.WarnError(_r$2); /* */ $s = 6; case 6: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 		$s = -1; return path;
-		/* */ } return; } if ($f === undefined) { $f = { $blk: fillPath }; } $f._entry = _entry; $f._entry$1 = _entry$1; $f._i = _i; $f._keys = _keys; $f._r = _r; $f._r$1 = _r$1; $f._r$2 = _r$2; $f._ref = _ref; $f._tuple = _tuple; $f.ctx = ctx; $f.key = key; $f.name = name; $f.name$1 = name$1; $f.p1 = p1; $f.p2 = p2; $f.params = params; $f.path = path; $f.queries = queries; $f.queriesString = queriesString; $f.route = route; $f.value = value; $f.x = x; $f.$s = $s; $f.$r = $r; return $f;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: Ctx.ptr.prototype.fillPath }; } $f._entry = _entry; $f._entry$1 = _entry$1; $f._i = _i; $f._keys = _keys; $f._r = _r; $f._r$1 = _r$1; $f._r$2 = _r$2; $f._ref = _ref; $f._tuple = _tuple; $f.ctx = ctx; $f.key = key; $f.name = name; $f.name$1 = name$1; $f.p1 = p1; $f.p2 = p2; $f.params = params; $f.path = path; $f.queries = queries; $f.queriesString = queriesString; $f.route = route; $f.value = value; $f.x = x; $f.$s = $s; $f.$r = $r; return $f;
 	};
-	getRoute = function(name, ctx) {
+	Ctx.prototype.fillPath = function(name, params, queries) { return this.$val.fillPath(name, params, queries); };
+	Ctx.ptr.prototype.getRoute = function(name) {
 		var _i, _r, _ref, ctx, name, r, $s, $r;
 		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _i = $f._i; _r = $f._r; _ref = $f._ref; ctx = $f.ctx; name = $f.name; r = $f.r; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		ctx = this;
 		_ref = ctx.Routes;
 		_i = 0;
 		while (true) {
@@ -55998,8 +56862,9 @@ $packages["github.com/gascore/gas-router"] = (function() {
 		_r = fmt.Errorf("undefined route: %s", new sliceType([new $String(name)])); /* */ $s = 1; case 1: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
 		$r = ctx.This.WarnError(_r); /* */ $s = 2; case 2: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 		$s = -1; return new Route.ptr("", $throwNilPointerError, false, false, "", false, false, "", sliceType$1.nil);
-		/* */ } return; } if ($f === undefined) { $f = { $blk: getRoute }; } $f._i = _i; $f._r = _r; $f._ref = _ref; $f.ctx = ctx; $f.name = name; $f.r = r; $f.$s = $s; $f.$r = $r; return $f;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: Ctx.ptr.prototype.getRoute }; } $f._i = _i; $f._r = _r; $f._ref = _ref; $f.ctx = ctx; $f.name = name; $f.r = r; $f.$s = $s; $f.$r = $r; return $f;
 	};
+	Ctx.prototype.getRoute = function(name) { return this.$val.getRoute(name); };
 	Ctx.ptr.prototype.link = function(getPath, push, e) {
 		var _r, ctx, e, getPath, push, $s, $r;
 		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r = $f._r; ctx = $f.ctx; e = $f.e; getPath = $f.getPath; push = $f.push; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
@@ -56018,54 +56883,55 @@ $packages["github.com/gascore/gas-router"] = (function() {
 	Ctx.prototype.link = function(getPath, push, e) { return this.$val.link(getPath, push, e); };
 	beforePush = function(push) {
 		var push;
-		return (function $b(this$1, event) {
-			var _r, event, this$1, $s, $r;
-			/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r = $f._r; event = $f.event; this$1 = $f.this$1; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
-			$r = push(this$1, event); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-			_r = event.Call("preventDefault", new sliceType([])); /* */ $s = 2; case 2: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
+		return (function $b(this$1, event$1) {
+			var _r, event$1, this$1, $s, $r;
+			/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r = $f._r; event$1 = $f.event$1; this$1 = $f.this$1; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+			$r = push(this$1, event$1); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+			_r = event$1.Call("preventDefault", new sliceType([])); /* */ $s = 2; case 2: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
 			_r;
 			$s = -1; return;
-			/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._r = _r; $f.event = event; $f.this$1 = this$1; $f.$s = $s; $f.$r = $r; return $f;
+			/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._r = _r; $f.event$1 = event$1; $f.this$1 = this$1; $f.$s = $s; $f.$r = $r; return $f;
 		});
 	};
 	RouteInfo.ptr.prototype.LinkStatic = function(to, replace, e) {
 		var _r, e, i, replace, to, $s, $r;
 		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r = $f._r; e = $f.e; i = $f.i; replace = $f.replace; to = $f.to; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
 		i = this;
-		_r = LinkStatic(to, replace, i.Ctx, $clone(e, gas.External)); /* */ $s = 1; case 1: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
+		_r = i.Ctx.LinkStatic(to, replace, $clone(e, gas.External)); /* */ $s = 1; case 1: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
 		$s = -1; return _r;
 		/* */ } return; } if ($f === undefined) { $f = { $blk: RouteInfo.ptr.prototype.LinkStatic }; } $f._r = _r; $f.e = e; $f.i = i; $f.replace = replace; $f.to = to; $f.$s = $s; $f.$r = $r; return $f;
 	};
 	RouteInfo.prototype.LinkStatic = function(to, replace, e) { return this.$val.LinkStatic(to, replace, e); };
-	LinkStatic = function(to, replace, ctx, e) {
+	Ctx.ptr.prototype.LinkStatic = function(to, replace, e) {
 		var _r, ctx, e, replace, to, $s, $r;
 		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r = $f._r; ctx = $f.ctx; e = $f.e; replace = $f.replace; to = $f.to; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
 		ctx = [ctx];
 		replace = [replace];
 		to = [to];
+		ctx[0] = this;
 		_r = $clone(ctx[0], Ctx).link((function(ctx, replace, to) { return function() {
 			return ctx[0].Settings.BaseName + to[0];
 		}; })(ctx, replace, to), (function(ctx, replace, to) { return function $b(this$1, e$1) {
 			var e$1, this$1, $s, $r;
 			/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; e$1 = $f.e$1; this$1 = $f.this$1; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
-			$r = Push(to[0], replace[0], ctx[0]); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+			$r = ctx[0].Push(to[0], replace[0]); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 			$s = -1; return;
 			/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f.e$1 = e$1; $f.this$1 = this$1; $f.$s = $s; $f.$r = $r; return $f;
 		}; })(ctx, replace, to), $clone(e, gas.External)); /* */ $s = 1; case 1: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
 		$s = -1; return _r;
-		/* */ } return; } if ($f === undefined) { $f = { $blk: LinkStatic }; } $f._r = _r; $f.ctx = ctx; $f.e = e; $f.replace = replace; $f.to = to; $f.$s = $s; $f.$r = $r; return $f;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: Ctx.ptr.prototype.LinkStatic }; } $f._r = _r; $f.ctx = ctx; $f.e = e; $f.replace = replace; $f.to = to; $f.$s = $s; $f.$r = $r; return $f;
 	};
-	$pkg.LinkStatic = LinkStatic;
+	Ctx.prototype.LinkStatic = function(to, replace, e) { return this.$val.LinkStatic(to, replace, e); };
 	RouteInfo.ptr.prototype.LinkDynamic = function(name, params, queries, replace, e) {
 		var _r, e, i, name, params, queries, replace, $s, $r;
 		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r = $f._r; e = $f.e; i = $f.i; name = $f.name; params = $f.params; queries = $f.queries; replace = $f.replace; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
 		i = this;
-		_r = LinkDynamic(name, params, queries, replace, i.Ctx, $clone(e, gas.External)); /* */ $s = 1; case 1: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
+		_r = i.Ctx.LinkDynamic(name, params, queries, replace, $clone(e, gas.External)); /* */ $s = 1; case 1: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
 		$s = -1; return _r;
 		/* */ } return; } if ($f === undefined) { $f = { $blk: RouteInfo.ptr.prototype.LinkDynamic }; } $f._r = _r; $f.e = e; $f.i = i; $f.name = name; $f.params = params; $f.queries = queries; $f.replace = replace; $f.$s = $s; $f.$r = $r; return $f;
 	};
 	RouteInfo.prototype.LinkDynamic = function(name, params, queries, replace, e) { return this.$val.LinkDynamic(name, params, queries, replace, e); };
-	LinkDynamic = function(name, params, queries, replace, ctx, e) {
+	Ctx.ptr.prototype.LinkDynamic = function(name, params, queries, replace, e) {
 		var _r, ctx, e, name, params, queries, replace, $s, $r;
 		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r = $f._r; ctx = $f.ctx; e = $f.e; name = $f.name; params = $f.params; queries = $f.queries; replace = $f.replace; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
 		ctx = [ctx];
@@ -56073,23 +56939,24 @@ $packages["github.com/gascore/gas-router"] = (function() {
 		params = [params];
 		queries = [queries];
 		replace = [replace];
+		ctx[0] = this;
 		_r = $clone(ctx[0], Ctx).link((function(ctx, name, params, queries, replace) { return function $b() {
 			var _r, $s, $r;
 			/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r = $f._r; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
-			_r = fillPath(name[0], params[0], queries[0], ctx[0]); /* */ $s = 1; case 1: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
+			_r = ctx[0].fillPath(name[0], params[0], queries[0]); /* */ $s = 1; case 1: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
 			$s = -1; return ctx[0].Settings.BaseName + _r;
 			/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._r = _r; $f.$s = $s; $f.$r = $r; return $f;
 		}; })(ctx, name, params, queries, replace), (function(ctx, name, params, queries, replace) { return function $b(this$1, e$1) {
 			var e$1, this$1, $s, $r;
 			/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; e$1 = $f.e$1; this$1 = $f.this$1; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
-			$r = PushDynamic(name[0], params[0], queries[0], replace[0], ctx[0]); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+			$r = ctx[0].PushDynamic(name[0], params[0], queries[0], replace[0]); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 			$s = -1; return;
 			/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f.e$1 = e$1; $f.this$1 = this$1; $f.$s = $s; $f.$r = $r; return $f;
 		}; })(ctx, name, params, queries, replace), $clone(e, gas.External)); /* */ $s = 1; case 1: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
 		$s = -1; return _r;
-		/* */ } return; } if ($f === undefined) { $f = { $blk: LinkDynamic }; } $f._r = _r; $f.ctx = ctx; $f.e = e; $f.name = name; $f.params = params; $f.queries = queries; $f.replace = replace; $f.$s = $s; $f.$r = $r; return $f;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: Ctx.ptr.prototype.LinkDynamic }; } $f._r = _r; $f.ctx = ctx; $f.e = e; $f.name = name; $f.params = params; $f.queries = queries; $f.replace = replace; $f.$s = $s; $f.$r = $r; return $f;
 	};
-	$pkg.LinkDynamic = LinkDynamic;
+	Ctx.prototype.LinkDynamic = function(name, params, queries, replace, e) { return this.$val.LinkDynamic(name, params, queries, replace, e); };
 	InitRouter = function(ctx) {
 		var _i, _r, _r$1, _r$2, _ref, ctx, route, $s, $r;
 		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _i = $f._i; _r = $f._r; _r$1 = $f._r$1; _r$2 = $f._r$2; _ref = $f._ref; ctx = $f.ctx; route = $f.route; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
@@ -56126,34 +56993,48 @@ $packages["github.com/gascore/gas-router"] = (function() {
 			}
 			_i++;
 		/* } */ $s = 7; continue; case 8:
-		_r$2 = gas.NC(new gas.Component.ptr($makeMap($String.keyFor, [{ k: "lastItem", v: new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$2.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "", false, "", false, ptrType.nil, "", false, false, ptrType$1.nil) }, { k: "lastRoute", v: new $String("") }]), false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, (function(ctx) { return function $b(this$1) {
-			var this$1, $s, $r;
-			/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; this$1 = $f.this$1; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
-			$r = windowAddEventListener("popstate", updateFunction(this$1)); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-			$r = windowAddEventListener("changeroute", updateFunction(this$1)); /* */ $s = 2; case 2: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		_r$2 = gas.NC(new gas.Component.ptr($makeMap($String.keyFor, [{ k: "lastItem", v: new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$2.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "", false, "", false, ptrType.nil, "", false, false, ptrType$1.nil) }, { k: "lastRoute", v: new $String("") }, { k: "updateEvent", v: $ifaceNil }]), false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, (function(ctx) { return function $b(this$1) {
+			var _r$2, this$1, updateEvent, $s, $r;
+			/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r$2 = $f._r$2; this$1 = $f.this$1; updateEvent = $f.updateEvent; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+			this$1 = [this$1];
+			updateEvent = $clone(event((function(ctx, this$1) { return function $b(e) {
+				var _r$2, e, $s, $r;
+				/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r$2 = $f._r$2; e = $f.e; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+				_r$2 = this$1[0].ForceUpdate(); /* */ $s = 1; case 1: if($c) { $c = false; _r$2 = _r$2.$blk(); } if (_r$2 && _r$2.$blk !== undefined) { break s; }
+				$r = this$1[0].WarnError(_r$2); /* */ $s = 2; case 2: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+				$s = -1; return;
+				/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._r$2 = _r$2; $f.e = e; $f.$s = $s; $f.$r = $r; return $f;
+			}; })(ctx, this$1)), js$1.Func);
+			$r = windowAddEventListener("popstate", $clone(updateEvent, js$1.Func)); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+			$r = windowAddEventListener("changeroute", $clone(updateEvent, js$1.Func)); /* */ $s = 2; case 2: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+			_r$2 = this$1[0].SetValueImm("updateEvent", new updateEvent.constructor.elem(updateEvent)); /* */ $s = 3; case 3: if($c) { $c = false; _r$2 = _r$2.$blk(); } if (_r$2 && _r$2.$blk !== undefined) { break s; }
+			_r$2;
 			$s = -1; return $ifaceNil;
-			/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f.this$1 = this$1; $f.$s = $s; $f.$r = $r; return $f;
+			/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._r$2 = _r$2; $f.this$1 = this$1; $f.updateEvent = updateEvent; $f.$s = $s; $f.$r = $r; return $f;
 		}; })(ctx), (function(ctx) { return function $b(this$1) {
-			var this$1, $s, $r;
-			/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; this$1 = $f.this$1; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
-			$r = windowRemoveEventListener("popstate", updateFunction(this$1)); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-			$r = windowRemoveEventListener("changeroute", updateFunction(this$1)); /* */ $s = 2; case 2: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+			var _r$2, this$1, updateEvent, $s, $r;
+			/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r$2 = $f._r$2; this$1 = $f.this$1; updateEvent = $f.updateEvent; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+			_r$2 = this$1.Get("updateEvent"); /* */ $s = 1; case 1: if($c) { $c = false; _r$2 = _r$2.$blk(); } if (_r$2 && _r$2.$blk !== undefined) { break s; }
+			updateEvent = $clone($assertType(_r$2, js$1.Func), js$1.Func);
+			$r = windowRemoveEventListener("popstate", $clone(updateEvent, js$1.Func)); /* */ $s = 2; case 2: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+			$r = windowRemoveEventListener("changeroute", $clone(updateEvent, js$1.Func)); /* */ $s = 3; case 3: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 			$s = -1; return $ifaceNil;
-			/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f.this$1 = this$1; $f.$s = $s; $f.$r = $r; return $f;
+			/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._r$2 = _r$2; $f.this$1 = this$1; $f.updateEvent = updateEvent; $f.$s = $s; $f.$r = $r; return $f;
 		}; })(ctx), $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$2.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "main", false, "", false, ptrType.nil, "", false, false, ptrType$1.nil), (function(ctx) { return function $b(this$1) {
 			var _arg, _arg$1, _r$2, _r$3, _r$4, currentPath, this$1, $s, $r;
 			/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _arg = $f._arg; _arg$1 = $f._arg$1; _r$2 = $f._r$2; _r$3 = $f._r$3; _r$4 = $f._r$4; currentPath = $f.currentPath; this$1 = $f.this$1; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
 			/* */ if (!strings.HasPrefix($clone(ctx[0], Ctx).getPath(), ctx[0].Settings.BaseName)) { $s = 1; continue; }
 			/* */ $s = 2; continue;
 			/* if (!strings.HasPrefix($clone(ctx[0], Ctx).getPath(), ctx[0].Settings.BaseName)) { */ case 1:
-				$r = ChangeRoute("/", true, ctx[0]); /* */ $s = 3; case 3: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+				$r = ctx[0].ChangeRoute("/", true); /* */ $s = 3; case 3: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 			/* } */ case 2:
 			currentPath = strings.TrimPrefix($clone(ctx[0], Ctx).getPath(), ctx[0].Settings.BaseName);
 			if (currentPath === "") {
 				currentPath = "/";
 			}
-			_arg = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$2.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "", $makeMap($String.keyFor, [{ k: "data-path", v: currentPath }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil);
-			_r$2 = findRoute(currentPath, this$1, ctx[0]); /* */ $s = 4; case 4: if($c) { $c = false; _r$2 = _r$2.$blk(); } if (_r$2 && _r$2.$blk !== undefined) { break s; }
+			ctx[0].This = this$1;
+			_arg = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$2.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "", $makeMap($String.keyFor, [{ k: "data-path", v: currentPath }, { k: "id", v: "gas-router_route-wraper" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil);
+			_r$2 = ctx[0].findRoute(currentPath, this$1); /* */ $s = 4; case 4: if($c) { $c = false; _r$2 = _r$2.$blk(); } if (_r$2 && _r$2.$blk !== undefined) { break s; }
 			_arg$1 = _r$2;
 			_r$3 = gas.NE(_arg, new sliceType([_arg$1])); /* */ $s = 5; case 5: if($c) { $c = false; _r$3 = _r$3.$blk(); } if (_r$3 && _r$3.$blk !== undefined) { break s; }
 			_r$4 = gas.ToGetComponentList(new sliceType([_r$3])); /* */ $s = 6; case 6: if($c) { $c = false; _r$4 = _r$4.$blk(); } if (_r$4 && _r$4.$blk !== undefined) { break s; }
@@ -56168,14 +57049,15 @@ $packages["github.com/gascore/gas-router"] = (function() {
 		var i, path, replace, $s, $r;
 		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; i = $f.i; path = $f.path; replace = $f.replace; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
 		i = this;
-		$r = ChangeRoute(path, replace, i.Ctx); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = i.Ctx.ChangeRoute(path, replace); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 		$s = -1; return;
 		/* */ } return; } if ($f === undefined) { $f = { $blk: RouteInfo.ptr.prototype.ChangeRoute }; } $f.i = i; $f.path = path; $f.replace = replace; $f.$s = $s; $f.$r = $r; return $f;
 	};
 	RouteInfo.prototype.ChangeRoute = function(path, replace) { return this.$val.ChangeRoute(path, replace); };
-	ChangeRoute = function(path, replace, ctx) {
-		var _r, _r$1, ctx, path, replace, $s, $r;
-		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r = $f._r; _r$1 = $f._r$1; ctx = $f.ctx; path = $f.path; replace = $f.replace; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+	Ctx.ptr.prototype.ChangeRoute = function(path, replace) {
+		var _el, _key, _r, _r$1, _r$2, _tuple, _tuple$1, ctx, elChildes, ok, path, replace, routeWrap, this$1, x, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _el = $f._el; _key = $f._key; _r = $f._r; _r$1 = $f._r$1; _r$2 = $f._r$2; _tuple = $f._tuple; _tuple$1 = $f._tuple$1; ctx = $f.ctx; elChildes = $f.elChildes; ok = $f.ok; path = $f.path; replace = $f.replace; routeWrap = $f.routeWrap; this$1 = $f.this$1; x = $f.x; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		ctx = this;
 		path = ctx.Settings.BaseName + path;
 		if (ctx.Settings.ForceRefresh) {
 			$clone(dom.GetWindow().JSValue(), js$1.Value).Set("location", new $String($clone($clone(dom.GetWindow().GetLocation(), js$1.Value).Get("origin"), js$1.Value).String() + path));
@@ -56190,43 +57072,69 @@ $packages["github.com/gascore/gas-router"] = (function() {
 		/* } else { */ case 2:
 			_r$1 = $clone(dom.GetWindow().GetHistory(), js$1.Value).Call("pushState", new sliceType([new $String(""), new $String(""), new $String(path)])); /* */ $s = 5; case 5: if($c) { $c = false; _r$1 = _r$1.$blk(); } if (_r$1 && _r$1.$blk !== undefined) { break s; }
 			_r$1;
+			this$1 = ctx.This;
+			_r$2 = this$1.Element(); /* */ $s = 6; case 6: if($c) { $c = false; _r$2 = _r$2.$blk(); } if (_r$2 && _r$2.$blk !== undefined) { break s; }
+			_tuple = $assertType(_r$2, ptrType$2, true);
+			_el = _tuple[0];
+			ok = _tuple[1];
+			/* */ if (!ok || _el === ptrType$2.nil) { $s = 7; continue; }
+			/* */ $s = 8; continue;
+			/* if (!ok || _el === ptrType$2.nil) { */ case 7:
+				$r = this$1.ConsoleError(new sliceType([new $String("invalid ctx.This")])); /* */ $s = 9; case 9: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+				$s = -1; return;
+			/* } */ case 8:
+			/* */ if (ctx.This.RChildes.$length === 0) { $s = 10; continue; }
+			/* */ $s = 11; continue;
+			/* if (ctx.This.RChildes.$length === 0) { */ case 10:
+				$r = this$1.ConsoleError(new sliceType([new $String("invalid ctx.This RChildes")])); /* */ $s = 12; case 12: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+				$s = -1; return;
+			/* } */ case 11:
+			_tuple$1 = $assertType((x = ctx.This.RChildes, (0 >= x.$length ? ($throwRuntimeError("index out of range"), undefined) : x.$array[x.$offset + 0])), ptrType, true);
+			routeWrap = _tuple$1[0];
+			ok = _tuple$1[1];
+			/* */ if (!ok) { $s = 13; continue; }
+			/* */ $s = 14; continue;
+			/* if (!ok) { */ case 13:
+				$r = this$1.ConsoleError(new sliceType([new $String("invalid gas-router route wrapper type")])); /* */ $s = 15; case 15: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+				$s = -1; return;
+			/* } */ case 14:
+			_key = "data-path"; (routeWrap.Attrs || $throwRuntimeError("assignment to entry in nil map"))[$String.keyFor(_key)] = { k: _key, v: path };
+			elChildes = _el.NodeBase.ChildNodes();
+			/* */ if (elChildes.$length === 0) { $s = 16; continue; }
+			/* */ $s = 17; continue;
+			/* if (elChildes.$length === 0) { */ case 16:
+				$r = this$1.ConsoleError(new sliceType([new $String("invalid _el ChildNodes")])); /* */ $s = 18; case 18: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+				$s = -1; return;
+			/* } */ case 17:
+			$r = (0 >= elChildes.$length ? ($throwRuntimeError("index out of range"), undefined) : elChildes.$array[elChildes.$offset + 0]).SetAttribute("data-path", new $String(path)); /* */ $s = 19; case 19: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 		/* } */ case 3:
 		$s = -1; return;
-		/* */ } return; } if ($f === undefined) { $f = { $blk: ChangeRoute }; } $f._r = _r; $f._r$1 = _r$1; $f.ctx = ctx; $f.path = path; $f.replace = replace; $f.$s = $s; $f.$r = $r; return $f;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: Ctx.ptr.prototype.ChangeRoute }; } $f._el = _el; $f._key = _key; $f._r = _r; $f._r$1 = _r$1; $f._r$2 = _r$2; $f._tuple = _tuple; $f._tuple$1 = _tuple$1; $f.ctx = ctx; $f.elChildes = elChildes; $f.ok = ok; $f.path = path; $f.replace = replace; $f.routeWrap = routeWrap; $f.this$1 = this$1; $f.x = x; $f.$s = $s; $f.$r = $r; return $f;
 	};
-	$pkg.ChangeRoute = ChangeRoute;
+	Ctx.prototype.ChangeRoute = function(path, replace) { return this.$val.ChangeRoute(path, replace); };
 	RouteInfo.ptr.prototype.ChangeRouteDynamic = function(name, params, queries, replace) {
 		var i, name, params, queries, replace, $s, $r;
 		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; i = $f.i; name = $f.name; params = $f.params; queries = $f.queries; replace = $f.replace; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
 		i = this;
-		$r = ChangeRouteDynamic(name, params, queries, replace, i.Ctx); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = i.Ctx.ChangeRouteDynamic(name, params, queries, replace); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 		$s = -1; return;
 		/* */ } return; } if ($f === undefined) { $f = { $blk: RouteInfo.ptr.prototype.ChangeRouteDynamic }; } $f.i = i; $f.name = name; $f.params = params; $f.queries = queries; $f.replace = replace; $f.$s = $s; $f.$r = $r; return $f;
 	};
 	RouteInfo.prototype.ChangeRouteDynamic = function(name, params, queries, replace) { return this.$val.ChangeRouteDynamic(name, params, queries, replace); };
-	ChangeRouteDynamic = function(name, params, queries, replace, ctx) {
+	Ctx.ptr.prototype.ChangeRouteDynamic = function(name, params, queries, replace) {
 		var _r, ctx, name, params, queries, replace, $s, $r;
 		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r = $f._r; ctx = $f.ctx; name = $f.name; params = $f.params; queries = $f.queries; replace = $f.replace; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
-		_r = fillPath(name, params, queries, ctx); /* */ $s = 1; case 1: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
-		$r = ChangeRoute(_r, replace, ctx); /* */ $s = 2; case 2: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		ctx = this;
+		_r = ctx.fillPath(name, params, queries); /* */ $s = 1; case 1: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
+		$r = ctx.ChangeRoute(_r, replace); /* */ $s = 2; case 2: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 		$s = -1; return;
-		/* */ } return; } if ($f === undefined) { $f = { $blk: ChangeRouteDynamic }; } $f._r = _r; $f.ctx = ctx; $f.name = name; $f.params = params; $f.queries = queries; $f.replace = replace; $f.$s = $s; $f.$r = $r; return $f;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: Ctx.ptr.prototype.ChangeRouteDynamic }; } $f._r = _r; $f.ctx = ctx; $f.name = name; $f.params = params; $f.queries = queries; $f.replace = replace; $f.$s = $s; $f.$r = $r; return $f;
 	};
-	$pkg.ChangeRouteDynamic = ChangeRouteDynamic;
-	updateFunction = function(this$1) {
-		var this$1;
-		return (function $b() {
-			var _r, $s, $r;
-			/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r = $f._r; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
-			_r = this$1.ForceUpdate(); /* */ $s = 1; case 1: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
-			$r = this$1.WarnError(_r); /* */ $s = 2; case 2: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-			$s = -1; return;
-			/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._r = _r; $f.$s = $s; $f.$r = $r; return $f;
-		});
-	};
-	findRoute = function(currentPath, this$1, ctx) {
+	Ctx.prototype.ChangeRouteDynamic = function(name, params, queries, replace) { return this.$val.ChangeRouteDynamic(name, params, queries, replace); };
+	Ctx.ptr.prototype.findRoute = function(currentPath, this$1) {
 		var _arg, _i, _r, _r$1, _r$2, _r$3, _r$4, _r$5, _r$6, _ref, _tuple, c, ctx, currentPath, err, params, queries, route, routeIsFits, this$1, $s, $r;
 		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _arg = $f._arg; _i = $f._i; _r = $f._r; _r$1 = $f._r$1; _r$2 = $f._r$2; _r$3 = $f._r$3; _r$4 = $f._r$4; _r$5 = $f._r$5; _r$6 = $f._r$6; _ref = $f._ref; _tuple = $f._tuple; c = $f.c; ctx = $f.ctx; currentPath = $f.currentPath; err = $f.err; params = $f.params; queries = $f.queries; route = $f.route; routeIsFits = $f.routeIsFits; this$1 = $f.this$1; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		ctx = this;
 		_r = this$1.Get("lastRoute"); /* */ $s = 3; case 3: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
 		/* */ if (currentPath === $assertType(_r, $String)) { $s = 1; continue; }
 		/* */ $s = 2; continue;
@@ -56265,10 +57173,10 @@ $packages["github.com/gascore/gas-router"] = (function() {
 				/* */ if (route.RedirectParams === false && route.RedirectQueries === false) { $s = 16; continue; }
 				/* */ $s = 17; continue;
 				/* if (route.RedirectParams === false && route.RedirectQueries === false) { */ case 16:
-					$r = Push(route.Redirect, true, ctx); /* */ $s = 19; case 19: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+					$r = ctx.Push(route.Redirect, true); /* */ $s = 19; case 19: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 					$s = 18; continue;
 				/* } else { */ case 17:
-					$r = PushDynamic(route.Redirect, route.RedirectParams, route.RedirectQueries, true, ctx); /* */ $s = 20; case 20: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+					$r = ctx.PushDynamic(route.Redirect, route.RedirectParams, route.RedirectQueries, true); /* */ $s = 20; case 20: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 				/* } */ case 18:
 				$s = -1; return ctx.Settings.Redirect;
 			/* } */ case 15:
@@ -56281,8 +57189,9 @@ $packages["github.com/gascore/gas-router"] = (function() {
 			$s = -1; return c;
 		/* } */ $s = 5; continue; case 6:
 		$s = -1; return ctx.Settings.NotFound;
-		/* */ } return; } if ($f === undefined) { $f = { $blk: findRoute }; } $f._arg = _arg; $f._i = _i; $f._r = _r; $f._r$1 = _r$1; $f._r$2 = _r$2; $f._r$3 = _r$3; $f._r$4 = _r$4; $f._r$5 = _r$5; $f._r$6 = _r$6; $f._ref = _ref; $f._tuple = _tuple; $f.c = c; $f.ctx = ctx; $f.currentPath = currentPath; $f.err = err; $f.params = params; $f.queries = queries; $f.route = route; $f.routeIsFits = routeIsFits; $f.this$1 = this$1; $f.$s = $s; $f.$r = $r; return $f;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: Ctx.ptr.prototype.findRoute }; } $f._arg = _arg; $f._i = _i; $f._r = _r; $f._r$1 = _r$1; $f._r$2 = _r$2; $f._r$3 = _r$3; $f._r$4 = _r$4; $f._r$5 = _r$5; $f._r$6 = _r$6; $f._ref = _ref; $f._tuple = _tuple; $f.c = c; $f.ctx = ctx; $f.currentPath = currentPath; $f.err = err; $f.params = params; $f.queries = queries; $f.route = route; $f.routeIsFits = routeIsFits; $f.this$1 = this$1; $f.$s = $s; $f.$r = $r; return $f;
 	};
+	Ctx.prototype.findRoute = function(currentPath, this$1) { return this.$val.findRoute(currentPath, this$1); };
 	Ctx.ptr.prototype.getPath = function() {
 		var ctx;
 		ctx = this;
@@ -56414,37 +57323,37 @@ $packages["github.com/gascore/gas-router"] = (function() {
 		return !(new js$1.Type($clone(dom.GetWindow().GetHistory(), js$1.Value).Type()).String() === "undefined") && !(new js$1.Type($clone($clone(dom.GetWindow().GetHistory(), js$1.Value).Get("pushState"), js$1.Value).Type()).String() === "undefined") && ($clone($clone(dom.GetWindow().JSValue(), js$1.Value).Get("CustomEvent"), js$1.Value).Type() === 7);
 	};
 	$pkg.SupportHistory = SupportHistory;
-	windowAddEventListener = function(eType, f) {
-		var eType, f, $s, $r;
-		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; eType = $f.eType; f = $f.f; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
-		f = [f];
-		$r = dom.GetWindow().AddEventListener(eType, (function(f) { return function $b(e) {
-			var e, $s, $r;
-			/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; e = $f.e; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
-			$r = f[0](); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+	event = function(h) {
+		var h;
+		return js.NewEventCallback((function $b(v) {
+			var _r, v, $s, $r;
+			/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r = $f._r; v = $f.v; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+			_r = dom.ConvertEvent($clone(v, js.Value)); /* */ $s = 1; case 1: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
+			$r = h(_r); /* */ $s = 2; case 2: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 			$s = -1; return;
-			/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f.e = e; $f.$s = $s; $f.$r = $r; return $f;
-		}; })(f)); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+			/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._r = _r; $f.v = v; $f.$s = $s; $f.$r = $r; return $f;
+		}));
+	};
+	windowAddEventListener = function(eType, f) {
+		var _r, eType, f, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r = $f._r; eType = $f.eType; f = $f.f; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		_r = $clone(dom.GetWindow().JSValue(), js$1.Value).Call("addEventListener", new sliceType([new $String(eType), new f.constructor.elem(f)])); /* */ $s = 1; case 1: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
+		_r;
 		$s = -1; return;
-		/* */ } return; } if ($f === undefined) { $f = { $blk: windowAddEventListener }; } $f.eType = eType; $f.f = f; $f.$s = $s; $f.$r = $r; return $f;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: windowAddEventListener }; } $f._r = _r; $f.eType = eType; $f.f = f; $f.$s = $s; $f.$r = $r; return $f;
 	};
 	windowRemoveEventListener = function(eType, f) {
-		var eType, f, $s, $r;
-		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; eType = $f.eType; f = $f.f; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
-		f = [f];
-		$r = dom.GetWindow().RemoveEventListener(eType, (function(f) { return function $b(e) {
-			var e, $s, $r;
-			/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; e = $f.e; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
-			$r = f[0](); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-			$s = -1; return;
-			/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f.e = e; $f.$s = $s; $f.$r = $r; return $f;
-		}; })(f)); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		var _r, eType, f, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r = $f._r; eType = $f.eType; f = $f.f; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		_r = $clone(dom.GetWindow().JSValue(), js$1.Value).Call("removeEventListener", new sliceType([new $String(eType), new f.constructor.elem(f)])); /* */ $s = 1; case 1: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
+		_r;
 		$s = -1; return;
-		/* */ } return; } if ($f === undefined) { $f = { $blk: windowRemoveEventListener }; } $f.eType = eType; $f.f = f; $f.$s = $s; $f.$r = $r; return $f;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: windowRemoveEventListener }; } $f._r = _r; $f.eType = eType; $f.f = f; $f.$s = $s; $f.$r = $r; return $f;
 	};
 	RouteInfo.methods = [{prop: "Push", name: "Push", pkg: "", typ: $funcType([$String, $Bool], [], false)}, {prop: "PushDynamic", name: "PushDynamic", pkg: "", typ: $funcType([$String, mapType, mapType, $Bool], [], false)}, {prop: "LinkStatic", name: "LinkStatic", pkg: "", typ: $funcType([$String, $Bool, gas.External], [ptrType], false)}, {prop: "LinkDynamic", name: "LinkDynamic", pkg: "", typ: $funcType([$String, mapType, mapType, $Bool, gas.External], [ptrType], false)}, {prop: "ChangeRoute", name: "ChangeRoute", pkg: "", typ: $funcType([$String, $Bool], [], false)}, {prop: "ChangeRouteDynamic", name: "ChangeRouteDynamic", pkg: "", typ: $funcType([$String, mapType, mapType, $Bool], [], false)}];
 	Ctx.methods = [{prop: "link", name: "link", pkg: "github.com/gascore/gas-router", typ: $funcType([funcType$1, funcType$2, gas.External], [ptrType], false)}, {prop: "getPath", name: "getPath", pkg: "github.com/gascore/gas-router", typ: $funcType([], [$String], false)}];
-	RouteInfo.init("", [{prop: "Name", name: "Name", embedded: false, exported: true, typ: $String, tag: ""}, {prop: "URL", name: "URL", embedded: false, exported: true, typ: $String, tag: ""}, {prop: "Params", name: "Params", embedded: false, exported: true, typ: mapType, tag: ""}, {prop: "QueryParams", name: "QueryParams", embedded: false, exported: true, typ: mapType, tag: ""}, {prop: "Route", name: "Route", embedded: false, exported: true, typ: Route, tag: ""}, {prop: "Ctx", name: "Ctx", embedded: false, exported: true, typ: ptrType$2, tag: ""}]);
+	ptrType$3.methods = [{prop: "Push", name: "Push", pkg: "", typ: $funcType([$String, $Bool], [], false)}, {prop: "PushDynamic", name: "PushDynamic", pkg: "", typ: $funcType([$String, mapType, mapType, $Bool], [], false)}, {prop: "fillPath", name: "fillPath", pkg: "github.com/gascore/gas-router", typ: $funcType([$String, mapType, mapType], [$String], false)}, {prop: "getRoute", name: "getRoute", pkg: "github.com/gascore/gas-router", typ: $funcType([$String], [Route], false)}, {prop: "LinkStatic", name: "LinkStatic", pkg: "", typ: $funcType([$String, $Bool, gas.External], [ptrType], false)}, {prop: "LinkDynamic", name: "LinkDynamic", pkg: "", typ: $funcType([$String, mapType, mapType, $Bool, gas.External], [ptrType], false)}, {prop: "ChangeRoute", name: "ChangeRoute", pkg: "", typ: $funcType([$String, $Bool], [], false)}, {prop: "ChangeRouteDynamic", name: "ChangeRouteDynamic", pkg: "", typ: $funcType([$String, mapType, mapType, $Bool], [], false)}, {prop: "findRoute", name: "findRoute", pkg: "github.com/gascore/gas-router", typ: $funcType([$String, ptrType], [ptrType], false)}];
+	RouteInfo.init("", [{prop: "Name", name: "Name", embedded: false, exported: true, typ: $String, tag: ""}, {prop: "URL", name: "URL", embedded: false, exported: true, typ: $String, tag: ""}, {prop: "Params", name: "Params", embedded: false, exported: true, typ: mapType, tag: ""}, {prop: "QueryParams", name: "QueryParams", embedded: false, exported: true, typ: mapType, tag: ""}, {prop: "Route", name: "Route", embedded: false, exported: true, typ: Route, tag: ""}, {prop: "Ctx", name: "Ctx", embedded: false, exported: true, typ: ptrType$3, tag: ""}]);
 	Route.init("", [{prop: "Name", name: "Name", embedded: false, exported: true, typ: $String, tag: ""}, {prop: "Component", name: "Component", embedded: false, exported: true, typ: funcType, tag: ""}, {prop: "Exact", name: "Exact", embedded: false, exported: true, typ: $Bool, tag: ""}, {prop: "Sensitive", name: "Sensitive", embedded: false, exported: true, typ: $Bool, tag: ""}, {prop: "Redirect", name: "Redirect", embedded: false, exported: true, typ: $String, tag: ""}, {prop: "RedirectParams", name: "RedirectParams", embedded: false, exported: true, typ: mapType, tag: ""}, {prop: "RedirectQueries", name: "RedirectQueries", embedded: false, exported: true, typ: mapType, tag: ""}, {prop: "Path", name: "Path", embedded: false, exported: true, typ: $String, tag: ""}, {prop: "ArrPath", name: "ArrPath", embedded: false, exported: true, typ: sliceType$1, tag: ""}]);
 	Ctx.init("", [{prop: "Routes", name: "Routes", embedded: false, exported: true, typ: sliceType$3, tag: ""}, {prop: "Settings", name: "Settings", embedded: false, exported: true, typ: Settings, tag: ""}, {prop: "This", name: "This", embedded: false, exported: true, typ: ptrType, tag: ""}]);
 	Settings.init("", [{prop: "BaseName", name: "BaseName", embedded: false, exported: true, typ: $String, tag: ""}, {prop: "HashMode", name: "HashMode", embedded: false, exported: true, typ: $Bool, tag: ""}, {prop: "HashSuffix", name: "HashSuffix", embedded: false, exported: true, typ: $String, tag: ""}, {prop: "GetUserConfirmation", name: "GetUserConfirmation", embedded: false, exported: true, typ: funcType$3, tag: ""}, {prop: "ForceRefresh", name: "ForceRefresh", embedded: false, exported: true, typ: $Bool, tag: ""}, {prop: "Redirect", name: "Redirect", embedded: false, exported: true, typ: ptrType, tag: ""}, {prop: "NotFound", name: "NotFound", embedded: false, exported: true, typ: ptrType, tag: ""}]);
@@ -56466,10 +57375,11 @@ $packages["github.com/gascore/gas-router"] = (function() {
 	return $pkg;
 })();
 $packages["github.com/gascore/example/components"] = (function() {
-	var $pkg = {}, $init, errors, fmt, dndfree, layout, modal, tree, vlist, store, gas, router, rand, time, sliceType, ptrType, sliceType$1, ptrType$1, sliceType$2, sliceType$3, ptrType$2, sliceType$4, ptrType$3, listsList, About, Components, generateItems, generateItemsHeights, Home, getLi, Link, Links, nameByI, iByName, TodoList;
+	var $pkg = {}, $init, errors, fmt, dndfree, dnd, layout, modal, tree, vlist, store, gas, router, rand, time, sliceType, ptrType, sliceType$1, ptrType$1, sliceType$2, sliceType$3, ptrType$2, ptrType$3, sliceType$4, listsList, About, Components, generateItems, generateItemsHeights, Home, getLi, Link, Links, nameByI, iByName, TodoList;
 	errors = $packages["errors"];
 	fmt = $packages["fmt"];
-	dndfree = $packages["github.com/gascore/components/dnd-free"];
+	dndfree = $packages["github.com/gascore/components/dnd/free"];
+	dnd = $packages["github.com/gascore/components/dnd/lists"];
 	layout = $packages["github.com/gascore/components/layout"];
 	modal = $packages["github.com/gascore/components/modal"];
 	tree = $packages["github.com/gascore/components/tree"];
@@ -56485,9 +57395,9 @@ $packages["github.com/gascore/example/components"] = (function() {
 	ptrType$1 = $ptrType(gas.RenderCore);
 	sliceType$2 = $sliceType(layout.Size);
 	sliceType$3 = $sliceType(tree.Item);
-	ptrType$2 = $ptrType(vlist.Config);
+	ptrType$2 = $ptrType(layout.Config);
+	ptrType$3 = $ptrType(vlist.Config);
 	sliceType$4 = $sliceType($Int);
-	ptrType$3 = $ptrType(layout.Config);
 	About = function(info) {
 		var _r, _r$1, info, $s, $r;
 		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r = $f._r; _r$1 = $f._r$1; info = $f.info; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
@@ -56515,12 +57425,39 @@ $packages["github.com/gascore/example/components"] = (function() {
 		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r = $f._r; _r$1 = $f._r$1; _r$2 = $f._r$2; _r$3 = $f._r$3; info = $f.info; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
 		_r = generateItems(); /* */ $s = 1; case 1: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
 		_r$1 = generateItemsHeights(); /* */ $s = 2; case 2: if($c) { $c = false; _r$1 = _r$1.$blk(); } if (_r$1 && _r$1.$blk !== undefined) { break s; }
-		_r$2 = gas.NC(new gas.Component.ptr($makeMap($String.keyFor, [{ k: "isActiveModal", v: new $Bool(false) }, { k: "vItems", v: _r }, { k: "vItemsHeight", v: _r$1 }]), false, $makeMap($String.keyFor, [{ k: "dndFreeConfig", v: (function(this$1, values) {
+		_r$2 = gas.NC(new gas.Component.ptr($makeMap($String.keyFor, [{ k: "isActiveModal", v: new $Bool(false) }, { k: "vItems", v: _r }, { k: "vItemsHeight", v: _r$1 }, { k: "dndTodo", v: new sliceType([new $String("Pick up groceries"), new $String("Go home"), new $String("Fall asleep")]) }, { k: "dndInprogress", v: new sliceType([new $String("Get to work"), new $String("Check e-mail")]) }, { k: "dndDone", v: new sliceType([new $String("Get up"), new $String("Brush teeth"), new $String("Take a shower"), new $String("Walk dog")]) }, { k: "lipsumTasks", v: new sliceType([new $String("lorem"), new $String("ipsum"), new $String("dolore")]) }]), false, $makeMap($String.keyFor, [{ k: "dndFreeConfig1", v: (function(this$1, values) {
 			var this$1, values, x;
-			return [(x = new dndfree.Config.ptr(false, false, 0, 0, "", "", "dndFree", $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), new x.constructor.elem(x)), $ifaceNil];
+			return [(x = new dndfree.Config.ptr("", false, false, 0, 0, "app", "", "dndFree", $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), new x.constructor.elem(x)), $ifaceNil];
+		}) }, { k: "dndFreeConfig2", v: (function(this$1, values) {
+			var this$1, values, x;
+			return [(x = new dndfree.Config.ptr("", false, false, 0, 0, "app", "dndFree-handle", "dndFreeWithHandle", $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), new x.constructor.elem(x)), $ifaceNil];
+		}) }, { k: "dndFreeConfig3", v: (function(this$1, values) {
+			var this$1, values, x;
+			return [(x = new dndfree.Config.ptr("", false, false, 0, 0, "dndFreeBoundary", "", "dndFree", $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), new x.constructor.elem(x)), $ifaceNil];
+		}) }, { k: "dndFreeConfig4", v: (function(this$1, values) {
+			var this$1, values, x;
+			return [(x = new dndfree.Config.ptr("", false, true, 0, 0, "app", "", "dndFree", $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), new x.constructor.elem(x)), $ifaceNil];
+		}) }, { k: "dndFreeConfig5", v: (function(this$1, values) {
+			var this$1, values, x;
+			return [(x = new dndfree.Config.ptr("", true, false, 0, 0, "app", "", "dndFree", $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), new x.constructor.elem(x)), $ifaceNil];
+		}) }, { k: "dndListsConfig", v: (function(this$1, values) {
+			var this$1, values, x;
+			return [(x = new dnd.Config.ptr(this$1, "", "dnd", "dndTodo", new dnd.EventsHandlers.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), "dnd", "dnd-preview", "dnd-placeholder"), new x.constructor.elem(x)), $ifaceNil];
+		}) }, { k: "dndListsConfig2", v: (function(this$1, values) {
+			var this$1, values, x;
+			return [(x = new dnd.Config.ptr(this$1, "", "dnd", "dndInprogress", new dnd.EventsHandlers.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), "dnd", "dnd-preview", "dnd-placeholder"), new x.constructor.elem(x)), $ifaceNil];
+		}) }, { k: "dndListsConfig3", v: (function(this$1, values) {
+			var this$1, values, x;
+			return [(x = new dnd.Config.ptr(this$1, "", "dnd", "dndDone", new dnd.EventsHandlers.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), "dnd", "dnd-preview", "dnd-placeholder"), new x.constructor.elem(x)), $ifaceNil];
+		}) }, { k: "dndListsConfigA", v: (function(this$1, values) {
+			var this$1, values, x;
+			return [(x = new dnd.Config.ptr(this$1, "", "lipsum", "lipsumTasks", new dnd.EventsHandlers.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), "dnd", "dnd-preview", "dnd-placeholder"), new x.constructor.elem(x)), $ifaceNil];
 		}) }, { k: "layoutConfig", v: (function(this$1, values) {
 			var this$1, values;
 			return [new layout.Config.ptr(0, "layout", "", 12, new sliceType$2([new layout.Size.ptr(15, 80, 40, 0), new layout.Size.ptr(10, 90, 60, 0)]), true, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, 0, 0, "", "", "", "", "", ""), $ifaceNil];
+		}) }, { k: "layoutConfig2", v: (function(this$1, values) {
+			var this$1, values;
+			return [new layout.Config.ptr(0, "layout2", "", 12, new sliceType$2([new layout.Size.ptr(15, 80, 40, 0), new layout.Size.ptr(10, 90, 60, 0)]), false, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, 0, 0, "", "", "", "", "", ""), $ifaceNil];
 		}) }, { k: "getFirstTree", v: (function(this$1, values) {
 			var this$1, values, x;
 			return [(x = new tree.Config.ptr("First", true, new tree.Events.ptr((function $b(item) {
@@ -56556,238 +57493,387 @@ $packages["github.com/gascore/example/components"] = (function() {
 			var _r$2, config, this$1, values, $s, $r;
 			/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r$2 = $f._r$2; config = $f.config; this$1 = $f.this$1; values = $f.values; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
 			_r$2 = this$1.Get("vItems"); /* */ $s = 1; case 1: if($c) { $c = false; _r$2 = _r$2.$blk(); } if (_r$2 && _r$2.$blk !== undefined) { break s; }
-			config = new vlist.Config.ptr("", 0, $assertType(_r$2, sliceType), 0, 64, (function(start, end) {
+			config = new vlist.Config.ptr(true, "", "", "", 0, $assertType(_r$2, sliceType), 0, 64, 0, 0, (function(start, end) {
+				var end, start;
+				return $ifaceNil;
+			}));
+			$s = -1; return [config, $ifaceNil];
+			/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._r$2 = _r$2; $f.config = config; $f.this$1 = this$1; $f.values = values; $f.$s = $s; $f.$r = $r; return $f;
+		}) }, { k: "vListConfig2", v: (function $b(this$1, values) {
+			var _r$2, config, this$1, values, $s, $r;
+			/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r$2 = $f._r$2; config = $f.config; this$1 = $f.this$1; values = $f.values; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+			_r$2 = this$1.Get("vItems"); /* */ $s = 1; case 1: if($c) { $c = false; _r$2 = _r$2.$blk(); } if (_r$2 && _r$2.$blk !== undefined) { break s; }
+			config = new vlist.Config.ptr(false, "", "", "ul", 0, $assertType(_r$2, sliceType), 0, 0, 128, 0, (function(start, end) {
 				var end, start;
 				return $ifaceNil;
 			}));
 			$s = -1; return [config, $ifaceNil];
 			/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._r$2 = _r$2; $f.config = config; $f.this$1 = this$1; $f.values = values; $f.$s = $s; $f.$r = $r; return $f;
 		}) }]), new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "", false, "", false, ptrType.nil, "", false, false, ptrType$1.nil), (function $b(this$1) {
-			var _arg, _arg$1, _arg$10, _arg$11, _arg$12, _arg$13, _arg$14, _arg$15, _arg$16, _arg$17, _arg$18, _arg$19, _arg$2, _arg$20, _arg$21, _arg$22, _arg$23, _arg$24, _arg$25, _arg$26, _arg$27, _arg$28, _arg$29, _arg$3, _arg$30, _arg$31, _arg$32, _arg$33, _arg$34, _arg$35, _arg$36, _arg$37, _arg$38, _arg$39, _arg$4, _arg$40, _arg$41, _arg$42, _arg$43, _arg$44, _arg$45, _arg$46, _arg$47, _arg$48, _arg$49, _arg$5, _arg$50, _arg$51, _arg$52, _arg$53, _arg$54, _arg$55, _arg$56, _arg$57, _arg$58, _arg$59, _arg$6, _arg$60, _arg$61, _arg$62, _arg$63, _arg$64, _arg$65, _arg$66, _arg$67, _arg$68, _arg$69, _arg$7, _arg$70, _arg$71, _arg$72, _arg$73, _arg$74, _arg$75, _arg$76, _arg$77, _arg$78, _arg$79, _arg$8, _arg$80, _arg$81, _arg$82, _arg$83, _arg$84, _arg$85, _arg$86, _arg$87, _arg$88, _arg$89, _arg$9, _arg$90, _arg$91, _arg$92, _arg$93, _arg$94, _arg$95, _arg$96, _arg$97, _r$10, _r$11, _r$12, _r$13, _r$14, _r$15, _r$16, _r$17, _r$18, _r$19, _r$2, _r$20, _r$21, _r$22, _r$23, _r$24, _r$25, _r$26, _r$27, _r$28, _r$29, _r$3, _r$30, _r$31, _r$32, _r$33, _r$34, _r$35, _r$36, _r$37, _r$38, _r$39, _r$4, _r$40, _r$41, _r$42, _r$43, _r$44, _r$45, _r$46, _r$47, _r$48, _r$49, _r$5, _r$50, _r$51, _r$52, _r$53, _r$54, _r$55, _r$56, _r$57, _r$58, _r$59, _r$6, _r$60, _r$61, _r$62, _r$63, _r$64, _r$65, _r$66, _r$67, _r$68, _r$69, _r$7, _r$70, _r$71, _r$72, _r$73, _r$74, _r$75, _r$76, _r$8, _r$9, this$1, $s, $r;
-			/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _arg = $f._arg; _arg$1 = $f._arg$1; _arg$10 = $f._arg$10; _arg$11 = $f._arg$11; _arg$12 = $f._arg$12; _arg$13 = $f._arg$13; _arg$14 = $f._arg$14; _arg$15 = $f._arg$15; _arg$16 = $f._arg$16; _arg$17 = $f._arg$17; _arg$18 = $f._arg$18; _arg$19 = $f._arg$19; _arg$2 = $f._arg$2; _arg$20 = $f._arg$20; _arg$21 = $f._arg$21; _arg$22 = $f._arg$22; _arg$23 = $f._arg$23; _arg$24 = $f._arg$24; _arg$25 = $f._arg$25; _arg$26 = $f._arg$26; _arg$27 = $f._arg$27; _arg$28 = $f._arg$28; _arg$29 = $f._arg$29; _arg$3 = $f._arg$3; _arg$30 = $f._arg$30; _arg$31 = $f._arg$31; _arg$32 = $f._arg$32; _arg$33 = $f._arg$33; _arg$34 = $f._arg$34; _arg$35 = $f._arg$35; _arg$36 = $f._arg$36; _arg$37 = $f._arg$37; _arg$38 = $f._arg$38; _arg$39 = $f._arg$39; _arg$4 = $f._arg$4; _arg$40 = $f._arg$40; _arg$41 = $f._arg$41; _arg$42 = $f._arg$42; _arg$43 = $f._arg$43; _arg$44 = $f._arg$44; _arg$45 = $f._arg$45; _arg$46 = $f._arg$46; _arg$47 = $f._arg$47; _arg$48 = $f._arg$48; _arg$49 = $f._arg$49; _arg$5 = $f._arg$5; _arg$50 = $f._arg$50; _arg$51 = $f._arg$51; _arg$52 = $f._arg$52; _arg$53 = $f._arg$53; _arg$54 = $f._arg$54; _arg$55 = $f._arg$55; _arg$56 = $f._arg$56; _arg$57 = $f._arg$57; _arg$58 = $f._arg$58; _arg$59 = $f._arg$59; _arg$6 = $f._arg$6; _arg$60 = $f._arg$60; _arg$61 = $f._arg$61; _arg$62 = $f._arg$62; _arg$63 = $f._arg$63; _arg$64 = $f._arg$64; _arg$65 = $f._arg$65; _arg$66 = $f._arg$66; _arg$67 = $f._arg$67; _arg$68 = $f._arg$68; _arg$69 = $f._arg$69; _arg$7 = $f._arg$7; _arg$70 = $f._arg$70; _arg$71 = $f._arg$71; _arg$72 = $f._arg$72; _arg$73 = $f._arg$73; _arg$74 = $f._arg$74; _arg$75 = $f._arg$75; _arg$76 = $f._arg$76; _arg$77 = $f._arg$77; _arg$78 = $f._arg$78; _arg$79 = $f._arg$79; _arg$8 = $f._arg$8; _arg$80 = $f._arg$80; _arg$81 = $f._arg$81; _arg$82 = $f._arg$82; _arg$83 = $f._arg$83; _arg$84 = $f._arg$84; _arg$85 = $f._arg$85; _arg$86 = $f._arg$86; _arg$87 = $f._arg$87; _arg$88 = $f._arg$88; _arg$89 = $f._arg$89; _arg$9 = $f._arg$9; _arg$90 = $f._arg$90; _arg$91 = $f._arg$91; _arg$92 = $f._arg$92; _arg$93 = $f._arg$93; _arg$94 = $f._arg$94; _arg$95 = $f._arg$95; _arg$96 = $f._arg$96; _arg$97 = $f._arg$97; _r$10 = $f._r$10; _r$11 = $f._r$11; _r$12 = $f._r$12; _r$13 = $f._r$13; _r$14 = $f._r$14; _r$15 = $f._r$15; _r$16 = $f._r$16; _r$17 = $f._r$17; _r$18 = $f._r$18; _r$19 = $f._r$19; _r$2 = $f._r$2; _r$20 = $f._r$20; _r$21 = $f._r$21; _r$22 = $f._r$22; _r$23 = $f._r$23; _r$24 = $f._r$24; _r$25 = $f._r$25; _r$26 = $f._r$26; _r$27 = $f._r$27; _r$28 = $f._r$28; _r$29 = $f._r$29; _r$3 = $f._r$3; _r$30 = $f._r$30; _r$31 = $f._r$31; _r$32 = $f._r$32; _r$33 = $f._r$33; _r$34 = $f._r$34; _r$35 = $f._r$35; _r$36 = $f._r$36; _r$37 = $f._r$37; _r$38 = $f._r$38; _r$39 = $f._r$39; _r$4 = $f._r$4; _r$40 = $f._r$40; _r$41 = $f._r$41; _r$42 = $f._r$42; _r$43 = $f._r$43; _r$44 = $f._r$44; _r$45 = $f._r$45; _r$46 = $f._r$46; _r$47 = $f._r$47; _r$48 = $f._r$48; _r$49 = $f._r$49; _r$5 = $f._r$5; _r$50 = $f._r$50; _r$51 = $f._r$51; _r$52 = $f._r$52; _r$53 = $f._r$53; _r$54 = $f._r$54; _r$55 = $f._r$55; _r$56 = $f._r$56; _r$57 = $f._r$57; _r$58 = $f._r$58; _r$59 = $f._r$59; _r$6 = $f._r$6; _r$60 = $f._r$60; _r$61 = $f._r$61; _r$62 = $f._r$62; _r$63 = $f._r$63; _r$64 = $f._r$64; _r$65 = $f._r$65; _r$66 = $f._r$66; _r$67 = $f._r$67; _r$68 = $f._r$68; _r$69 = $f._r$69; _r$7 = $f._r$7; _r$70 = $f._r$70; _r$71 = $f._r$71; _r$72 = $f._r$72; _r$73 = $f._r$73; _r$74 = $f._r$74; _r$75 = $f._r$75; _r$76 = $f._r$76; _r$8 = $f._r$8; _r$9 = $f._r$9; this$1 = $f.this$1; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+			var _arg, _arg$1, _arg$10, _arg$100, _arg$101, _arg$102, _arg$103, _arg$104, _arg$105, _arg$106, _arg$107, _arg$108, _arg$109, _arg$11, _arg$110, _arg$111, _arg$112, _arg$113, _arg$114, _arg$115, _arg$116, _arg$117, _arg$118, _arg$119, _arg$12, _arg$120, _arg$121, _arg$122, _arg$123, _arg$124, _arg$125, _arg$126, _arg$127, _arg$128, _arg$129, _arg$13, _arg$130, _arg$131, _arg$132, _arg$133, _arg$134, _arg$135, _arg$136, _arg$137, _arg$138, _arg$139, _arg$14, _arg$140, _arg$141, _arg$142, _arg$143, _arg$144, _arg$145, _arg$146, _arg$147, _arg$148, _arg$149, _arg$15, _arg$150, _arg$151, _arg$152, _arg$153, _arg$16, _arg$17, _arg$18, _arg$19, _arg$2, _arg$20, _arg$21, _arg$22, _arg$23, _arg$24, _arg$25, _arg$26, _arg$27, _arg$28, _arg$29, _arg$3, _arg$30, _arg$31, _arg$32, _arg$33, _arg$34, _arg$35, _arg$36, _arg$37, _arg$38, _arg$39, _arg$4, _arg$40, _arg$41, _arg$42, _arg$43, _arg$44, _arg$45, _arg$46, _arg$47, _arg$48, _arg$49, _arg$5, _arg$50, _arg$51, _arg$52, _arg$53, _arg$54, _arg$55, _arg$56, _arg$57, _arg$58, _arg$59, _arg$6, _arg$60, _arg$61, _arg$62, _arg$63, _arg$64, _arg$65, _arg$66, _arg$67, _arg$68, _arg$69, _arg$7, _arg$70, _arg$71, _arg$72, _arg$73, _arg$74, _arg$75, _arg$76, _arg$77, _arg$78, _arg$79, _arg$8, _arg$80, _arg$81, _arg$82, _arg$83, _arg$84, _arg$85, _arg$86, _arg$87, _arg$88, _arg$89, _arg$9, _arg$90, _arg$91, _arg$92, _arg$93, _arg$94, _arg$95, _arg$96, _arg$97, _arg$98, _arg$99, _r$10, _r$100, _r$101, _r$102, _r$103, _r$104, _r$105, _r$106, _r$107, _r$108, _r$109, _r$11, _r$110, _r$111, _r$112, _r$113, _r$114, _r$115, _r$116, _r$117, _r$118, _r$119, _r$12, _r$120, _r$121, _r$122, _r$13, _r$14, _r$15, _r$16, _r$17, _r$18, _r$19, _r$2, _r$20, _r$21, _r$22, _r$23, _r$24, _r$25, _r$26, _r$27, _r$28, _r$29, _r$3, _r$30, _r$31, _r$32, _r$33, _r$34, _r$35, _r$36, _r$37, _r$38, _r$39, _r$4, _r$40, _r$41, _r$42, _r$43, _r$44, _r$45, _r$46, _r$47, _r$48, _r$49, _r$5, _r$50, _r$51, _r$52, _r$53, _r$54, _r$55, _r$56, _r$57, _r$58, _r$59, _r$6, _r$60, _r$61, _r$62, _r$63, _r$64, _r$65, _r$66, _r$67, _r$68, _r$69, _r$7, _r$70, _r$71, _r$72, _r$73, _r$74, _r$75, _r$76, _r$77, _r$78, _r$79, _r$8, _r$80, _r$81, _r$82, _r$83, _r$84, _r$85, _r$86, _r$87, _r$88, _r$89, _r$9, _r$90, _r$91, _r$92, _r$93, _r$94, _r$95, _r$96, _r$97, _r$98, _r$99, this$1, $s, $r;
+			/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _arg = $f._arg; _arg$1 = $f._arg$1; _arg$10 = $f._arg$10; _arg$100 = $f._arg$100; _arg$101 = $f._arg$101; _arg$102 = $f._arg$102; _arg$103 = $f._arg$103; _arg$104 = $f._arg$104; _arg$105 = $f._arg$105; _arg$106 = $f._arg$106; _arg$107 = $f._arg$107; _arg$108 = $f._arg$108; _arg$109 = $f._arg$109; _arg$11 = $f._arg$11; _arg$110 = $f._arg$110; _arg$111 = $f._arg$111; _arg$112 = $f._arg$112; _arg$113 = $f._arg$113; _arg$114 = $f._arg$114; _arg$115 = $f._arg$115; _arg$116 = $f._arg$116; _arg$117 = $f._arg$117; _arg$118 = $f._arg$118; _arg$119 = $f._arg$119; _arg$12 = $f._arg$12; _arg$120 = $f._arg$120; _arg$121 = $f._arg$121; _arg$122 = $f._arg$122; _arg$123 = $f._arg$123; _arg$124 = $f._arg$124; _arg$125 = $f._arg$125; _arg$126 = $f._arg$126; _arg$127 = $f._arg$127; _arg$128 = $f._arg$128; _arg$129 = $f._arg$129; _arg$13 = $f._arg$13; _arg$130 = $f._arg$130; _arg$131 = $f._arg$131; _arg$132 = $f._arg$132; _arg$133 = $f._arg$133; _arg$134 = $f._arg$134; _arg$135 = $f._arg$135; _arg$136 = $f._arg$136; _arg$137 = $f._arg$137; _arg$138 = $f._arg$138; _arg$139 = $f._arg$139; _arg$14 = $f._arg$14; _arg$140 = $f._arg$140; _arg$141 = $f._arg$141; _arg$142 = $f._arg$142; _arg$143 = $f._arg$143; _arg$144 = $f._arg$144; _arg$145 = $f._arg$145; _arg$146 = $f._arg$146; _arg$147 = $f._arg$147; _arg$148 = $f._arg$148; _arg$149 = $f._arg$149; _arg$15 = $f._arg$15; _arg$150 = $f._arg$150; _arg$151 = $f._arg$151; _arg$152 = $f._arg$152; _arg$153 = $f._arg$153; _arg$16 = $f._arg$16; _arg$17 = $f._arg$17; _arg$18 = $f._arg$18; _arg$19 = $f._arg$19; _arg$2 = $f._arg$2; _arg$20 = $f._arg$20; _arg$21 = $f._arg$21; _arg$22 = $f._arg$22; _arg$23 = $f._arg$23; _arg$24 = $f._arg$24; _arg$25 = $f._arg$25; _arg$26 = $f._arg$26; _arg$27 = $f._arg$27; _arg$28 = $f._arg$28; _arg$29 = $f._arg$29; _arg$3 = $f._arg$3; _arg$30 = $f._arg$30; _arg$31 = $f._arg$31; _arg$32 = $f._arg$32; _arg$33 = $f._arg$33; _arg$34 = $f._arg$34; _arg$35 = $f._arg$35; _arg$36 = $f._arg$36; _arg$37 = $f._arg$37; _arg$38 = $f._arg$38; _arg$39 = $f._arg$39; _arg$4 = $f._arg$4; _arg$40 = $f._arg$40; _arg$41 = $f._arg$41; _arg$42 = $f._arg$42; _arg$43 = $f._arg$43; _arg$44 = $f._arg$44; _arg$45 = $f._arg$45; _arg$46 = $f._arg$46; _arg$47 = $f._arg$47; _arg$48 = $f._arg$48; _arg$49 = $f._arg$49; _arg$5 = $f._arg$5; _arg$50 = $f._arg$50; _arg$51 = $f._arg$51; _arg$52 = $f._arg$52; _arg$53 = $f._arg$53; _arg$54 = $f._arg$54; _arg$55 = $f._arg$55; _arg$56 = $f._arg$56; _arg$57 = $f._arg$57; _arg$58 = $f._arg$58; _arg$59 = $f._arg$59; _arg$6 = $f._arg$6; _arg$60 = $f._arg$60; _arg$61 = $f._arg$61; _arg$62 = $f._arg$62; _arg$63 = $f._arg$63; _arg$64 = $f._arg$64; _arg$65 = $f._arg$65; _arg$66 = $f._arg$66; _arg$67 = $f._arg$67; _arg$68 = $f._arg$68; _arg$69 = $f._arg$69; _arg$7 = $f._arg$7; _arg$70 = $f._arg$70; _arg$71 = $f._arg$71; _arg$72 = $f._arg$72; _arg$73 = $f._arg$73; _arg$74 = $f._arg$74; _arg$75 = $f._arg$75; _arg$76 = $f._arg$76; _arg$77 = $f._arg$77; _arg$78 = $f._arg$78; _arg$79 = $f._arg$79; _arg$8 = $f._arg$8; _arg$80 = $f._arg$80; _arg$81 = $f._arg$81; _arg$82 = $f._arg$82; _arg$83 = $f._arg$83; _arg$84 = $f._arg$84; _arg$85 = $f._arg$85; _arg$86 = $f._arg$86; _arg$87 = $f._arg$87; _arg$88 = $f._arg$88; _arg$89 = $f._arg$89; _arg$9 = $f._arg$9; _arg$90 = $f._arg$90; _arg$91 = $f._arg$91; _arg$92 = $f._arg$92; _arg$93 = $f._arg$93; _arg$94 = $f._arg$94; _arg$95 = $f._arg$95; _arg$96 = $f._arg$96; _arg$97 = $f._arg$97; _arg$98 = $f._arg$98; _arg$99 = $f._arg$99; _r$10 = $f._r$10; _r$100 = $f._r$100; _r$101 = $f._r$101; _r$102 = $f._r$102; _r$103 = $f._r$103; _r$104 = $f._r$104; _r$105 = $f._r$105; _r$106 = $f._r$106; _r$107 = $f._r$107; _r$108 = $f._r$108; _r$109 = $f._r$109; _r$11 = $f._r$11; _r$110 = $f._r$110; _r$111 = $f._r$111; _r$112 = $f._r$112; _r$113 = $f._r$113; _r$114 = $f._r$114; _r$115 = $f._r$115; _r$116 = $f._r$116; _r$117 = $f._r$117; _r$118 = $f._r$118; _r$119 = $f._r$119; _r$12 = $f._r$12; _r$120 = $f._r$120; _r$121 = $f._r$121; _r$122 = $f._r$122; _r$13 = $f._r$13; _r$14 = $f._r$14; _r$15 = $f._r$15; _r$16 = $f._r$16; _r$17 = $f._r$17; _r$18 = $f._r$18; _r$19 = $f._r$19; _r$2 = $f._r$2; _r$20 = $f._r$20; _r$21 = $f._r$21; _r$22 = $f._r$22; _r$23 = $f._r$23; _r$24 = $f._r$24; _r$25 = $f._r$25; _r$26 = $f._r$26; _r$27 = $f._r$27; _r$28 = $f._r$28; _r$29 = $f._r$29; _r$3 = $f._r$3; _r$30 = $f._r$30; _r$31 = $f._r$31; _r$32 = $f._r$32; _r$33 = $f._r$33; _r$34 = $f._r$34; _r$35 = $f._r$35; _r$36 = $f._r$36; _r$37 = $f._r$37; _r$38 = $f._r$38; _r$39 = $f._r$39; _r$4 = $f._r$4; _r$40 = $f._r$40; _r$41 = $f._r$41; _r$42 = $f._r$42; _r$43 = $f._r$43; _r$44 = $f._r$44; _r$45 = $f._r$45; _r$46 = $f._r$46; _r$47 = $f._r$47; _r$48 = $f._r$48; _r$49 = $f._r$49; _r$5 = $f._r$5; _r$50 = $f._r$50; _r$51 = $f._r$51; _r$52 = $f._r$52; _r$53 = $f._r$53; _r$54 = $f._r$54; _r$55 = $f._r$55; _r$56 = $f._r$56; _r$57 = $f._r$57; _r$58 = $f._r$58; _r$59 = $f._r$59; _r$6 = $f._r$6; _r$60 = $f._r$60; _r$61 = $f._r$61; _r$62 = $f._r$62; _r$63 = $f._r$63; _r$64 = $f._r$64; _r$65 = $f._r$65; _r$66 = $f._r$66; _r$67 = $f._r$67; _r$68 = $f._r$68; _r$69 = $f._r$69; _r$7 = $f._r$7; _r$70 = $f._r$70; _r$71 = $f._r$71; _r$72 = $f._r$72; _r$73 = $f._r$73; _r$74 = $f._r$74; _r$75 = $f._r$75; _r$76 = $f._r$76; _r$77 = $f._r$77; _r$78 = $f._r$78; _r$79 = $f._r$79; _r$8 = $f._r$8; _r$80 = $f._r$80; _r$81 = $f._r$81; _r$82 = $f._r$82; _r$83 = $f._r$83; _r$84 = $f._r$84; _r$85 = $f._r$85; _r$86 = $f._r$86; _r$87 = $f._r$87; _r$88 = $f._r$88; _r$89 = $f._r$89; _r$9 = $f._r$9; _r$90 = $f._r$90; _r$91 = $f._r$91; _r$92 = $f._r$92; _r$93 = $f._r$93; _r$94 = $f._r$94; _r$95 = $f._r$95; _r$96 = $f._r$96; _r$97 = $f._r$97; _r$98 = $f._r$98; _r$99 = $f._r$99; this$1 = $f.this$1; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
 			this$1 = [this$1];
 			_arg = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "div", $makeMap($String.keyFor, [{ k: "id", v: "components" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil);
 			_arg$1 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "div", $makeMap($String.keyFor, [{ k: "class", v: "wrap" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil);
-			_r$2 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "h2", false, "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([new $String("Drag and drop free")])); /* */ $s = 1; case 1: if($c) { $c = false; _r$2 = _r$2.$blk(); } if (_r$2 && _r$2.$blk !== undefined) { break s; }
+			_r$2 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "header", $makeMap($String.keyFor, [{ k: "class", v: "wrap-title" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([new $String("\n                Basic Drag and drop\n            ")])); /* */ $s = 1; case 1: if($c) { $c = false; _r$2 = _r$2.$blk(); } if (_r$2 && _r$2.$blk !== undefined) { break s; }
 			_arg$2 = _r$2;
-			_arg$3 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "div", $makeMap($String.keyFor, [{ k: "class", v: "dndFree-box" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil);
-			_r$3 = this$1[0].Method("dndFreeConfig", new sliceType([])); /* */ $s = 2; case 2: if($c) { $c = false; _r$3 = _r$3.$blk(); } if (_r$3 && _r$3.$blk !== undefined) { break s; }
-			_arg$4 = $clone($assertType(_r$3, dndfree.Config), dndfree.Config);
-			_r$4 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "span", false, "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([new $String("Let me go out!")])); /* */ $s = 3; case 3: if($c) { $c = false; _r$4 = _r$4.$blk(); } if (_r$4 && _r$4.$blk !== undefined) { break s; }
-			_r$5 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "i", $makeMap($String.keyFor, [{ k: "class", v: "icon icon-menu dndFree-handle" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([])); /* */ $s = 4; case 4: if($c) { $c = false; _r$5 = _r$5.$blk(); } if (_r$5 && _r$5.$blk !== undefined) { break s; }
-			_arg$5 = new gas.External.ptr(new sliceType([_r$4, _r$5]), false, false);
-			_r$6 = dndfree.DNDFree(_arg$4, _arg$5); /* */ $s = 5; case 5: if($c) { $c = false; _r$6 = _r$6.$blk(); } if (_r$6 && _r$6.$blk !== undefined) { break s; }
-			_arg$6 = _r$6;
-			_r$7 = gas.NE(_arg$3, new sliceType([_arg$6])); /* */ $s = 6; case 6: if($c) { $c = false; _r$7 = _r$7.$blk(); } if (_r$7 && _r$7.$blk !== undefined) { break s; }
-			_arg$7 = _r$7;
-			_r$8 = gas.NE(_arg$1, new sliceType([_arg$2, _arg$7])); /* */ $s = 7; case 7: if($c) { $c = false; _r$8 = _r$8.$blk(); } if (_r$8 && _r$8.$blk !== undefined) { break s; }
-			_arg$8 = _r$8;
-			_arg$9 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "div", $makeMap($String.keyFor, [{ k: "class", v: "wrap" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil);
-			_r$9 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "h2", false, "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([new $String("Modal")])); /* */ $s = 8; case 8: if($c) { $c = false; _r$9 = _r$9.$blk(); } if (_r$9 && _r$9.$blk !== undefined) { break s; }
-			_arg$10 = _r$9;
-			_arg$11 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), $makeMap($String.keyFor, [{ k: "click", v: (function(this$1) { return function $b(p, e) {
-				var _arg$11, _r$10, e, p, $s, $r;
-				/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _arg$11 = $f._arg$11; _r$10 = $f._r$10; e = $f.e; p = $f.p; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
-				_r$10 = this$1[0].Get("isActiveModal"); /* */ $s = 1; case 1: if($c) { $c = false; _r$10 = _r$10.$blk(); } if (_r$10 && _r$10.$blk !== undefined) { break s; }
-				_arg$11 = new $Bool(!$assertType(_r$10, $Bool));
-				$r = this$1[0].SetValue("isActiveModal", _arg$11); /* */ $s = 2; case 2: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+			_arg$3 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "div", $makeMap($String.keyFor, [{ k: "class", v: "wrap-body dndFreeBoundary" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil);
+			_r$3 = this$1[0].Method("dndFreeConfig1", new sliceType([])); /* */ $s = 2; case 2: if($c) { $c = false; _r$3 = _r$3.$blk(); } if (_r$3 && _r$3.$blk !== undefined) { break s; }
+			_r$4 = dndfree.DNDFree($clone($assertType(_r$3, dndfree.Config), dndfree.Config), new gas.External.ptr(new sliceType([new $String("\n                    Basic example\n                ")]), false, false)); /* */ $s = 3; case 3: if($c) { $c = false; _r$4 = _r$4.$blk(); } if (_r$4 && _r$4.$blk !== undefined) { break s; }
+			_arg$4 = _r$4;
+			_r$5 = this$1[0].Method("dndFreeConfig2", new sliceType([])); /* */ $s = 4; case 4: if($c) { $c = false; _r$5 = _r$5.$blk(); } if (_r$5 && _r$5.$blk !== undefined) { break s; }
+			_arg$5 = $clone($assertType(_r$5, dndfree.Config), dndfree.Config);
+			_r$6 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "span", false, "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([new $String("Handle only")])); /* */ $s = 5; case 5: if($c) { $c = false; _r$6 = _r$6.$blk(); } if (_r$6 && _r$6.$blk !== undefined) { break s; }
+			_r$7 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "i", $makeMap($String.keyFor, [{ k: "class", v: "icon icon-menu dndFree-handle" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([])); /* */ $s = 6; case 6: if($c) { $c = false; _r$7 = _r$7.$blk(); } if (_r$7 && _r$7.$blk !== undefined) { break s; }
+			_arg$6 = new gas.External.ptr(new sliceType([_r$6, _r$7]), false, false);
+			_r$8 = dndfree.DNDFree(_arg$5, _arg$6); /* */ $s = 7; case 7: if($c) { $c = false; _r$8 = _r$8.$blk(); } if (_r$8 && _r$8.$blk !== undefined) { break s; }
+			_arg$7 = _r$8;
+			_r$9 = this$1[0].Method("dndFreeConfig3", new sliceType([])); /* */ $s = 8; case 8: if($c) { $c = false; _r$9 = _r$9.$blk(); } if (_r$9 && _r$9.$blk !== undefined) { break s; }
+			_arg$8 = $clone($assertType(_r$9, dndfree.Config), dndfree.Config);
+			_r$10 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "span", false, "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([new $String("Bounded in div")])); /* */ $s = 9; case 9: if($c) { $c = false; _r$10 = _r$10.$blk(); } if (_r$10 && _r$10.$blk !== undefined) { break s; }
+			_arg$9 = new gas.External.ptr(new sliceType([_r$10]), false, false);
+			_r$11 = dndfree.DNDFree(_arg$8, _arg$9); /* */ $s = 10; case 10: if($c) { $c = false; _r$11 = _r$11.$blk(); } if (_r$11 && _r$11.$blk !== undefined) { break s; }
+			_arg$10 = _r$11;
+			_r$12 = this$1[0].Method("dndFreeConfig4", new sliceType([])); /* */ $s = 11; case 11: if($c) { $c = false; _r$12 = _r$12.$blk(); } if (_r$12 && _r$12.$blk !== undefined) { break s; }
+			_arg$11 = $clone($assertType(_r$12, dndfree.Config), dndfree.Config);
+			_r$13 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "span", false, "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([new $String("Ydispabled")])); /* */ $s = 12; case 12: if($c) { $c = false; _r$13 = _r$13.$blk(); } if (_r$13 && _r$13.$blk !== undefined) { break s; }
+			_arg$12 = new gas.External.ptr(new sliceType([_r$13]), false, false);
+			_r$14 = dndfree.DNDFree(_arg$11, _arg$12); /* */ $s = 13; case 13: if($c) { $c = false; _r$14 = _r$14.$blk(); } if (_r$14 && _r$14.$blk !== undefined) { break s; }
+			_arg$13 = _r$14;
+			_r$15 = this$1[0].Method("dndFreeConfig5", new sliceType([])); /* */ $s = 14; case 14: if($c) { $c = false; _r$15 = _r$15.$blk(); } if (_r$15 && _r$15.$blk !== undefined) { break s; }
+			_arg$14 = $clone($assertType(_r$15, dndfree.Config), dndfree.Config);
+			_r$16 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "span", false, "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([new $String("Xdispabled")])); /* */ $s = 15; case 15: if($c) { $c = false; _r$16 = _r$16.$blk(); } if (_r$16 && _r$16.$blk !== undefined) { break s; }
+			_arg$15 = new gas.External.ptr(new sliceType([_r$16]), false, false);
+			_r$17 = dndfree.DNDFree(_arg$14, _arg$15); /* */ $s = 16; case 16: if($c) { $c = false; _r$17 = _r$17.$blk(); } if (_r$17 && _r$17.$blk !== undefined) { break s; }
+			_arg$16 = _r$17;
+			_r$18 = gas.NE(_arg$3, new sliceType([_arg$4, _arg$7, _arg$10, _arg$13, _arg$16])); /* */ $s = 17; case 17: if($c) { $c = false; _r$18 = _r$18.$blk(); } if (_r$18 && _r$18.$blk !== undefined) { break s; }
+			_arg$17 = _r$18;
+			_r$19 = gas.NE(_arg$1, new sliceType([_arg$2, _arg$17])); /* */ $s = 18; case 18: if($c) { $c = false; _r$19 = _r$19.$blk(); } if (_r$19 && _r$19.$blk !== undefined) { break s; }
+			_arg$18 = _r$19;
+			_arg$19 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "div", $makeMap($String.keyFor, [{ k: "class", v: "wrap" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil);
+			_r$20 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "header", $makeMap($String.keyFor, [{ k: "class", v: "wrap-title" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([new $String("\n                Modal\n            ")])); /* */ $s = 19; case 19: if($c) { $c = false; _r$20 = _r$20.$blk(); } if (_r$20 && _r$20.$blk !== undefined) { break s; }
+			_arg$20 = _r$20;
+			_arg$21 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "div", $makeMap($String.keyFor, [{ k: "class", v: "wrap-body" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil);
+			_arg$22 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), $makeMap($String.keyFor, [{ k: "click", v: (function(this$1) { return function $b(p, e) {
+				var _arg$22, _r$21, e, p, $s, $r;
+				/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _arg$22 = $f._arg$22; _r$21 = $f._r$21; e = $f.e; p = $f.p; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+				_r$21 = this$1[0].Get("isActiveModal"); /* */ $s = 1; case 1: if($c) { $c = false; _r$21 = _r$21.$blk(); } if (_r$21 && _r$21.$blk !== undefined) { break s; }
+				_arg$22 = new $Bool(!$assertType(_r$21, $Bool));
+				$r = this$1[0].SetValue("isActiveModal", _arg$22); /* */ $s = 2; case 2: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 				$s = -1; return;
-				/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._arg$11 = _arg$11; $f._r$10 = _r$10; $f.e = e; $f.p = p; $f.$s = $s; $f.$r = $r; return $f;
+				/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._arg$22 = _arg$22; $f._r$21 = _r$21; $f.e = e; $f.p = p; $f.$s = $s; $f.$r = $r; return $f;
 			}; })(this$1) }]), false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "button", $makeMap($String.keyFor, [{ k: "class", v: "btn m(8px)" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil);
-			_r$10 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, (function(this$1) { return function $b(p) {
-				var _r$10, p, $s, $r;
-				/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r$10 = $f._r$10; p = $f.p; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
-				_r$10 = this$1[0].Get("isActiveModal"); /* */ $s = 1; case 1: if($c) { $c = false; _r$10 = _r$10.$blk(); } if (_r$10 && _r$10.$blk !== undefined) { break s; }
-				$s = -1; return $assertType(_r$10, $Bool);
-				/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._r$10 = _r$10; $f.p = p; $f.$s = $s; $f.$r = $r; return $f;
-			}; })(this$1), false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "span", false, "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([new $String("Hide")])); /* */ $s = 9; case 9: if($c) { $c = false; _r$10 = _r$10.$blk(); } if (_r$10 && _r$10.$blk !== undefined) { break s; }
-			_arg$12 = _r$10;
-			_r$11 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, true, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "span", false, "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([new $String("Show")])); /* */ $s = 10; case 10: if($c) { $c = false; _r$11 = _r$11.$blk(); } if (_r$11 && _r$11.$blk !== undefined) { break s; }
-			_arg$13 = _r$11;
-			_r$12 = gas.NE(_arg$11, new sliceType([_arg$12, _arg$13])); /* */ $s = 11; case 11: if($c) { $c = false; _r$12 = _r$12.$blk(); } if (_r$12 && _r$12.$blk !== undefined) { break s; }
-			_arg$14 = _r$12;
-			_r$13 = this$1[0].Method("getModal", new sliceType([])); /* */ $s = 12; case 12: if($c) { $c = false; _r$13 = _r$13.$blk(); } if (_r$13 && _r$13.$blk !== undefined) { break s; }
-			_arg$15 = $clone($assertType(_r$13, modal.Config), modal.Config);
-			_arg$16 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "div", $makeMap($String.keyFor, [{ k: "class", v: "p(.8rem)" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil);
-			_arg$17 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "header", $makeMap($String.keyFor, [{ k: "class", v: "customModal-header d(flex) p(0) m(0,0,.5rem,0)" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil);
-			_r$14 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "h3", $makeMap($String.keyFor, [{ k: "class", v: "h3 m(0)" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([new $String("Header inside modal window")])); /* */ $s = 13; case 13: if($c) { $c = false; _r$14 = _r$14.$blk(); } if (_r$14 && _r$14.$blk !== undefined) { break s; }
-			_arg$18 = _r$14;
-			_r$15 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), $makeMap($String.keyFor, [{ k: "click", v: (function(this$1) { return function $b(p, e) {
-				var _arg$19, _r$15, e, p, $s, $r;
-				/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _arg$19 = $f._arg$19; _r$15 = $f._r$15; e = $f.e; p = $f.p; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
-				_r$15 = this$1[0].Get("isActiveModal"); /* */ $s = 1; case 1: if($c) { $c = false; _r$15 = _r$15.$blk(); } if (_r$15 && _r$15.$blk !== undefined) { break s; }
-				_arg$19 = new $Bool(!$assertType(_r$15, $Bool));
-				$r = this$1[0].SetValue("isActiveModal", _arg$19); /* */ $s = 2; case 2: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+			_r$21 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, (function(this$1) { return function $b(p) {
+				var _r$21, p, $s, $r;
+				/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r$21 = $f._r$21; p = $f.p; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+				_r$21 = this$1[0].Get("isActiveModal"); /* */ $s = 1; case 1: if($c) { $c = false; _r$21 = _r$21.$blk(); } if (_r$21 && _r$21.$blk !== undefined) { break s; }
+				$s = -1; return $assertType(_r$21, $Bool);
+				/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._r$21 = _r$21; $f.p = p; $f.$s = $s; $f.$r = $r; return $f;
+			}; })(this$1), false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "span", false, "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([new $String("\n                        Hide\n                    ")])); /* */ $s = 20; case 20: if($c) { $c = false; _r$21 = _r$21.$blk(); } if (_r$21 && _r$21.$blk !== undefined) { break s; }
+			_arg$23 = _r$21;
+			_r$22 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, true, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "span", false, "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([new $String("\n                        Show\n                    ")])); /* */ $s = 21; case 21: if($c) { $c = false; _r$22 = _r$22.$blk(); } if (_r$22 && _r$22.$blk !== undefined) { break s; }
+			_arg$24 = _r$22;
+			_r$23 = gas.NE(_arg$22, new sliceType([_arg$23, _arg$24])); /* */ $s = 22; case 22: if($c) { $c = false; _r$23 = _r$23.$blk(); } if (_r$23 && _r$23.$blk !== undefined) { break s; }
+			_arg$25 = _r$23;
+			_r$24 = this$1[0].Method("getModal", new sliceType([])); /* */ $s = 23; case 23: if($c) { $c = false; _r$24 = _r$24.$blk(); } if (_r$24 && _r$24.$blk !== undefined) { break s; }
+			_arg$26 = $clone($assertType(_r$24, modal.Config), modal.Config);
+			_arg$27 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "div", $makeMap($String.keyFor, [{ k: "class", v: "p(.8rem)" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil);
+			_arg$28 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "header", $makeMap($String.keyFor, [{ k: "class", v: "customModal-header d(flex) p(0) m(0,0,.5rem,0)" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil);
+			_r$25 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "h3", $makeMap($String.keyFor, [{ k: "class", v: "h3 m(0)" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([new $String("\n                                Header inside modal window\n                            ")])); /* */ $s = 24; case 24: if($c) { $c = false; _r$25 = _r$25.$blk(); } if (_r$25 && _r$25.$blk !== undefined) { break s; }
+			_arg$29 = _r$25;
+			_r$26 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), $makeMap($String.keyFor, [{ k: "click", v: (function(this$1) { return function $b(p, e) {
+				var _arg$30, _r$26, e, p, $s, $r;
+				/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _arg$30 = $f._arg$30; _r$26 = $f._r$26; e = $f.e; p = $f.p; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+				_r$26 = this$1[0].Get("isActiveModal"); /* */ $s = 1; case 1: if($c) { $c = false; _r$26 = _r$26.$blk(); } if (_r$26 && _r$26.$blk !== undefined) { break s; }
+				_arg$30 = new $Bool(!$assertType(_r$26, $Bool));
+				$r = this$1[0].SetValue("isActiveModal", _arg$30); /* */ $s = 2; case 2: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 				$s = -1; return;
-				/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._arg$19 = _arg$19; $f._r$15 = _r$15; $f.e = e; $f.p = p; $f.$s = $s; $f.$r = $r; return $f;
-			}; })(this$1) }]), false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "button", $makeMap($String.keyFor, [{ k: "class", v: "btn btn-clear ml(auto,!important) fz(22px,!important)" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([])); /* */ $s = 14; case 14: if($c) { $c = false; _r$15 = _r$15.$blk(); } if (_r$15 && _r$15.$blk !== undefined) { break s; }
-			_arg$19 = _r$15;
-			_r$16 = gas.NE(_arg$17, new sliceType([_arg$18, _arg$19])); /* */ $s = 15; case 15: if($c) { $c = false; _r$16 = _r$16.$blk(); } if (_r$16 && _r$16.$blk !== undefined) { break s; }
-			_arg$20 = _r$16;
-			_arg$21 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "div", $makeMap($String.keyFor, [{ k: "class", v: "customModal-body" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil);
-			_r$17 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "p", $makeMap($String.keyFor, [{ k: "class", v: "mb(0)" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([new $String("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tincidunt viverra vestibulum. Cras finibus convallis ipsum, sit amet finibus justo dapibus non. Maecenas ultrices velit ac nunc convallis pulvinar. In a hendrerit mi. Nulla orci nisi, tempus quis rhoncus vitae, ornare sit amet risus. Nullam eleifend velit tempor pharetra pretium. Fusce blandit felis a volutpat convallis. Nulla volutpat in purus nec luctus. Donec eget placerat purus, vel faucibus enim. Vivamus a posuere felis, eu sagittis eros.")])); /* */ $s = 16; case 16: if($c) { $c = false; _r$17 = _r$17.$blk(); } if (_r$17 && _r$17.$blk !== undefined) { break s; }
-			_arg$22 = _r$17;
-			_r$18 = gas.NE(_arg$21, new sliceType([_arg$22])); /* */ $s = 17; case 17: if($c) { $c = false; _r$18 = _r$18.$blk(); } if (_r$18 && _r$18.$blk !== undefined) { break s; }
-			_arg$23 = _r$18;
-			_r$19 = gas.NE(_arg$16, new sliceType([_arg$20, _arg$23])); /* */ $s = 18; case 18: if($c) { $c = false; _r$19 = _r$19.$blk(); } if (_r$19 && _r$19.$blk !== undefined) { break s; }
-			_arg$24 = new gas.External.ptr(new sliceType([_r$19]), false, false);
-			_r$20 = modal.GetModal(_arg$15, _arg$24); /* */ $s = 19; case 19: if($c) { $c = false; _r$20 = _r$20.$blk(); } if (_r$20 && _r$20.$blk !== undefined) { break s; }
-			_arg$25 = _r$20;
-			_r$21 = gas.NE(_arg$9, new sliceType([_arg$10, _arg$14, _arg$25])); /* */ $s = 20; case 20: if($c) { $c = false; _r$21 = _r$21.$blk(); } if (_r$21 && _r$21.$blk !== undefined) { break s; }
-			_arg$26 = _r$21;
-			_arg$27 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, (function(this$1) { return function $b(p) {
-				var _r$22, p, $s, $r;
-				/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r$22 = $f._r$22; p = $f.p; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
-				_r$22 = this$1[0].Get("vItems"); /* */ $s = 1; case 1: if($c) { $c = false; _r$22 = _r$22.$blk(); } if (_r$22 && _r$22.$blk !== undefined) { break s; }
-				$s = -1; return $assertType(_r$22, sliceType).$length > 0;
-				/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._r$22 = _r$22; $f.p = p; $f.$s = $s; $f.$r = $r; return $f;
-			}; })(this$1), false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "div", $makeMap($String.keyFor, [{ k: "class", v: "wrap" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil);
-			_r$22 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "h2", false, "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([new $String("Virtual list")])); /* */ $s = 21; case 21: if($c) { $c = false; _r$22 = _r$22.$blk(); } if (_r$22 && _r$22.$blk !== undefined) { break s; }
-			_arg$28 = _r$22;
-			_arg$29 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "div", $makeMap($String.keyFor, [{ k: "class", v: "vlist-wrap" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil);
-			_r$23 = this$1[0].Method("vListConfig", new sliceType([])); /* */ $s = 22; case 22: if($c) { $c = false; _r$23 = _r$23.$blk(); } if (_r$23 && _r$23.$blk !== undefined) { break s; }
-			_r$24 = vlist.List($assertType(_r$23, ptrType$2), new gas.External.ptr(sliceType.nil, false, $makeMap($String.keyFor, [{ k: "item", v: (function(this$1) { return function $b(values) {
-				var _r$24, i, item, start, values, $s, $r;
-				/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r$24 = $f._r$24; i = $f.i; item = $f.item; start = $f.start; values = $f.values; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+				/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._arg$30 = _arg$30; $f._r$26 = _r$26; $f.e = e; $f.p = p; $f.$s = $s; $f.$r = $r; return $f;
+			}; })(this$1) }]), false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "button", $makeMap($String.keyFor, [{ k: "class", v: "btn btn-clear ml(auto,!important) fz(22px,!important)" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([])); /* */ $s = 25; case 25: if($c) { $c = false; _r$26 = _r$26.$blk(); } if (_r$26 && _r$26.$blk !== undefined) { break s; }
+			_arg$30 = _r$26;
+			_r$27 = gas.NE(_arg$28, new sliceType([_arg$29, _arg$30])); /* */ $s = 26; case 26: if($c) { $c = false; _r$27 = _r$27.$blk(); } if (_r$27 && _r$27.$blk !== undefined) { break s; }
+			_arg$31 = _r$27;
+			_arg$32 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "div", $makeMap($String.keyFor, [{ k: "class", v: "customModal-body" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil);
+			_r$28 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "p", $makeMap($String.keyFor, [{ k: "class", v: "mb(0)" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([new $String("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tincidunt viverra vestibulum. Cras finibus convallis ipsum, sit amet finibus justo dapibus non. Maecenas ultrices velit ac nunc convallis pulvinar. In a hendrerit mi. Nulla orci nisi, tempus quis rhoncus vitae, ornare sit amet risus. Nullam eleifend velit tempor pharetra pretium. Fusce blandit felis a volutpat convallis. Nulla volutpat in purus nec luctus. Donec eget placerat purus, vel faucibus enim. Vivamus a posuere felis, eu sagittis eros.")])); /* */ $s = 27; case 27: if($c) { $c = false; _r$28 = _r$28.$blk(); } if (_r$28 && _r$28.$blk !== undefined) { break s; }
+			_arg$33 = _r$28;
+			_r$29 = gas.NE(_arg$32, new sliceType([_arg$33])); /* */ $s = 28; case 28: if($c) { $c = false; _r$29 = _r$29.$blk(); } if (_r$29 && _r$29.$blk !== undefined) { break s; }
+			_arg$34 = _r$29;
+			_r$30 = gas.NE(_arg$27, new sliceType([_arg$31, _arg$34])); /* */ $s = 29; case 29: if($c) { $c = false; _r$30 = _r$30.$blk(); } if (_r$30 && _r$30.$blk !== undefined) { break s; }
+			_arg$35 = new gas.External.ptr(new sliceType([_r$30]), false, false);
+			_r$31 = modal.GetModal(_arg$26, _arg$35); /* */ $s = 30; case 30: if($c) { $c = false; _r$31 = _r$31.$blk(); } if (_r$31 && _r$31.$blk !== undefined) { break s; }
+			_arg$36 = _r$31;
+			_r$32 = gas.NE(_arg$21, new sliceType([_arg$25, _arg$36])); /* */ $s = 31; case 31: if($c) { $c = false; _r$32 = _r$32.$blk(); } if (_r$32 && _r$32.$blk !== undefined) { break s; }
+			_arg$37 = _r$32;
+			_r$33 = gas.NE(_arg$19, new sliceType([_arg$20, _arg$37])); /* */ $s = 32; case 32: if($c) { $c = false; _r$33 = _r$33.$blk(); } if (_r$33 && _r$33.$blk !== undefined) { break s; }
+			_arg$38 = _r$33;
+			_arg$39 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "div", $makeMap($String.keyFor, [{ k: "class", v: "wrap" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil);
+			_r$34 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "header", $makeMap($String.keyFor, [{ k: "class", v: "wrap-title" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([new $String("\n                Layout\n            ")])); /* */ $s = 33; case 33: if($c) { $c = false; _r$34 = _r$34.$blk(); } if (_r$34 && _r$34.$blk !== undefined) { break s; }
+			_arg$40 = _r$34;
+			_arg$41 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "div", $makeMap($String.keyFor, [{ k: "class", v: "wrap-body" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil);
+			_arg$42 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "div", $makeMap($String.keyFor, [{ k: "id", v: "layout-wrap" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil);
+			_r$35 = this$1[0].Method("layoutConfig", new sliceType([])); /* */ $s = 34; case 34: if($c) { $c = false; _r$35 = _r$35.$blk(); } if (_r$35 && _r$35.$blk !== undefined) { break s; }
+			_arg$43 = $assertType(_r$35, ptrType$2);
+			_r$36 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "div", $makeMap($String.keyFor, [{ k: "class", v: "layout-item-1" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([new $String("\n                            GopherJS\n                        ")])); /* */ $s = 35; case 35: if($c) { $c = false; _r$36 = _r$36.$blk(); } if (_r$36 && _r$36.$blk !== undefined) { break s; }
+			_r$37 = this$1[0].Method("layoutConfig2", new sliceType([])); /* */ $s = 36; case 36: if($c) { $c = false; _r$37 = _r$37.$blk(); } if (_r$37 && _r$37.$blk !== undefined) { break s; }
+			_arg$44 = $assertType(_r$37, ptrType$2);
+			_r$38 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "div", false, "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([new $String("\n                                WebAssembly\n                            ")])); /* */ $s = 37; case 37: if($c) { $c = false; _r$38 = _r$38.$blk(); } if (_r$38 && _r$38.$blk !== undefined) { break s; }
+			_r$39 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "div", false, "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([new $String("\n                                Tinygo\n                            ")])); /* */ $s = 38; case 38: if($c) { $c = false; _r$39 = _r$39.$blk(); } if (_r$39 && _r$39.$blk !== undefined) { break s; }
+			_arg$45 = new gas.External.ptr(new sliceType([_r$38, _r$39]), false, false);
+			_r$40 = layout.Layout(_arg$44, _arg$45); /* */ $s = 39; case 39: if($c) { $c = false; _r$40 = _r$40.$blk(); } if (_r$40 && _r$40.$blk !== undefined) { break s; }
+			_arg$46 = new gas.External.ptr(new sliceType([_r$36, _r$40]), false, false);
+			_r$41 = layout.Layout(_arg$43, _arg$46); /* */ $s = 40; case 40: if($c) { $c = false; _r$41 = _r$41.$blk(); } if (_r$41 && _r$41.$blk !== undefined) { break s; }
+			_arg$47 = _r$41;
+			_r$42 = gas.NE(_arg$42, new sliceType([_arg$47])); /* */ $s = 41; case 41: if($c) { $c = false; _r$42 = _r$42.$blk(); } if (_r$42 && _r$42.$blk !== undefined) { break s; }
+			_arg$48 = _r$42;
+			_r$43 = gas.NE(_arg$41, new sliceType([_arg$48])); /* */ $s = 42; case 42: if($c) { $c = false; _r$43 = _r$43.$blk(); } if (_r$43 && _r$43.$blk !== undefined) { break s; }
+			_arg$49 = _r$43;
+			_r$44 = gas.NE(_arg$39, new sliceType([_arg$40, _arg$49])); /* */ $s = 43; case 43: if($c) { $c = false; _r$44 = _r$44.$blk(); } if (_r$44 && _r$44.$blk !== undefined) { break s; }
+			_arg$50 = _r$44;
+			_arg$51 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "div", $makeMap($String.keyFor, [{ k: "class", v: "wrap" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil);
+			_r$45 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "header", $makeMap($String.keyFor, [{ k: "class", v: "wrap-title" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([new $String("\n                Virtual list\n            ")])); /* */ $s = 44; case 44: if($c) { $c = false; _r$45 = _r$45.$blk(); } if (_r$45 && _r$45.$blk !== undefined) { break s; }
+			_arg$52 = _r$45;
+			_arg$53 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "div", $makeMap($String.keyFor, [{ k: "class", v: "wrap-body" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil);
+			_arg$54 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "div", $makeMap($String.keyFor, [{ k: "class", v: "vlist-wrap h(50vw) bd(b) mb(1em)" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil);
+			_r$46 = this$1[0].Method("vListConfig", new sliceType([])); /* */ $s = 45; case 45: if($c) { $c = false; _r$46 = _r$46.$blk(); } if (_r$46 && _r$46.$blk !== undefined) { break s; }
+			_r$47 = vlist.List($assertType(_r$46, ptrType$3), new gas.External.ptr(sliceType.nil, false, $makeMap($String.keyFor, [{ k: "item", v: (function(this$1) { return function $b(values) {
+				var _r$47, i, item, start, values, $s, $r;
+				/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r$47 = $f._r$47; i = $f.i; item = $f.item; start = $f.start; values = $f.values; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
 				i = [i];
 				start = [start];
 				i[0] = $assertType((0 >= values.$length ? ($throwRuntimeError("index out of range"), undefined) : values.$array[values.$offset + 0]), $Int);
 				item = $assertType((1 >= values.$length ? ($throwRuntimeError("index out of range"), undefined) : values.$array[values.$offset + 1]), $String);
 				start[0] = $assertType((2 >= values.$length ? ($throwRuntimeError("index out of range"), undefined) : values.$array[values.$offset + 2]), $Int);
-				_r$24 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, $makeMap($String.keyFor, [{ k: "style", v: (function(i, start, this$1) { return function $b() {
-					var _arg$30, _r$24, _r$25, x, x$1, $s, $r;
-					/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _arg$30 = $f._arg$30; _r$24 = $f._r$24; _r$25 = $f._r$25; x = $f.x; x$1 = $f.x$1; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
-					_r$24 = this$1[0].Get("vItemsHeight"); /* */ $s = 1; case 1: if($c) { $c = false; _r$24 = _r$24.$blk(); } if (_r$24 && _r$24.$blk !== undefined) { break s; }
-					_arg$30 = new $Int((x = $assertType(_r$24, sliceType$4), x$1 = i[0] + start[0] >> 0, ((x$1 < 0 || x$1 >= x.$length) ? ($throwRuntimeError("index out of range"), undefined) : x.$array[x.$offset + x$1])));
-					_r$25 = fmt.Sprintf("height: %dpx;", new sliceType([_arg$30])); /* */ $s = 2; case 2: if($c) { $c = false; _r$25 = _r$25.$blk(); } if (_r$25 && _r$25.$blk !== undefined) { break s; }
-					$s = -1; return _r$25;
-					/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._arg$30 = _arg$30; $f._r$24 = _r$24; $f._r$25 = _r$25; $f.x = x; $f.x$1 = x$1; $f.$s = $s; $f.$r = $r; return $f;
-				}; })(i, start, this$1) }]), false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "div", $makeMap($String.keyFor, [{ k: "class", v: "vlist-item" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([new $String(""), new $String(item)])); /* */ $s = 1; case 1: if($c) { $c = false; _r$24 = _r$24.$blk(); } if (_r$24 && _r$24.$blk !== undefined) { break s; }
-				$s = -1; return new sliceType([_r$24]);
-				/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._r$24 = _r$24; $f.i = i; $f.item = item; $f.start = start; $f.values = values; $f.$s = $s; $f.$r = $r; return $f;
-			}; })(this$1) }]))); /* */ $s = 23; case 23: if($c) { $c = false; _r$24 = _r$24.$blk(); } if (_r$24 && _r$24.$blk !== undefined) { break s; }
-			_arg$30 = _r$24;
-			_r$25 = gas.NE(_arg$29, new sliceType([_arg$30])); /* */ $s = 24; case 24: if($c) { $c = false; _r$25 = _r$25.$blk(); } if (_r$25 && _r$25.$blk !== undefined) { break s; }
-			_arg$31 = _r$25;
-			_r$26 = gas.NE(_arg$27, new sliceType([_arg$28, _arg$31])); /* */ $s = 25; case 25: if($c) { $c = false; _r$26 = _r$26.$blk(); } if (_r$26 && _r$26.$blk !== undefined) { break s; }
-			_arg$32 = _r$26;
-			_arg$33 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "div", $makeMap($String.keyFor, [{ k: "class", v: "wrap" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil);
-			_r$27 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "h2", false, "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([new $String("Layout")])); /* */ $s = 26; case 26: if($c) { $c = false; _r$27 = _r$27.$blk(); } if (_r$27 && _r$27.$blk !== undefined) { break s; }
-			_arg$34 = _r$27;
-			_arg$35 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "div", $makeMap($String.keyFor, [{ k: "id", v: "layout-wrap" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil);
-			_r$28 = this$1[0].Method("layoutConfig", new sliceType([])); /* */ $s = 27; case 27: if($c) { $c = false; _r$28 = _r$28.$blk(); } if (_r$28 && _r$28.$blk !== undefined) { break s; }
-			_arg$36 = $assertType(_r$28, ptrType$3);
-			_r$29 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "b", $makeMap($String.keyFor, [{ k: "class", v: "layout-item-1" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([new $String("GopherJS")])); /* */ $s = 28; case 28: if($c) { $c = false; _r$29 = _r$29.$blk(); } if (_r$29 && _r$29.$blk !== undefined) { break s; }
-			_r$30 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "b", false, "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([new $String("WebAssembly")])); /* */ $s = 29; case 29: if($c) { $c = false; _r$30 = _r$30.$blk(); } if (_r$30 && _r$30.$blk !== undefined) { break s; }
-			_arg$37 = new gas.External.ptr(new sliceType([_r$29, _r$30]), false, false);
-			_r$31 = layout.Layout(_arg$36, _arg$37); /* */ $s = 30; case 30: if($c) { $c = false; _r$31 = _r$31.$blk(); } if (_r$31 && _r$31.$blk !== undefined) { break s; }
-			_arg$38 = _r$31;
-			_r$32 = gas.NE(_arg$35, new sliceType([_arg$38])); /* */ $s = 31; case 31: if($c) { $c = false; _r$32 = _r$32.$blk(); } if (_r$32 && _r$32.$blk !== undefined) { break s; }
-			_arg$39 = _r$32;
-			_r$33 = gas.NE(_arg$33, new sliceType([_arg$34, _arg$39])); /* */ $s = 32; case 32: if($c) { $c = false; _r$33 = _r$33.$blk(); } if (_r$33 && _r$33.$blk !== undefined) { break s; }
-			_arg$40 = _r$33;
-			_arg$41 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "div", $makeMap($String.keyFor, [{ k: "class", v: "wrap" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil);
-			_r$34 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "h2", false, "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([new $String("Tree")])); /* */ $s = 33; case 33: if($c) { $c = false; _r$34 = _r$34.$blk(); } if (_r$34 && _r$34.$blk !== undefined) { break s; }
-			_arg$42 = _r$34;
-			_arg$43 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "div", $makeMap($String.keyFor, [{ k: "id", v: "trees" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil);
-			_r$35 = this$1[0].Method("getFirstTree", new sliceType([])); /* */ $s = 34; case 34: if($c) { $c = false; _r$35 = _r$35.$blk(); } if (_r$35 && _r$35.$blk !== undefined) { break s; }
-			_r$36 = tree.GetTree($clone($assertType(_r$35, tree.Config), tree.Config)); /* */ $s = 35; case 35: if($c) { $c = false; _r$36 = _r$36.$blk(); } if (_r$36 && _r$36.$blk !== undefined) { break s; }
-			_arg$44 = _r$36;
-			_r$37 = this$1[0].Method("getSecondTree", new sliceType([])); /* */ $s = 36; case 36: if($c) { $c = false; _r$37 = _r$37.$blk(); } if (_r$37 && _r$37.$blk !== undefined) { break s; }
-			_r$38 = tree.GetTree($clone($assertType(_r$37, tree.Config), tree.Config)); /* */ $s = 37; case 37: if($c) { $c = false; _r$38 = _r$38.$blk(); } if (_r$38 && _r$38.$blk !== undefined) { break s; }
-			_arg$45 = _r$38;
-			_r$39 = gas.NE(_arg$43, new sliceType([_arg$44, _arg$45])); /* */ $s = 38; case 38: if($c) { $c = false; _r$39 = _r$39.$blk(); } if (_r$39 && _r$39.$blk !== undefined) { break s; }
-			_arg$46 = _r$39;
-			_r$40 = gas.NE(_arg$41, new sliceType([_arg$42, _arg$46])); /* */ $s = 39; case 39: if($c) { $c = false; _r$40 = _r$40.$blk(); } if (_r$40 && _r$40.$blk !== undefined) { break s; }
-			_arg$47 = _r$40;
-			_arg$48 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "div", $makeMap($String.keyFor, [{ k: "class", v: "wrap" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil);
-			_arg$49 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "h2", false, "", false, ptrType.nil, "", false, false, ptrType$1.nil);
-			_arg$50 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "small", $makeMap($String.keyFor, [{ k: "class", v: "label ml(4px)" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil);
-			_r$41 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "a", $makeMap($String.keyFor, [{ k: "href", v: "https://picturepan2.github.io/spectre" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([new $String("spectre css documentation")])); /* */ $s = 40; case 40: if($c) { $c = false; _r$41 = _r$41.$blk(); } if (_r$41 && _r$41.$blk !== undefined) { break s; }
-			_arg$51 = _r$41;
-			_r$42 = gas.NE(_arg$50, new sliceType([_arg$51])); /* */ $s = 41; case 41: if($c) { $c = false; _r$42 = _r$42.$blk(); } if (_r$42 && _r$42.$blk !== undefined) { break s; }
-			_arg$52 = _r$42;
-			_r$43 = gas.NE(_arg$49, new sliceType([new $String("Spectre css things"), _arg$52])); /* */ $s = 42; case 42: if($c) { $c = false; _r$43 = _r$43.$blk(); } if (_r$43 && _r$43.$blk !== undefined) { break s; }
-			_arg$53 = _r$43;
-			_r$44 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "button", $makeMap($String.keyFor, [{ k: "class", v: "btn m(8px)" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([new $String("default button")])); /* */ $s = 43; case 43: if($c) { $c = false; _r$44 = _r$44.$blk(); } if (_r$44 && _r$44.$blk !== undefined) { break s; }
-			_arg$54 = _r$44;
-			_r$45 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "br", false, "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([])); /* */ $s = 44; case 44: if($c) { $c = false; _r$45 = _r$45.$blk(); } if (_r$45 && _r$45.$blk !== undefined) { break s; }
-			_arg$55 = _r$45;
-			_r$46 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "span", $makeMap($String.keyFor, [{ k: "class", v: "label m(8px)" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([new $String("default label")])); /* */ $s = 45; case 45: if($c) { $c = false; _r$46 = _r$46.$blk(); } if (_r$46 && _r$46.$blk !== undefined) { break s; }
-			_arg$56 = _r$46;
-			_r$47 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "br", false, "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([])); /* */ $s = 46; case 46: if($c) { $c = false; _r$47 = _r$47.$blk(); } if (_r$47 && _r$47.$blk !== undefined) { break s; }
-			_arg$57 = _r$47;
-			_r$48 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "i", $makeMap($String.keyFor, [{ k: "class", v: "icon icon-3x icon-mail m(8px)" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([])); /* */ $s = 47; case 47: if($c) { $c = false; _r$48 = _r$48.$blk(); } if (_r$48 && _r$48.$blk !== undefined) { break s; }
-			_arg$58 = _r$48;
-			_r$49 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "br", false, "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([])); /* */ $s = 48; case 48: if($c) { $c = false; _r$49 = _r$49.$blk(); } if (_r$49 && _r$49.$blk !== undefined) { break s; }
-			_arg$59 = _r$49;
-			_arg$60 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "div", $makeMap($String.keyFor, [{ k: "class", v: "m(4px,8px)" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil);
-			_arg$61 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "ul", $makeMap($String.keyFor, [{ k: "class", v: "tab" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil);
-			_arg$62 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "li", $makeMap($String.keyFor, [{ k: "class", v: "tab-item active" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil);
-			_arg$63 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "a", $makeMap($String.keyFor, [{ k: "class", v: "cur(pointer)" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil);
-			_r$50 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "span", $makeMap($String.keyFor, [{ k: "class", v: "btn btn-clear" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([])); /* */ $s = 49; case 49: if($c) { $c = false; _r$50 = _r$50.$blk(); } if (_r$50 && _r$50.$blk !== undefined) { break s; }
-			_arg$64 = _r$50;
-			_r$51 = gas.NE(_arg$63, new sliceType([new $String("Music"), _arg$64])); /* */ $s = 50; case 50: if($c) { $c = false; _r$51 = _r$51.$blk(); } if (_r$51 && _r$51.$blk !== undefined) { break s; }
-			_arg$65 = _r$51;
-			_r$52 = gas.NE(_arg$62, new sliceType([_arg$65])); /* */ $s = 51; case 51: if($c) { $c = false; _r$52 = _r$52.$blk(); } if (_r$52 && _r$52.$blk !== undefined) { break s; }
-			_arg$66 = _r$52;
-			_arg$67 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "li", $makeMap($String.keyFor, [{ k: "class", v: "tab-item" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil);
-			_arg$68 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "a", $makeMap($String.keyFor, [{ k: "class", v: "cur(pointer)" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil);
-			_r$53 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "span", $makeMap($String.keyFor, [{ k: "class", v: "btn btn-clear" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([])); /* */ $s = 52; case 52: if($c) { $c = false; _r$53 = _r$53.$blk(); } if (_r$53 && _r$53.$blk !== undefined) { break s; }
-			_arg$69 = _r$53;
-			_r$54 = gas.NE(_arg$68, new sliceType([new $String("Radio"), _arg$69])); /* */ $s = 53; case 53: if($c) { $c = false; _r$54 = _r$54.$blk(); } if (_r$54 && _r$54.$blk !== undefined) { break s; }
-			_arg$70 = _r$54;
-			_r$55 = gas.NE(_arg$67, new sliceType([_arg$70])); /* */ $s = 54; case 54: if($c) { $c = false; _r$55 = _r$55.$blk(); } if (_r$55 && _r$55.$blk !== undefined) { break s; }
-			_arg$71 = _r$55;
-			_r$56 = gas.NE(_arg$61, new sliceType([_arg$66, _arg$71])); /* */ $s = 55; case 55: if($c) { $c = false; _r$56 = _r$56.$blk(); } if (_r$56 && _r$56.$blk !== undefined) { break s; }
-			_arg$72 = _r$56;
-			_r$57 = gas.NE(_arg$60, new sliceType([_arg$72])); /* */ $s = 56; case 56: if($c) { $c = false; _r$57 = _r$57.$blk(); } if (_r$57 && _r$57.$blk !== undefined) { break s; }
-			_arg$73 = _r$57;
-			_r$58 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "br", false, "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([])); /* */ $s = 57; case 57: if($c) { $c = false; _r$58 = _r$58.$blk(); } if (_r$58 && _r$58.$blk !== undefined) { break s; }
-			_arg$74 = _r$58;
-			_arg$75 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "div", false, "", false, ptrType.nil, "", false, false, ptrType$1.nil);
-			_arg$76 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "div", $makeMap($String.keyFor, [{ k: "class", v: "popover popover-right" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil);
-			_r$59 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "button", $makeMap($String.keyFor, [{ k: "class", v: "btn btn-primary" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([new $String("popover")])); /* */ $s = 58; case 58: if($c) { $c = false; _r$59 = _r$59.$blk(); } if (_r$59 && _r$59.$blk !== undefined) { break s; }
-			_arg$77 = _r$59;
-			_arg$78 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "div", $makeMap($String.keyFor, [{ k: "class", v: "popover-container" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil);
-			_arg$79 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "div", $makeMap($String.keyFor, [{ k: "class", v: "card" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil);
-			_arg$80 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "div", $makeMap($String.keyFor, [{ k: "class", v: "card-header" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil);
-			_r$60 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "div", $makeMap($String.keyFor, [{ k: "class", v: "card-title h5" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([new $String("Gas")])); /* */ $s = 59; case 59: if($c) { $c = false; _r$60 = _r$60.$blk(); } if (_r$60 && _r$60.$blk !== undefined) { break s; }
-			_arg$81 = _r$60;
-			_r$61 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "div", $makeMap($String.keyFor, [{ k: "class", v: "card-subtitle text-gray" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([new $String("Golang frontend framework")])); /* */ $s = 60; case 60: if($c) { $c = false; _r$61 = _r$61.$blk(); } if (_r$61 && _r$61.$blk !== undefined) { break s; }
-			_arg$82 = _r$61;
-			_r$62 = gas.NE(_arg$80, new sliceType([_arg$81, _arg$82])); /* */ $s = 61; case 61: if($c) { $c = false; _r$62 = _r$62.$blk(); } if (_r$62 && _r$62.$blk !== undefined) { break s; }
-			_arg$83 = _r$62;
-			_r$63 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "div", $makeMap($String.keyFor, [{ k: "class", v: "card-body" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([new $String("To create isomorphic golang applications")])); /* */ $s = 62; case 62: if($c) { $c = false; _r$63 = _r$63.$blk(); } if (_r$63 && _r$63.$blk !== undefined) { break s; }
-			_arg$84 = _r$63;
-			_arg$85 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "div", $makeMap($String.keyFor, [{ k: "class", v: "card-footer" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil);
-			_r$64 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "a", $makeMap($String.keyFor, [{ k: "class", v: "btn btn-primary" }, { k: "href", v: "https://gascore.github.io" }, { k: "target", v: "_blank" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([new $String("See more")])); /* */ $s = 63; case 63: if($c) { $c = false; _r$64 = _r$64.$blk(); } if (_r$64 && _r$64.$blk !== undefined) { break s; }
-			_arg$86 = _r$64;
-			_r$65 = gas.NE(_arg$85, new sliceType([_arg$86])); /* */ $s = 64; case 64: if($c) { $c = false; _r$65 = _r$65.$blk(); } if (_r$65 && _r$65.$blk !== undefined) { break s; }
-			_arg$87 = _r$65;
-			_r$66 = gas.NE(_arg$79, new sliceType([_arg$83, _arg$84, _arg$87])); /* */ $s = 65; case 65: if($c) { $c = false; _r$66 = _r$66.$blk(); } if (_r$66 && _r$66.$blk !== undefined) { break s; }
-			_arg$88 = _r$66;
-			_r$67 = gas.NE(_arg$78, new sliceType([_arg$88])); /* */ $s = 66; case 66: if($c) { $c = false; _r$67 = _r$67.$blk(); } if (_r$67 && _r$67.$blk !== undefined) { break s; }
-			_arg$89 = _r$67;
-			_r$68 = gas.NE(_arg$76, new sliceType([_arg$77, _arg$89])); /* */ $s = 67; case 67: if($c) { $c = false; _r$68 = _r$68.$blk(); } if (_r$68 && _r$68.$blk !== undefined) { break s; }
-			_arg$90 = _r$68;
-			_r$69 = gas.NE(_arg$75, new sliceType([_arg$90])); /* */ $s = 68; case 68: if($c) { $c = false; _r$69 = _r$69.$blk(); } if (_r$69 && _r$69.$blk !== undefined) { break s; }
-			_arg$91 = _r$69;
-			_r$70 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "br", false, "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([])); /* */ $s = 69; case 69: if($c) { $c = false; _r$70 = _r$70.$blk(); } if (_r$70 && _r$70.$blk !== undefined) { break s; }
-			_arg$92 = _r$70;
-			_arg$93 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "div", $makeMap($String.keyFor, [{ k: "class", v: "form-group w(40%) bd(1px,solid,#dedede) bdrs(4px) p(8px,16px)" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil);
-			_r$71 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "label", $makeMap($String.keyFor, [{ k: "class", v: "form-label" }, { k: "for", v: "input-example-1" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([new $String("Name")])); /* */ $s = 70; case 70: if($c) { $c = false; _r$71 = _r$71.$blk(); } if (_r$71 && _r$71.$blk !== undefined) { break s; }
-			_arg$94 = _r$71;
-			_r$72 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "input", $makeMap($String.keyFor, [{ k: "class", v: "form-input" }, { k: "type", v: "text" }, { k: "id", v: "input-example-1" }, { k: "placeholder", v: "Name" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([])); /* */ $s = 71; case 71: if($c) { $c = false; _r$72 = _r$72.$blk(); } if (_r$72 && _r$72.$blk !== undefined) { break s; }
-			_arg$95 = _r$72;
-			_r$73 = gas.NE(_arg$93, new sliceType([_arg$94, _arg$95])); /* */ $s = 72; case 72: if($c) { $c = false; _r$73 = _r$73.$blk(); } if (_r$73 && _r$73.$blk !== undefined) { break s; }
-			_arg$96 = _r$73;
-			_r$74 = gas.NE(_arg$48, new sliceType([_arg$53, _arg$54, _arg$55, _arg$56, _arg$57, _arg$58, _arg$59, _arg$73, _arg$74, _arg$91, _arg$92, _arg$96])); /* */ $s = 73; case 73: if($c) { $c = false; _r$74 = _r$74.$blk(); } if (_r$74 && _r$74.$blk !== undefined) { break s; }
-			_arg$97 = _r$74;
-			_r$75 = gas.NE(_arg, new sliceType([_arg$8, _arg$26, _arg$32, _arg$40, _arg$47, _arg$97])); /* */ $s = 74; case 74: if($c) { $c = false; _r$75 = _r$75.$blk(); } if (_r$75 && _r$75.$blk !== undefined) { break s; }
-			_r$76 = gas.ToGetComponentList(new sliceType([_r$75])); /* */ $s = 75; case 75: if($c) { $c = false; _r$76 = _r$76.$blk(); } if (_r$76 && _r$76.$blk !== undefined) { break s; }
-			$s = -1; return _r$76;
-			/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._arg = _arg; $f._arg$1 = _arg$1; $f._arg$10 = _arg$10; $f._arg$11 = _arg$11; $f._arg$12 = _arg$12; $f._arg$13 = _arg$13; $f._arg$14 = _arg$14; $f._arg$15 = _arg$15; $f._arg$16 = _arg$16; $f._arg$17 = _arg$17; $f._arg$18 = _arg$18; $f._arg$19 = _arg$19; $f._arg$2 = _arg$2; $f._arg$20 = _arg$20; $f._arg$21 = _arg$21; $f._arg$22 = _arg$22; $f._arg$23 = _arg$23; $f._arg$24 = _arg$24; $f._arg$25 = _arg$25; $f._arg$26 = _arg$26; $f._arg$27 = _arg$27; $f._arg$28 = _arg$28; $f._arg$29 = _arg$29; $f._arg$3 = _arg$3; $f._arg$30 = _arg$30; $f._arg$31 = _arg$31; $f._arg$32 = _arg$32; $f._arg$33 = _arg$33; $f._arg$34 = _arg$34; $f._arg$35 = _arg$35; $f._arg$36 = _arg$36; $f._arg$37 = _arg$37; $f._arg$38 = _arg$38; $f._arg$39 = _arg$39; $f._arg$4 = _arg$4; $f._arg$40 = _arg$40; $f._arg$41 = _arg$41; $f._arg$42 = _arg$42; $f._arg$43 = _arg$43; $f._arg$44 = _arg$44; $f._arg$45 = _arg$45; $f._arg$46 = _arg$46; $f._arg$47 = _arg$47; $f._arg$48 = _arg$48; $f._arg$49 = _arg$49; $f._arg$5 = _arg$5; $f._arg$50 = _arg$50; $f._arg$51 = _arg$51; $f._arg$52 = _arg$52; $f._arg$53 = _arg$53; $f._arg$54 = _arg$54; $f._arg$55 = _arg$55; $f._arg$56 = _arg$56; $f._arg$57 = _arg$57; $f._arg$58 = _arg$58; $f._arg$59 = _arg$59; $f._arg$6 = _arg$6; $f._arg$60 = _arg$60; $f._arg$61 = _arg$61; $f._arg$62 = _arg$62; $f._arg$63 = _arg$63; $f._arg$64 = _arg$64; $f._arg$65 = _arg$65; $f._arg$66 = _arg$66; $f._arg$67 = _arg$67; $f._arg$68 = _arg$68; $f._arg$69 = _arg$69; $f._arg$7 = _arg$7; $f._arg$70 = _arg$70; $f._arg$71 = _arg$71; $f._arg$72 = _arg$72; $f._arg$73 = _arg$73; $f._arg$74 = _arg$74; $f._arg$75 = _arg$75; $f._arg$76 = _arg$76; $f._arg$77 = _arg$77; $f._arg$78 = _arg$78; $f._arg$79 = _arg$79; $f._arg$8 = _arg$8; $f._arg$80 = _arg$80; $f._arg$81 = _arg$81; $f._arg$82 = _arg$82; $f._arg$83 = _arg$83; $f._arg$84 = _arg$84; $f._arg$85 = _arg$85; $f._arg$86 = _arg$86; $f._arg$87 = _arg$87; $f._arg$88 = _arg$88; $f._arg$89 = _arg$89; $f._arg$9 = _arg$9; $f._arg$90 = _arg$90; $f._arg$91 = _arg$91; $f._arg$92 = _arg$92; $f._arg$93 = _arg$93; $f._arg$94 = _arg$94; $f._arg$95 = _arg$95; $f._arg$96 = _arg$96; $f._arg$97 = _arg$97; $f._r$10 = _r$10; $f._r$11 = _r$11; $f._r$12 = _r$12; $f._r$13 = _r$13; $f._r$14 = _r$14; $f._r$15 = _r$15; $f._r$16 = _r$16; $f._r$17 = _r$17; $f._r$18 = _r$18; $f._r$19 = _r$19; $f._r$2 = _r$2; $f._r$20 = _r$20; $f._r$21 = _r$21; $f._r$22 = _r$22; $f._r$23 = _r$23; $f._r$24 = _r$24; $f._r$25 = _r$25; $f._r$26 = _r$26; $f._r$27 = _r$27; $f._r$28 = _r$28; $f._r$29 = _r$29; $f._r$3 = _r$3; $f._r$30 = _r$30; $f._r$31 = _r$31; $f._r$32 = _r$32; $f._r$33 = _r$33; $f._r$34 = _r$34; $f._r$35 = _r$35; $f._r$36 = _r$36; $f._r$37 = _r$37; $f._r$38 = _r$38; $f._r$39 = _r$39; $f._r$4 = _r$4; $f._r$40 = _r$40; $f._r$41 = _r$41; $f._r$42 = _r$42; $f._r$43 = _r$43; $f._r$44 = _r$44; $f._r$45 = _r$45; $f._r$46 = _r$46; $f._r$47 = _r$47; $f._r$48 = _r$48; $f._r$49 = _r$49; $f._r$5 = _r$5; $f._r$50 = _r$50; $f._r$51 = _r$51; $f._r$52 = _r$52; $f._r$53 = _r$53; $f._r$54 = _r$54; $f._r$55 = _r$55; $f._r$56 = _r$56; $f._r$57 = _r$57; $f._r$58 = _r$58; $f._r$59 = _r$59; $f._r$6 = _r$6; $f._r$60 = _r$60; $f._r$61 = _r$61; $f._r$62 = _r$62; $f._r$63 = _r$63; $f._r$64 = _r$64; $f._r$65 = _r$65; $f._r$66 = _r$66; $f._r$67 = _r$67; $f._r$68 = _r$68; $f._r$69 = _r$69; $f._r$7 = _r$7; $f._r$70 = _r$70; $f._r$71 = _r$71; $f._r$72 = _r$72; $f._r$73 = _r$73; $f._r$74 = _r$74; $f._r$75 = _r$75; $f._r$76 = _r$76; $f._r$8 = _r$8; $f._r$9 = _r$9; $f.this$1 = this$1; $f.$s = $s; $f.$r = $r; return $f;
+				_r$47 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, $makeMap($String.keyFor, [{ k: "style", v: (function(i, start, this$1) { return function $b() {
+					var _arg$55, _r$47, _r$48, x, x$1, $s, $r;
+					/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _arg$55 = $f._arg$55; _r$47 = $f._r$47; _r$48 = $f._r$48; x = $f.x; x$1 = $f.x$1; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+					_r$47 = this$1[0].Get("vItemsHeight"); /* */ $s = 1; case 1: if($c) { $c = false; _r$47 = _r$47.$blk(); } if (_r$47 && _r$47.$blk !== undefined) { break s; }
+					_arg$55 = new $Int((x = $assertType(_r$47, sliceType$4), x$1 = i[0] + start[0] >> 0, ((x$1 < 0 || x$1 >= x.$length) ? ($throwRuntimeError("index out of range"), undefined) : x.$array[x.$offset + x$1])));
+					_r$48 = fmt.Sprintf("height: %dpx;", new sliceType([_arg$55])); /* */ $s = 2; case 2: if($c) { $c = false; _r$48 = _r$48.$blk(); } if (_r$48 && _r$48.$blk !== undefined) { break s; }
+					$s = -1; return _r$48;
+					/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._arg$55 = _arg$55; $f._r$47 = _r$47; $f._r$48 = _r$48; $f.x = x; $f.x$1 = x$1; $f.$s = $s; $f.$r = $r; return $f;
+				}; })(i, start, this$1) }]), false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "div", $makeMap($String.keyFor, [{ k: "class", v: "p(.4em) bdt(b) bdb(b) w(100%)" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([new $String(""), new $String(item)])); /* */ $s = 1; case 1: if($c) { $c = false; _r$47 = _r$47.$blk(); } if (_r$47 && _r$47.$blk !== undefined) { break s; }
+				$s = -1; return new sliceType([_r$47]);
+				/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._r$47 = _r$47; $f.i = i; $f.item = item; $f.start = start; $f.values = values; $f.$s = $s; $f.$r = $r; return $f;
+			}; })(this$1) }]))); /* */ $s = 46; case 46: if($c) { $c = false; _r$47 = _r$47.$blk(); } if (_r$47 && _r$47.$blk !== undefined) { break s; }
+			_arg$55 = _r$47;
+			_r$48 = gas.NE(_arg$54, new sliceType([_arg$55])); /* */ $s = 47; case 47: if($c) { $c = false; _r$48 = _r$48.$blk(); } if (_r$48 && _r$48.$blk !== undefined) { break s; }
+			_arg$56 = _r$48;
+			_arg$57 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "div", $makeMap($String.keyFor, [{ k: "class", v: "vlist-wrap h(15vw) w(100%) bd(b)" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil);
+			_r$49 = this$1[0].Method("vListConfig2", new sliceType([])); /* */ $s = 48; case 48: if($c) { $c = false; _r$49 = _r$49.$blk(); } if (_r$49 && _r$49.$blk !== undefined) { break s; }
+			_r$50 = vlist.List($assertType(_r$49, ptrType$3), new gas.External.ptr(sliceType.nil, false, $makeMap($String.keyFor, [{ k: "item", v: (function(this$1) { return function $b(values) {
+				var _r$50, i, item, start, values, $s, $r;
+				/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r$50 = $f._r$50; i = $f.i; item = $f.item; start = $f.start; values = $f.values; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+				i = [i];
+				start = [start];
+				i[0] = $assertType((0 >= values.$length ? ($throwRuntimeError("index out of range"), undefined) : values.$array[values.$offset + 0]), $Int);
+				item = $assertType((1 >= values.$length ? ($throwRuntimeError("index out of range"), undefined) : values.$array[values.$offset + 1]), $String);
+				start[0] = $assertType((2 >= values.$length ? ($throwRuntimeError("index out of range"), undefined) : values.$array[values.$offset + 2]), $Int);
+				_r$50 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, $makeMap($String.keyFor, [{ k: "style", v: (function(i, start, this$1) { return function $b() {
+					var _arg$58, _r$50, _r$51, x, x$1, $s, $r;
+					/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _arg$58 = $f._arg$58; _r$50 = $f._r$50; _r$51 = $f._r$51; x = $f.x; x$1 = $f.x$1; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+					_r$50 = this$1[0].Get("vItemsHeight"); /* */ $s = 1; case 1: if($c) { $c = false; _r$50 = _r$50.$blk(); } if (_r$50 && _r$50.$blk !== undefined) { break s; }
+					_arg$58 = new $Int(($imul((x = $assertType(_r$50, sliceType$4), x$1 = i[0] + start[0] >> 0, ((x$1 < 0 || x$1 >= x.$length) ? ($throwRuntimeError("index out of range"), undefined) : x.$array[x.$offset + x$1])), 2)));
+					_r$51 = fmt.Sprintf("width: %dpx;", new sliceType([_arg$58])); /* */ $s = 2; case 2: if($c) { $c = false; _r$51 = _r$51.$blk(); } if (_r$51 && _r$51.$blk !== undefined) { break s; }
+					$s = -1; return _r$51;
+					/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._arg$58 = _arg$58; $f._r$50 = _r$50; $f._r$51 = _r$51; $f.x = x; $f.x$1 = x$1; $f.$s = $s; $f.$r = $r; return $f;
+				}; })(i, start, this$1) }]), false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "li", $makeMap($String.keyFor, [{ k: "class", v: "p(.4em) bdr(b) bdl(b) h(100%)" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([new $String(""), new $String(item)])); /* */ $s = 1; case 1: if($c) { $c = false; _r$50 = _r$50.$blk(); } if (_r$50 && _r$50.$blk !== undefined) { break s; }
+				$s = -1; return new sliceType([_r$50]);
+				/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._r$50 = _r$50; $f.i = i; $f.item = item; $f.start = start; $f.values = values; $f.$s = $s; $f.$r = $r; return $f;
+			}; })(this$1) }]))); /* */ $s = 49; case 49: if($c) { $c = false; _r$50 = _r$50.$blk(); } if (_r$50 && _r$50.$blk !== undefined) { break s; }
+			_arg$58 = _r$50;
+			_r$51 = gas.NE(_arg$57, new sliceType([_arg$58])); /* */ $s = 50; case 50: if($c) { $c = false; _r$51 = _r$51.$blk(); } if (_r$51 && _r$51.$blk !== undefined) { break s; }
+			_arg$59 = _r$51;
+			_r$52 = gas.NE(_arg$53, new sliceType([_arg$56, _arg$59])); /* */ $s = 51; case 51: if($c) { $c = false; _r$52 = _r$52.$blk(); } if (_r$52 && _r$52.$blk !== undefined) { break s; }
+			_arg$60 = _r$52;
+			_r$53 = gas.NE(_arg$51, new sliceType([_arg$52, _arg$60])); /* */ $s = 52; case 52: if($c) { $c = false; _r$53 = _r$53.$blk(); } if (_r$53 && _r$53.$blk !== undefined) { break s; }
+			_arg$61 = _r$53;
+			_arg$62 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "div", $makeMap($String.keyFor, [{ k: "class", v: "wrap" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil);
+			_r$54 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "header", $makeMap($String.keyFor, [{ k: "class", v: "wrap-title" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([new $String("\n                Drag and drop linked lists\n            ")])); /* */ $s = 53; case 53: if($c) { $c = false; _r$54 = _r$54.$blk(); } if (_r$54 && _r$54.$blk !== undefined) { break s; }
+			_arg$63 = _r$54;
+			_arg$64 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "div", $makeMap($String.keyFor, [{ k: "class", v: "wrap-body" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil);
+			_arg$65 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "div", $makeMap($String.keyFor, [{ k: "id", v: "dnds" }, { k: "class", v: "d(inline-block) p(0)" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil);
+			_arg$66 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "div", $makeMap($String.keyFor, [{ k: "id", v: "dnd1" }, { k: "class", v: "p(0)" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil);
+			_r$55 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "h3", false, "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([new $String("\n                            To do\n                        ")])); /* */ $s = 54; case 54: if($c) { $c = false; _r$55 = _r$55.$blk(); } if (_r$55 && _r$55.$blk !== undefined) { break s; }
+			_arg$67 = _r$55;
+			_r$56 = this$1[0].Method("dndListsConfig", new sliceType([])); /* */ $s = 55; case 55: if($c) { $c = false; _r$56 = _r$56.$blk(); } if (_r$56 && _r$56.$blk !== undefined) { break s; }
+			_arg$68 = $clone($assertType(_r$56, dnd.Config), dnd.Config);
+			_r$57 = gas.NewFor("dndTodo", this$1[0], (function(this$1) { return function $b(i, item) {
+				var _r$57, i, item, $s, $r;
+				/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r$57 = $f._r$57; i = $f.i; item = $f.item; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+				_r$57 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "div", $makeMap($String.keyFor, [{ k: "class", v: "dnd-item" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([new $String(""), item])); /* */ $s = 1; case 1: if($c) { $c = false; _r$57 = _r$57.$blk(); } if (_r$57 && _r$57.$blk !== undefined) { break s; }
+				$s = -1; return _r$57;
+				/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._r$57 = _r$57; $f.i = i; $f.item = item; $f.$s = $s; $f.$r = $r; return $f;
+			}; })(this$1)); /* */ $s = 56; case 56: if($c) { $c = false; _r$57 = _r$57.$blk(); } if (_r$57 && _r$57.$blk !== undefined) { break s; }
+			_arg$69 = new gas.External.ptr(new sliceType([_r$57]), false, false);
+			_r$58 = dnd.Lists(_arg$68, _arg$69); /* */ $s = 57; case 57: if($c) { $c = false; _r$58 = _r$58.$blk(); } if (_r$58 && _r$58.$blk !== undefined) { break s; }
+			_arg$70 = _r$58;
+			_r$59 = gas.NE(_arg$66, new sliceType([_arg$67, _arg$70])); /* */ $s = 58; case 58: if($c) { $c = false; _r$59 = _r$59.$blk(); } if (_r$59 && _r$59.$blk !== undefined) { break s; }
+			_arg$71 = _r$59;
+			_arg$72 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "div", $makeMap($String.keyFor, [{ k: "id", v: "dnd2" }, { k: "class", v: "p(0)" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil);
+			_r$60 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "h3", false, "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([new $String("\n                            In progress\n                        ")])); /* */ $s = 59; case 59: if($c) { $c = false; _r$60 = _r$60.$blk(); } if (_r$60 && _r$60.$blk !== undefined) { break s; }
+			_arg$73 = _r$60;
+			_r$61 = this$1[0].Method("dndListsConfig2", new sliceType([])); /* */ $s = 60; case 60: if($c) { $c = false; _r$61 = _r$61.$blk(); } if (_r$61 && _r$61.$blk !== undefined) { break s; }
+			_arg$74 = $clone($assertType(_r$61, dnd.Config), dnd.Config);
+			_r$62 = gas.NewFor("dndInprogress", this$1[0], (function(this$1) { return function $b(i, item) {
+				var _r$62, i, item, $s, $r;
+				/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r$62 = $f._r$62; i = $f.i; item = $f.item; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+				_r$62 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "div", $makeMap($String.keyFor, [{ k: "class", v: "dnd-item" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([new $String(""), item])); /* */ $s = 1; case 1: if($c) { $c = false; _r$62 = _r$62.$blk(); } if (_r$62 && _r$62.$blk !== undefined) { break s; }
+				$s = -1; return _r$62;
+				/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._r$62 = _r$62; $f.i = i; $f.item = item; $f.$s = $s; $f.$r = $r; return $f;
+			}; })(this$1)); /* */ $s = 61; case 61: if($c) { $c = false; _r$62 = _r$62.$blk(); } if (_r$62 && _r$62.$blk !== undefined) { break s; }
+			_arg$75 = new gas.External.ptr(new sliceType([_r$62]), false, false);
+			_r$63 = dnd.Lists(_arg$74, _arg$75); /* */ $s = 62; case 62: if($c) { $c = false; _r$63 = _r$63.$blk(); } if (_r$63 && _r$63.$blk !== undefined) { break s; }
+			_arg$76 = _r$63;
+			_r$64 = gas.NE(_arg$72, new sliceType([_arg$73, _arg$76])); /* */ $s = 63; case 63: if($c) { $c = false; _r$64 = _r$64.$blk(); } if (_r$64 && _r$64.$blk !== undefined) { break s; }
+			_arg$77 = _r$64;
+			_arg$78 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "div", $makeMap($String.keyFor, [{ k: "id", v: "dnd3" }, { k: "class", v: "p(0)" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil);
+			_r$65 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "h3", false, "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([new $String("\n                            Done\n                        ")])); /* */ $s = 64; case 64: if($c) { $c = false; _r$65 = _r$65.$blk(); } if (_r$65 && _r$65.$blk !== undefined) { break s; }
+			_arg$79 = _r$65;
+			_r$66 = this$1[0].Method("dndListsConfig3", new sliceType([])); /* */ $s = 65; case 65: if($c) { $c = false; _r$66 = _r$66.$blk(); } if (_r$66 && _r$66.$blk !== undefined) { break s; }
+			_arg$80 = $clone($assertType(_r$66, dnd.Config), dnd.Config);
+			_r$67 = gas.NewFor("dndDone", this$1[0], (function(this$1) { return function $b(i, item) {
+				var _r$67, i, item, $s, $r;
+				/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r$67 = $f._r$67; i = $f.i; item = $f.item; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+				_r$67 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "div", $makeMap($String.keyFor, [{ k: "class", v: "dnd-item" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([new $String(""), item])); /* */ $s = 1; case 1: if($c) { $c = false; _r$67 = _r$67.$blk(); } if (_r$67 && _r$67.$blk !== undefined) { break s; }
+				$s = -1; return _r$67;
+				/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._r$67 = _r$67; $f.i = i; $f.item = item; $f.$s = $s; $f.$r = $r; return $f;
+			}; })(this$1)); /* */ $s = 66; case 66: if($c) { $c = false; _r$67 = _r$67.$blk(); } if (_r$67 && _r$67.$blk !== undefined) { break s; }
+			_arg$81 = new gas.External.ptr(new sliceType([_r$67]), false, false);
+			_r$68 = dnd.Lists(_arg$80, _arg$81); /* */ $s = 67; case 67: if($c) { $c = false; _r$68 = _r$68.$blk(); } if (_r$68 && _r$68.$blk !== undefined) { break s; }
+			_arg$82 = _r$68;
+			_r$69 = gas.NE(_arg$78, new sliceType([_arg$79, _arg$82])); /* */ $s = 68; case 68: if($c) { $c = false; _r$69 = _r$69.$blk(); } if (_r$69 && _r$69.$blk !== undefined) { break s; }
+			_arg$83 = _r$69;
+			_arg$84 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "div", $makeMap($String.keyFor, [{ k: "id", v: "dndLipsum" }, { k: "class", v: "p(0)" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil);
+			_r$70 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "h3", false, "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([new $String("\n                            Lipsum\n                        ")])); /* */ $s = 69; case 69: if($c) { $c = false; _r$70 = _r$70.$blk(); } if (_r$70 && _r$70.$blk !== undefined) { break s; }
+			_arg$85 = _r$70;
+			_r$71 = this$1[0].Method("dndListsConfigA", new sliceType([])); /* */ $s = 70; case 70: if($c) { $c = false; _r$71 = _r$71.$blk(); } if (_r$71 && _r$71.$blk !== undefined) { break s; }
+			_arg$86 = $clone($assertType(_r$71, dnd.Config), dnd.Config);
+			_r$72 = gas.NewFor("lipsumTasks", this$1[0], (function(this$1) { return function $b(i, item) {
+				var _r$72, i, item, $s, $r;
+				/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; _r$72 = $f._r$72; i = $f.i; item = $f.item; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+				_r$72 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "div", $makeMap($String.keyFor, [{ k: "class", v: "dnd-item" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([new $String(""), item])); /* */ $s = 1; case 1: if($c) { $c = false; _r$72 = _r$72.$blk(); } if (_r$72 && _r$72.$blk !== undefined) { break s; }
+				$s = -1; return _r$72;
+				/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._r$72 = _r$72; $f.i = i; $f.item = item; $f.$s = $s; $f.$r = $r; return $f;
+			}; })(this$1)); /* */ $s = 71; case 71: if($c) { $c = false; _r$72 = _r$72.$blk(); } if (_r$72 && _r$72.$blk !== undefined) { break s; }
+			_arg$87 = new gas.External.ptr(new sliceType([_r$72]), false, false);
+			_r$73 = dnd.Lists(_arg$86, _arg$87); /* */ $s = 72; case 72: if($c) { $c = false; _r$73 = _r$73.$blk(); } if (_r$73 && _r$73.$blk !== undefined) { break s; }
+			_arg$88 = _r$73;
+			_r$74 = gas.NE(_arg$84, new sliceType([_arg$85, _arg$88])); /* */ $s = 73; case 73: if($c) { $c = false; _r$74 = _r$74.$blk(); } if (_r$74 && _r$74.$blk !== undefined) { break s; }
+			_arg$89 = _r$74;
+			_r$75 = gas.NE(_arg$65, new sliceType([_arg$71, _arg$77, _arg$83, _arg$89])); /* */ $s = 74; case 74: if($c) { $c = false; _r$75 = _r$75.$blk(); } if (_r$75 && _r$75.$blk !== undefined) { break s; }
+			_arg$90 = _r$75;
+			_r$76 = gas.NE(_arg$64, new sliceType([_arg$90])); /* */ $s = 75; case 75: if($c) { $c = false; _r$76 = _r$76.$blk(); } if (_r$76 && _r$76.$blk !== undefined) { break s; }
+			_arg$91 = _r$76;
+			_r$77 = gas.NE(_arg$62, new sliceType([_arg$63, _arg$91])); /* */ $s = 76; case 76: if($c) { $c = false; _r$77 = _r$77.$blk(); } if (_r$77 && _r$77.$blk !== undefined) { break s; }
+			_arg$92 = _r$77;
+			_arg$93 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "div", $makeMap($String.keyFor, [{ k: "class", v: "wrap" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil);
+			_r$78 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "header", $makeMap($String.keyFor, [{ k: "class", v: "wrap-title" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([new $String("\n                Tree\n            ")])); /* */ $s = 77; case 77: if($c) { $c = false; _r$78 = _r$78.$blk(); } if (_r$78 && _r$78.$blk !== undefined) { break s; }
+			_arg$94 = _r$78;
+			_arg$95 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "div", $makeMap($String.keyFor, [{ k: "class", v: "wrap-body" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil);
+			_arg$96 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "div", $makeMap($String.keyFor, [{ k: "id", v: "trees" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil);
+			_r$79 = this$1[0].Method("getFirstTree", new sliceType([])); /* */ $s = 78; case 78: if($c) { $c = false; _r$79 = _r$79.$blk(); } if (_r$79 && _r$79.$blk !== undefined) { break s; }
+			_r$80 = tree.GetTree($clone($assertType(_r$79, tree.Config), tree.Config)); /* */ $s = 79; case 79: if($c) { $c = false; _r$80 = _r$80.$blk(); } if (_r$80 && _r$80.$blk !== undefined) { break s; }
+			_arg$97 = _r$80;
+			_r$81 = this$1[0].Method("getSecondTree", new sliceType([])); /* */ $s = 80; case 80: if($c) { $c = false; _r$81 = _r$81.$blk(); } if (_r$81 && _r$81.$blk !== undefined) { break s; }
+			_r$82 = tree.GetTree($clone($assertType(_r$81, tree.Config), tree.Config)); /* */ $s = 81; case 81: if($c) { $c = false; _r$82 = _r$82.$blk(); } if (_r$82 && _r$82.$blk !== undefined) { break s; }
+			_arg$98 = _r$82;
+			_r$83 = gas.NE(_arg$96, new sliceType([_arg$97, _arg$98])); /* */ $s = 82; case 82: if($c) { $c = false; _r$83 = _r$83.$blk(); } if (_r$83 && _r$83.$blk !== undefined) { break s; }
+			_arg$99 = _r$83;
+			_r$84 = gas.NE(_arg$95, new sliceType([_arg$99])); /* */ $s = 83; case 83: if($c) { $c = false; _r$84 = _r$84.$blk(); } if (_r$84 && _r$84.$blk !== undefined) { break s; }
+			_arg$100 = _r$84;
+			_r$85 = gas.NE(_arg$93, new sliceType([_arg$94, _arg$100])); /* */ $s = 84; case 84: if($c) { $c = false; _r$85 = _r$85.$blk(); } if (_r$85 && _r$85.$blk !== undefined) { break s; }
+			_arg$101 = _r$85;
+			_arg$102 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "div", $makeMap($String.keyFor, [{ k: "class", v: "wrap" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil);
+			_arg$103 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "header", $makeMap($String.keyFor, [{ k: "class", v: "wrap-title" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil);
+			_arg$104 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "small", $makeMap($String.keyFor, [{ k: "class", v: "label ml(4px)" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil);
+			_r$86 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "a", $makeMap($String.keyFor, [{ k: "href", v: "https://picturepan2.github.io/spectre" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([new $String("\n                        spectre css documentation\n                    ")])); /* */ $s = 85; case 85: if($c) { $c = false; _r$86 = _r$86.$blk(); } if (_r$86 && _r$86.$blk !== undefined) { break s; }
+			_arg$105 = _r$86;
+			_r$87 = gas.NE(_arg$104, new sliceType([_arg$105])); /* */ $s = 86; case 86: if($c) { $c = false; _r$87 = _r$87.$blk(); } if (_r$87 && _r$87.$blk !== undefined) { break s; }
+			_arg$106 = _r$87;
+			_r$88 = gas.NE(_arg$103, new sliceType([new $String("\n                Spectre css things\n                "), _arg$106])); /* */ $s = 87; case 87: if($c) { $c = false; _r$88 = _r$88.$blk(); } if (_r$88 && _r$88.$blk !== undefined) { break s; }
+			_arg$107 = _r$88;
+			_arg$108 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "div", $makeMap($String.keyFor, [{ k: "class", v: "wrap-body" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil);
+			_r$89 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "button", $makeMap($String.keyFor, [{ k: "class", v: "btn m(8px)" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([new $String("default button")])); /* */ $s = 88; case 88: if($c) { $c = false; _r$89 = _r$89.$blk(); } if (_r$89 && _r$89.$blk !== undefined) { break s; }
+			_arg$109 = _r$89;
+			_r$90 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "br", false, "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([])); /* */ $s = 89; case 89: if($c) { $c = false; _r$90 = _r$90.$blk(); } if (_r$90 && _r$90.$blk !== undefined) { break s; }
+			_arg$110 = _r$90;
+			_r$91 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "span", $makeMap($String.keyFor, [{ k: "class", v: "label m(8px)" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([new $String("default label")])); /* */ $s = 90; case 90: if($c) { $c = false; _r$91 = _r$91.$blk(); } if (_r$91 && _r$91.$blk !== undefined) { break s; }
+			_arg$111 = _r$91;
+			_r$92 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "br", false, "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([])); /* */ $s = 91; case 91: if($c) { $c = false; _r$92 = _r$92.$blk(); } if (_r$92 && _r$92.$blk !== undefined) { break s; }
+			_arg$112 = _r$92;
+			_r$93 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "i", $makeMap($String.keyFor, [{ k: "class", v: "icon icon-3x icon-mail m(8px)" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([])); /* */ $s = 92; case 92: if($c) { $c = false; _r$93 = _r$93.$blk(); } if (_r$93 && _r$93.$blk !== undefined) { break s; }
+			_arg$113 = _r$93;
+			_r$94 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "br", false, "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([])); /* */ $s = 93; case 93: if($c) { $c = false; _r$94 = _r$94.$blk(); } if (_r$94 && _r$94.$blk !== undefined) { break s; }
+			_arg$114 = _r$94;
+			_arg$115 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "div", $makeMap($String.keyFor, [{ k: "class", v: "m(4px,8px)" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil);
+			_arg$116 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "ul", $makeMap($String.keyFor, [{ k: "class", v: "tab" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil);
+			_arg$117 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "li", $makeMap($String.keyFor, [{ k: "class", v: "tab-item active" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil);
+			_arg$118 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "a", $makeMap($String.keyFor, [{ k: "class", v: "cur(pointer)" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil);
+			_r$95 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "span", $makeMap($String.keyFor, [{ k: "class", v: "btn btn-clear" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([])); /* */ $s = 94; case 94: if($c) { $c = false; _r$95 = _r$95.$blk(); } if (_r$95 && _r$95.$blk !== undefined) { break s; }
+			_arg$119 = _r$95;
+			_r$96 = gas.NE(_arg$118, new sliceType([new $String("\n                                Music\n                                "), _arg$119])); /* */ $s = 95; case 95: if($c) { $c = false; _r$96 = _r$96.$blk(); } if (_r$96 && _r$96.$blk !== undefined) { break s; }
+			_arg$120 = _r$96;
+			_r$97 = gas.NE(_arg$117, new sliceType([_arg$120])); /* */ $s = 96; case 96: if($c) { $c = false; _r$97 = _r$97.$blk(); } if (_r$97 && _r$97.$blk !== undefined) { break s; }
+			_arg$121 = _r$97;
+			_arg$122 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "li", $makeMap($String.keyFor, [{ k: "class", v: "tab-item" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil);
+			_arg$123 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "a", $makeMap($String.keyFor, [{ k: "class", v: "cur(pointer)" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil);
+			_r$98 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "span", $makeMap($String.keyFor, [{ k: "class", v: "btn btn-clear" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([])); /* */ $s = 97; case 97: if($c) { $c = false; _r$98 = _r$98.$blk(); } if (_r$98 && _r$98.$blk !== undefined) { break s; }
+			_arg$124 = _r$98;
+			_r$99 = gas.NE(_arg$123, new sliceType([new $String("\n                                Radio\n                                "), _arg$124])); /* */ $s = 98; case 98: if($c) { $c = false; _r$99 = _r$99.$blk(); } if (_r$99 && _r$99.$blk !== undefined) { break s; }
+			_arg$125 = _r$99;
+			_r$100 = gas.NE(_arg$122, new sliceType([_arg$125])); /* */ $s = 99; case 99: if($c) { $c = false; _r$100 = _r$100.$blk(); } if (_r$100 && _r$100.$blk !== undefined) { break s; }
+			_arg$126 = _r$100;
+			_r$101 = gas.NE(_arg$116, new sliceType([_arg$121, _arg$126])); /* */ $s = 100; case 100: if($c) { $c = false; _r$101 = _r$101.$blk(); } if (_r$101 && _r$101.$blk !== undefined) { break s; }
+			_arg$127 = _r$101;
+			_r$102 = gas.NE(_arg$115, new sliceType([_arg$127])); /* */ $s = 101; case 101: if($c) { $c = false; _r$102 = _r$102.$blk(); } if (_r$102 && _r$102.$blk !== undefined) { break s; }
+			_arg$128 = _r$102;
+			_r$103 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "br", false, "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([])); /* */ $s = 102; case 102: if($c) { $c = false; _r$103 = _r$103.$blk(); } if (_r$103 && _r$103.$blk !== undefined) { break s; }
+			_arg$129 = _r$103;
+			_arg$130 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "div", false, "", false, ptrType.nil, "", false, false, ptrType$1.nil);
+			_arg$131 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "div", $makeMap($String.keyFor, [{ k: "class", v: "popover popover-right" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil);
+			_r$104 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "button", $makeMap($String.keyFor, [{ k: "class", v: "btn btn-primary" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([new $String("popover")])); /* */ $s = 103; case 103: if($c) { $c = false; _r$104 = _r$104.$blk(); } if (_r$104 && _r$104.$blk !== undefined) { break s; }
+			_arg$132 = _r$104;
+			_arg$133 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "div", $makeMap($String.keyFor, [{ k: "class", v: "popover-container" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil);
+			_arg$134 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "div", $makeMap($String.keyFor, [{ k: "class", v: "card" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil);
+			_arg$135 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "div", $makeMap($String.keyFor, [{ k: "class", v: "card-header" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil);
+			_r$105 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "div", $makeMap($String.keyFor, [{ k: "class", v: "card-title h5" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([new $String("Gas")])); /* */ $s = 104; case 104: if($c) { $c = false; _r$105 = _r$105.$blk(); } if (_r$105 && _r$105.$blk !== undefined) { break s; }
+			_arg$136 = _r$105;
+			_r$106 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "div", $makeMap($String.keyFor, [{ k: "class", v: "card-subtitle text-gray" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([new $String("Golang frontend framework")])); /* */ $s = 105; case 105: if($c) { $c = false; _r$106 = _r$106.$blk(); } if (_r$106 && _r$106.$blk !== undefined) { break s; }
+			_arg$137 = _r$106;
+			_r$107 = gas.NE(_arg$135, new sliceType([_arg$136, _arg$137])); /* */ $s = 106; case 106: if($c) { $c = false; _r$107 = _r$107.$blk(); } if (_r$107 && _r$107.$blk !== undefined) { break s; }
+			_arg$138 = _r$107;
+			_r$108 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "div", $makeMap($String.keyFor, [{ k: "class", v: "card-body" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([new $String("To create isomorphic golang applications")])); /* */ $s = 107; case 107: if($c) { $c = false; _r$108 = _r$108.$blk(); } if (_r$108 && _r$108.$blk !== undefined) { break s; }
+			_arg$139 = _r$108;
+			_arg$140 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "div", $makeMap($String.keyFor, [{ k: "class", v: "card-footer" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil);
+			_r$109 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "a", $makeMap($String.keyFor, [{ k: "class", v: "btn btn-primary" }, { k: "href", v: "https://gascore.github.io" }, { k: "target", v: "_blank" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([new $String("\n                                        See more\n                                    ")])); /* */ $s = 108; case 108: if($c) { $c = false; _r$109 = _r$109.$blk(); } if (_r$109 && _r$109.$blk !== undefined) { break s; }
+			_arg$141 = _r$109;
+			_r$110 = gas.NE(_arg$140, new sliceType([_arg$141])); /* */ $s = 109; case 109: if($c) { $c = false; _r$110 = _r$110.$blk(); } if (_r$110 && _r$110.$blk !== undefined) { break s; }
+			_arg$142 = _r$110;
+			_r$111 = gas.NE(_arg$134, new sliceType([_arg$138, _arg$139, _arg$142])); /* */ $s = 110; case 110: if($c) { $c = false; _r$111 = _r$111.$blk(); } if (_r$111 && _r$111.$blk !== undefined) { break s; }
+			_arg$143 = _r$111;
+			_r$112 = gas.NE(_arg$133, new sliceType([_arg$143])); /* */ $s = 111; case 111: if($c) { $c = false; _r$112 = _r$112.$blk(); } if (_r$112 && _r$112.$blk !== undefined) { break s; }
+			_arg$144 = _r$112;
+			_r$113 = gas.NE(_arg$131, new sliceType([_arg$132, _arg$144])); /* */ $s = 112; case 112: if($c) { $c = false; _r$113 = _r$113.$blk(); } if (_r$113 && _r$113.$blk !== undefined) { break s; }
+			_arg$145 = _r$113;
+			_r$114 = gas.NE(_arg$130, new sliceType([_arg$145])); /* */ $s = 113; case 113: if($c) { $c = false; _r$114 = _r$114.$blk(); } if (_r$114 && _r$114.$blk !== undefined) { break s; }
+			_arg$146 = _r$114;
+			_r$115 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "br", false, "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([])); /* */ $s = 114; case 114: if($c) { $c = false; _r$115 = _r$115.$blk(); } if (_r$115 && _r$115.$blk !== undefined) { break s; }
+			_arg$147 = _r$115;
+			_arg$148 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "div", $makeMap($String.keyFor, [{ k: "class", v: "form-group w(40%) bd(1px,solid,#ccc) bdrs(4px) p(8px,16px)" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil);
+			_r$116 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "label", $makeMap($String.keyFor, [{ k: "class", v: "form-label" }, { k: "for", v: "input-example-1" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([new $String("Name")])); /* */ $s = 115; case 115: if($c) { $c = false; _r$116 = _r$116.$blk(); } if (_r$116 && _r$116.$blk !== undefined) { break s; }
+			_arg$149 = _r$116;
+			_r$117 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "input", $makeMap($String.keyFor, [{ k: "class", v: "form-input" }, { k: "type", v: "text" }, { k: "id", v: "input-example-1" }, { k: "placeholder", v: "Name" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([])); /* */ $s = 116; case 116: if($c) { $c = false; _r$117 = _r$117.$blk(); } if (_r$117 && _r$117.$blk !== undefined) { break s; }
+			_arg$150 = _r$117;
+			_r$118 = gas.NE(_arg$148, new sliceType([_arg$149, _arg$150])); /* */ $s = 117; case 117: if($c) { $c = false; _r$118 = _r$118.$blk(); } if (_r$118 && _r$118.$blk !== undefined) { break s; }
+			_arg$151 = _r$118;
+			_r$119 = gas.NE(_arg$108, new sliceType([_arg$109, _arg$110, _arg$111, _arg$112, _arg$113, _arg$114, _arg$128, _arg$129, _arg$146, _arg$147, _arg$151])); /* */ $s = 118; case 118: if($c) { $c = false; _r$119 = _r$119.$blk(); } if (_r$119 && _r$119.$blk !== undefined) { break s; }
+			_arg$152 = _r$119;
+			_r$120 = gas.NE(_arg$102, new sliceType([_arg$107, _arg$152])); /* */ $s = 119; case 119: if($c) { $c = false; _r$120 = _r$120.$blk(); } if (_r$120 && _r$120.$blk !== undefined) { break s; }
+			_arg$153 = _r$120;
+			_r$121 = gas.NE(_arg, new sliceType([_arg$18, _arg$38, _arg$50, _arg$61, _arg$92, _arg$101, _arg$153])); /* */ $s = 120; case 120: if($c) { $c = false; _r$121 = _r$121.$blk(); } if (_r$121 && _r$121.$blk !== undefined) { break s; }
+			_r$122 = gas.ToGetComponentList(new sliceType([_r$121])); /* */ $s = 121; case 121: if($c) { $c = false; _r$122 = _r$122.$blk(); } if (_r$122 && _r$122.$blk !== undefined) { break s; }
+			$s = -1; return _r$122;
+			/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._arg = _arg; $f._arg$1 = _arg$1; $f._arg$10 = _arg$10; $f._arg$100 = _arg$100; $f._arg$101 = _arg$101; $f._arg$102 = _arg$102; $f._arg$103 = _arg$103; $f._arg$104 = _arg$104; $f._arg$105 = _arg$105; $f._arg$106 = _arg$106; $f._arg$107 = _arg$107; $f._arg$108 = _arg$108; $f._arg$109 = _arg$109; $f._arg$11 = _arg$11; $f._arg$110 = _arg$110; $f._arg$111 = _arg$111; $f._arg$112 = _arg$112; $f._arg$113 = _arg$113; $f._arg$114 = _arg$114; $f._arg$115 = _arg$115; $f._arg$116 = _arg$116; $f._arg$117 = _arg$117; $f._arg$118 = _arg$118; $f._arg$119 = _arg$119; $f._arg$12 = _arg$12; $f._arg$120 = _arg$120; $f._arg$121 = _arg$121; $f._arg$122 = _arg$122; $f._arg$123 = _arg$123; $f._arg$124 = _arg$124; $f._arg$125 = _arg$125; $f._arg$126 = _arg$126; $f._arg$127 = _arg$127; $f._arg$128 = _arg$128; $f._arg$129 = _arg$129; $f._arg$13 = _arg$13; $f._arg$130 = _arg$130; $f._arg$131 = _arg$131; $f._arg$132 = _arg$132; $f._arg$133 = _arg$133; $f._arg$134 = _arg$134; $f._arg$135 = _arg$135; $f._arg$136 = _arg$136; $f._arg$137 = _arg$137; $f._arg$138 = _arg$138; $f._arg$139 = _arg$139; $f._arg$14 = _arg$14; $f._arg$140 = _arg$140; $f._arg$141 = _arg$141; $f._arg$142 = _arg$142; $f._arg$143 = _arg$143; $f._arg$144 = _arg$144; $f._arg$145 = _arg$145; $f._arg$146 = _arg$146; $f._arg$147 = _arg$147; $f._arg$148 = _arg$148; $f._arg$149 = _arg$149; $f._arg$15 = _arg$15; $f._arg$150 = _arg$150; $f._arg$151 = _arg$151; $f._arg$152 = _arg$152; $f._arg$153 = _arg$153; $f._arg$16 = _arg$16; $f._arg$17 = _arg$17; $f._arg$18 = _arg$18; $f._arg$19 = _arg$19; $f._arg$2 = _arg$2; $f._arg$20 = _arg$20; $f._arg$21 = _arg$21; $f._arg$22 = _arg$22; $f._arg$23 = _arg$23; $f._arg$24 = _arg$24; $f._arg$25 = _arg$25; $f._arg$26 = _arg$26; $f._arg$27 = _arg$27; $f._arg$28 = _arg$28; $f._arg$29 = _arg$29; $f._arg$3 = _arg$3; $f._arg$30 = _arg$30; $f._arg$31 = _arg$31; $f._arg$32 = _arg$32; $f._arg$33 = _arg$33; $f._arg$34 = _arg$34; $f._arg$35 = _arg$35; $f._arg$36 = _arg$36; $f._arg$37 = _arg$37; $f._arg$38 = _arg$38; $f._arg$39 = _arg$39; $f._arg$4 = _arg$4; $f._arg$40 = _arg$40; $f._arg$41 = _arg$41; $f._arg$42 = _arg$42; $f._arg$43 = _arg$43; $f._arg$44 = _arg$44; $f._arg$45 = _arg$45; $f._arg$46 = _arg$46; $f._arg$47 = _arg$47; $f._arg$48 = _arg$48; $f._arg$49 = _arg$49; $f._arg$5 = _arg$5; $f._arg$50 = _arg$50; $f._arg$51 = _arg$51; $f._arg$52 = _arg$52; $f._arg$53 = _arg$53; $f._arg$54 = _arg$54; $f._arg$55 = _arg$55; $f._arg$56 = _arg$56; $f._arg$57 = _arg$57; $f._arg$58 = _arg$58; $f._arg$59 = _arg$59; $f._arg$6 = _arg$6; $f._arg$60 = _arg$60; $f._arg$61 = _arg$61; $f._arg$62 = _arg$62; $f._arg$63 = _arg$63; $f._arg$64 = _arg$64; $f._arg$65 = _arg$65; $f._arg$66 = _arg$66; $f._arg$67 = _arg$67; $f._arg$68 = _arg$68; $f._arg$69 = _arg$69; $f._arg$7 = _arg$7; $f._arg$70 = _arg$70; $f._arg$71 = _arg$71; $f._arg$72 = _arg$72; $f._arg$73 = _arg$73; $f._arg$74 = _arg$74; $f._arg$75 = _arg$75; $f._arg$76 = _arg$76; $f._arg$77 = _arg$77; $f._arg$78 = _arg$78; $f._arg$79 = _arg$79; $f._arg$8 = _arg$8; $f._arg$80 = _arg$80; $f._arg$81 = _arg$81; $f._arg$82 = _arg$82; $f._arg$83 = _arg$83; $f._arg$84 = _arg$84; $f._arg$85 = _arg$85; $f._arg$86 = _arg$86; $f._arg$87 = _arg$87; $f._arg$88 = _arg$88; $f._arg$89 = _arg$89; $f._arg$9 = _arg$9; $f._arg$90 = _arg$90; $f._arg$91 = _arg$91; $f._arg$92 = _arg$92; $f._arg$93 = _arg$93; $f._arg$94 = _arg$94; $f._arg$95 = _arg$95; $f._arg$96 = _arg$96; $f._arg$97 = _arg$97; $f._arg$98 = _arg$98; $f._arg$99 = _arg$99; $f._r$10 = _r$10; $f._r$100 = _r$100; $f._r$101 = _r$101; $f._r$102 = _r$102; $f._r$103 = _r$103; $f._r$104 = _r$104; $f._r$105 = _r$105; $f._r$106 = _r$106; $f._r$107 = _r$107; $f._r$108 = _r$108; $f._r$109 = _r$109; $f._r$11 = _r$11; $f._r$110 = _r$110; $f._r$111 = _r$111; $f._r$112 = _r$112; $f._r$113 = _r$113; $f._r$114 = _r$114; $f._r$115 = _r$115; $f._r$116 = _r$116; $f._r$117 = _r$117; $f._r$118 = _r$118; $f._r$119 = _r$119; $f._r$12 = _r$12; $f._r$120 = _r$120; $f._r$121 = _r$121; $f._r$122 = _r$122; $f._r$13 = _r$13; $f._r$14 = _r$14; $f._r$15 = _r$15; $f._r$16 = _r$16; $f._r$17 = _r$17; $f._r$18 = _r$18; $f._r$19 = _r$19; $f._r$2 = _r$2; $f._r$20 = _r$20; $f._r$21 = _r$21; $f._r$22 = _r$22; $f._r$23 = _r$23; $f._r$24 = _r$24; $f._r$25 = _r$25; $f._r$26 = _r$26; $f._r$27 = _r$27; $f._r$28 = _r$28; $f._r$29 = _r$29; $f._r$3 = _r$3; $f._r$30 = _r$30; $f._r$31 = _r$31; $f._r$32 = _r$32; $f._r$33 = _r$33; $f._r$34 = _r$34; $f._r$35 = _r$35; $f._r$36 = _r$36; $f._r$37 = _r$37; $f._r$38 = _r$38; $f._r$39 = _r$39; $f._r$4 = _r$4; $f._r$40 = _r$40; $f._r$41 = _r$41; $f._r$42 = _r$42; $f._r$43 = _r$43; $f._r$44 = _r$44; $f._r$45 = _r$45; $f._r$46 = _r$46; $f._r$47 = _r$47; $f._r$48 = _r$48; $f._r$49 = _r$49; $f._r$5 = _r$5; $f._r$50 = _r$50; $f._r$51 = _r$51; $f._r$52 = _r$52; $f._r$53 = _r$53; $f._r$54 = _r$54; $f._r$55 = _r$55; $f._r$56 = _r$56; $f._r$57 = _r$57; $f._r$58 = _r$58; $f._r$59 = _r$59; $f._r$6 = _r$6; $f._r$60 = _r$60; $f._r$61 = _r$61; $f._r$62 = _r$62; $f._r$63 = _r$63; $f._r$64 = _r$64; $f._r$65 = _r$65; $f._r$66 = _r$66; $f._r$67 = _r$67; $f._r$68 = _r$68; $f._r$69 = _r$69; $f._r$7 = _r$7; $f._r$70 = _r$70; $f._r$71 = _r$71; $f._r$72 = _r$72; $f._r$73 = _r$73; $f._r$74 = _r$74; $f._r$75 = _r$75; $f._r$76 = _r$76; $f._r$77 = _r$77; $f._r$78 = _r$78; $f._r$79 = _r$79; $f._r$8 = _r$8; $f._r$80 = _r$80; $f._r$81 = _r$81; $f._r$82 = _r$82; $f._r$83 = _r$83; $f._r$84 = _r$84; $f._r$85 = _r$85; $f._r$86 = _r$86; $f._r$87 = _r$87; $f._r$88 = _r$88; $f._r$89 = _r$89; $f._r$9 = _r$9; $f._r$90 = _r$90; $f._r$91 = _r$91; $f._r$92 = _r$92; $f._r$93 = _r$93; $f._r$94 = _r$94; $f._r$95 = _r$95; $f._r$96 = _r$96; $f._r$97 = _r$97; $f._r$98 = _r$98; $f._r$99 = _r$99; $f.this$1 = this$1; $f.$s = $s; $f.$r = $r; return $f;
 		})); /* */ $s = 3; case 3: if($c) { $c = false; _r$2 = _r$2.$blk(); } if (_r$2 && _r$2.$blk !== undefined) { break s; }
 		_r$3 = store.S.RC(_r$2, $throwNilPointerError); /* */ $s = 4; case 4: if($c) { $c = false; _r$3 = _r$3.$blk(); } if (_r$3 && _r$3.$blk !== undefined) { break s; }
 		$s = -1; return _r$3;
@@ -56991,7 +58077,7 @@ $packages["github.com/gascore/example/components"] = (function() {
 			_r$3 = gas.NE(_arg$5, new sliceType([new $String(""), _arg$6])); /* */ $s = 4; case 4: if($c) { $c = false; _r$3 = _r$3.$blk(); } if (_r$3 && _r$3.$blk !== undefined) { break s; }
 			_arg$7 = _r$3;
 			_arg$8 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "b", false, "", false, ptrType.nil, "", false, false, ptrType$1.nil);
-			_r$4 = $clone(i[0], router.RouteInfo).LinkStatic("/links", false, new gas.External.ptr(new sliceType([new $String("back to all links")]), false, false)); /* */ $s = 5; case 5: if($c) { $c = false; _r$4 = _r$4.$blk(); } if (_r$4 && _r$4.$blk !== undefined) { break s; }
+			_r$4 = $clone(i[0], router.RouteInfo).LinkStatic("/links", false, new gas.External.ptr(new sliceType([new $String("\n                back to all links\n            ")]), false, false)); /* */ $s = 5; case 5: if($c) { $c = false; _r$4 = _r$4.$blk(); } if (_r$4 && _r$4.$blk !== undefined) { break s; }
 			_arg$9 = _r$4;
 			_r$5 = gas.NE(_arg$8, new sliceType([_arg$9])); /* */ $s = 6; case 6: if($c) { $c = false; _r$5 = _r$5.$blk(); } if (_r$5 && _r$5.$blk !== undefined) { break s; }
 			_arg$10 = _r$5;
@@ -57022,25 +58108,25 @@ $packages["github.com/gascore/example/components"] = (function() {
 			_arg$5 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "li", false, "", false, ptrType.nil, "", false, false, ptrType$1.nil);
 			_arg$6 = $makeMap($String.keyFor, [{ k: "name", v: "gas" }]);
 			_arg$7 = $makeMap($String.keyFor, [{ k: "main", v: "true" }]);
-			_r$2 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "i", false, "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([new $String("gas")])); /* */ $s = 3; case 3: if($c) { $c = false; _r$2 = _r$2.$blk(); } if (_r$2 && _r$2.$blk !== undefined) { break s; }
-			_r$3 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "b", false, "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([new $String("core")])); /* */ $s = 4; case 4: if($c) { $c = false; _r$3 = _r$3.$blk(); } if (_r$3 && _r$3.$blk !== undefined) { break s; }
-			_arg$8 = new gas.External.ptr(new sliceType([_r$2, new $String("-"), _r$3]), false, false);
+			_r$2 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "i", false, "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([new $String(" gas ")])); /* */ $s = 3; case 3: if($c) { $c = false; _r$2 = _r$2.$blk(); } if (_r$2 && _r$2.$blk !== undefined) { break s; }
+			_r$3 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "b", false, "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([new $String(" core ")])); /* */ $s = 4; case 4: if($c) { $c = false; _r$3 = _r$3.$blk(); } if (_r$3 && _r$3.$blk !== undefined) { break s; }
+			_arg$8 = new gas.External.ptr(new sliceType([_r$2, new $String(" - "), _r$3]), false, false);
 			_r$4 = $clone(i[0], router.RouteInfo).LinkDynamic("link", _arg$6, _arg$7, false, _arg$8); /* */ $s = 5; case 5: if($c) { $c = false; _r$4 = _r$4.$blk(); } if (_r$4 && _r$4.$blk !== undefined) { break s; }
 			_arg$9 = _r$4;
 			_r$5 = gas.NE(_arg$5, new sliceType([_arg$9])); /* */ $s = 6; case 6: if($c) { $c = false; _r$5 = _r$5.$blk(); } if (_r$5 && _r$5.$blk !== undefined) { break s; }
 			_arg$10 = _r$5;
 			_arg$11 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "li", false, "", false, ptrType.nil, "", false, false, ptrType$1.nil);
-			_r$6 = $clone(i[0], router.RouteInfo).LinkDynamic("link", $makeMap($String.keyFor, [{ k: "name", v: "gas-web" }]), false, false, new gas.External.ptr(new sliceType([new $String("gas-web")]), false, false)); /* */ $s = 7; case 7: if($c) { $c = false; _r$6 = _r$6.$blk(); } if (_r$6 && _r$6.$blk !== undefined) { break s; }
+			_r$6 = $clone(i[0], router.RouteInfo).LinkDynamic("link", $makeMap($String.keyFor, [{ k: "name", v: "gas-web" }]), false, false, new gas.External.ptr(new sliceType([new $String("\n                    gas-web\n                ")]), false, false)); /* */ $s = 7; case 7: if($c) { $c = false; _r$6 = _r$6.$blk(); } if (_r$6 && _r$6.$blk !== undefined) { break s; }
 			_arg$12 = _r$6;
 			_r$7 = gas.NE(_arg$11, new sliceType([_arg$12])); /* */ $s = 8; case 8: if($c) { $c = false; _r$7 = _r$7.$blk(); } if (_r$7 && _r$7.$blk !== undefined) { break s; }
 			_arg$13 = _r$7;
 			_arg$14 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "li", false, "", false, ptrType.nil, "", false, false, ptrType$1.nil);
-			_r$8 = $clone(i[0], router.RouteInfo).LinkDynamic("link", $makeMap($String.keyFor, [{ k: "name", v: "gasx" }]), false, false, new gas.External.ptr(new sliceType([new $String("gasx")]), false, false)); /* */ $s = 9; case 9: if($c) { $c = false; _r$8 = _r$8.$blk(); } if (_r$8 && _r$8.$blk !== undefined) { break s; }
+			_r$8 = $clone(i[0], router.RouteInfo).LinkDynamic("link", $makeMap($String.keyFor, [{ k: "name", v: "gasx" }]), false, false, new gas.External.ptr(new sliceType([new $String("\n                    gasx\n                ")]), false, false)); /* */ $s = 9; case 9: if($c) { $c = false; _r$8 = _r$8.$blk(); } if (_r$8 && _r$8.$blk !== undefined) { break s; }
 			_arg$15 = _r$8;
 			_r$9 = gas.NE(_arg$14, new sliceType([_arg$15])); /* */ $s = 10; case 10: if($c) { $c = false; _r$9 = _r$9.$blk(); } if (_r$9 && _r$9.$blk !== undefined) { break s; }
 			_arg$16 = _r$9;
 			_arg$17 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "li", false, "", false, ptrType.nil, "", false, false, ptrType$1.nil);
-			_r$10 = $clone(i[0], router.RouteInfo).LinkDynamic("link", $makeMap($String.keyFor, [{ k: "name", v: "gas-router" }]), false, false, new gas.External.ptr(new sliceType([new $String("gas-router")]), false, false)); /* */ $s = 11; case 11: if($c) { $c = false; _r$10 = _r$10.$blk(); } if (_r$10 && _r$10.$blk !== undefined) { break s; }
+			_r$10 = $clone(i[0], router.RouteInfo).LinkDynamic("link", $makeMap($String.keyFor, [{ k: "name", v: "gas-router" }]), false, false, new gas.External.ptr(new sliceType([new $String("\n                    gas-router\n                ")]), false, false)); /* */ $s = 11; case 11: if($c) { $c = false; _r$10 = _r$10.$blk(); } if (_r$10 && _r$10.$blk !== undefined) { break s; }
 			_arg$18 = _r$10;
 			_r$11 = gas.NE(_arg$17, new sliceType([_arg$18])); /* */ $s = 12; case 12: if($c) { $c = false; _r$11 = _r$11.$blk(); } if (_r$11 && _r$11.$blk !== undefined) { break s; }
 			_arg$19 = _r$11;
@@ -57217,7 +58303,7 @@ $packages["github.com/gascore/example/components"] = (function() {
 				_r = this$1[0].Method("isActive", new sliceType([new $String("0")])); /* */ $s = 1; case 1: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
 				$s = -1; return $assertType(_r, $String);
 				/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._r = _r; $f.$s = $s; $f.$r = $r; return $f;
-			}; })(i, this$1) }]), false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "a", $makeMap($String.keyFor, [{ k: "href", v: "#all" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([new $String("All")])); /* */ $s = 1; case 1: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
+			}; })(i, this$1) }]), false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "a", $makeMap($String.keyFor, [{ k: "href", v: "#all" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([new $String("\n                    All\n                ")])); /* */ $s = 1; case 1: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
 			_arg$3 = _r;
 			_r$1 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), $makeMap($String.keyFor, [{ k: "click", v: (function(i, this$1) { return function $b(p, e) {
 				var _r$1, e, p, $s, $r;
@@ -57232,7 +58318,7 @@ $packages["github.com/gascore/example/components"] = (function() {
 				_r$1 = this$1[0].Method("isActive", new sliceType([new $String("1")])); /* */ $s = 1; case 1: if($c) { $c = false; _r$1 = _r$1.$blk(); } if (_r$1 && _r$1.$blk !== undefined) { break s; }
 				$s = -1; return $assertType(_r$1, $String);
 				/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._r$1 = _r$1; $f.$s = $s; $f.$r = $r; return $f;
-			}; })(i, this$1) }]), false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "a", $makeMap($String.keyFor, [{ k: "href", v: "#completed" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([new $String("Completed")])); /* */ $s = 2; case 2: if($c) { $c = false; _r$1 = _r$1.$blk(); } if (_r$1 && _r$1.$blk !== undefined) { break s; }
+			}; })(i, this$1) }]), false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "a", $makeMap($String.keyFor, [{ k: "href", v: "#completed" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([new $String("\n                    Completed\n                ")])); /* */ $s = 2; case 2: if($c) { $c = false; _r$1 = _r$1.$blk(); } if (_r$1 && _r$1.$blk !== undefined) { break s; }
 			_arg$4 = _r$1;
 			_r$2 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), $makeMap($String.keyFor, [{ k: "click", v: (function(i, this$1) { return function $b(p, e) {
 				var _r$2, e, p, $s, $r;
@@ -57247,7 +58333,7 @@ $packages["github.com/gascore/example/components"] = (function() {
 				_r$2 = this$1[0].Method("isActive", new sliceType([new $String("2")])); /* */ $s = 1; case 1: if($c) { $c = false; _r$2 = _r$2.$blk(); } if (_r$2 && _r$2.$blk !== undefined) { break s; }
 				$s = -1; return $assertType(_r$2, $String);
 				/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._r$2 = _r$2; $f.$s = $s; $f.$r = $r; return $f;
-			}; })(i, this$1) }]), false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "a", $makeMap($String.keyFor, [{ k: "href", v: "#deleted" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([new $String("Deleted")])); /* */ $s = 3; case 3: if($c) { $c = false; _r$2 = _r$2.$blk(); } if (_r$2 && _r$2.$blk !== undefined) { break s; }
+			}; })(i, this$1) }]), false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "a", $makeMap($String.keyFor, [{ k: "href", v: "#deleted" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([new $String("\n                    Deleted\n                ")])); /* */ $s = 3; case 3: if($c) { $c = false; _r$2 = _r$2.$blk(); } if (_r$2 && _r$2.$blk !== undefined) { break s; }
 			_arg$5 = _r$2;
 			_r$3 = gas.NE(_arg$2, new sliceType([_arg$3, _arg$4, _arg$5])); /* */ $s = 4; case 4: if($c) { $c = false; _r$3 = _r$3.$blk(); } if (_r$3 && _r$3.$blk !== undefined) { break s; }
 			_arg$6 = _r$3;
@@ -57274,7 +58360,7 @@ $packages["github.com/gascore/example/components"] = (function() {
 				_r$5;
 				$s = -1; return;
 				/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._r$5 = _r$5; $f.e = e; $f.p = p; $f.$s = $s; $f.$r = $r; return $f;
-			}; })(i, this$1) }]), false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "button", $makeMap($String.keyFor, [{ k: "class", v: "btn" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([new $String("Create")])); /* */ $s = 6; case 6: if($c) { $c = false; _r$5 = _r$5.$blk(); } if (_r$5 && _r$5.$blk !== undefined) { break s; }
+			}; })(i, this$1) }]), false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "button", $makeMap($String.keyFor, [{ k: "class", v: "btn" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([new $String("\n                    Create\n                ")])); /* */ $s = 6; case 6: if($c) { $c = false; _r$5 = _r$5.$blk(); } if (_r$5 && _r$5.$blk !== undefined) { break s; }
 			_arg$9 = _r$5;
 			_r$6 = gas.NE(_arg$7, new sliceType([_arg$8, _arg$9])); /* */ $s = 7; case 7: if($c) { $c = false; _r$6 = _r$6.$blk(); } if (_r$6 && _r$6.$blk !== undefined) { break s; }
 			_arg$10 = _r$6;
@@ -57319,7 +58405,7 @@ $packages["github.com/gascore/example/components"] = (function() {
 					_r$10 = store.S.Get(nameByI($assertType(listI[0], $String))); /* */ $s = 1; case 1: if($c) { $c = false; _r$10 = _r$10.$blk(); } if (_r$10 && _r$10.$blk !== undefined) { break s; }
 					$s = -1; return !(($assertType(_r$10, sliceType).$length === 0));
 					/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._r$10 = _r$10; $f.p = p; $f.$s = $s; $f.$r = $r; return $f;
-				}; })(i, listI, this$1, x), false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "button", $makeMap($String.keyFor, [{ k: "class", v: "btn" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([new $String("Clear")])); /* */ $s = 4; case 4: if($c) { $c = false; _r$10 = _r$10.$blk(); } if (_r$10 && _r$10.$blk !== undefined) { break s; }
+				}; })(i, listI, this$1, x), false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "button", $makeMap($String.keyFor, [{ k: "class", v: "btn" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([new $String("\n                        Clear\n                    ")])); /* */ $s = 4; case 4: if($c) { $c = false; _r$10 = _r$10.$blk(); } if (_r$10 && _r$10.$blk !== undefined) { break s; }
 				_arg$16 = _r$10;
 				_r$11 = gas.NE(_arg$12, new sliceType([_arg$15, _arg$16])); /* */ $s = 5; case 5: if($c) { $c = false; _r$11 = _r$11.$blk(); } if (_r$11 && _r$11.$blk !== undefined) { break s; }
 				$s = -1; return _r$11;
@@ -57337,7 +58423,7 @@ $packages["github.com/gascore/example/components"] = (function() {
 				$s = -1; return $interfaceIsEqual(_r$10, new $String("0"));
 				/* */ } return; } if ($f === undefined) { $f = { $blk: $b }; } $f._r$10 = _r$10; $f.p = p; $f.$s = $s; $f.$r = $r; return $f;
 			}; })(i, this$1), new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "div", $makeMap($String.keyFor, [{ k: "id", v: "todoListFooter" }, { k: "class", v: "m(8px) c(gray) fz(12px)" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil);
-			_r$10 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "i", false, "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([new $String("Double-click to edit a task")])); /* */ $s = 11; case 11: if($c) { $c = false; _r$10 = _r$10.$blk(); } if (_r$10 && _r$10.$blk !== undefined) { break s; }
+			_r$10 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$1.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType.nil, "i", false, "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType([new $String("\n                Double-click to edit a task\n            ")])); /* */ $s = 11; case 11: if($c) { $c = false; _r$10 = _r$10.$blk(); } if (_r$10 && _r$10.$blk !== undefined) { break s; }
 			_arg$16 = _r$10;
 			_r$11 = gas.NE(_arg$15, new sliceType([_arg$16])); /* */ $s = 12; case 12: if($c) { $c = false; _r$11 = _r$11.$blk(); } if (_r$11 && _r$11.$blk !== undefined) { break s; }
 			_arg$17 = _r$11;
@@ -57357,15 +58443,16 @@ $packages["github.com/gascore/example/components"] = (function() {
 		$r = errors.$init(); /* */ $s = 1; case 1: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 		$r = fmt.$init(); /* */ $s = 2; case 2: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 		$r = dndfree.$init(); /* */ $s = 3; case 3: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-		$r = layout.$init(); /* */ $s = 4; case 4: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-		$r = modal.$init(); /* */ $s = 5; case 5: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-		$r = tree.$init(); /* */ $s = 6; case 6: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-		$r = vlist.$init(); /* */ $s = 7; case 7: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-		$r = store.$init(); /* */ $s = 8; case 8: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-		$r = gas.$init(); /* */ $s = 9; case 9: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-		$r = router.$init(); /* */ $s = 10; case 10: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-		$r = rand.$init(); /* */ $s = 11; case 11: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-		$r = time.$init(); /* */ $s = 12; case 12: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = dnd.$init(); /* */ $s = 4; case 4: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = layout.$init(); /* */ $s = 5; case 5: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = modal.$init(); /* */ $s = 6; case 6: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = tree.$init(); /* */ $s = 7; case 7: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = vlist.$init(); /* */ $s = 8; case 8: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = store.$init(); /* */ $s = 9; case 9: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = gas.$init(); /* */ $s = 10; case 10: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = router.$init(); /* */ $s = 11; case 11: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = rand.$init(); /* */ $s = 12; case 12: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		$r = time.$init(); /* */ $s = 13; case 13: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 		listsList = new sliceType([new $String("0"), new $String("1"), new $String("2")]);
 		/* */ } return; } if ($f === undefined) { $f = { $blk: $init }; } $f.$s = $s; $f.$r = $r; return $f;
 	};
@@ -57397,32 +58484,32 @@ $packages["github.com/gascore/example"] = (function() {
 			_arg = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$2.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType$3.nil, "div", false, "", false, ptrType.nil, "", false, false, ptrType$1.nil);
 			_arg$1 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$2.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType$3.nil, "header", $makeMap($String.keyFor, [{ k: "class", v: "navbar bdb(1px,solid,#dedede) mb(12px)" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil);
 			_arg$2 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$2.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType$3.nil, "section", $makeMap($String.keyFor, [{ k: "class", v: "navbar-section" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil);
-			_r$1 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$2.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType$3.nil, "span", $makeMap($String.keyFor, [{ k: "class", v: "navbar-brand mr-2" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType$3([new $String("Example")])); /* */ $s = 1; case 1: if($c) { $c = false; _r$1 = _r$1.$blk(); } if (_r$1 && _r$1.$blk !== undefined) { break s; }
+			_r$1 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$2.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType$3.nil, "span", $makeMap($String.keyFor, [{ k: "class", v: "navbar-brand mr-2" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType$3([new $String("\n                    Example\n                ")])); /* */ $s = 1; case 1: if($c) { $c = false; _r$1 = _r$1.$blk(); } if (_r$1 && _r$1.$blk !== undefined) { break s; }
 			_arg$3 = _r$1;
-			_arg$4 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$2.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType$3.nil, "span", false, "", false, ptrType.nil, "", false, false, ptrType$1.nil);
-			_r$2 = router.LinkStatic("/", false, ctx, new gas.External.ptr(new sliceType$3([new $String("Home")]), false, false)); /* */ $s = 2; case 2: if($c) { $c = false; _r$2 = _r$2.$blk(); } if (_r$2 && _r$2.$blk !== undefined) { break s; }
+			_arg$4 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$2.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType$3.nil, "span", $makeMap($String.keyFor, [{ k: "class", v: "btn btn-link" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil);
+			_r$2 = ctx.LinkStatic("/", true, new gas.External.ptr(new sliceType$3([new $String("\n                        Home\n                    ")]), false, false)); /* */ $s = 2; case 2: if($c) { $c = false; _r$2 = _r$2.$blk(); } if (_r$2 && _r$2.$blk !== undefined) { break s; }
 			_arg$5 = _r$2;
 			_r$3 = gas.NE(_arg$4, new sliceType$3([_arg$5])); /* */ $s = 3; case 3: if($c) { $c = false; _r$3 = _r$3.$blk(); } if (_r$3 && _r$3.$blk !== undefined) { break s; }
 			_arg$6 = _r$3;
-			_arg$7 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$2.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType$3.nil, "span", false, "", false, ptrType.nil, "", false, false, ptrType$1.nil);
-			_r$4 = router.LinkStatic("/todo/all", false, ctx, new gas.External.ptr(new sliceType$3([new $String("TODO")]), false, false)); /* */ $s = 4; case 4: if($c) { $c = false; _r$4 = _r$4.$blk(); } if (_r$4 && _r$4.$blk !== undefined) { break s; }
+			_arg$7 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$2.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType$3.nil, "span", $makeMap($String.keyFor, [{ k: "class", v: "btn btn-link" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil);
+			_r$4 = ctx.LinkStatic("/todo/all", true, new gas.External.ptr(new sliceType$3([new $String("\n                        TODO\n                    ")]), false, false)); /* */ $s = 4; case 4: if($c) { $c = false; _r$4 = _r$4.$blk(); } if (_r$4 && _r$4.$blk !== undefined) { break s; }
 			_arg$8 = _r$4;
 			_r$5 = gas.NE(_arg$7, new sliceType$3([_arg$8])); /* */ $s = 5; case 5: if($c) { $c = false; _r$5 = _r$5.$blk(); } if (_r$5 && _r$5.$blk !== undefined) { break s; }
 			_arg$9 = _r$5;
-			_arg$10 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$2.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType$3.nil, "span", false, "", false, ptrType.nil, "", false, false, ptrType$1.nil);
-			_r$6 = router.LinkStatic("/links", false, ctx, new gas.External.ptr(new sliceType$3([new $String("Links")]), false, false)); /* */ $s = 6; case 6: if($c) { $c = false; _r$6 = _r$6.$blk(); } if (_r$6 && _r$6.$blk !== undefined) { break s; }
+			_arg$10 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$2.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType$3.nil, "span", $makeMap($String.keyFor, [{ k: "class", v: "btn btn-link" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil);
+			_r$6 = ctx.LinkStatic("/links", true, new gas.External.ptr(new sliceType$3([new $String("\n                        Links\n                    ")]), false, false)); /* */ $s = 6; case 6: if($c) { $c = false; _r$6 = _r$6.$blk(); } if (_r$6 && _r$6.$blk !== undefined) { break s; }
 			_arg$11 = _r$6;
 			_r$7 = gas.NE(_arg$10, new sliceType$3([_arg$11])); /* */ $s = 7; case 7: if($c) { $c = false; _r$7 = _r$7.$blk(); } if (_r$7 && _r$7.$blk !== undefined) { break s; }
 			_arg$12 = _r$7;
-			_arg$13 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$2.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType$3.nil, "span", false, "", false, ptrType.nil, "", false, false, ptrType$1.nil);
-			_r$8 = router.LinkStatic("/components", false, ctx, new gas.External.ptr(new sliceType$3([new $String("Components")]), false, false)); /* */ $s = 8; case 8: if($c) { $c = false; _r$8 = _r$8.$blk(); } if (_r$8 && _r$8.$blk !== undefined) { break s; }
+			_arg$13 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$2.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType$3.nil, "span", $makeMap($String.keyFor, [{ k: "class", v: "btn btn-link" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil);
+			_r$8 = ctx.LinkStatic("/components", true, new gas.External.ptr(new sliceType$3([new $String("\n                        Components\n                    ")]), false, false)); /* */ $s = 8; case 8: if($c) { $c = false; _r$8 = _r$8.$blk(); } if (_r$8 && _r$8.$blk !== undefined) { break s; }
 			_arg$14 = _r$8;
 			_r$9 = gas.NE(_arg$13, new sliceType$3([_arg$14])); /* */ $s = 9; case 9: if($c) { $c = false; _r$9 = _r$9.$blk(); } if (_r$9 && _r$9.$blk !== undefined) { break s; }
 			_arg$15 = _r$9;
 			_r$10 = gas.NE(_arg$2, new sliceType$3([_arg$3, _arg$6, _arg$9, _arg$12, _arg$15])); /* */ $s = 10; case 10: if($c) { $c = false; _r$10 = _r$10.$blk(); } if (_r$10 && _r$10.$blk !== undefined) { break s; }
 			_arg$16 = _r$10;
 			_arg$17 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$2.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType$3.nil, "section", $makeMap($String.keyFor, [{ k: "class", v: "navbar-section" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil);
-			_r$11 = router.LinkStatic("/about", false, ctx, new gas.External.ptr(new sliceType$3([new $String("About")]), false, false)); /* */ $s = 11; case 11: if($c) { $c = false; _r$11 = _r$11.$blk(); } if (_r$11 && _r$11.$blk !== undefined) { break s; }
+			_r$11 = ctx.LinkStatic("/about", true, new gas.External.ptr(new sliceType$3([new $String("\n                    About\n                ")]), false, false)); /* */ $s = 11; case 11: if($c) { $c = false; _r$11 = _r$11.$blk(); } if (_r$11 && _r$11.$blk !== undefined) { break s; }
 			_arg$18 = _r$11;
 			_r$12 = gas.NE(_arg$17, new sliceType$3([_arg$18])); /* */ $s = 12; case 12: if($c) { $c = false; _r$12 = _r$12.$blk(); } if (_r$12 && _r$12.$blk !== undefined) { break s; }
 			_arg$19 = _r$12;
@@ -57434,15 +58521,15 @@ $packages["github.com/gascore/example"] = (function() {
 			_r$15 = gas.NE(_arg$21, new sliceType$3([_arg$22])); /* */ $s = 15; case 15: if($c) { $c = false; _r$15 = _r$15.$blk(); } if (_r$15 && _r$15.$blk !== undefined) { break s; }
 			_arg$23 = _r$15;
 			_arg$24 = new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$2.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType$3.nil, "footer", false, "", false, ptrType.nil, "", false, false, ptrType$1.nil);
-			_r$16 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$2.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType$3.nil, "a", $makeMap($String.keyFor, [{ k: "href", v: "https://noartem.github.io/" }, { k: "target", v: "_blank" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType$3([new $String("Noskov Atrem")])); /* */ $s = 16; case 16: if($c) { $c = false; _r$16 = _r$16.$blk(); } if (_r$16 && _r$16.$blk !== undefined) { break s; }
+			_r$16 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$2.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType$3.nil, "a", $makeMap($String.keyFor, [{ k: "href", v: "https://noartem.github.io/" }, { k: "target", v: "_blank" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType$3([new $String("\n                Noskov Atrem\n            ")])); /* */ $s = 16; case 16: if($c) { $c = false; _r$16 = _r$16.$blk(); } if (_r$16 && _r$16.$blk !== undefined) { break s; }
 			_arg$25 = _r$16;
-			_r$17 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$2.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType$3.nil, "a", $makeMap($String.keyFor, [{ k: "href", v: "https://github.com/gascore/gas" }, { k: "target", v: "_blank" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType$3([new $String("gas")])); /* */ $s = 17; case 17: if($c) { $c = false; _r$17 = _r$17.$blk(); } if (_r$17 && _r$17.$blk !== undefined) { break s; }
+			_r$17 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$2.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType$3.nil, "a", $makeMap($String.keyFor, [{ k: "href", v: "https://github.com/gascore/gas" }, { k: "target", v: "_blank" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType$3([new $String("\n                gas\n            ")])); /* */ $s = 17; case 17: if($c) { $c = false; _r$17 = _r$17.$blk(); } if (_r$17 && _r$17.$blk !== undefined) { break s; }
 			_arg$26 = _r$17;
-			_r$18 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$2.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType$3.nil, "a", $makeMap($String.keyFor, [{ k: "href", v: "https://github.com/gascore/gasx" }, { k: "target", v: "_blank" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType$3([new $String("gasx")])); /* */ $s = 18; case 18: if($c) { $c = false; _r$18 = _r$18.$blk(); } if (_r$18 && _r$18.$blk !== undefined) { break s; }
+			_r$18 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$2.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType$3.nil, "a", $makeMap($String.keyFor, [{ k: "href", v: "https://github.com/gascore/gasx" }, { k: "target", v: "_blank" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType$3([new $String("\n                gasx\n            ")])); /* */ $s = 18; case 18: if($c) { $c = false; _r$18 = _r$18.$blk(); } if (_r$18 && _r$18.$blk !== undefined) { break s; }
 			_arg$27 = _r$18;
-			_r$19 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$2.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType$3.nil, "a", $makeMap($String.keyFor, [{ k: "href", v: "https://github.com/gascore/gas-router" }, { k: "target", v: "_blank" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType$3([new $String("gas-router")])); /* */ $s = 19; case 19: if($c) { $c = false; _r$19 = _r$19.$blk(); } if (_r$19 && _r$19.$blk !== undefined) { break s; }
+			_r$19 = gas.NE(new gas.Component.ptr(false, false, false, new gas.Hooks.ptr($throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError, $throwNilPointerError), false, false, false, $throwNilPointerError, false, $throwNilPointerError, new gas.ForDirective.ptr(false, 0, $ifaceNil), new gas.ModelDirective.ptr("", ptrType.nil, sliceType$2.nil), new gas.HTMLDirective.ptr($throwNilPointerError, ""), $throwNilPointerError, sliceType$3.nil, "a", $makeMap($String.keyFor, [{ k: "href", v: "https://github.com/gascore/gas-router" }, { k: "target", v: "_blank" }]), "", false, ptrType.nil, "", false, false, ptrType$1.nil), new sliceType$3([new $String("\n                gas-router\n            ")])); /* */ $s = 19; case 19: if($c) { $c = false; _r$19 = _r$19.$blk(); } if (_r$19 && _r$19.$blk !== undefined) { break s; }
 			_arg$28 = _r$19;
-			_r$20 = gas.NE(_arg$24, new sliceType$3([new $String("Created by"), _arg$25, new $String("with"), _arg$26, new $String(","), _arg$27, new $String(","), _arg$28, new $String("and love")])); /* */ $s = 20; case 20: if($c) { $c = false; _r$20 = _r$20.$blk(); } if (_r$20 && _r$20.$blk !== undefined) { break s; }
+			_r$20 = gas.NE(_arg$24, new sliceType$3([new $String("\n            Created by\n            "), _arg$25, new $String("\n            with\n            "), _arg$26, new $String(",\n            "), _arg$27, new $String(",\n            "), _arg$28, new $String("\n            and love\n        ")])); /* */ $s = 20; case 20: if($c) { $c = false; _r$20 = _r$20.$blk(); } if (_r$20 && _r$20.$blk !== undefined) { break s; }
 			_arg$29 = _r$20;
 			_r$21 = gas.NE(_arg, new sliceType$3([_arg$20, _arg$23, _arg$29])); /* */ $s = 21; case 21: if($c) { $c = false; _r$21 = _r$21.$blk(); } if (_r$21 && _r$21.$blk !== undefined) { break s; }
 			_r$22 = gas.ToGetComponentList(new sliceType$3([_r$21])); /* */ $s = 22; case 22: if($c) { $c = false; _r$22 = _r$22.$blk(); } if (_r$22 && _r$22.$blk !== undefined) { break s; }

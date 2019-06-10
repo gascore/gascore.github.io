@@ -54,23 +54,6 @@ ul.tree-items, .directory-item ul {
 }
 
 /*=== Styles from components/components.gas ===*/
-@media (min-width: 1px) {
-  #components {
-    padding: 2px 4px;
-  }
-}
-@media (min-width: 992px) {
-  #components {
-    width: 86%;
-    margin: 0 auto;
-  }
-}
-@media (min-width: 1200px) {
-  #components {
-    width: 80%;
-    margin: 0 auto;
-  }
-}
 #components .layout {
   height: 25vw;
   width: 100%;
@@ -183,9 +166,8 @@ ul.tree-items, .directory-item ul {
   display: inline-block;
   vertical-align: top;
   min-height: 64px;
-  min-width: 192px;
+  min-width: 148px;
   max-width: 100%;
-  margin: 0 25px 25px 0;
   background: white;
   overflow: hidden;
 }
@@ -195,9 +177,8 @@ ul.tree-items, .directory-item ul {
 #components .dnd .dnd-item {
   background: #ffffff;
   border-bottom: 1px solid #ccc;
-  padding: 0.4em 0.8em;
-  min-width: 10rem;
-  min-height: 3rem;
+  padding: 0.4em 0.8em 0.2em 0.8em;
+  min-height: 2.6rem;
 }
 #components .dnd .dnd-item:last-child {
   border-bottom: 0;
@@ -210,13 +191,12 @@ ul.tree-items, .directory-item ul {
 #components #dnds h3 {
   font-size: 1.05rem;
 }
-#components #dnds #dnd3 {
-  margin-right: 75px;
-}
 #components #dnds #dndLipsum .dnd-item {
-  color: #cc0099;
+  color: #302ECD;
 }
 #components #dnds #dnd1, #components #dnds #dnd2, #components #dnds #dnd3, #components #dnds #dndLipsum {
+  margin: 0 0.2rem;
+  padding: 0;
   display: inline-block;
 }
 #components .dnd-dragging .dnd:not(.dnd-placeholder) {
@@ -341,6 +321,82 @@ footer {
 
 button#submit:focus {
   color: #009966;
+}
+
+.boxShadow {
+  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
+
+.boxShadow-hovering {
+  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  transition: all 0.3s ease-in-out;
+}
+
+.boxShadow-hovering:hover {
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+.centerizeContent {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0;
+}
+@media (min-width: 0px) {
+  .centerizeContent {
+    width: 94%;
+  }
+}
+@media (min-width: 840px) {
+  .centerizeContent {
+    width: 78%;
+  }
+}
+@media (min-width: 1400px) {
+  .centerizeContent {
+    width: 48%;
+  }
+}
+
+.centerizeContent-header {
+  padding: 0.2rem 0;
+}
+.centerizeContent-header .centerizeContent {
+  display: flex;
+}
+
+.page {
+  padding: 0.2rem 0.4rem;
+  margin-top: 0.6rem;
+}
+
+.page-label {
+  margin-bottom: 0.6rem;
+}
+.page-label h1 {
+  font-size: 1.6rem;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.mini-block {
+  margin-left: auto;
+  margin-right: auto;
+}
+@media (min-width: 0px) {
+  .mini-block {
+    width: 100%;
+  }
+}
+@media (min-width: 840px) {
+  .mini-block {
+    width: 62%;
+  }
+}
+@media (min-width: 1400px) {
+  .mini-block {
+    width: 48%;
+  }
 }
 
 /*# sourceMappingURL=main.css.map */

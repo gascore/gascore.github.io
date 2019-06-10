@@ -16,7 +16,7 @@ but now exist only one backend -- [gas-web](https://github.com/gascore/gas-web) 
 
 There are many examples:
 
-1. [Main example](https://gascore.github.io/examples/main/#) - biggest example, shows all gas-ecosystem technologies for this moment. Code [here](https://github.com/gascore/example)
+1. [Main example](https://gascore.github.io/examples/main/#) - biggest example, shows all gas-ecosystem technologies for this moment. Code [here](https://github.com/gascore/gas/examples/main)
 2. [TODO-MVC example](https://gascore.github.io/examples/todo)
 3. [Basic functional examples](https://github.com/gascore/gas/blob/master/examples) (hosting in [jsgo.io](https://jsgo.io))
 

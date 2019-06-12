@@ -1,36 +1,4 @@
-/*=== Styles from /home/noartem/go/src/github.com/gascore/gas/std/components/tree/tree.gas ===*/
-.tree-header {
-  display: flex;
-}
-.tree-header .tree-hide-btn {
-  margin: 0 0 0 auto;
-  border: 0;
-  padding: 0;
-  background: inherit;
-}
-
-ul.tree-items, .directory-item ul {
-  padding: 0 0 0 12px;
-  margin: 0;
-  list-style-type: none;
-}
-
-.tree-items span.tree-item {
-  cursor: pointer;
-}
-.tree-items .directory-item .directory-item-header button.directory-item-header__hide-btn {
-  margin: 0 6px 0 0;
-  border: 0;
-  padding: 0;
-  background: inherit;
-  display: inline-block;
-}
-.tree-items .directory-item .directory-item-header .directory-item-header__name {
-  cursor: pointer;
-  display: inline-block;
-}
-
-/*=== Styles from /home/noartem/go/src/github.com/gascore/gas/std/components/vlist/vlist.gas ===*/
+/*=== Styles from /home/noartem/go/pkg/mod/github.com/gascore/std@v0.0.0-20190612062844-91ae97f7c394/components/vlist/vlist.gas ===*/
 .vlist {
   width: 100%;
   height: 100%;
@@ -224,6 +192,31 @@ ul.tree-items, .directory-item ul {
   padding: 30px;
 }
 
+/*=== Styles from components/examples.gas ===*/
+#examples #hello-world .greeting {
+  color: #00cc99;
+}
+#examples #hello-world h1 {
+  font-size: 32px;
+}
+#examples #hello-world h1 .greeting {
+  border-bottom: 1px solid #dedede;
+}
+#examples .wrap {
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.24), 0 0 2px rgba(0, 0, 0, 0.12);
+  margin: 1.2em 0.2em;
+}
+#examples .wrap .wrap-title {
+  padding: 8px 20px;
+  color: rgba(0, 0, 0, 0.54);
+  background: rgba(0, 0, 0, 0.03);
+  font-size: 1rem;
+}
+#examples .wrap .wrap-body {
+  padding: 30px;
+}
+
 /*=== Styles from components/todo.gas ===*/
 #todoList-wrap nav a {
   margin: 0 0.24em;
@@ -397,6 +390,38 @@ button#submit:focus {
   .mini-block {
     width: 48%;
   }
+}
+
+/*=== Styles from /home/noartem/go/pkg/mod/github.com/gascore/std@v0.0.0-20190612062844-91ae97f7c394/components/tree/tree.gas ===*/
+.tree-header {
+  display: flex;
+}
+.tree-header .tree-hide-btn {
+  margin: 0 0 0 auto;
+  border: 0;
+  padding: 0;
+  background: inherit;
+}
+
+ul.tree-items, .directory-item ul {
+  padding: 0 0 0 12px;
+  margin: 0;
+  list-style-type: none;
+}
+
+.tree-items span.tree-item {
+  cursor: pointer;
+}
+.tree-items .directory-item .directory-item-header button.directory-item-header__hide-btn {
+  margin: 0 6px 0 0;
+  border: 0;
+  padding: 0;
+  background: inherit;
+  display: inline-block;
+}
+.tree-items .directory-item .directory-item-header .directory-item-header__name {
+  cursor: pointer;
+  display: inline-block;
 }
 
 /*# sourceMappingURL=main.css.map */

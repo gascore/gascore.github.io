@@ -1,18 +1,3 @@
-@media (min-width: 1000px) {
-  .c\(pink\)\:h--md:hover {
-    color: pink;
-  }
-}
-@media (min-width: 1000px) {
-  .cur\(pointer\)\:h--md:hover {
-    cursor: pointer;
-  }
-}
-@media (min-width: 1000px) {
-  .trs\(color\,1s\)--md {
-    transition: color 1s;
-  }
-}
 .h\(2\.4rem\) {
   height: 2.4rem;
 }

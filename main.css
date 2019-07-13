@@ -1,109 +1,4 @@
-/*=== Styles from /home/noartem/go/pkg/mod/github.com/gascore/std@v0.0.0-20190618063601-e7dee8fdb9e5/components/tree/tree.gas ===*/
-.tree-header {
-  display: flex;
-}
-.tree-header .tree-hide-btn {
-  margin: 0 0 0 auto;
-  border: 0;
-  padding: 0;
-  background: inherit;
-}
-
-ul.tree-items, .directory-item ul {
-  padding: 0 0 0 12px;
-  margin: 0;
-  list-style-type: none;
-}
-
-.tree-items span.tree-item {
-  cursor: pointer;
-}
-.tree-items .directory-item .directory-item-header button.directory-item-header__hide-btn {
-  margin: 0 6px 0 0;
-  border: 0;
-  padding: 0;
-  background: inherit;
-  display: inline-block;
-}
-.tree-items .directory-item .directory-item-header .directory-item-header__name {
-  cursor: pointer;
-  display: inline-block;
-}
-
-/*=== Styles from /home/noartem/go/pkg/mod/github.com/gascore/std@v0.0.0-20190618063601-e7dee8fdb9e5/components/vlist/vlist.gas ===*/
-.vlist {
-  width: 100%;
-  height: 100%;
-  overflow-x: auto;
-  overflow-y: auto;
-  position: relative;
-}
-
-.vlist-content {
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-}
-
-.vlist-padding {
-  width: 1px;
-  height: 1px;
-  opacity: 0;
-}
-
 /*=== Styles from components/components.gas ===*/
-#components .layout {
-  height: 25vw;
-  width: 100%;
-  display: flex;
-}
-@media (max-width: 750px) {
-  #components .layout {
-    height: 60vw;
-  }
-}
-#components .layout .layout-item-1 {
-  height: 100%;
-  width: 100%;
-  border: 1px solid #dedede;
-  border-radius: 0.12em;
-  padding: 4px 8px;
-  padding: 0.5em 0.3em;
-  overflow-x: hidden;
-  overflow-y: auto;
-}
-#components .layout2 {
-  height: 25vw;
-  width: 100%;
-}
-@media (max-width: 750px) {
-  #components .layout2 {
-    height: 60vw;
-  }
-}
-#components .layout2 .layout2-item {
-  height: 100%;
-  border: 1px solid #ccc;
-  border-radius: 0.12em;
-  padding: 4px 8px;
-  padding: 0.5em 0.3em;
-  overflow-x: hidden;
-  overflow-y: auto;
-}
-#components .vlist ul {
-  padding: 0;
-  margin: 0;
-  list-style-type: none;
-}
-#components .vlist ul li {
-  padding: 0;
-  margin: 0;
-}
-#components #vlist-vert ul {
-  display: flex;
-}
 #components .dndFreeBoundary {
   display: flex;
   flex-wrap: wrap;
@@ -115,8 +10,6 @@ ul.tree-items, .directory-item ul {
   margin-right: 0;
 }
 #components .dndFreeBoundary .dndFree-wrap .dndFree, #components .dndFreeBoundary .dndFree-wrap .dndFreeWithHandle, #components .dndFreeBoundary .dndFreeWithHandle-wrap .dndFree, #components .dndFreeBoundary .dndFreeWithHandle-wrap .dndFreeWithHandle {
-  border: 1px solid #ccc;
-  border-radius: 0.2em;
   padding: 0.1em 0.2em;
   width: 128px;
   height: 128px;
@@ -131,11 +24,16 @@ ul.tree-items, .directory-item ul {
   cursor: move;
   user-select: none;
   touch-action: none;
-  transition: box-shadow 200ms cubic-bezier(0, 0, 0.2, 1);
-  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  border-radius: 0.6rem;
+  box-shadow: rgba(125, 128, 147, 0.23) 0px 3px 11px 0px;
+  transition: box-shadow 0.5s;
+  animatopn: slide-down 0.2s ease 1;
+}
+#components .dndFreeBoundary .dndFree-wrap .dndFree:hover, #components .dndFreeBoundary .dndFree-wrap .dndFree:focus, #components .dndFreeBoundary .dndFree-wrap .dndFreeWithHandle:hover, #components .dndFreeBoundary .dndFree-wrap .dndFreeWithHandle:focus, #components .dndFreeBoundary .dndFreeWithHandle-wrap .dndFree:hover, #components .dndFreeBoundary .dndFreeWithHandle-wrap .dndFree:focus, #components .dndFreeBoundary .dndFreeWithHandle-wrap .dndFreeWithHandle:hover, #components .dndFreeBoundary .dndFreeWithHandle-wrap .dndFreeWithHandle:focus {
+  box-shadow: rgba(125, 128, 147, 0.46) 0px 3px 11px 0px;
 }
 #components .dndFreeBoundary .dndFree-wrap .dndFree-active, #components .dndFreeBoundary .dndFree-wrap .dndFreeWithHandle-active, #components .dndFreeBoundary .dndFreeWithHandle-wrap .dndFree-active, #components .dndFreeBoundary .dndFreeWithHandle-wrap .dndFreeWithHandle-active {
-  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
+  box-shadow: rgba(125, 128, 147, 0.46) 0px 3px 11px 0px;
 }
 #components .dndFreeBoundary .dndFree-wrap .dndFreeWithHandle, #components .dndFreeBoundary .dndFreeWithHandle-wrap .dndFreeWithHandle {
   cursor: default;
@@ -148,79 +46,82 @@ ul.tree-items, .directory-item ul {
   font-size: 0.8em;
   cursor: move;
 }
-#components .dnd-group {
-  min-height: 96px;
-  min-width: 192px;
-  list-style-type: none;
-  padding: 2px 4px 12px 4px;
-  margin: 0;
-  height: 100%;
-}
-#components .dnd-group-contentBlock {
-  height: 100%;
-  width: 100%;
-}
-#components .dnd {
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  padding: 0;
-  list-style-type: none;
-  display: inline-block;
-  vertical-align: top;
-  min-height: 64px;
-  min-width: 148px;
-  max-width: 100%;
-  background: white;
-  overflow: hidden;
-}
-#components .dnd .dnd-placeholder {
-  opacity: 0;
-}
-#components .dnd .dnd-item {
-  background: #ffffff;
-  border-bottom: 1px solid #ccc;
-  padding: 0.4em 0.8em 0.2em 0.8em;
-  min-height: 2.6rem;
-}
-#components .dnd .dnd-item:last-child {
-  border-bottom: 0;
-}
-#components .dnd .dnd-item .dnd-preview {
-  border-radius: 4px;
-  border: 1px solid #ccc;
-  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
-}
-#components #dnds h3 {
-  font-size: 1.05rem;
-}
-#components #dnds #dndLipsum .dnd-item {
-  color: #302ECD;
-}
-#components #dnds #dnd1, #components #dnds #dnd2, #components #dnds #dnd3, #components #dnds #dndLipsum {
-  margin: 0 0.2rem;
-  padding: 0;
-  display: inline-block;
-}
-#components .dnd-dragging .dnd:not(.dnd-placeholder) {
-  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
-}
-#components .tree {
+#components #trees .tree {
   border: 1px solid #ccc;
   padding: 4px 8px;
   width: 100%;
   border-radius: 0.08em;
   margin-bottom: 8px;
 }
+#components .layout {
+  height: 50vh;
+  width: 100%;
+}
+@media (max-width: 750px) {
+  #components .layout {
+    height: 80vh;
+  }
+}
+#components .layout .layout-item-1 {
+  width: 100%;
+}
+#components .layout2 {
+  display: flex;
+  height: 100%;
+}
+#components .layout2 .layout2-item {
+  height: 100%;
+}
+#components .layout-item-bd {
+  border: 1px solid #388ffe;
+  border-radius: 0.3rem;
+  padding: 4px 8px;
+  padding: 0.5em 0.3em;
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: 100%;
+  width: 100%;
+  font-size: 20px;
+  color: #2E75D6;
+}
+#components .layout3 {
+  height: 100%;
+}
+#components .layout3 .layout3-item {
+  width: 100%;
+}
+#components .vlist {
+  border-radius: 0.3rem;
+  border: 1px solid #388ffe;
+}
+#components .vlist ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+#components .vlist ul li {
+  color: #2E75D6;
+  margin: 0;
+  padding: 0.4rem;
+  border: 0;
+  border-bottom: 1px solid #388ffe;
+  height: 100%;
+}
+#components #vlist-vert .vlist {
+  overflow-y: hidden;
+}
+#components #vlist-vert .vlist ul {
+  display: flex;
+}
+#components #vlist-vert .vlist ul li {
+  padding: 0.8rem;
+  border: 0;
+  border-right: 1px solid #388ffe;
+}
 
-/*=== Styles from components/examples.gas ===*/
-#examples #hello-world .greeting {
-  color: #00cc99;
-}
-#examples #hello-world h1 {
-  font-size: 32px;
-}
-#examples #hello-world h1 .greeting {
-  border-bottom: 1px solid #dedede;
+/*=== Styles from components/home.gas ===*/
+#home a {
+  margin: 0.8rem 0.8rem 0 0;
 }
 
 /*=== Styles from components/links.gas ===*/
@@ -239,7 +140,7 @@ ul.tree-items, .directory-item ul {
 }
 
 /*=== Styles from components/todo.gas ===*/
-#todoList .todo-list_wrap .todo-list {
+#todoList .todo-list {
   list-style-type: none;
   padding: 0;
   margin: 0;
@@ -265,66 +166,24 @@ ul.tree-items, .directory-item ul {
 }
 
 /*=== Styles from main.gas ===*/
-*,
-*:before,
-*:after {
-  box-sizing: inherit;
-  font-family: "Roboto", sans-serif;
+.contentBlock {
+  border-radius: 0.4rem;
+  margin: 1.2em 0.2em;
+  border: 1px solid #388ffe;
+  background: #fff;
 }
-
-html,
-body {
-  height: 100%;
+.contentBlock .contentBlock-title {
+  font-family: "Poppins", sans-serif;
+  border-radius: 0.4rem 0.4rem 0 0;
+  border-bottom: 1px solid #388ffe;
+  padding: 0.4rem 0.6rem;
+  color: #388ffe;
+  font-size: 1rem;
 }
-
-#app {
-  height: 100%;
-  background-image: linear-gradient(180deg, #F0F8FF 0%, #fff 50%);
-}
-
-#app-wrap {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-a {
-  display: inline-block;
-}
-
-#app-wrap {
-  display: flex;
-}
-
-header#main-header {
-  padding: 4px 8px;
-  border-bottom: 1px solid #e7e9f5;
+.contentBlock .contentBlock-body {
   background: inherit;
-}
-header#main-header a {
-  color: #2969b9;
-}
-
-main#main-body {
-  margin-bottom: 0.6rem;
-}
-
-footer#main-footer {
-  margin-top: auto;
-  border-top: 1px solid #e7e9f5;
-  padding: 0.2rem 0;
-  background: inherit;
-  color: rgba(0, 0, 0, 0.54);
-  background-image: linear-gradient(0deg, #DFF8FF 0%, #fff 65%);
-}
-footer#main-footer #main-footer_createdWith #main-footer_createdWith-love .svg-icon path,
-footer#main-footer #main-footer_createdWith #main-footer_createdWith-love .svg-icon polygon,
-footer#main-footer #main-footer_createdWith #main-footer_createdWith-love .svg-icon rect {
-  fill: #ff0033;
-}
-
-button#submit:focus {
-  color: #009966;
+  padding: 0.8rem 1rem;
+  border-radius: 0.4rem;
 }
 
 .boxShadow {
@@ -387,7 +246,7 @@ button#submit:focus {
 }
 @media (min-width: 0px) {
   .mini-block {
-    width: 100%;
+    width: 94%;
   }
 }
 @media (min-width: 840px) {
@@ -440,17 +299,19 @@ button#submit:focus {
 }
 
 .pretty-btn {
+  border: none;
   display: inline-block;
   padding: 13px 19px;
   border-radius: 30px;
   background: #388ffe;
-  -webkit-box-shadow: 0 9px 12px -6px rgba(11, 132, 242, 0.78);
-  box-shadow: 0 9px 12px -6px rgba(11, 132, 242, 0.78);
+  cursor: pointer;
   font-size: 16px;
+  color: #fff;
   -webkit-transition: all 0.15s ease;
   transition: all 0.15s ease;
+  -webkit-box-shadow: 0 9px 12px -6px rgba(11, 132, 242, 0.78);
+  box-shadow: 0 9px 12px -6px rgba(11, 132, 242, 0.78);
   will-change: background-color, box-shadow;
-  color: #fff;
 }
 .pretty-btn:hover {
   text-decoration: none;
@@ -463,28 +324,51 @@ button#submit:focus {
   color: #fff;
 }
 
-.contentBlock {
-  border-radius: 0.4rem;
-  margin: 1.2em 0.2em;
-  border: 1px solid #388ffe;
-  background: #fff;
-}
-.contentBlock .contentBlock-title {
-  font-family: "Poppins", sans-serif;
-  border-radius: 0.4rem 0.4rem 0 0;
-  padding: 0.4rem 0.6rem;
-  color: #388ffe;
-  font-size: 1rem;
-}
-.contentBlock .contentBlock-body {
-  background: inherit;
-  padding: 0.8rem 1rem;
-  border-radius: 0.4rem;
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+  font-family: "Roboto", sans-serif;
 }
 
-/* -----
-SVG Icons - svgicons.sparkk.fr
------ */
+html,
+body {
+  height: 100%;
+}
+
+#app {
+  height: 100%;
+  background-image: linear-gradient(180deg, #F0F8FF 0%, #fff 50%);
+}
+
+#app-wrap {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+a, b, strong, i {
+  display: inline-block;
+}
+
+header#main-header {
+  background: inherit;
+}
+header#main-header a {
+  color: #2969b9;
+}
+
+footer {
+  color: rgba(0, 0, 0, 0.54);
+  background-image: linear-gradient(0deg, #DFF8FF 0%, #fff 65%);
+}
+footer #main-footer_createdWith-love .svg-icon path,
+footer #main-footer_createdWith-love .svg-icon polygon,
+footer #main-footer_createdWith-love .svg-icon rect {
+  fill: #ff0033;
+}
+
+/* styles for svg icons */
 .svg-icon {
   width: 1em;
   height: 1em;
@@ -499,6 +383,97 @@ SVG Icons - svgicons.sparkk.fr
 .svg-icon circle {
   stroke: #4691f6;
   stroke-width: 1;
+}
+
+/*=== Styles from /home/noartem/go/pkg/mod/github.com/gascore/std@v0.0.0-20190713060925-326bf866a8df/components/modal/modal.gas ===*/
+.modal-window {
+  align-items: center;
+  bottom: 0;
+  justify-content: center;
+  left: 0;
+  opacity: 0;
+  overflow: hidden;
+  padding: 0.4rem;
+  position: fixed;
+  right: 0;
+  top: 0;
+  display: flex;
+  opacity: 1;
+  z-index: 400;
+}
+.modal-window .modal-window_overlay {
+  bottom: 0;
+  display: block;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  cursor: pointer;
+}
+.modal-window .modal-window_container {
+  background: #fff;
+  border-radius: 0.6rem;
+  box-shadow: rgba(125, 128, 147, 0.23) 0px 3px 11px 0px;
+  transition: box-shadow 0.5s;
+  display: flex;
+  width: 100%;
+  animatopn: slide-down 0.2s ease 1;
+  z-index: 1;
+  overflow: auto;
+  flex-direction: column;
+}
+.modal-window .modal-window_container:hovered, .modal-window .modal-window_container:focused {
+  box-shadow: rgba(125, 128, 147, 0.46) 0px 3px 11px 0px;
+}
+
+/*=== Styles from /home/noartem/go/pkg/mod/github.com/gascore/std@v0.0.0-20190713060925-326bf866a8df/components/tree/tree.gas ===*/
+.tree .tree-header {
+  display: flex;
+}
+.tree .tree-header .tree-hide-btn {
+  margin: 0 0 0 auto;
+  border: 0;
+  padding: 0;
+  background: inherit;
+}
+.tree ul.tree-items, .tree .tree-directory-item ul {
+  padding: 0 0 0 12px;
+  margin: 0;
+  list-style-type: none;
+}
+.tree .tree-items .tree-item .tree-item-header .tree-item-header__hide-btn {
+  margin: 0 6px 0 0;
+  border: 0;
+  padding: 0;
+  background: inherit;
+  display: inline-block;
+}
+.tree .tree-items .tree-item .tree-item-header .tree-item-header__name {
+  cursor: pointer;
+  display: inline-block;
+}
+
+/*=== Styles from /home/noartem/go/pkg/mod/github.com/gascore/std@v0.0.0-20190713060925-326bf866a8df/components/vlist/vlist.gas ===*/
+.vlist {
+  width: 100%;
+  height: 100%;
+  overflow-x: auto;
+  overflow-y: auto;
+  position: relative;
+}
+
+.vlist-content {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.vlist-padding {
+  width: 1px;
+  height: 1px;
+  opacity: 0;
 }
 
 /*# sourceMappingURL=main.css.map */

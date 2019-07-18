@@ -106,6 +106,32 @@
   margin-bottom: 0;
 }
 
+.c\(\#ff0033\) {
+  color: #ff0033;
+}
+
+.fz\(\.8rem\) {
+  font-size: 0.8rem;
+}
+
+.fxf\(row\,wrap\) {
+  flex-flow: row wrap;
+}
+
+.m\(0\,auto\) {
+  margin: 0 auto;
+}
+
+@media (min-width: 750px) {
+  .w\(256px\)--sm {
+    width: 256px;
+  }
+}
+@media (min-width: 1000px) {
+  .w\(512px\)--md {
+    width: 512px;
+  }
+}
 .fxw\(wrap\) {
   flex-wrap: wrap;
 }

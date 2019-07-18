@@ -1,170 +1,3 @@
-/*=== Styles from components/components.gas ===*/
-#components .dndFreeBoundary {
-  display: flex;
-  flex-wrap: wrap;
-}
-#components .dndFreeBoundary .dndFree-wrap, #components .dndFreeBoundary .dndFreeWithHandle-wrap {
-  margin: 12px 24px 12px 0;
-}
-#components .dndFreeBoundary .dndFree-wrap:last-child, #components .dndFreeBoundary .dndFreeWithHandle-wrap:last-child {
-  margin-right: 0;
-}
-#components .dndFreeBoundary .dndFree-wrap .dndFree, #components .dndFreeBoundary .dndFree-wrap .dndFreeWithHandle, #components .dndFreeBoundary .dndFreeWithHandle-wrap .dndFree, #components .dndFreeBoundary .dndFreeWithHandle-wrap .dndFreeWithHandle {
-  padding: 0.1em 0.2em;
-  width: 128px;
-  height: 128px;
-  color: rgba(0, 0, 0, 0.87);
-  background: #fff;
-  font-size: 20px;
-  z-index: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  cursor: move;
-  user-select: none;
-  touch-action: none;
-  border-radius: 0.6rem;
-  box-shadow: rgba(125, 128, 147, 0.23) 0px 3px 11px 0px;
-  transition: box-shadow 0.5s;
-  animatopn: slide-down 0.2s ease 1;
-}
-#components .dndFreeBoundary .dndFree-wrap .dndFree:hover, #components .dndFreeBoundary .dndFree-wrap .dndFree:focus, #components .dndFreeBoundary .dndFree-wrap .dndFreeWithHandle:hover, #components .dndFreeBoundary .dndFree-wrap .dndFreeWithHandle:focus, #components .dndFreeBoundary .dndFreeWithHandle-wrap .dndFree:hover, #components .dndFreeBoundary .dndFreeWithHandle-wrap .dndFree:focus, #components .dndFreeBoundary .dndFreeWithHandle-wrap .dndFreeWithHandle:hover, #components .dndFreeBoundary .dndFreeWithHandle-wrap .dndFreeWithHandle:focus {
-  box-shadow: rgba(125, 128, 147, 0.46) 0px 3px 11px 0px;
-}
-#components .dndFreeBoundary .dndFree-wrap .dndFree-active, #components .dndFreeBoundary .dndFree-wrap .dndFreeWithHandle-active, #components .dndFreeBoundary .dndFreeWithHandle-wrap .dndFree-active, #components .dndFreeBoundary .dndFreeWithHandle-wrap .dndFreeWithHandle-active {
-  box-shadow: rgba(125, 128, 147, 0.46) 0px 3px 11px 0px;
-}
-#components .dndFreeBoundary .dndFree-wrap .dndFreeWithHandle, #components .dndFreeBoundary .dndFreeWithHandle-wrap .dndFreeWithHandle {
-  cursor: default;
-}
-#components .dndFreeBoundary .dndFree-wrap .dndFreeWithHandle .dndFree-handle, #components .dndFreeBoundary .dndFreeWithHandle-wrap .dndFreeWithHandle .dndFree-handle {
-  position: absolute;
-  top: 0.6em;
-  right: 0.6em;
-  color: #ccc;
-  font-size: 0.8em;
-  cursor: move;
-}
-#components #trees .tree {
-  border: 1px solid #ccc;
-  padding: 4px 8px;
-  width: 100%;
-  border-radius: 0.08em;
-  margin-bottom: 8px;
-}
-#components .layout {
-  height: 50vh;
-  width: 100%;
-}
-@media (max-width: 750px) {
-  #components .layout {
-    height: 80vh;
-  }
-}
-#components .layout .layout-item-1 {
-  width: 100%;
-}
-#components .layout2 {
-  display: flex;
-  height: 100%;
-}
-#components .layout2 .layout2-item {
-  height: 100%;
-}
-#components .layout-item-bd {
-  border: 1px solid #388ffe;
-  border-radius: 0.3rem;
-  padding: 4px 8px;
-  padding: 0.5em 0.3em;
-  overflow-x: hidden;
-  overflow-y: auto;
-  height: 100%;
-  width: 100%;
-  font-size: 20px;
-  color: #2E75D6;
-}
-#components .layout3 {
-  height: 100%;
-}
-#components .layout3 .layout3-item {
-  width: 100%;
-}
-#components .vlist {
-  border-radius: 0.3rem;
-  border: 1px solid #388ffe;
-}
-#components .vlist ul {
-  padding: 0;
-  margin: 0;
-  list-style-type: none;
-}
-#components .vlist ul li {
-  color: #2E75D6;
-  margin: 0;
-  padding: 0.4rem;
-  border: 0;
-  border-bottom: 1px solid #388ffe;
-  height: 100%;
-}
-#components #vlist-vert .vlist {
-  overflow-y: hidden;
-}
-#components #vlist-vert .vlist ul {
-  display: flex;
-}
-#components #vlist-vert .vlist ul li {
-  padding: 0.8rem;
-  border: 0;
-  border-right: 1px solid #388ffe;
-}
-
-/*=== Styles from components/home.gas ===*/
-#home a {
-  margin: 0.8rem 0.8rem 0 0;
-}
-
-/*=== Styles from components/links.gas ===*/
-#links h1 {
-  font-family: "Poppins", sans-serif;
-}
-#links #links-list {
-  display: flex;
-  margin: 0;
-  padding: 0;
-}
-#links #links-list li {
-  margin: 0;
-  padding: 0;
-  margin-right: 0.4rem;
-}
-
-/*=== Styles from components/todo.gas ===*/
-#todoList .todo-list {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-#todoList #todo-footer nav a {
-  text-decoration: none;
-  cursor: pointer;
-  margin: 0 0.24em;
-  padding: 4px;
-}
-#todoList #todo-footer nav a:hover {
-  padding: 3px;
-  border: 1px solid #807FE2;
-  border-radius: 0.4rem;
-}
-#todoList #todo-footer nav a.active {
-  padding: 3px;
-  border: 1px solid #5755d9;
-  border-radius: 0.4rem;
-}
-#todoList #todo-footer nav:first-child {
-  margin: 0 0.24em 0 0;
-}
-
 /*=== Styles from main.gas ===*/
 .contentBlock {
   border-radius: 0.4rem;
@@ -385,7 +218,7 @@ footer #main-footer_createdWith-love .svg-icon rect {
   stroke-width: 1;
 }
 
-/*=== Styles from /home/noartem/go/pkg/mod/github.com/gascore/std@v0.0.0-20190713060925-326bf866a8df/components/modal/modal.gas ===*/
+/*=== Styles from /home/noartem/go/pkg/mod/github.com/gascore/std@v0.0.0-20190718094442-aefb12ea6c03/components/modal/modal.gas ===*/
 .modal-window {
   align-items: center;
   bottom: 0;
@@ -426,7 +259,7 @@ footer #main-footer_createdWith-love .svg-icon rect {
   box-shadow: rgba(125, 128, 147, 0.46) 0px 3px 11px 0px;
 }
 
-/*=== Styles from /home/noartem/go/pkg/mod/github.com/gascore/std@v0.0.0-20190713060925-326bf866a8df/components/tree/tree.gas ===*/
+/*=== Styles from /home/noartem/go/pkg/mod/github.com/gascore/std@v0.0.0-20190718094442-aefb12ea6c03/components/tree/tree.gas ===*/
 .tree .tree-header {
   display: flex;
 }
@@ -453,7 +286,7 @@ footer #main-footer_createdWith-love .svg-icon rect {
   display: inline-block;
 }
 
-/*=== Styles from /home/noartem/go/pkg/mod/github.com/gascore/std@v0.0.0-20190713060925-326bf866a8df/components/vlist/vlist.gas ===*/
+/*=== Styles from /home/noartem/go/pkg/mod/github.com/gascore/std@v0.0.0-20190718094442-aefb12ea6c03/components/vlist/vlist.gas ===*/
 .vlist {
   width: 100%;
   height: 100%;
@@ -474,6 +307,229 @@ footer #main-footer_createdWith-love .svg-icon rect {
   width: 1px;
   height: 1px;
   opacity: 0;
+}
+
+/*=== Styles from components/components.gas ===*/
+#components .dndFreeBoundary {
+  display: flex;
+  flex-wrap: wrap;
+}
+#components .dndFreeBoundary .dndFree-wrap, #components .dndFreeBoundary .dndFreeWithHandle-wrap {
+  margin: 12px 24px 12px 0;
+}
+#components .dndFreeBoundary .dndFree-wrap:last-child, #components .dndFreeBoundary .dndFreeWithHandle-wrap:last-child {
+  margin-right: 0;
+}
+#components .dndFreeBoundary .dndFree-wrap .dndFree, #components .dndFreeBoundary .dndFree-wrap .dndFreeWithHandle, #components .dndFreeBoundary .dndFreeWithHandle-wrap .dndFree, #components .dndFreeBoundary .dndFreeWithHandle-wrap .dndFreeWithHandle {
+  padding: 0.1em 0.2em;
+  width: 128px;
+  height: 128px;
+  color: rgba(0, 0, 0, 0.87);
+  background: #fff;
+  font-size: 20px;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  cursor: move;
+  user-select: none;
+  touch-action: none;
+  border-radius: 0.6rem;
+  box-shadow: rgba(125, 128, 147, 0.23) 0px 3px 11px 0px;
+  transition: box-shadow 0.5s;
+  animatopn: slide-down 0.2s ease 1;
+}
+#components .dndFreeBoundary .dndFree-wrap .dndFree:hover, #components .dndFreeBoundary .dndFree-wrap .dndFree:focus, #components .dndFreeBoundary .dndFree-wrap .dndFreeWithHandle:hover, #components .dndFreeBoundary .dndFree-wrap .dndFreeWithHandle:focus, #components .dndFreeBoundary .dndFreeWithHandle-wrap .dndFree:hover, #components .dndFreeBoundary .dndFreeWithHandle-wrap .dndFree:focus, #components .dndFreeBoundary .dndFreeWithHandle-wrap .dndFreeWithHandle:hover, #components .dndFreeBoundary .dndFreeWithHandle-wrap .dndFreeWithHandle:focus {
+  box-shadow: rgba(125, 128, 147, 0.46) 0px 3px 11px 0px;
+}
+#components .dndFreeBoundary .dndFree-wrap .dndFree-active, #components .dndFreeBoundary .dndFree-wrap .dndFreeWithHandle-active, #components .dndFreeBoundary .dndFreeWithHandle-wrap .dndFree-active, #components .dndFreeBoundary .dndFreeWithHandle-wrap .dndFreeWithHandle-active {
+  box-shadow: rgba(125, 128, 147, 0.46) 0px 3px 11px 0px;
+}
+#components .dndFreeBoundary .dndFree-wrap .dndFreeWithHandle, #components .dndFreeBoundary .dndFreeWithHandle-wrap .dndFreeWithHandle {
+  cursor: default;
+}
+#components .dndFreeBoundary .dndFree-wrap .dndFreeWithHandle .dndFree-handle, #components .dndFreeBoundary .dndFreeWithHandle-wrap .dndFreeWithHandle .dndFree-handle {
+  position: absolute;
+  top: 0.6em;
+  right: 0.6em;
+  color: #ccc;
+  font-size: 0.8em;
+  cursor: move;
+}
+#components #trees .tree {
+  border: 1px solid #ccc;
+  padding: 4px 8px;
+  width: 100%;
+  border-radius: 0.08em;
+  margin-bottom: 8px;
+}
+#components .layout {
+  height: 50vh;
+  width: 100%;
+}
+@media (max-width: 750px) {
+  #components .layout {
+    height: 80vh;
+  }
+}
+#components .layout .layout-item-1 {
+  width: 100%;
+}
+#components .layout2 {
+  display: flex;
+  height: 100%;
+}
+#components .layout2 .layout2-item {
+  height: 100%;
+}
+#components .layout-item-bd {
+  border: 1px solid #388ffe;
+  border-radius: 0.3rem;
+  padding: 4px 8px;
+  padding: 0.5em 0.3em;
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: 100%;
+  width: 100%;
+  font-size: 20px;
+  color: #2E75D6;
+}
+#components .layout3 {
+  height: 100%;
+}
+#components .layout3 .layout3-item {
+  width: 100%;
+}
+#components .vlist {
+  border-radius: 0.3rem;
+  border: 1px solid #388ffe;
+}
+#components .vlist ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+#components .vlist ul li {
+  color: #2E75D6;
+  margin: 0;
+  padding: 0.4rem;
+  border: 0;
+  border-bottom: 1px solid #388ffe;
+  height: 100%;
+}
+#components #vlist-vert .vlist {
+  overflow-y: hidden;
+}
+#components #vlist-vert .vlist ul {
+  display: flex;
+}
+#components #vlist-vert .vlist ul li {
+  padding: 0.8rem;
+  border: 0;
+  border-right: 1px solid #388ffe;
+}
+#components .dnd-group {
+  min-height: 96px;
+  min-width: 192px;
+  list-style-type: none;
+  padding: 2px 4px 12px 4px;
+  margin: 0;
+  height: 100%;
+}
+#components .dnd-group-contentBlock {
+  height: 100%;
+  width: 100%;
+}
+#components .dnd {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 0;
+  list-style-type: none;
+  display: inline-block;
+  vertical-align: top;
+  min-height: 64px;
+  min-width: 148px;
+  max-width: 100%;
+  background: white;
+  overflow: hidden;
+}
+#components .dnd .dnd-placeholder {
+  opacity: 0;
+}
+#components .dnd .dnd-item {
+  background: #ffffff;
+  border-bottom: 1px solid #ccc;
+  padding: 0.4em 0.8em 0.2em 0.8em;
+  min-height: 2.6rem;
+}
+#components .dnd .dnd-item:last-child {
+  border-bottom: 0;
+}
+#components .dnd .dnd-item .dnd-preview {
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+#components #dnds h3 {
+  font-size: 1.05rem;
+}
+#components #dnds #dndLipsum .dnd-item {
+  color: #302ECD;
+}
+#components #dnds #dnd1, #components #dnds #dnd2, #components #dnds #dnd3, #components #dnds #dndA {
+  margin: 0 0.2rem;
+  padding: 0;
+  display: inline-block;
+}
+#components .dnd-dragging .dnd:not(.dnd-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+/*=== Styles from components/home.gas ===*/
+#home a {
+  margin: 0.8rem 0.8rem 0 0;
+}
+
+/*=== Styles from components/links.gas ===*/
+#links h1 {
+  font-family: "Poppins", sans-serif;
+}
+#links #links-list {
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+#links #links-list li {
+  margin: 0;
+  padding: 0;
+  margin-right: 0.4rem;
+}
+
+/*=== Styles from components/todo.gas ===*/
+#todoList .todo-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+#todoList #todo-footer nav a {
+  text-decoration: none;
+  cursor: pointer;
+  margin: 0 0.24em;
+  padding: 4px;
+}
+#todoList #todo-footer nav a:hover {
+  padding: 3px;
+  border: 1px solid #807FE2;
+  border-radius: 0.4rem;
+}
+#todoList #todo-footer nav a.active {
+  padding: 3px;
+  border: 1px solid #5755d9;
+  border-radius: 0.4rem;
+}
+#todoList #todo-footer nav:first-child {
+  margin: 0 0.24em 0 0;
 }
 
 /*# sourceMappingURL=main.css.map */

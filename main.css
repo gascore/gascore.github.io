@@ -1,4 +1,3 @@
-/*=== Styles from main.gas ===*/
 .contentBlock {
   border-radius: 0.4rem;
   margin: 1.2em 0.2em;
@@ -157,170 +156,26 @@
   color: #fff;
 }
 
-*,
-*:before,
-*:after {
-  box-sizing: inherit;
-  font-family: "Roboto", sans-serif;
+#home a {
+  margin: 0.2rem 0.4rem;
 }
 
-html,
-body {
-  height: 100%;
-}
-
-#app {
-  height: 100%;
-  background-image: linear-gradient(180deg, #F0F8FF 0%, #fff 50%);
-}
-
-#app-wrap {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-a, b, strong, i {
-  display: inline-block;
-}
-
-header#main-header {
-  background: inherit;
-}
-header#main-header a {
-  color: #2969b9;
-}
-
-footer {
-  color: rgba(0, 0, 0, 0.54);
-  background-image: linear-gradient(0deg, #DFF8FF 0%, #fff 65%);
-}
-footer #main-footer_createdWith-love .svg-icon path,
-footer #main-footer_createdWith-love .svg-icon polygon,
-footer #main-footer_createdWith-love .svg-icon rect {
-  fill: #ff0033;
-}
-
-/* styles for svg icons */
-.svg-icon {
-  width: 1em;
-  height: 1em;
-}
-
-.svg-icon path,
-.svg-icon polygon,
-.svg-icon rect {
-  fill: #4691f6;
-}
-
-.svg-icon circle {
-  stroke: #4691f6;
-  stroke-width: 1;
-}
-
-/*=== Styles from /home/noartem/go/pkg/mod/github.com/gascore/std@v0.0.0-20190718094442-aefb12ea6c03/components/modal/modal.gas ===*/
-.modal-window {
-  align-items: center;
-  bottom: 0;
-  justify-content: center;
-  left: 0;
-  opacity: 0;
-  overflow: hidden;
-  padding: 0.4rem;
-  position: fixed;
-  right: 0;
-  top: 0;
-  display: flex;
-  opacity: 1;
-  z-index: 400;
-}
-.modal-window .modal-window_overlay {
-  bottom: 0;
-  display: block;
-  left: 0;
-  position: absolute;
-  right: 0;
-  top: 0;
-  cursor: pointer;
-}
-.modal-window .modal-window_container {
-  background: #fff;
-  border-radius: 0.6rem;
-  box-shadow: rgba(125, 128, 147, 0.23) 0px 3px 11px 0px;
-  transition: box-shadow 0.5s;
-  display: flex;
-  width: 100%;
-  animatopn: slide-down 0.2s ease 1;
-  z-index: 1;
-  overflow: auto;
-  flex-direction: column;
-}
-.modal-window .modal-window_container:hovered, .modal-window .modal-window_container:focused {
-  box-shadow: rgba(125, 128, 147, 0.46) 0px 3px 11px 0px;
-}
-
-/*=== Styles from /home/noartem/go/pkg/mod/github.com/gascore/std@v0.0.0-20190718094442-aefb12ea6c03/components/tree/tree.gas ===*/
-.tree .tree-header {
-  display: flex;
-}
-.tree .tree-header .tree-hide-btn {
-  margin: 0 0 0 auto;
-  border: 0;
-  padding: 0;
-  background: inherit;
-}
-.tree ul.tree-items, .tree .tree-directory-item ul {
-  padding: 0 0 0 12px;
-  margin: 0;
-  list-style-type: none;
-}
-.tree .tree-items .tree-item .tree-item-header .tree-item-header__hide-btn {
-  margin: 0 6px 0 0;
-  border: 0;
-  padding: 0;
-  background: inherit;
-  display: inline-block;
-}
-.tree .tree-items .tree-item .tree-item-header .tree-item-header__name {
-  cursor: pointer;
-  display: inline-block;
-}
-
-/*=== Styles from /home/noartem/go/pkg/mod/github.com/gascore/std@v0.0.0-20190718094442-aefb12ea6c03/components/vlist/vlist.gas ===*/
-.vlist {
-  width: 100%;
-  height: 100%;
-  overflow-x: auto;
-  overflow-y: auto;
-  position: relative;
-}
-
-.vlist-content {
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-}
-
-.vlist-padding {
-  width: 1px;
-  height: 1px;
-  opacity: 0;
-}
-
-/*=== Styles from components/components.gas ===*/
 #components .dndFreeBoundary {
   display: flex;
   flex-wrap: wrap;
 }
-#components .dndFreeBoundary .dndFree-wrap, #components .dndFreeBoundary .dndFreeWithHandle-wrap {
+#components .dndFreeBoundary .dndFree-wrap,
+#components .dndFreeBoundary .dndFreeWithHandle-wrap {
   margin: 12px 24px 12px 0;
 }
-#components .dndFreeBoundary .dndFree-wrap:last-child, #components .dndFreeBoundary .dndFreeWithHandle-wrap:last-child {
+#components .dndFreeBoundary .dndFree-wrap:last-child,
+#components .dndFreeBoundary .dndFreeWithHandle-wrap:last-child {
   margin-right: 0;
 }
-#components .dndFreeBoundary .dndFree-wrap .dndFree, #components .dndFreeBoundary .dndFree-wrap .dndFreeWithHandle, #components .dndFreeBoundary .dndFreeWithHandle-wrap .dndFree, #components .dndFreeBoundary .dndFreeWithHandle-wrap .dndFreeWithHandle {
+#components .dndFreeBoundary .dndFree-wrap .dndFree,
+#components .dndFreeBoundary .dndFree-wrap .dndFreeWithHandle,
+#components .dndFreeBoundary .dndFreeWithHandle-wrap .dndFree,
+#components .dndFreeBoundary .dndFreeWithHandle-wrap .dndFreeWithHandle {
   padding: 0.1em 0.2em;
   width: 128px;
   height: 128px;
@@ -340,16 +195,27 @@ footer #main-footer_createdWith-love .svg-icon rect {
   transition: box-shadow 0.5s;
   animatopn: slide-down 0.2s ease 1;
 }
-#components .dndFreeBoundary .dndFree-wrap .dndFree:hover, #components .dndFreeBoundary .dndFree-wrap .dndFree:focus, #components .dndFreeBoundary .dndFree-wrap .dndFreeWithHandle:hover, #components .dndFreeBoundary .dndFree-wrap .dndFreeWithHandle:focus, #components .dndFreeBoundary .dndFreeWithHandle-wrap .dndFree:hover, #components .dndFreeBoundary .dndFreeWithHandle-wrap .dndFree:focus, #components .dndFreeBoundary .dndFreeWithHandle-wrap .dndFreeWithHandle:hover, #components .dndFreeBoundary .dndFreeWithHandle-wrap .dndFreeWithHandle:focus {
+#components .dndFreeBoundary .dndFree-wrap .dndFree:hover, #components .dndFreeBoundary .dndFree-wrap .dndFree:focus,
+#components .dndFreeBoundary .dndFree-wrap .dndFreeWithHandle:hover,
+#components .dndFreeBoundary .dndFree-wrap .dndFreeWithHandle:focus,
+#components .dndFreeBoundary .dndFreeWithHandle-wrap .dndFree:hover,
+#components .dndFreeBoundary .dndFreeWithHandle-wrap .dndFree:focus,
+#components .dndFreeBoundary .dndFreeWithHandle-wrap .dndFreeWithHandle:hover,
+#components .dndFreeBoundary .dndFreeWithHandle-wrap .dndFreeWithHandle:focus {
   box-shadow: rgba(125, 128, 147, 0.46) 0px 3px 11px 0px;
 }
-#components .dndFreeBoundary .dndFree-wrap .dndFree-active, #components .dndFreeBoundary .dndFree-wrap .dndFreeWithHandle-active, #components .dndFreeBoundary .dndFreeWithHandle-wrap .dndFree-active, #components .dndFreeBoundary .dndFreeWithHandle-wrap .dndFreeWithHandle-active {
+#components .dndFreeBoundary .dndFree-wrap .dndFree-active,
+#components .dndFreeBoundary .dndFree-wrap .dndFreeWithHandle-active,
+#components .dndFreeBoundary .dndFreeWithHandle-wrap .dndFree-active,
+#components .dndFreeBoundary .dndFreeWithHandle-wrap .dndFreeWithHandle-active {
   box-shadow: rgba(125, 128, 147, 0.46) 0px 3px 11px 0px;
 }
-#components .dndFreeBoundary .dndFree-wrap .dndFreeWithHandle, #components .dndFreeBoundary .dndFreeWithHandle-wrap .dndFreeWithHandle {
+#components .dndFreeBoundary .dndFree-wrap .dndFreeWithHandle,
+#components .dndFreeBoundary .dndFreeWithHandle-wrap .dndFreeWithHandle {
   cursor: default;
 }
-#components .dndFreeBoundary .dndFree-wrap .dndFreeWithHandle .dndFree-handle, #components .dndFreeBoundary .dndFreeWithHandle-wrap .dndFreeWithHandle .dndFree-handle {
+#components .dndFreeBoundary .dndFree-wrap .dndFreeWithHandle .dndFree-handle,
+#components .dndFreeBoundary .dndFreeWithHandle-wrap .dndFreeWithHandle .dndFree-handle {
   position: absolute;
   top: 0.6em;
   right: 0.6em;
@@ -477,7 +343,10 @@ footer #main-footer_createdWith-love .svg-icon rect {
 #components #dnds #dndLipsum .dnd-item {
   color: #302ECD;
 }
-#components #dnds #dnd1, #components #dnds #dnd2, #components #dnds #dnd3, #components #dnds #dndA {
+#components #dnds #dnd1,
+#components #dnds #dnd2,
+#components #dnds #dnd3,
+#components #dnds #dndA {
   margin: 0 0.2rem;
   padding: 0;
   display: inline-block;
@@ -486,27 +355,6 @@ footer #main-footer_createdWith-love .svg-icon rect {
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
 
-/*=== Styles from components/home.gas ===*/
-#home a {
-  margin: 0.8rem 0.8rem 0 0;
-}
-
-/*=== Styles from components/links.gas ===*/
-#links h1 {
-  font-family: "Poppins", sans-serif;
-}
-#links #links-list {
-  display: flex;
-  margin: 0;
-  padding: 0;
-}
-#links #links-list li {
-  margin: 0;
-  padding: 0;
-  margin-right: 0.4rem;
-}
-
-/*=== Styles from components/todo.gas ===*/
 #todoList .todo-list {
   list-style-type: none;
   padding: 0;
@@ -530,6 +378,134 @@ footer #main-footer_createdWith-love .svg-icon rect {
 }
 #todoList #todo-footer nav:first-child {
   margin: 0 0.24em 0 0;
+}
+
+.vlist {
+  width: 100%;
+  height: 100%;
+  overflow-x: auto;
+  overflow-y: auto;
+  position: relative;
+}
+.vlist .vlist-content {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+.vlist .vlist-padding {
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.modal-window {
+  display: none;
+}
+
+.modal-window.modal-window-active {
+  align-items: center;
+  bottom: 0;
+  justify-content: center;
+  left: 0;
+  opacity: 0;
+  overflow: hidden;
+  padding: 0.4rem;
+  position: fixed;
+  right: 0;
+  top: 0;
+  display: flex;
+  opacity: 1;
+  z-index: 400;
+}
+.modal-window.modal-window-active .modal-window_overlay {
+  bottom: 0;
+  display: block;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  cursor: pointer;
+}
+.modal-window.modal-window-active .modal-window_container {
+  background: #fff;
+  border-radius: 0.6rem;
+  box-shadow: rgba(125, 128, 147, 0.23) 0px 3px 11px 0px;
+  transition: box-shadow 0.5s;
+  display: flex;
+  width: 100%;
+  animatopn: slide-down 0.2s ease 1;
+  z-index: 1;
+  overflow: auto;
+  flex-direction: column;
+}
+.modal-window.modal-window-active .modal-window_container:hovered, .modal-window.modal-window-active .modal-window_container:focused {
+  box-shadow: rgba(125, 128, 147, 0.46) 0px 3px 11px 0px;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+  font-family: "Roboto", sans-serif;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+#app {
+  height: 100%;
+  background-image: linear-gradient(180deg, #F0F8FF 0%, #fff 50%);
+}
+
+#app-wrap {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+a,
+b,
+strong,
+i {
+  display: inline-block;
+}
+
+header#main-header {
+  background: inherit;
+}
+header#main-header a {
+  color: #2969b9;
+}
+
+footer {
+  color: rgba(0, 0, 0, 0.54);
+  background-image: linear-gradient(0deg, #DFF8FF 0%, #fff 65%);
+}
+footer #main-footer_createdWith-love .svg-icon path,
+footer #main-footer_createdWith-love .svg-icon polygon,
+footer #main-footer_createdWith-love .svg-icon rect {
+  fill: #ff0033;
+}
+
+/* styles for svg icons */
+.svg-icon {
+  width: 1em;
+  height: 1em;
+}
+
+.svg-icon path,
+.svg-icon polygon,
+.svg-icon rect {
+  fill: #4691f6;
+}
+
+.svg-icon circle {
+  stroke: #4691f6;
+  stroke-width: 1;
 }
 
 /*# sourceMappingURL=main.css.map */

@@ -1,6 +1,5 @@
 .contentBlock {
   border-radius: 0.4rem;
-  margin: 1.2em 0.2em;
   border: 1px solid #388ffe;
   background: #fff;
 }
@@ -16,6 +15,10 @@
   background: inherit;
   padding: 0.8rem 1rem;
   border-radius: 0.4rem;
+}
+
+.blocksList > * + * {
+  margin-top: 1rem;
 }
 
 .boxShadow {
@@ -192,8 +195,7 @@
   touch-action: none;
   border-radius: 0.6rem;
   box-shadow: rgba(125, 128, 147, 0.23) 0px 3px 11px 0px;
-  transition: box-shadow 0.5s;
-  animatopn: slide-down 0.2s ease 1;
+  transition: box-shadow 200ms cubic-bezier(0, 0, 0.2, 1);
 }
 #components .dndFreeBoundary .dndFree-wrap .dndFree:hover, #components .dndFreeBoundary .dndFree-wrap .dndFree:focus,
 #components .dndFreeBoundary .dndFree-wrap .dndFreeWithHandle:hover,
@@ -208,6 +210,8 @@
 #components .dndFreeBoundary .dndFree-wrap .dndFreeWithHandle-active,
 #components .dndFreeBoundary .dndFreeWithHandle-wrap .dndFree-active,
 #components .dndFreeBoundary .dndFreeWithHandle-wrap .dndFreeWithHandle-active {
+  touch-action: none;
+  user-select: none;
   box-shadow: rgba(125, 128, 147, 0.46) 0px 3px 11px 0px;
 }
 #components .dndFreeBoundary .dndFree-wrap .dndFreeWithHandle,
@@ -224,11 +228,23 @@
   cursor: move;
 }
 #components #trees .tree {
-  border: 1px solid #ccc;
+  box-shadow: rgba(125, 128, 147, 0.23) 0px 3px 11px 0px;
   padding: 4px 8px;
   width: 100%;
   border-radius: 0.08em;
   margin-bottom: 8px;
+}
+#components .layout-item-bd {
+  border: 1px solid #388ffe;
+  border-radius: 0.3rem;
+  padding: 4px 8px;
+  padding: 0.5em 0.3em;
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: 100%;
+  width: 100%;
+  font-size: 20px;
+  color: #2E75D6;
 }
 #components .layout {
   height: 50vh;
@@ -248,18 +264,6 @@
 }
 #components .layout2 .layout2-item {
   height: 100%;
-}
-#components .layout-item-bd {
-  border: 1px solid #388ffe;
-  border-radius: 0.3rem;
-  padding: 4px 8px;
-  padding: 0.5em 0.3em;
-  overflow-x: hidden;
-  overflow-y: auto;
-  height: 100%;
-  width: 100%;
-  font-size: 20px;
-  color: #2E75D6;
 }
 #components .layout3 {
   height: 100%;
@@ -387,6 +391,7 @@
   overflow-y: auto;
   position: relative;
 }
+
 .vlist .vlist-content {
   top: 0;
   left: 0;
@@ -394,6 +399,7 @@
   height: 100%;
   position: absolute;
 }
+
 .vlist .vlist-padding {
   width: 1px;
   height: 1px;
@@ -404,7 +410,7 @@
   display: none;
 }
 
-.modal-window.modal-window-active {
+.modal-window-active {
   align-items: center;
   bottom: 0;
   justify-content: center;
@@ -419,7 +425,8 @@
   opacity: 1;
   z-index: 400;
 }
-.modal-window.modal-window-active .modal-window_overlay {
+
+.modal-window_overlay {
   bottom: 0;
   display: block;
   left: 0;
@@ -428,20 +435,82 @@
   top: 0;
   cursor: pointer;
 }
-.modal-window.modal-window-active .modal-window_container {
+
+.modal-window_container {
   background: #fff;
   border-radius: 0.6rem;
   box-shadow: rgba(125, 128, 147, 0.23) 0px 3px 11px 0px;
   transition: box-shadow 0.5s;
   display: flex;
   width: 100%;
-  animatopn: slide-down 0.2s ease 1;
+  animation: slide-down 0.2s ease 1;
   z-index: 1;
   overflow: auto;
   flex-direction: column;
 }
-.modal-window.modal-window-active .modal-window_container:hovered, .modal-window.modal-window-active .modal-window_container:focused {
+
+.modal-window_container:hovered,
+.modal-window_container:focused {
   box-shadow: rgba(125, 128, 147, 0.46) 0px 3px 11px 0px;
+}
+
+.tree .tree-header {
+  display: flex;
+}
+
+.tree .tree-header .tree-hide-btn {
+  margin: 0 0 0 auto;
+  bottom: 0;
+  padding: 0;
+  background: inherit;
+  border: 0;
+  cursor: pointer;
+}
+
+.tree .tree-items {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+.tree .tree-items .tree-item {
+  margin-left: 0;
+}
+
+.tree .tree-items .tree-item .tree-item-header {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.tree .tree-items .tree-item .tree-item-header .tree-item-header__hide-btn {
+  border: none;
+  padding: 0;
+  background: inherit;
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  margin-right: 4px;
+}
+
+.tree .tree-items .tree-item .tree-item-header .tree-item-header_name {
+  height: 24px;
+}
+
+.tree .tree-items .tree-item .tree-item-subs {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+.tree .tree-items .tree-item .tree-item-subs .tree-item-subs_item {
+  margin-left: 32px;
+}
+
+.tree .tree-items .tree-item_name-only {
+  margin-left: 28px;
 }
 
 *,
@@ -474,20 +543,17 @@ i {
   display: inline-block;
 }
 
-header#main-header {
-  background: inherit;
-}
 header#main-header a {
   color: #2969b9;
 }
 
-footer {
+footer#main-footer {
   color: rgba(0, 0, 0, 0.54);
   background-image: linear-gradient(0deg, #DFF8FF 0%, #fff 65%);
 }
-footer #main-footer_createdWith-love .svg-icon path,
-footer #main-footer_createdWith-love .svg-icon polygon,
-footer #main-footer_createdWith-love .svg-icon rect {
+footer#main-footer #main-footer_createdWith-love .svg-icon path,
+footer#main-footer #main-footer_createdWith-love .svg-icon polygon,
+footer#main-footer #main-footer_createdWith-love .svg-icon rect {
   fill: #ff0033;
 }
 

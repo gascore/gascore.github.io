@@ -1,3 +1,6 @@
+.td\(underline\){
+text-decoration: underline;
+}
 .m\(auto\){
 margin: auto;
 }
@@ -33,6 +36,9 @@ padding: .8rem;
 }
 .bdrs\(\.4rem\,\.4rem\,0\,0\){
 border-radius: .4rem .4rem 0 0;
+}
+.ovx\(auto\){
+overflow-x: auto;
 }
 .h\(70vw\){
 height: 70vw;
@@ -84,14 +90,8 @@ color: #ff0033;
 .mb\(0\){
 margin-bottom: 0;
 }
-.c\(\#ff0033\){
-color: #ff0033;
-}
-.fz\(\.8rem\){
-font-size: .8rem;
-}
-.fxf\(row\,wrap\){
-flex-flow: row wrap;
+.mb\(\.7rem\){
+margin-bottom: .7rem;
 }
 .m\(auto\,0\,auto\,\.4em\){
 margin: auto 0 auto .4em;
@@ -166,6 +166,9 @@ padding: .8rem 1.2rem;
 .bg\(\#fff\){
 background: #fff;
 }
+.c\(\#ff0033\){
+color: #ff0033;
+}
 .m\(0\,\.4rem\){
 margin: 0 .4rem;
 }
@@ -239,9 +242,6 @@ min-height: 5vh;
 .ovy\(none\){
 overflow-y: none;
 }
-.ovx\(auto\){
-overflow-x: auto;
-}
 .whs\(nowrap\){
 white-space: nowrap;
 }
@@ -265,9 +265,6 @@ bottom: inherit;
 }
 .c\(\#00cc99\){
 color: #00cc99;
-}
-.td\(underline\){
-text-decoration: underline;
 }
 
 .ml\(0\){

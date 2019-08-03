@@ -159,6 +159,24 @@
   color: #fff;
 }
 
+#notFound .notFoundPage {
+  overflow: hidden;
+}
+#notFound .notFoundPage > * {
+  display: flex;
+  flex-wrap: wrap;
+  margin: calc(16px / 2 * -1);
+}
+#notFound .notFoundPage > * > * {
+  margin: calc(16px / 2);
+  flex-grow: 1;
+}
+#notFound .notFoundPage > * > :last-child {
+  flex-basis: 0;
+  flex-grow: 999;
+  min-width: calc(50% - 16px);
+}
+
 #home a {
   margin: 0.2rem 0.4rem;
 }

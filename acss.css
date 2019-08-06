@@ -121,6 +121,9 @@ width: 512px;
 .fxw\(wrap\){
 flex-wrap: wrap;
 }
+.m\(0\,\.1em\){
+margin: 0 .1em;
+}
 .bdt\(1px\,solid\,\#e6e6e6\){
 border-top: 1px solid #e6e6e6;
 }

@@ -23,13 +23,14 @@
 }
 
 .boxShadow {
+  border: 1px solid var(--boxShadowBorder);
   border-radius: 0.6rem;
-  box-shadow: rgba(125, 128, 147, 0.23) 0px 3px 11px 0px;
+  box-shadow: var(--boxShadowColor) 0px 3px 11px 0px;
   transition: box-shadow 0.5s;
 }
 
 .boxShadow-hover:hover {
-  box-shadow: rgba(125, 128, 147, 0.46) 0px 3px 11px 0px;
+  box-shadow: var(--boxShadowColorHover) 0px 3px 11px 0px;
 }
 
 .centerizeContent {
@@ -173,22 +174,8 @@
   transform: translateY(3px);
 }
 
-#notFound .notFoundPage {
-  overflow: hidden;
-}
-#notFound .notFoundPage > * {
-  display: flex;
-  flex-wrap: wrap;
-  margin: calc(16px / 2 * -1);
-}
-#notFound .notFoundPage > * > * {
-  margin: calc(16px / 2);
-  flex-grow: 1;
-}
-#notFound .notFoundPage > * > :last-child {
-  flex-basis: 0;
-  flex-grow: 999;
-  min-width: calc(50% - 16px);
+#notFound #error-title {
+  font-family: "Poppins", sans-serif;
 }
 
 #home #example-links a:first-child {
@@ -229,17 +216,16 @@
   user-select: none;
   touch-action: none;
   border-radius: 0.6rem;
-  box-shadow: rgba(125, 128, 147, 0.23) 0px 3px 11px 0px;
-  transition: box-shadow 200ms cubic-bezier(0, 0, 0.2, 1);
+  border: 1px solid var(--boxShadowBorder);
+  border-radius: 0.6rem;
+  box-shadow: var(--boxShadowColor) 0px 3px 11px 0px;
+  transition: box-shadow 0.5s;
 }
-#components .dndFreeBoundary .dndFree-wrap .dndFree:hover, #components .dndFreeBoundary .dndFree-wrap .dndFree:focus,
+#components .dndFreeBoundary .dndFree-wrap .dndFree:hover,
 #components .dndFreeBoundary .dndFree-wrap .dndFreeWithHandle:hover,
-#components .dndFreeBoundary .dndFree-wrap .dndFreeWithHandle:focus,
 #components .dndFreeBoundary .dndFreeWithHandle-wrap .dndFree:hover,
-#components .dndFreeBoundary .dndFreeWithHandle-wrap .dndFree:focus,
-#components .dndFreeBoundary .dndFreeWithHandle-wrap .dndFreeWithHandle:hover,
-#components .dndFreeBoundary .dndFreeWithHandle-wrap .dndFreeWithHandle:focus {
-  box-shadow: rgba(125, 128, 147, 0.46) 0px 3px 11px 0px;
+#components .dndFreeBoundary .dndFreeWithHandle-wrap .dndFreeWithHandle:hover {
+  box-shadow: var(--boxShadowColorHover) 0px 3px 11px 0px;
 }
 #components .dndFreeBoundary .dndFree-wrap .dndFree-active,
 #components .dndFreeBoundary .dndFree-wrap .dndFreeWithHandle-active,
@@ -247,7 +233,12 @@
 #components .dndFreeBoundary .dndFreeWithHandle-wrap .dndFreeWithHandle-active {
   touch-action: none;
   user-select: none;
-  box-shadow: rgba(125, 128, 147, 0.46) 0px 3px 11px 0px;
+}
+#components .dndFreeBoundary .dndFree-wrap .dndFree-active:hover,
+#components .dndFreeBoundary .dndFree-wrap .dndFreeWithHandle-active:hover,
+#components .dndFreeBoundary .dndFreeWithHandle-wrap .dndFree-active:hover,
+#components .dndFreeBoundary .dndFreeWithHandle-wrap .dndFreeWithHandle-active:hover {
+  box-shadow: var(--boxShadowColorHover) 0px 3px 11px 0px;
 }
 #components .dndFreeBoundary .dndFree-wrap .dndFreeWithHandle,
 #components .dndFreeBoundary .dndFreeWithHandle-wrap .dndFreeWithHandle {
@@ -263,7 +254,10 @@
   cursor: move;
 }
 #components #trees .tree {
-  box-shadow: rgba(125, 128, 147, 0.23) 0px 3px 11px 0px;
+  border: 1px solid var(--boxShadowBorder);
+  border-radius: 0.6rem;
+  box-shadow: var(--boxShadowColor) 0px 3px 11px 0px;
+  transition: box-shadow 0.5s;
   padding: 4px 8px;
   width: 100%;
   border-radius: 0.08em;
@@ -392,6 +386,12 @@
 }
 #components .dnd-dragging .dnd:not(.dnd-placeholder) {
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+#components .modal-window_container {
+  border: 1px solid var(--boxShadowBorder);
+  border-radius: 0.6rem;
+  box-shadow: var(--boxShadowColor) 0px 3px 11px 0px;
+  transition: box-shadow 0.5s;
 }
 
 #todoList .todo-list {
@@ -548,11 +548,39 @@
   margin-left: 28px;
 }
 
+html.dark {
+  --boxShadowBorder: rgb(103, 103, 107);
+  --boxShadowColor: none;
+  --boxShadowColorHover: none;
+  background-color: #d2d4e0;
+  filter: invert(100%) hue-rotate(180deg);
+}
+html.dark * {
+  background-color: inherit;
+}
+html.dark img:not([src*=".svg"]),
+html.dark video {
+  filter: invert(100%) hue-rotate(180deg);
+}
+html.dark #main-footer {
+  background: inherit !important;
+}
+html.dark .pretty-btn {
+  filter: invert(100%) hue-rotate(180deg);
+  background: #388ffe;
+}
+
 *,
 *:before,
 *:after {
   box-sizing: inherit;
   font-family: "Roboto", sans-serif;
+}
+
+:root {
+  --boxShadowBorder: none;
+  --boxShadowColor: rgba(125, 128, 147, 0.23);
+  --boxShadowColorHover: rgba(125, 128, 147, 0.46);
 }
 
 html,
@@ -574,12 +602,26 @@ body {
 a,
 b,
 strong,
-i {
+i,
+pre,
+code {
   display: inline-block;
+}
+
+a.btn:visited {
+  color: #5755d9 !important;
 }
 
 header#main-header a {
   color: #2969b9;
+}
+header#main-header #theme-toggle svg {
+  font-size: 1.2em;
+}
+header#main-header #theme-toggle .svg-icon path,
+header#main-header #theme-toggle .svg-icon polygon,
+header#main-header #theme-toggle .svg-icon rect {
+  fill: #9CAEC0;
 }
 
 footer#main-footer {
@@ -633,6 +675,7 @@ footer#main-footer #main-footer_createdWith-love .svg-icon rect {
 }
 #scrollTop i.icon {
   vertical-align: -15%;
+  background: none !important;
 }
 
 /*# sourceMappingURL=main.css.map */

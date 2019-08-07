@@ -1,8 +1,29 @@
-.td\(underline\){
-text-decoration: underline;
+.fxw\(wrap\){
+flex-wrap: wrap;
+}
+.fz\(12em\){
+font-size: 12em;
+}
+.p\(\.5rem\){
+padding: .5rem;
+}
+.m\(0\,auto\){
+margin: 0 auto;
 }
 .m\(auto\){
 margin: auto;
+}
+.mb\(0\){
+margin-bottom: 0;
+}
+.fz\(1\.4em\){
+font-size: 1.4em;
+}
+.mb\(\.5rem\){
+margin-bottom: .5rem;
+}
+.mr\(\.4em\){
+margin-right: .4em;
 }
 .m\(0\){
 margin: 0;
@@ -24,6 +45,9 @@ width: 8%;
 }
 .fz\(28px\){
 font-size: 28px;
+}
+.bdrs\(\.6rem\){
+border-radius: .6rem;
 }
 .w\(92\%\){
 width: 92%;
@@ -87,9 +111,6 @@ font-size: 22px !important;
 .c\(\#ff0033\)\:h:hover{
 color: #ff0033;
 }
-.mb\(0\){
-margin-bottom: 0;
-}
 .mb\(\.7rem\){
 margin-bottom: .7rem;
 }
@@ -105,9 +126,6 @@ font-size: 16px;
 .d\(block\){
 display: block;
 }
-.m\(0\,auto\){
-margin: 0 auto;
-}
 @media(min-width:750px) {
 .w\(256px\)--sm{
 width: 256px;
@@ -117,9 +135,6 @@ width: 256px;
 .w\(512px\)--md{
 width: 512px;
 }
-}
-.fxw\(wrap\){
-flex-wrap: wrap;
 }
 .m\(0\,\.1em\){
 margin: 0 .1em;
@@ -193,14 +208,23 @@ margin: auto .6rem auto 0;
 .ff\('Poppins'\, sans-serif\){
 font-family: 'Poppins'  sans-serif;
 }
+.m\(\.4rem\,\.4rem\,0\,0\){
+margin: .4rem .4rem 0 0;
+}
+.bdrs\(\.6rem\,\.6rem\,0\,0\){
+border-radius: .6rem .6rem 0 0;
+}
 .w\(90\%\){
 width: 90%;
 }
-.bdrs\(\.4rem\,0\,0\,0\){
-border-radius: .4rem 0 0 0;
+.bdrs\(\.6rem\,0\,0\,0\){
+border-radius: .6rem 0 0 0;
 }
 .w\(10\%\){
 width: 10%;
+}
+.bdrs\(0\,\.6rem\,0\,\.6rem\){
+border-radius: 0 .6rem 0 .6rem;
 }
 .fz\(1\.1rem\){
 font-size: 1.1rem;
@@ -213,6 +237,9 @@ margin-top: 0;
 }
 .p\(\.2rem\,\.6rem\){
 padding: .2rem .6rem;
+}
+.bdrs\(0\,0\,\.6rem\,\.6rem\){
+border-radius: 0 0 .6rem .6rem;
 }
 .ml\(auto\){
 margin-left: auto;
@@ -251,6 +278,18 @@ white-space: nowrap;
 .bg\(inherit\){
 background: inherit;
 }
+.ai\(center\){
+align-items: center;
+}
+.ml\(\.2em\){
+margin-left: .2em;
+}
+.mr\(\.2em\){
+margin-right: .2em;
+}
+.p\(\.1rem\,\.4rem\,\.1rem\,1\.2rem\){
+padding: .1rem .4rem .1rem 1.2rem;
+}
 .p\(\.6rem\,0\){
 padding: .6rem 0;
 }
@@ -268,6 +307,9 @@ bottom: inherit;
 }
 .c\(\#00cc99\){
 color: #00cc99;
+}
+.td\(underline\){
+text-decoration: underline;
 }
 
 .ml\(0\){

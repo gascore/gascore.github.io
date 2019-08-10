@@ -1,21 +1,25 @@
 @charset "UTF-8";
 .contentBlock {
-  border-radius: 0.4rem;
-  border: 1px solid #388ffe;
+  border-radius: 0.8rem;
+  border: 1px solid var(--color-primary);
   background: #fff;
 }
 .contentBlock .contentBlock-title {
   font-family: "Poppins", sans-serif;
-  border-radius: 0.4rem 0.4rem 0 0;
-  border-bottom: 1px solid #388ffe;
+  border-radius: 0.8rem 0.8rem 0 0;
+  border-bottom: 1px solid var(--color-primary);
   padding: 0.4rem 0.6rem;
-  color: #388ffe;
-  font-size: 1rem;
+  color: var(--color-primary);
+  font-size: 2rem;
 }
 .contentBlock .contentBlock-body {
   background: inherit;
-  padding: 0.8rem 1rem;
-  border-radius: 0.4rem;
+  padding: 1.2rem 1.6rem;
+  border-radius: 0.8rem;
+}
+
+html[data-theme=dark] .contentBlock {
+  background-color: inherit;
 }
 
 .blocksList > * + * {
@@ -24,7 +28,7 @@
 
 .boxShadow {
   border: 1px solid var(--boxShadowBorder);
-  border-radius: 0.6rem;
+  border-radius: 1.5rem;
   box-shadow: var(--boxShadowColor) 0px 3px 11px 0px;
   transition: box-shadow 0.5s;
 }
@@ -127,15 +131,6 @@
   }
 }
 
-.no-btn {
-  box-shadow: none;
-  border: none;
-  padding: 0;
-  margin: 0;
-  background: inherit;
-  cursor: pointer;
-}
-
 .no-list {
   list-style-type: none;
   padding-left: 0;
@@ -143,35 +138,6 @@
 }
 .no-list li {
   padding-left: 0;
-}
-
-.pretty-btn {
-  border: none;
-  display: inline-block;
-  padding: 13px 19px;
-  border-radius: 30px;
-  background: #388ffe;
-  cursor: pointer;
-  font-size: 16px;
-  color: #fff;
-  -webkit-transition: all 0.15s ease;
-  transition: all 0.15s ease;
-  -webkit-box-shadow: 0 9px 12px -6px rgba(11, 132, 242, 0.78);
-  box-shadow: 0 9px 12px -6px rgba(11, 132, 242, 0.78);
-  will-change: background-color, box-shadow;
-}
-.pretty-btn:hover {
-  text-decoration: none;
-  color: #fff;
-  background: #3684fe;
-  -webkit-box-shadow: 0 9px 16px -6px rgba(11, 132, 242, 0.78);
-  box-shadow: 0 9px 16px -6px rgba(11, 132, 242, 0.78);
-}
-.pretty-btn:visited {
-  color: #fff;
-}
-.pretty-btn:active {
-  transform: translateY(3px);
 }
 
 #notFound #error-title {
@@ -204,8 +170,6 @@
   padding: 0.1em 0.2em;
   width: 128px;
   height: 128px;
-  color: rgba(0, 0, 0, 0.87);
-  background: #fff;
   font-size: 20px;
   z-index: 1;
   display: flex;
@@ -215,9 +179,9 @@
   cursor: move;
   user-select: none;
   touch-action: none;
-  border-radius: 0.6rem;
+  border-radius: 1rem;
   border: 1px solid var(--boxShadowBorder);
-  border-radius: 0.6rem;
+  border-radius: 1.5rem;
   box-shadow: var(--boxShadowColor) 0px 3px 11px 0px;
   transition: box-shadow 0.5s;
 }
@@ -249,23 +213,22 @@
   position: absolute;
   top: 0.6em;
   right: 0.6em;
-  color: #ccc;
   font-size: 0.8em;
   cursor: move;
 }
 #components #trees .tree {
   border: 1px solid var(--boxShadowBorder);
-  border-radius: 0.6rem;
+  border-radius: 1.5rem;
   box-shadow: var(--boxShadowColor) 0px 3px 11px 0px;
   transition: box-shadow 0.5s;
   padding: 4px 8px;
   width: 100%;
-  border-radius: 0.08em;
+  border-radius: 0.14em;
   margin-bottom: 8px;
 }
 #components .layout-item-bd {
-  border: 1px solid #388ffe;
-  border-radius: 0.3rem;
+  border: 1px solid var(--color-primary);
+  border-radius: 0.6rem;
   padding: 4px 8px;
   padding: 0.5em 0.3em;
   overflow-x: hidden;
@@ -273,7 +236,7 @@
   height: 100%;
   width: 100%;
   font-size: 20px;
-  color: #2E75D6;
+  color: var(--color-second-primary);
 }
 #components .layout {
   height: 50vh;
@@ -301,8 +264,8 @@
   width: 100%;
 }
 #components .vlist {
-  border-radius: 0.3rem;
-  border: 1px solid #388ffe;
+  border-radius: 0.6rem;
+  border: 1px solid var(--color-primary);
 }
 #components .vlist ul {
   padding: 0;
@@ -310,11 +273,11 @@
   list-style-type: none;
 }
 #components .vlist ul li {
-  color: #2E75D6;
+  color: var(--color-second-primary);
   margin: 0;
   padding: 0.4rem;
   border: 0;
-  border-bottom: 1px solid #388ffe;
+  border-bottom: 1px solid var(--color-primary);
   height: 100%;
 }
 #components #vlist-vert .vlist {
@@ -326,7 +289,7 @@
 #components #vlist-vert .vlist ul li {
   padding: 0.8rem;
   border: 0;
-  border-right: 1px solid #388ffe;
+  border-right: 1px solid var(--color-primary);
 }
 #components .dnd-group {
   min-height: 96px;
@@ -389,7 +352,7 @@
 }
 #components .modal-window_container {
   border: 1px solid var(--boxShadowBorder);
-  border-radius: 0.6rem;
+  border-radius: 1.5rem;
   box-shadow: var(--boxShadowColor) 0px 3px 11px 0px;
   transition: box-shadow 0.5s;
 }
@@ -404,16 +367,15 @@
   cursor: pointer;
   margin: 0 0.24em;
   padding: 4px;
+  border-radius: 0.6rem;
 }
 #todoList #todo-footer nav a:hover {
   padding: 3px;
-  border: 1px solid #807FE2;
-  border-radius: 0.4rem;
+  border: 1px solid var(--color-primary);
 }
 #todoList #todo-footer nav a.active {
   padding: 3px;
-  border: 1px solid #5755d9;
-  border-radius: 0.4rem;
+  border: 1px solid var(--color-second-primary);
 }
 #todoList #todo-footer nav:first-child {
   margin: 0 0.24em 0 0;
@@ -516,6 +478,7 @@
   display: flex;
   align-items: center;
   cursor: pointer;
+  padding: 0.2rem 0.4rem;
 }
 
 .tree .tree-items .tree-item .tree-item-header .tree-item-header__hide-btn {
@@ -541,40 +504,21 @@
 }
 
 .tree .tree-items .tree-item .tree-item-subs .tree-item-subs_item {
-  margin-left: 32px;
+  margin-left: 36px;
 }
 
 .tree .tree-items .tree-item_name-only {
-  margin-left: 28px;
+  margin-left: 32px;
 }
 
-html.dark {
+html[data-theme=dark] {
   --boxShadowBorder: rgb(103, 103, 107);
   --boxShadowColor: none;
   --boxShadowColorHover: none;
-  background-color: #d2d4e0;
-  filter: invert(100%) hue-rotate(180deg);
 }
-html.dark * {
-  background-color: inherit;
-}
-html.dark img:not([src*=".svg"]),
-html.dark video {
-  filter: invert(100%) hue-rotate(180deg);
-}
-html.dark #main-footer {
+html[data-theme=dark] #app,
+html[data-theme=dark] #main-footer {
   background: inherit !important;
-}
-html.dark .pretty-btn {
-  filter: invert(100%) hue-rotate(180deg);
-  background: #388ffe;
-}
-
-*,
-*:before,
-*:after {
-  box-sizing: inherit;
-  font-family: "Roboto", sans-serif;
 }
 
 :root {
@@ -590,7 +534,7 @@ body {
 
 #app {
   height: 100%;
-  background-image: linear-gradient(180deg, #F0F8FF 0%, #fff 50%);
+  background: linear-gradient(180deg, #F0F8FF 0%, #fff 50%);
 }
 
 #app-wrap {
@@ -608,47 +552,37 @@ code {
   display: inline-block;
 }
 
-a.btn:visited {
-  color: #5755d9 !important;
+a {
+  color: var(--color-primary);
 }
 
-header#main-header a {
-  color: #2969b9;
+.light-bg {
+  background-color: #fff;
 }
-header#main-header #theme-toggle svg {
+
+html[data-theme=dark] .light-bg {
+  background: inherit;
+}
+
+#main-header {
+  border-color: var(--color-lightGrey);
+}
+#main-header #theme-toggle svg {
   font-size: 1.2em;
 }
-header#main-header #theme-toggle .svg-icon path,
-header#main-header #theme-toggle .svg-icon polygon,
-header#main-header #theme-toggle .svg-icon rect {
+#main-header #theme-toggle .svg-icon path,
+#main-header #theme-toggle .svg-icon polygon,
+#main-header #theme-toggle .svg-icon rect {
   fill: #9CAEC0;
 }
 
 footer#main-footer {
-  color: rgba(0, 0, 0, 0.54);
   background-image: linear-gradient(0deg, #DFF8FF 0%, #fff 65%);
 }
 footer#main-footer #main-footer_createdWith-love .svg-icon path,
 footer#main-footer #main-footer_createdWith-love .svg-icon polygon,
 footer#main-footer #main-footer_createdWith-love .svg-icon rect {
   fill: #ff0033;
-}
-
-/* styles for svg icons */
-.svg-icon {
-  width: 1em;
-  height: 1em;
-}
-
-.svg-icon path,
-.svg-icon polygon,
-.svg-icon rect {
-  fill: #4691f6;
-}
-
-.svg-icon circle {
-  stroke: #4691f6;
-  stroke-width: 1;
 }
 
 #scrollTop {
@@ -658,13 +592,12 @@ footer#main-footer #main-footer_createdWith-love .svg-icon rect {
   z-index: 999;
   border: none;
   outline: none;
-  color: white;
   cursor: pointer;
   padding: 0.8em;
   border-radius: 50%;
   font-size: 18px;
-  width: 2.8rem;
-  height: 2.8rem;
+  width: 5.4rem;
+  height: 5.4rem;
   color: rgba(85, 97, 125, 0.6);
   background: rgba(93, 104, 156, 0.08);
   transition: all 0.3s;
@@ -676,6 +609,30 @@ footer#main-footer #main-footer_createdWith-love .svg-icon rect {
 #scrollTop i.icon {
   vertical-align: -15%;
   background: none !important;
+}
+#scrollTop:active {
+  transform: scale(1.25);
+}
+
+/* styles for svg icons */
+.svg-icon {
+  width: 1em;
+  height: 1em;
+}
+
+.svg-icon path,
+.svg-icon polygon,
+.svg-icon rect {
+  fill: var(--main-color);
+}
+
+.svg-icon circle {
+  stroke: var(--main-color);
+  stroke-width: 1;
+}
+
+.icon {
+  color: var(--main-color);
 }
 
 /*# sourceMappingURL=main.css.map */

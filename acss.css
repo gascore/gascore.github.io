@@ -105,8 +105,14 @@ margin-left: auto !important;
 .fz\(22px\,\!important\){
 font-size: 22px !important;
 }
-.c\(\#ff0033\)\:h:hover{
-color: #ff0033;
+.cur\(pointer\){
+cursor: pointer;
+}
+.w\(1\.3em\){
+width: 1.3em;
+}
+.h\(1\.3em\){
+height: 1.3em;
 }
 .mb\(\.7rem\){
 margin-bottom: .7rem;
@@ -116,6 +122,9 @@ margin: auto 0 auto .4em;
 }
 .fz\(12px\){
 font-size: 12px;
+}
+.c\(\#fff\){
+color: #fff;
 }
 .fz\(16px\){
 font-size: 16px;
@@ -180,6 +189,9 @@ height: 100%;
 }
 .m\(0\,0\,0\,auto\){
 margin: 0 0 0 auto;
+}
+.c\(\#ff0033\)\:h:hover{
+color: #ff0033;
 }
 .c\(\#ff0033\)\:f:focus{
 color: #ff0033;
@@ -311,63 +323,3 @@ padding: .2rem 0;
 bottom: inherit;
 }
 
-.ml\(0\){
-margin-left: 0;
-}
-.ai\(center\){
-align-items: center;
-}
-.cur\(pointer\){
-cursor: pointer;
-}
-.bd\(0\){
-border: 0;
-}
-.bg\(inherit\){
-background: inherit;
-}
-.d\(inline-block\){
-display: inline-block;
-}
-.w\(24px\){
-width: 24px;
-}
-.h\(24px\){
-height: 24px;
-}
-.fxsh\(0\){
-flex-shrink: 0;
-}
-.bdrs\(50\%\){
-border-radius: 50%;
-}
-.mr\(4px\){
-margin-right: 4px;
-}
-.list\(none\){
-list-style-type: none;
-}
-.ml\(32px\){
-margin-left: 32px;
-}
-.ml\(28px\){
-margin-left: 28px;
-}
-.ovx\(auto\){
-overflow-x: auto;
-}
-.ovy\(auto\){
-overflow-y: auto;
-}
-.pos\(relative\){
-position: relative;
-}
-.w\(1px\){
-width: 1px;
-}
-.h\(1px\){
-height: 1px;
-}
-.op\(0\){
-opacity: 0;
-}

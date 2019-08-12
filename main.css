@@ -431,10 +431,14 @@ html[data-theme=dark] .contentBlock {
   right: 0;
   top: 0;
   cursor: pointer;
+  background: rgba(247, 248, 249, 0.75);
+}
+
+html[data-theme=dark] .modal-window_overlay {
+  background: rgba(0, 0, 0, 0.75);
 }
 
 .modal-window_container {
-  background: #fff;
   border-radius: 0.6rem;
   box-shadow: rgba(125, 128, 147, 0.23) 0px 3px 11px 0px;
   transition: box-shadow 0.5s;
@@ -589,7 +593,7 @@ footer#main-footer #main-footer_createdWith-love .svg-icon rect {
   position: fixed;
   bottom: 1rem;
   right: 1rem;
-  z-index: 999;
+  z-index: 99;
   border: none;
   outline: none;
   cursor: pointer;

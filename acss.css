@@ -46,8 +46,8 @@ width: 8%;
 .fz\(28px\){
 font-size: 28px;
 }
-.bdrs\(\.6rem\){
-border-radius: .6rem;
+.bdrs\(\.8rem\){
+border-radius: .8rem;
 }
 .w\(92\%\){
 width: 92%;
@@ -58,11 +58,14 @@ border: none;
 .p\(\.8rem\){
 padding: .8rem;
 }
-.bdrs\(\.8rem\,\.8rem\,0\,0\){
-border-radius: .8rem .8rem 0 0;
+.bdrs\(0\,\.8rem\,0\,0\){
+border-radius: 0 .8rem 0 0;
 }
 .ovx\(auto\){
 overflow-x: auto;
+}
+.whs\(pre-wrap\){
+white-space: pre-wrap;
 }
 .h\(70vw\){
 height: 70vw;
@@ -323,3 +326,63 @@ padding: .2rem 0;
 bottom: inherit;
 }
 
+.ml\(0\){
+margin-left: 0;
+}
+.ai\(center\){
+align-items: center;
+}
+.cur\(pointer\){
+cursor: pointer;
+}
+.bd\(0\){
+border: 0;
+}
+.bg\(inherit\){
+background: inherit;
+}
+.d\(inline-block\){
+display: inline-block;
+}
+.w\(24px\){
+width: 24px;
+}
+.h\(24px\){
+height: 24px;
+}
+.fxsh\(0\){
+flex-shrink: 0;
+}
+.bdrs\(50\%\){
+border-radius: 50%;
+}
+.mr\(4px\){
+margin-right: 4px;
+}
+.list\(none\){
+list-style-type: none;
+}
+.ml\(32px\){
+margin-left: 32px;
+}
+.ml\(28px\){
+margin-left: 28px;
+}
+.ovx\(auto\){
+overflow-x: auto;
+}
+.ovy\(auto\){
+overflow-y: auto;
+}
+.pos\(relative\){
+position: relative;
+}
+.w\(1px\){
+width: 1px;
+}
+.h\(1px\){
+height: 1px;
+}
+.op\(0\){
+opacity: 0;
+}

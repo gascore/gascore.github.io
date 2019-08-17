@@ -253,11 +253,14 @@ padding: .8rem 1.2rem;
 .bg\(\#fff\){
 background: #fff;
 }
-.c\(\#ff0033\){
-color: #ff0033;
-}
 .m\(0\,\.4rem\){
 margin: 0 .4rem;
+}
+.fz\(1em\){
+font-size: 1em;
+}
+.c\(\#ff0033\){
+color: #ff0033;
 }
 .c\(dark-gray\){
 color: dark-gray;

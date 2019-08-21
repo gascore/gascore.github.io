@@ -283,10 +283,8 @@ html[data-theme=dark] .contentBlock {
 #components #vlist-vert .vlist {
   overflow-y: hidden;
 }
-#components #vlist-vert .vlist ul {
-  display: flex;
-}
 #components #vlist-vert .vlist ul li {
+  display: inline-block;
   padding: 0.8rem;
   border: 0;
   border-right: 1px solid var(--color-primary);

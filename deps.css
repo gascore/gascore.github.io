@@ -66,6 +66,7 @@ html[data-theme="dark"] .modal-window_overlay {
     box-shadow: rgba(125, 128, 147, 0.46) 0px 3px 11px 0px;
 }.tree .tree-header {
     display: flex;
+    font-weight: bold;
 }
 
 .tree .tree-header .tree-hide-btn {
